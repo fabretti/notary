@@ -42,8 +42,22 @@
           </div>
           <div class="header__select">
             <div class="header__city">
-              <span class="city__title">Москва</span>
-              <i class="icon-arrow"></i>
+              <div v-on:click="show = !show" class="city__selected">
+                <span class="city__title">Москва</span>
+                <i class="icon-arrow"></i>
+              </div>
+              <transition name="fade">
+                <div v-if="show" class="city__list">
+                  <ul>
+                    <li class="selected">Москва</li>
+                    <li>Санкт-Петербург</li>
+                    <li>Новосибирск</li>
+                    <li>Екатеринбург</li>
+                    <li>Нижний Новгород</li>
+                    <li>Казань</li>
+                  </ul>
+                </div>
+              </transition>
             </div>
             <a href="#">Личный кабинет</a>
           </div>
@@ -104,4 +118,10 @@
 
 <style>
 </style>
-
+<script>
+export default {
+  data: () => ({
+    show: false,
+  })
+};
+</script>

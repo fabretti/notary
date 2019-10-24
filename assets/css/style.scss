@@ -44,7 +44,8 @@ button {
   }
 }
 
-.wrap {
+header .wrap,
+footer .wrap {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -233,30 +234,89 @@ header {
       align-items: center;
 
       .header__city {
-        display: flex;
-        align-items: center;
-        padding: 0 10px;
-        border-radius: 5px;
-        margin-right: 5px;
-        cursor: pointer;
+        position: relative;
+        user-select: none;
 
-        &:hover {
-          background: rgb(241, 241, 241);
+        .fade-enter-active,
+        .fade-leave-active {
+          transition: opacity .2s;
         }
 
-        span {
-          font-size: 16px;
-          line-height: 24px;
-          color: #8e99a7;
+        .fade-enter,
+        .fade-leave-to
+
+        /* .fade-leave-active до версии 2.1.8 */
+          {
+          opacity: 0;
         }
 
-        i {
-          display: block;
-          width: 8px;
-          height: 7px;
-          margin-left: 10px;
-          background: url("/arrow-header.svg");
-          background-size: cover;
+        .city__selected {
+          display: flex;
+          align-items: center;
+          padding: 0 10px;
+          border-radius: 5px;
+          margin-right: 5px;
+          cursor: pointer;
+
+          &:hover {
+            background: rgb(241, 241, 241);
+          }
+
+          span {
+            font-size: 16px;
+            line-height: 24px;
+            color: #8e99a7;
+          }
+
+          i {
+            display: block;
+            width: 8px;
+            height: 7px;
+            margin-left: 10px;
+            background: url("/arrow-header.svg");
+            background-size: cover;
+          }
+        }
+
+        .city__list {
+          position: absolute;
+          top: 40px;
+          background: #fff;
+          border-radius: 4px;
+          box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+          min-width: 190px;
+
+          ul {
+            padding: 15px 0;
+            text-align: left;
+
+            li {
+              padding: 0 30px;
+              cursor: pointer;
+              font-size: 14px;
+              line-height: 24px;
+
+              &:hover {
+                background: #dbebff;
+              }
+
+              &.selected {
+                position: relative;
+                font-weight: 600;
+
+                &:before {
+                  content: '';
+                  position: absolute;
+                  top: 50%;
+                  left: 14px;
+                  transform: translate(0, -50%);
+                  width: 6.5px;
+                  height: 6.5px;
+                  background: url('/check.svg') no-repeat;
+                }
+              }
+            }
+          }
         }
       }
 
@@ -455,7 +515,7 @@ header {
         .note-4 {
           padding: 25px 24px 0 24px;
           border-radius: 4px;
-          box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.1);
+          box-shadow: 0 4px 3px 0 rgba(0, 0, 0, 0.03);
 
           .note-title {
             font-size: 18px;
@@ -472,7 +532,8 @@ header {
 
         .note-1,
         .note-4 {
-          background: #fafafa;
+          background: #fff;
+          border: solid 1px #f2f2f2;
 
           .note-title {
             color: #1b559e;
@@ -686,18 +747,112 @@ header {
   }
 }
 
+// Слайдер от results 
+.card-right {
+  @include slider-btn;
+  max-width: 340px;
+
+  .swiper-button-next,
+  .swiper-container-rtl .swiper-button-prev {
+    background-image: url("/Polygon.svg");
+  }
+
+  .swiper-button-prev,
+  .swiper-container-rtl .swiper-button-next {
+    background-image: url("/PolygonL.svg");
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    width: 8px;
+    height: 15px;
+    margin-top: 0;
+    transform: translate(0, -50%);
+    background-size: inherit;
+  }
+
+  .slider-month {
+    cursor: pointer;
+
+    .swiper-container {
+      width: 130px;
+
+      .swiper-slide {
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: 600;
+        color: #2d333d;
+      }
+    }
+  }
+
+  .slider-days {
+    margin-top: 17px;
+
+    .swiper-container {
+      width: 340px;
+    }
+
+    .swiper-button-prev,
+    .swiper-button-next,
+    .swiper-button-prev.swiper-button-disabled,
+    .swiper-button-next.swiper-button-disabled {
+      background-color: #fff;
+      height: 33px;
+      width: 20px;
+    }
+
+    .swiper-button-prev {
+      left: 0;
+    }
+
+    .swiper-button-next {
+      right: 0;
+      box-shadow: -18px 0px 21px 0px rgba(255, 255, 255, 1);
+    }
+  }
+
+  .block-times {
+    padding-top: 8px;
+    margin: 8px 26px 0;
+    border-top: 1px solid #dde0e3;
+
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+
+      li {
+        margin: 0 12px 16px 0;
+
+        .btn-time {
+          width: 48px;
+        }
+
+        &:nth-child(5n+5) {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+}
+
+.wrap {
+  max-width: 1086px;
+  margin: 0 auto;
+}
+
 .results {
   color: #2d333d;
-  background: #fcfcfc;
-
-  &__section {
-    max-width: 1086px;
-    margin: 0 auto;
-  }
 
   .search-fixed {
     position: sticky;
     top: 0;
+    z-index: 5;
 
     .search {
       padding: 23px 23px 25px 23px;
@@ -804,6 +959,10 @@ header {
             .notary-stars {
               display: flex;
               justify-content: center;
+
+              .notary-star:not(:last-child) {
+                margin-right: 2px;
+              }
             }
 
             .rev {
@@ -874,104 +1033,361 @@ header {
             }
           }
         }
-
-        .card-right {
-          @include slider-btn;
-          max-width: 340px;
-
-          .swiper-button-next,
-          .swiper-container-rtl .swiper-button-prev {
-            background-image: url("/Polygon.svg");
-          }
-
-          .swiper-button-prev,
-          .swiper-container-rtl .swiper-button-next {
-            background-image: url("/PolygonL.svg");
-          }
-
-          .swiper-button-prev,
-          .swiper-button-next {
-            width: 8px;
-            height: 15px;
-            margin-top: 0;
-            transform: translate(0, -50%);
-            background-size: inherit;
-          }
-
-          .slider-month {
-            cursor: pointer;
-
-            .swiper-container {
-              width: 130px;
-
-              .swiper-slide {
-                font-size: 16px;
-                line-height: 24px;
-                font-weight: 600;
-                color: #2d333d;
-              }
-            }
-          }
-
-          .slider-days {
-            margin-top: 17px;
-
-            .swiper-container {
-              width: 340px;
-            }
-
-            .swiper-button-prev,
-            .swiper-button-next,
-            .swiper-button-prev.swiper-button-disabled,
-            .swiper-button-next.swiper-button-disabled {
-              background-color: #fff;
-              height: 33px;
-              width: 20px;
-            }
-
-            .swiper-button-prev {
-              left: 0;
-            }
-
-            .swiper-button-next {
-              right: 0;
-              box-shadow: -18px 0px 21px 0px rgba(255, 255, 255, 1);
-            }
-          }
-
-          .block-times {
-            padding-top: 8px;
-            margin: 8px 26px 0;
-            border-top: 1px solid #dde0e3;
-
-            ul {
-              display: flex;
-              flex-wrap: wrap;
-
-              li {
-                margin: 0 12px 16px 0;
-
-                .btn-time {
-                  width: 48px;
-                }
-
-                &:nth-child(5n+5) {
-                  margin-right: 0;
-                }
-              }
-            }
-          }
-        }
-
-        .swiper-slide {
-          display: flex;
-          justify-content: center;
-        }
       }
     }
   }
 }
 
+.page {
+  padding: 10px 0;
+
+  .search-fixed {
+    .search {
+      margin-top: 0;
+
+      form {
+        .back-btn {
+          background: inherit;
+          height: 48px;
+          width: 72px;
+          margin-right: 16px;
+          padding: 0 20px;
+          border-radius: 4px;
+          border: solid 1px #dde0e3;
+
+          img {
+            max-width: 33px;
+            height: 12px;
+          }
+        }
+      }
+    }
+  }
+
+  .container {
+    margin-bottom: 10px;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05);
+  }
+
+  .center-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .left-container {
+    max-width: 60%;
+    padding: 0 24px 0 18px;
+
+    .notary-card.result-card {
+      flex-direction: column;
+      background: #fff;
+      border-radius: 0;
+      box-shadow: inherit;
+      padding: 24px 0 0 0;
+      margin-bottom: 0;
+
+      .card-bottom {
+        padding: 28px 0;
+        border-bottom: solid 1px #f2f2f2;
+
+        h2 {
+          font-weight: 500;
+          font-size: 24px;
+          line-height: 32px;
+          padding-bottom: 20px;
+        }
+
+        ul {
+          display: flex;
+          flex-direction: column;
+
+          li {
+            &:not(:last-child) {
+              padding-bottom: 18px;
+            }
+
+            p {
+              font-size: 14px;
+              line-height: 16px;
+
+              span {
+                color: #8e99a7;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .page-reviews {
+      padding: 30px 0 60px;
+
+      h2 {
+        font-size: 24px;
+        line-height: 32px;
+        font-weight: 500;
+      }
+
+      .reviews-list {
+        margin: 20px 0;
+        font-size: 14px;
+        line-height: 16px;
+
+        .review-item {
+          display: flex;
+          flex-direction: column;
+          border-radius: 4px;
+          box-shadow: 0 4px 3px 0 rgba(0, 0, 0, 0.03);
+          border: solid 1px #f2f2f2;
+          padding: 26px 32px 20px;
+          margin-bottom: 24px;
+
+          .review-stars {
+            display: inline-flex;
+            margin-bottom: 8px;
+
+            .review-star {
+              margin-right: 2px;
+            }
+
+            p {
+              margin-left: 6px;
+            }
+          }
+
+          .review-text {
+            margin-bottom: 32px;
+          }
+
+          .review-name {
+            color: #8e99a7;
+            font-weight: 600;
+          }
+        }
+      }
+
+      .reviews-btn {
+        display: flex;
+        justify-content: space-between;
+
+        .show-btn,
+        .review-btn {
+          height: 32px;
+          line-height: 32px;
+          font-size: 14px;
+          font-weight: 500;
+          border-radius: 4px;
+          padding: 0 12px;
+          color: #fff;
+          cursor: pointer;
+          border: none;
+        }
+
+        .show-btn {
+          background: #8e99a7;
+        }
+
+        .review-btn {
+          background: #1b559e;
+        }
+      }
+    }
+  }
+
+  .right-container {
+    max-width: 40%;
+    padding: 20px 24px 0 0;
+
+    .sticky-sign {
+      position: sticky;
+      top: 110px;
+      max-width: 100%;
+      border: 1px solid #1b559e;
+
+      .sign-map {
+        padding: 20px;
+        background: #1b559e;
+        text-align: center;
+
+        img {
+          object-fit: contain;
+          max-width: 100%;
+        }
+
+        h2 {
+          color: #fff;
+          text-transform: uppercase;
+        }
+      }
+
+      .card-right.sign-date {
+        text-align: center;
+        max-width: inherit;
+        padding-top: 10px;
+
+        .slider-month {
+          .swiper-container {
+            position: relative;
+          }
+        }
+
+        .slider-days {
+          position: relative;
+
+          .swiper-container,
+          .swiper-wrapper {
+            position: static;
+          }
+
+          .swiper-button-prev,
+          .swiper-button-next,
+          .swiper-button-prev.swiper-button-disabled,
+          .swiper-button-next.swiper-button-disabled {
+            width: 10px;
+          }
+
+          .swiper-button-prev {
+            left: 20px;
+          }
+
+          .swiper-button-next {
+            right: 20px;
+            box-shadow: none;
+          }
+        }
+
+        .block-times {
+          .btn-time {
+            background: #1b559e;
+            color: #fff;
+          }
+
+          li:nth-child(5n+5) {
+            margin-right: 12px;
+          }
+        }
+      }
+    }
+  }
+
+  .notarys-slider {
+    margin: 20px 72px 0;
+    transition: .3s;
+
+    h2 {
+      font-size: 24px;
+      line-height: 32px;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    .swiper-container {
+      padding: 40px 0;
+    }
+
+    .notary-card.other-card {
+      padding: 16px;
+      margin-bottom: 0;
+
+      .card-left {
+        .card-avatar {
+          .notary-avatar {
+            width: 80px;
+            height: 88px;
+          }
+
+          .notary-stars {
+            margin-top: 10px;
+          }
+        }
+
+        .card-center {
+          .card-spec {
+            line-height: 16px;
+          }
+
+          .card-name {
+            font-size: 14px;
+            line-height: 16px;
+            padding-bottom: 8px;
+          }
+
+          .card-year,
+          .card-subway .subway-item {
+            font-size: 12px;
+            line-height: 16px;
+          }
+
+          .subway-item {
+            .subway-color {
+              width: 4px;
+              height: 4px;
+            }
+
+            .subway-step {
+              img {
+                width: 8px;
+                height: 10px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .swiper-slide {
+      display: flex;
+      align-items: center;
+      transition: .3s;
+    }
+
+    .swiper-slide-next {
+      transform: scale(1.14);
+
+      .notary-list .notary-card {
+        box-shadow: 0 4px 3px 0 rgba(0, 0, 0, 0.03);
+        border: solid 2px #8e99a7;
+      }
+    }
+  }
+
+
+}
+
+.notes.results {
+  margin-top: 70px;
+
+  .notarys .notary-list .result-card.notes-card {
+    display: block;
+    box-shadow: 0 4px 3px 0 rgba(0, 0, 0, 0.03);
+    border: solid 1px #f2f2f2;
+    padding: 0;
+    border-radius: 4px;
+
+    .notary-note {
+      background: #1b559e;
+      color: #fff;
+      padding: 11px 24px;
+      border-radius: 4px 4px 0 0;
+      font-size: 14px;
+      line-height: 16px;
+
+      .note-date {
+        font-weight: 600;
+        padding-bottom: 8px;
+      }
+    }
+
+    .card-left {
+      border-radius: 0;
+      padding: 24px 24px 20px;
+
+      .card-avatar {}
+    }
+  }
+}
 
 footer {
   height: 143px;
