@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div class="default">
     <header>
       <div class="wrap">
         <div class="header__left">
           <div class="header__logo">
-            <a href="#">
+            <a href="main">
               <img src="/logo.svg" alt />
             </a>
 
@@ -59,7 +59,7 @@
                 </div>
               </transition>
             </div>
-            <a href="#">Личный кабинет</a>
+            <button >Личный кабинет</button>
           </div>
         </div>
       </div>
@@ -121,7 +121,7 @@
 <script>
 export default {
   data: () => ({
-    show: false,
+    show: false
   })
 };
 </script>

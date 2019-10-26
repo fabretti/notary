@@ -3,7 +3,13 @@
     <div class="wrap">
       <div class="results__section search-fixed">
         <div class="search">
-          <div class="search-title">Нотариусы на метро Бульвар Адмирала Ушакова</div>
+          <div class="search-top">
+            <div class="search-title">Нотариусы на метро Бульвар Адмирала Ушакова</div>
+            <div class="search-icons">
+              <img src="mdi-map-marker.svg" alt="">
+              <img src="mdi-comment-question.svg" alt="">
+            </div>
+          </div>
           <form class="search-form">
             <input id="srch" placeholder="Имя нотариуса, метро, город МО" />
             <div class="search-date">

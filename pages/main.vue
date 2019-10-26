@@ -21,7 +21,7 @@
             </div>
           </div>
 
-          <button class="search-btn">Найти</button>
+          <a href="results" class="search-btn">Найти</a>
         </form>
       </div>
       <div class="search-example">
