@@ -42,7 +42,7 @@
           </div>
           <div class="header__select">
             <div class="header__city">
-              <div v-on:click="show = !show" class="city__selected">
+              <div @click="show = !show" class="city__selected">
                 <span class="city__title">Москва</span>
                 <i class="icon-arrow"></i>
               </div>
@@ -59,7 +59,7 @@
                 </div>
               </transition>
             </div>
-            <button >Личный кабинет</button>
+            <button>Личный кабинет</button>
           </div>
         </div>
       </div>

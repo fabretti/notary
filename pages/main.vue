@@ -9,16 +9,18 @@
       <div class="search">
         <form class="search-form">
           <input id="srch" placeholder="Имя нотариуса, метро, город МО" />
-          <div class="search-date">
+          <div @click="show = !show" class="search-date">
             Вт, 24 сентября
             <i></i>
-            <div class="date-dropdown">
-              <ul>
-                <li>Сегодня</li>
-                <li>Завтра, 26 сен</li>
-                <li>Пятница, 27 сен</li>
-              </ul>
-            </div>
+            <transition name="fade">
+              <div v-if="show" class="date-dropdown">
+                <ul>
+                  <li class="selected">Сегодня</li>
+                  <li>Завтра, 26 сен</li>
+                  <li>Пятница, 27 сен</li>
+                </ul>
+              </div>
+            </transition>
           </div>
 
           <a href="results" class="search-btn">Найти</a>
@@ -197,7 +199,7 @@
         </div>
       </div>
     </div>
-    <div class="main__section calc">
+    <!-- <div class="main__section calc">
       <div class="container">
         <div class="section-title">
           <div class="calc-title">Справочная</div>
@@ -302,7 +304,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
     <div class="main__section qq">
       <div class="container">
         <div class="qq-title section-title">Часто используемые запросы</div>
@@ -336,230 +338,222 @@
       <div class="container">
         <div class="action-title section-title">Нотариальные действия</div>
         <div class="action-content">
-          <div class="action-col">
-            <ul class="action-list">
-              <li>
-                <h3>Недвижимость</h3>
-                <a href="#">Купля-продажа, дарение квартир и т.д.</a>
-                <a href="#">Ипотека долей в общей собственности</a>
-                <a href="#">Договора ренты и пожизненного чего-то</a>
-                <a href="#">Материнский капитал</a>
-              </li>
-            </ul>
-            <ul class="action-list">
-              <li>
-                <h3>Название секции</h3>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-              </li>
-            </ul>
-            <ul class="action-list">
-              <li>
-                <h3>Название секции</h3>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-              </li>
-            </ul>
-            <ul class="action-list">
-              <li>
-                <h3>Название секции</h3>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-              </li>
-            </ul>
-            <ul class="action-list">
-              <li>
-                <h3>Название секции</h3>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-              </li>
-            </ul>
-            <ul class="action-list">
-              <li>
-                <h3>Название секции</h3>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-              </li>
-            </ul>
-          </div>
-          <div class="action-col">
-            <ul class="action-list">
-              <li>
-                <h3>Недвижимость</h3>
-                <a href="#">Купля-продажа, дарение квартир и т.д.</a>
-                <a href="#">Ипотека долей в общей собственности</a>
-                <a href="#">Договора ренты и пожизненного чего-то</a>
-                <a href="#">Материнский капитал</a>
-              </li>
-            </ul>
-            <ul class="action-list">
-              <li>
-                <h3>Название секции</h3>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-              </li>
-            </ul>
-            <ul class="action-list">
-              <li>
-                <h3>Название секции</h3>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-              </li>
-            </ul>
-            <ul class="action-list">
-              <li>
-                <h3>Название секции</h3>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-              </li>
-            </ul>
-            <ul class="action-list">
-              <li>
-                <h3>Название секции</h3>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-              </li>
-            </ul>
-            <ul class="action-list">
-              <li>
-                <h3>Название секции</h3>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-              </li>
-            </ul>
-          </div>
-          <div class="action-col">
-            <ul class="action-list">
-              <li>
-                <h3>Недвижимость</h3>
-                <a href="#">Купля-продажа, дарение квартир и т.д.</a>
-                <a href="#">Ипотека долей в общей собственности</a>
-                <a href="#">Договора ренты и пожизненного чего-то</a>
-                <a href="#">Материнский капитал</a>
-              </li>
-            </ul>
-            <ul class="action-list">
-              <li>
-                <h3>Название секции</h3>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-              </li>
-            </ul>
-            <ul class="action-list">
-              <li>
-                <h3>Название секции</h3>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-              </li>
-            </ul>
-            <ul class="action-list">
-              <li>
-                <h3>Название секции</h3>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-              </li>
-            </ul>
-            <ul class="action-list">
-              <li>
-                <h3>Название секции</h3>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-              </li>
-            </ul>
-            <ul class="action-list">
-              <li>
-                <h3>Название секции</h3>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-              </li>
-            </ul>
-          </div>
-          <div class="action-col">
-            <ul class="action-list">
-              <li>
-                <h3>Недвижимость</h3>
-                <a href="#">Купля-продажа, дарение квартир и т.д.</a>
-                <a href="#">Ипотека долей в общей собственности</a>
-                <a href="#">Договора ренты и пожизненного чего-то</a>
-                <a href="#">Материнский капитал</a>
-              </li>
-            </ul>
-            <ul class="action-list">
-              <li>
-                <h3>Название секции</h3>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-              </li>
-            </ul>
-            <ul class="action-list">
-              <li>
-                <h3>Название секции</h3>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-              </li>
-            </ul>
-            <ul class="action-list">
-              <li>
-                <h3>Название секции</h3>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-              </li>
-            </ul>
-            <ul class="action-list">
-              <li>
-                <h3>Название секции</h3>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-              </li>
-            </ul>
-            <ul class="action-list">
-              <li>
-                <h3>Название секции</h3>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-                <a href="#">Пример</a>
-              </li>
-            </ul>
-          </div>
+          <ul class="action-list">
+            <li>
+              <h3>Недвижимость</h3>
+              <a href="#">Купля-продажа, дарение квартир и т.д.</a>
+              <a href="#">Ипотека долей в общей собственности</a>
+              <a href="#">Договора ренты и пожизненного чего-то</a>
+              <a href="#">Материнский капитал</a>
+            </li>
+          </ul>
+          <ul class="action-list">
+            <li>
+              <h3>Название секции</h3>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+            </li>
+          </ul>
+          <ul class="action-list">
+            <li>
+              <h3>Название секции</h3>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+            </li>
+          </ul>
+          <ul class="action-list">
+            <li>
+              <h3>Название секции</h3>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+            </li>
+          </ul>
+          <ul class="action-list">
+            <li>
+              <h3>Название секции</h3>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+            </li>
+          </ul>
+          <ul class="action-list">
+            <li>
+              <h3>Название секции</h3>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+            </li>
+          </ul>
+          <ul class="action-list">
+            <li>
+              <h3>Недвижимость</h3>
+              <a href="#">Купля-продажа, дарение квартир и т.д.</a>
+              <a href="#">Ипотека долей в общей собственности</a>
+              <a href="#">Договора ренты и пожизненного чего-то</a>
+              <a href="#">Материнский капитал</a>
+            </li>
+          </ul>
+          <ul class="action-list">
+            <li>
+              <h3>Название секции</h3>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+            </li>
+          </ul>
+          <ul class="action-list">
+            <li>
+              <h3>Название секции</h3>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+            </li>
+          </ul>
+          <ul class="action-list">
+            <li>
+              <h3>Название секции</h3>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+            </li>
+          </ul>
+          <ul class="action-list">
+            <li>
+              <h3>Название секции</h3>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+            </li>
+          </ul>
+          <ul class="action-list">
+            <li>
+              <h3>Название секции</h3>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+            </li>
+          </ul>
+          <ul class="action-list">
+            <li>
+              <h3>Недвижимость</h3>
+              <a href="#">Купля-продажа, дарение квартир и т.д.</a>
+              <a href="#">Ипотека долей в общей собственности</a>
+              <a href="#">Договора ренты и пожизненного чего-то</a>
+              <a href="#">Материнский капитал</a>
+            </li>
+          </ul>
+          <ul class="action-list">
+            <li>
+              <h3>Название секции</h3>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+            </li>
+          </ul>
+          <ul class="action-list">
+            <li>
+              <h3>Название секции</h3>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+            </li>
+          </ul>
+          <ul class="action-list">
+            <li>
+              <h3>Название секции</h3>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+            </li>
+          </ul>
+          <ul class="action-list">
+            <li>
+              <h3>Название секции</h3>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+            </li>
+          </ul>
+          <ul class="action-list">
+            <li>
+              <h3>Название секции</h3>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+            </li>
+          </ul>
+          <ul class="action-list">
+            <li>
+              <h3>Недвижимость</h3>
+              <a href="#">Купля-продажа, дарение квартир и т.д.</a>
+              <a href="#">Ипотека долей в общей собственности</a>
+              <a href="#">Договора ренты и пожизненного чего-то</a>
+              <a href="#">Материнский капитал</a>
+            </li>
+          </ul>
+          <ul class="action-list">
+            <li>
+              <h3>Название секции</h3>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+            </li>
+          </ul>
+          <ul class="action-list">
+            <li>
+              <h3>Название секции</h3>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+            </li>
+          </ul>
+          <ul class="action-list">
+            <li>
+              <h3>Название секции</h3>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+            </li>
+          </ul>
+          <ul class="action-list">
+            <li>
+              <h3>Название секции</h3>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+            </li>
+          </ul>
+          <ul class="action-list">
+            <li>
+              <h3>Название секции</h3>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+              <a href="#">Пример</a>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
@@ -575,7 +569,9 @@
 </template>
 <script>
 export default {
-  data: () => ({}),
+  data: () => ({
+    show: false
+  }),
   methods: {
     accordion(event) {
       // var matches = document.querySelectorAll(".accordion-item-head");
