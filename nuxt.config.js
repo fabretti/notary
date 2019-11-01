@@ -59,8 +59,15 @@ module.exports = {
   plugins: [{
     src: '~/plugins/slider.js',
     mode: 'client'
+  }, {
+    src: '~/plugins/modal.js',
+    mode: 'client'
+  }, {
+    src: '~/plugins/inputmask.js',
+    mode: 'client'
   }],
   css: [
     '~assets/css/style.css',
+    '~assets/css/modals.css',
   ],
 }

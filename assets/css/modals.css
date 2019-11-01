@@ -1,0 +1,250 @@
+.modal .modal-header {
+  margin: 27px 24px 21px;
+}
+
+.modal .modal-header h1 {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.modal .modal-body.notary-list .notary-card {
+  background: #dde0e3;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border-radius: 0;
+  margin-bottom: 7px;
+  padding: 10px 24px;
+}
+
+.modal .modal-body.notary-list .notary-card .card-left .card-avatar {
+  margin: auto 0;
+}
+
+.modal .modal-body.notary-list .notary-card .card-left .card-avatar img {
+  width: 72px;
+  height: 72px;
+}
+
+.modal .modal-body.notary-list .notary-card .card-left .card-center .card-name {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.modal .modal-body.notary-list .notary-card .card-left .card-center .card-underName {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.modal .modal-body.notary-list .notary-card .card-left .card-center .card-underName .notary-stars {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+.modal .modal-body.notary-list .notary-card .card-left .card-center .card-underName .notary-stars img {
+  width: 12px;
+  height: 12px;
+}
+
+.modal .modal-body.notary-list .notary-card .card-left .card-center .card-underName .rev a {
+  padding-left: 4px;
+  color: #2d333d;
+  font-size: 14px;
+  line-height: 16px;
+  text-decoration: none;
+}
+
+.modal .modal-body.notary-list .notary-card .card-left .card-center .card-subway .subway-item {
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.modal .modal-bottom {
+  margin: 28px 24px 10px 0;
+  text-align: right;
+}
+
+.modal .modal-bottom button {
+  height: 48px;
+  width: 160px;
+  border-radius: 4px;
+  background-color: #1b559e;
+  border: none;
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 600;
+  color: #fff;
+}
+
+.modal .modal-close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+.modal .modal-close:hover .modal .modal-close:before,
+.modal .modal-close:hover .modal .modal-close:after {
+  background-color: #2d333d;
+}
+
+.modal .modal-close:before, .modal .modal-close:after {
+  position: absolute;
+  left: 7px;
+  content: ' ';
+  height: 16px;
+  width: 2px;
+  background-color: #8e99a7;
+}
+
+.modal .modal-close:before {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.modal .modal-close:after {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.modal .form__box {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-bottom: 12px;
+}
+
+.modal .form__box label {
+  font-size: 14px;
+  line-height: 16px;
+  margin-bottom: 4px;
+}
+
+.modal .form__box label span {
+  color: #f12222;
+}
+
+.modal .form__box .search-box {
+  position: relative;
+  width: 100%;
+}
+
+.modal .form__box .search-box:before {
+  content: '';
+  position: absolute;
+  width: 9px;
+  height: 5px;
+  right: 9px;
+  top: 50%;
+  z-index: 5;
+  -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+  background: url("/arrow-modalForm.svg") no-repeat;
+  pointer-events: none;
+}
+
+.modal .form__box select,
+.modal .form__box input {
+  width: 100%;
+  font-size: 14px;
+  line-height: 16px;
+  color: #8e99a7;
+  outline: none;
+  height: 40px;
+  border-radius: 4px;
+  padding: 10px 16px;
+  border: 1px solid #8e99a7;
+  -webkit-appearance: button;
+     -moz-appearance: button;
+          appearance: button;
+}
+
+.modal-record .form__record {
+  margin: 0 24px;
+}
+
+.modal-record .form__record .sms {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.modal-record .form__record .sms img {
+  margin-bottom: auto;
+}
+
+.modal-record .form__record .sms p {
+  font-size: 14px;
+  line-height: 16px;
+  padding-left: 11px;
+}
+
+.modal-sms .under-header {
+  font-size: 14px;
+  line-height: 16px;
+  color: #8e99a7;
+  margin: 4px 0 13px;
+}
+
+.modal-sms .modal-body {
+  margin: 0 24px;
+}
+
+.modal-sms .modal-body .sms-timer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-bottom: 37px;
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 600;
+}
+
+.modal-sms .modal-body .sms-timer a {
+  color: #1b559e;
+  padding-right: 24px;
+  text-decoration: none;
+}
+
+.modal-sms .modal-bottom {
+  text-align: center;
+  margin: 0 24px 14px;
+}
+
+.modal-sms .modal-bottom p {
+  padding-top: 20px;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.modal-sms .modal-bottom p a {
+  color: #1b559e;
+  text-decoration: none;
+}
+
+.modal-accept .modal-message {
+  position: relative;
+  font-size: 16px;
+  line-height: 24px;
+  padding: 20px 24px;
+}
+
+.modal-accept .modal-message span {
+  color: #f15a22;
+}
+
+.modal-accept .modal-message img {
+  position: absolute;
+  bottom: -10px;
+  left: 220px;
+}
+/*# sourceMappingURL=modals.css.map */

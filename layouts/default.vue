@@ -72,10 +72,10 @@
         <div class="footer__left">
           <div class="footer__logo">Нотариус РФ</div>
           <div class="footer__info">©2019.Нотариус рф. все Права защищены.</div>
-          <!-- <div class="footer__dev">
+          <div class="footer__dev">
             Разработано в
             <a href="#">7reasons.ru</a>
-          </div>-->
+          </div>
         </div>
         <div class="footer__navs">
           <div class="footer__nav">

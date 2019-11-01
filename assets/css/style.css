@@ -179,6 +179,122 @@ footer .wrap {
   border-radius: 0 4px 4px 0;
 }
 
+.notary-list .notary-card {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+  margin-bottom: 24px;
+  padding: 24px 24px 14px 24px;
+  background: #fff;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05);
+          box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05);
+}
+
+.notary-list .notary-card .card-left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.notary-list .notary-card .card-left .card-avatar {
+  padding-right: 16px;
+  text-align: center;
+  color: #2d333d;
+}
+
+.notary-list .notary-card .card-left .card-avatar .notary-avatar {
+  width: 160px;
+  height: 160px;
+  border-radius: 4px;
+}
+
+.notary-list .notary-card .card-left .card-avatar .notary-stars {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.notary-list .notary-card .card-left .card-avatar .notary-stars .notary-star:not(:last-child) {
+  margin-right: 2px;
+}
+
+.notary-list .notary-card .card-left .card-avatar .rev {
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.notary-list .notary-card .card-left .card-avatar .rev a {
+  text-decoration: none;
+  color: #2d333d;
+}
+
+.notary-list .notary-card .card-left .card-center .card-spec {
+  font-size: 12px;
+  line-height: 4px;
+  color: #8e99a7;
+}
+
+.notary-list .notary-card .card-left .card-center .card-name {
+  font-size: 24px;
+  line-height: 32px;
+}
+
+.notary-list .notary-card .card-left .card-center .card-name a {
+  text-decoration: none;
+  color: #2d333d;
+}
+
+.notary-list .notary-card .card-left .card-center .card-year {
+  font-size: 16px;
+  line-height: 24px;
+  color: #8e99a7;
+}
+
+.notary-list .notary-card .card-left .card-center .card-subway {
+  margin-top: 16px;
+}
+
+.notary-list .notary-card .card-left .card-center .card-subway .subway-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.notary-list .notary-card .card-left .card-center .card-subway .subway-item .subway-step {
+  padding-left: 10px;
+  color: #8e99a7;
+  font-weight: normal;
+}
+
+.notary-list .notary-card .card-left .card-center .card-subway .subway-item .subway-color {
+  width: 8px;
+  height: 8px;
+  margin-right: 8px;
+  background: green;
+  border-radius: 50%;
+}
+
+.notary-list .notary-card .card-left .card-center .card-adress {
+  font-size: 14px;
+  color: #8e99a7;
+  line-height: 16px;
+  margin-top: 8px;
+}
+
 header {
   -webkit-box-flex: 0;
       -ms-flex: 0 0 auto;
@@ -369,6 +485,7 @@ header .header__right .header__select .header__city .city__list {
   -webkit-box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
           box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
   min-width: 190px;
+  z-index: 99;
 }
 
 header .header__right .header__select .header__city .city__list ul {
@@ -1119,122 +1236,6 @@ header .header__right .header__select button {
           transform: translate(0, -50%);
   bottom: 0;
   background: #fff;
-}
-
-.results .notarys .notary-list .notary-card {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  width: 100%;
-  margin-bottom: 24px;
-  padding: 24px 24px 14px 24px;
-  background: #fff;
-  border-radius: 4px;
-  -webkit-box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05);
-          box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05);
-}
-
-.results .notarys .notary-list .notary-card .card-left {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.results .notarys .notary-list .notary-card .card-left .card-avatar {
-  padding-right: 16px;
-  text-align: center;
-  color: #2d333d;
-}
-
-.results .notarys .notary-list .notary-card .card-left .card-avatar .notary-avatar {
-  width: 160px;
-  height: 160px;
-  border-radius: 4px;
-}
-
-.results .notarys .notary-list .notary-card .card-left .card-avatar .notary-stars {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-.results .notarys .notary-list .notary-card .card-left .card-avatar .notary-stars .notary-star:not(:last-child) {
-  margin-right: 2px;
-}
-
-.results .notarys .notary-list .notary-card .card-left .card-avatar .rev {
-  font-size: 12px;
-  line-height: 16px;
-}
-
-.results .notarys .notary-list .notary-card .card-left .card-avatar .rev a {
-  text-decoration: none;
-  color: #2d333d;
-}
-
-.results .notarys .notary-list .notary-card .card-left .card-center .card-spec {
-  font-size: 12px;
-  line-height: 4px;
-  color: #8e99a7;
-}
-
-.results .notarys .notary-list .notary-card .card-left .card-center .card-name {
-  font-size: 24px;
-  line-height: 32px;
-}
-
-.results .notarys .notary-list .notary-card .card-left .card-center .card-name a {
-  text-decoration: none;
-  color: #2d333d;
-}
-
-.results .notarys .notary-list .notary-card .card-left .card-center .card-year {
-  font-size: 16px;
-  line-height: 24px;
-  color: #8e99a7;
-}
-
-.results .notarys .notary-list .notary-card .card-left .card-center .card-subway {
-  margin-top: 16px;
-}
-
-.results .notarys .notary-list .notary-card .card-left .card-center .card-subway .subway-item {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 600;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.results .notarys .notary-list .notary-card .card-left .card-center .card-subway .subway-item .subway-step {
-  padding-left: 10px;
-  color: #8e99a7;
-  font-weight: normal;
-}
-
-.results .notarys .notary-list .notary-card .card-left .card-center .card-subway .subway-item .subway-color {
-  width: 8px;
-  height: 8px;
-  margin-right: 8px;
-  background: green;
-  border-radius: 50%;
-}
-
-.results .notarys .notary-list .notary-card .card-left .card-center .card-adress {
-  font-size: 14px;
-  color: #8e99a7;
-  line-height: 16px;
-  margin-top: 8px;
 }
 
 .page {

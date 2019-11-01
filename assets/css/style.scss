@@ -185,6 +185,111 @@ footer .wrap {
   }
 }
 
+.notary-list {
+  .notary-card {
+    display: inline-flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 24px;
+    padding: 24px 24px 14px 24px;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05);
+
+    .card-left {
+      display: flex;
+
+      .card-avatar {
+        padding-right: 16px;
+        text-align: center;
+        color: #2d333d;
+
+        .notary-avatar {
+          width: 160px;
+          height: 160px;
+          border-radius: 4px;
+        }
+
+        .notary-stars {
+          display: flex;
+          justify-content: center;
+
+          .notary-star:not(:last-child) {
+            margin-right: 2px;
+          }
+        }
+
+        .rev {
+          font-size: 12px;
+          line-height: 16px;
+
+          a {
+            text-decoration: none;
+            color: #2d333d;
+          }
+        }
+      }
+
+      .card-center {
+        .card-spec {
+          font-size: 12px;
+          line-height: 4px;
+          color: #8e99a7;
+        }
+
+        .card-name {
+          font-size: 24px;
+          line-height: 32px;
+
+          a {
+            text-decoration: none;
+            color: #2d333d;
+          }
+        }
+
+        .card-year {
+          font-size: 16px;
+          line-height: 24px;
+          color: #8e99a7;
+        }
+
+        .card-subway {
+          margin-top: 16px;
+
+          .subway-item {
+            display: flex;
+            font-size: 16px;
+            line-height: 24px;
+            font-weight: 600;
+            align-items: center;
+
+            .subway-step {
+              padding-left: 10px;
+              color: #8e99a7;
+              font-weight: normal;
+            }
+
+            .subway-color {
+              width: 8px;
+              height: 8px;
+              margin-right: 8px;
+              background: green;
+              border-radius: 50%;
+            }
+          }
+        }
+
+        .card-adress {
+          font-size: 14px;
+          color: #8e99a7;
+          line-height: 16px;
+          margin-top: 8px;
+        }
+      }
+    }
+  }
+}
+
 header {
   flex: 0 0 auto;
   background: #fff;
@@ -343,7 +448,7 @@ header {
 
         .city__list {
           @include dropdown;
-
+          z-index: 99;
         }
       }
 
@@ -980,111 +1085,6 @@ header {
             transform: translate(0, -50%);
             bottom: 0;
             background: #fff;
-          }
-        }
-      }
-    }
-
-    .notary-list {
-      .notary-card {
-        display: inline-flex;
-        justify-content: space-between;
-        width: 100%;
-        margin-bottom: 24px;
-        padding: 24px 24px 14px 24px;
-        background: #fff;
-        border-radius: 4px;
-        box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05);
-
-        .card-left {
-          display: flex;
-
-          .card-avatar {
-            padding-right: 16px;
-            text-align: center;
-            color: #2d333d;
-
-            .notary-avatar {
-              width: 160px;
-              height: 160px;
-              border-radius: 4px;
-            }
-
-            .notary-stars {
-              display: flex;
-              justify-content: center;
-
-              .notary-star:not(:last-child) {
-                margin-right: 2px;
-              }
-            }
-
-            .rev {
-              font-size: 12px;
-              line-height: 16px;
-
-              a {
-                text-decoration: none;
-                color: #2d333d;
-              }
-            }
-          }
-
-          .card-center {
-            .card-spec {
-              font-size: 12px;
-              line-height: 4px;
-              color: #8e99a7;
-            }
-
-            .card-name {
-              font-size: 24px;
-              line-height: 32px;
-
-              a {
-                text-decoration: none;
-                color: #2d333d;
-              }
-            }
-
-            .card-year {
-              font-size: 16px;
-              line-height: 24px;
-              color: #8e99a7;
-            }
-
-            .card-subway {
-              margin-top: 16px;
-
-              .subway-item {
-                display: flex;
-                font-size: 16px;
-                line-height: 24px;
-                font-weight: 600;
-                align-items: center;
-
-                .subway-step {
-                  padding-left: 10px;
-                  color: #8e99a7;
-                  font-weight: normal;
-                }
-
-                .subway-color {
-                  width: 8px;
-                  height: 8px;
-                  margin-right: 8px;
-                  background: green;
-                  border-radius: 50%;
-                }
-              }
-            }
-
-            .card-adress {
-              font-size: 14px;
-              color: #8e99a7;
-              line-height: 16px;
-              margin-top: 8px;
-            }
           }
         }
       }

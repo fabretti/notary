@@ -129,7 +129,7 @@
               <div class="block-times">
                 <ul>
                   <li>
-                    <div class="slider-btn btn-time default">15:30</div>
+                    <div class="slider-btn btn-time default" @click="showModal">15:30</div>
                   </li>
                   <li>
                     <div class="slider-btn btn-time default">16:30</div>
@@ -239,7 +239,7 @@
                 </swiper>
               </div>
               <div class="block-times error">
-                <img src="error.svg" alt />
+                <img src="busy.svg" alt />
                 <p>Сегодня занято, ближайшая запись на Чт, 26 сен</p>
               </div>
             </div>
@@ -247,13 +247,243 @@
         </div>
         <div class="pagination"></div>
       </div>
+      <client-only>
+        <modal class="modal modal-record" name="modalRecord1" height="auto">
+          <div class="modal-header">
+            <h1>Запись на прием</h1>
+          </div>
+          <div class="modal-body notary-list">
+            <div class="notary-card">
+              <div class="card-left">
+                <div class="card-avatar">
+                  <img class="notary-avatar" src="/ava.jpg" alt />
+                </div>
+                <div class="card-center">
+                  <div class="card-name">
+                    <a href="#">Ложкин Валерий Александрович</a>
+                  </div>
+                  <div class="card-underName">
+                    <div class="notary-stars">
+                      <div class="notary-star">
+                        <img src="/starO.svg" alt />
+                      </div>
+                      <div class="notary-star">
+                        <img src="/starO.svg" alt />
+                      </div>
+                      <div class="notary-star">
+                        <img src="/starO.svg" alt />
+                      </div>
+                      <div class="notary-star">
+                        <img src="/starO.svg" alt />
+                      </div>
+                      <div class="notary-star">
+                        <img src="/starD.svg" alt />
+                      </div>
+                    </div>
+                    <div class="rev">
+                      <a href="#">19 отзывов</a>
+                    </div>
+                  </div>
+                  <ul class="card-subway">
+                    <li class="subway-item">
+                      <span class="subway-color"></span>Авиамоторная
+                      <div class="subway-step">
+                        <img src="/footstep.svg" /> 323 м
+                      </div>
+                    </li>
+                  </ul>
+                  <div class="card-adress">г. Москва, ул. 2-я Кабельная, д.2, стр. 14</div>
+                </div>
+              </div>
+            </div>
+            <div class="form__record">
+              <div class="form__box">
+                <label for="vnd">
+                  Вид нотариального действия
+                  <span>*</span>
+                </label>
+                <div class="search-box">
+                  <select name id>
+                    <option selected="true" disabled="disabled">Вид действия</option>
+                    <option value>Действие 1</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form__box">
+                <label for="vnd">Нотариальное действие</label>
+                <div class="search-box">
+                  <select name id>
+                    <option selected="true" disabled="disabled">Вид действия</option>
+                    <option value>Действие 1</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form__box">
+                <label for="vnd">
+                  Дата и время приёма
+                  <span>*</span>
+                </label>
+                <div class="search-box">
+                  <select name id>
+                    <option selected="true" disabled="disabled">Вид действия</option>
+                    <option value>аывавыа</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form__box">
+                <label for="vnd">
+                  Ваше имя
+                  <span>*</span>
+                </label>
+                <input type="text" placeholder="Ваше имя" />
+              </div>
+              <div class="form__box">
+                <label for="vnd">
+                  Телефон для подтверждения записи
+                  <span>*</span>
+                </label>
+                <input
+                  class="u-full-width"
+                  id="phone-number-ex"
+                  type="text"
+                  placeholder="+7 (___) ___-__-__"
+                  v-mask="'+7 (###) ###-##-##'"
+                  v-model="models.phoneNumber"
+                />
+              </div>
+              <div class="sms">
+                <img src="sms.svg" alt />
+                <p>На этот номер вы получите SMS с кодом подтверждения и информацию о записи.</p>
+              </div>
+            </div>
+          </div>
+          <div class="modal-bottom">
+            <button class="modal-sign" @click="showSecondModal">Записаться</button>
+          </div>
+          <div class="modal-close" @click="$modal.hide('modalRecord1')"></div>
+        </modal>
+        <modal class="modal modal-sms" name="modalRecord2" width="400px" height="auto">
+          <div class="modal-header">
+            <h1>Запись на прием</h1>
+            <div class="under-header">Вам на телефон выслан код</div>
+          </div>
+          <div class="modal-body">
+            <div class="form__box">
+              <input type="text" placeholder="Введите код из СМС" />
+            </div>
+            <div class="sms-timer">
+              <a href>Выслать СМС повторно</a>
+              <p>3:00</p>
+            </div>
+          </div>
+          <div class="modal-bottom">
+            <button class="bottom-accept" @click="showThirdModal">Подтвердить</button>
+            <p>
+              Нажимая “Подтвердить”, я принимаю
+              <a
+                href="#"
+              >условия пользовательского соглашения, положение о защите персональных данных</a> и даю свое согласие на
+              <a href="#">обработку персональных данных.</a>
+            </p>
+          </div>
+          <div class="modal-close" @click="$modal.hide('modalRecord2')"></div>
+        </modal>
+        <modal class="modal modal-accept" name="modalRecord3" height="auto">
+          <div class="modal-header">
+            <h1>Запись на прием</h1>
+          </div>
+          <div class="modal-body notary-list">
+            <div class="notary-card">
+              <div class="card-left">
+                <div class="card-avatar">
+                  <img class="notary-avatar" src="/ava.jpg" alt />
+                </div>
+                <div class="card-center">
+                  <div class="card-name">
+                    <a href="#">Ложкин Валерий Александрович</a>
+                  </div>
+                  <div class="card-underName">
+                    <div class="notary-stars">
+                      <div class="notary-star">
+                        <img src="/starO.svg" alt />
+                      </div>
+                      <div class="notary-star">
+                        <img src="/starO.svg" alt />
+                      </div>
+                      <div class="notary-star">
+                        <img src="/starO.svg" alt />
+                      </div>
+                      <div class="notary-star">
+                        <img src="/starO.svg" alt />
+                      </div>
+                      <div class="notary-star">
+                        <img src="/starD.svg" alt />
+                      </div>
+                    </div>
+                    <div class="rev">
+                      <a href="#">19 отзывов</a>
+                    </div>
+                  </div>
+                  <ul class="card-subway">
+                    <li class="subway-item">
+                      <span class="subway-color"></span>Авиамоторная
+                      <div class="subway-step">
+                        <img src="/footstep.svg" /> 323 м
+                      </div>
+                    </li>
+                  </ul>
+                  <div class="card-adress">г. Москва, ул. 2-я Кабельная, д.2, стр. 14</div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-message">
+              <p>
+                Уважаемый/мая Маргарита!
+                <br />
+                <br />Вы записаны на прием
+                <br />
+                <span>в четверг 26-сен на 9:30</span>
+                <br />
+                <br />В течение 5 минут ожидайте СМС с подтверждением записи. Данные по записи (время, адрес, телефон) мы продублируем в сообщении.
+                <br />
+                <br />Рады помочь!
+                <br />
+                <br />Сервис Право - ID
+              </p>
+              <img src="signature.svg" alt />
+            </div>
+          </div>
+          <div class="modal-bottom">
+            <button class="modal-bottomClose" @click="$modal.hide('modalRecord3')">Закрыть</button>
+          </div>
+          <div class="modal-close" @click="$modal.hide('modalRecord1')"></div>
+        </modal>
+      </client-only>
     </div>
   </section>
 </template>
 <script>
+import AppLogo from "~/components/AppLogo.vue";
 export default {
+  methods: {
+    showModal() {
+      this.$modal.show("modalRecord1");
+    },
+    showSecondModal() {
+      this.$modal.show("modalRecord2");
+      this.$modal.hide("modalRecord1");
+    },
+    showThirdModal() {
+      this.$modal.show("modalRecord3");
+      this.$modal.hide("modalRecord2");
+    }
+  },
   data: () => ({
     show: false,
+    dynamicMask: "###.###.###/###",
+    models: {
+      phoneNumber: ""
+    },
     swiperOption1: {
       setTranslate: 130,
       slidesPerView: "auto",

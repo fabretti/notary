@@ -1,0 +1,249 @@
+.modal {
+  .modal-header {
+    margin: 27px 24px 21px;
+
+    h1 {
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 32px;
+    }
+  }
+
+  .modal-body.notary-list .notary-card {
+    background: #dde0e3;
+    box-shadow: none;
+    border-radius: 0;
+    margin-bottom: 7px;
+    padding: 10px 24px;
+
+    .card-left {
+      .card-avatar {
+        margin: auto 0;
+
+        img {
+          width: 72px;
+          height: 72px;
+        }
+      }
+
+      .card-center {
+        .card-name {
+          font-size: 16px;
+          line-height: 24px;
+        }
+
+        .card-underName {
+          display: inline-flex;
+
+          .notary-stars {
+            display: inline-flex;
+
+            img {
+              width: 12px;
+              height: 12px;
+            }
+          }
+
+          .rev {
+            a {
+              padding-left: 4px;
+              color: #2d333d;
+              font-size: 14px;
+              line-height: 16px;
+              text-decoration: none;
+            }
+          }
+
+        }
+
+        .card-subway .subway-item {
+          font-size: 14px;
+          line-height: 16px;
+        }
+      }
+    }
+  }
+
+  .modal-bottom {
+    margin: 28px 24px 10px 0;
+    text-align: right;
+
+    button {
+      height: 48px;
+      width: 160px;
+      border-radius: 4px;
+      background-color: #1b559e;
+      border: none;
+      font-size: 14px;
+      line-height: 16px;
+      font-weight: 600;
+      color: #fff;
+    }
+  }
+
+  .modal-close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+
+    &:hover &:before,
+    &:hover &:after {
+      background-color: #2d333d;
+    }
+
+    &:before,
+    &:after {
+      position: absolute;
+      left: 7px;
+      content: ' ';
+      height: 16px;
+      width: 2px;
+      background-color: #8e99a7;
+    }
+
+    &:before {
+      transform: rotate(45deg);
+    }
+
+    &:after {
+      transform: rotate(-45deg);
+    }
+
+  }
+
+  .form__box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 12px;
+
+    label {
+      font-size: 14px;
+      line-height: 16px;
+      margin-bottom: 4px;
+
+      span {
+        color: #f12222;
+      }
+    }
+
+    .search-box {
+      position: relative;
+      width: 100%;
+
+      &:before {
+        content: '';
+        position: absolute;
+        width: 9px;
+        height: 5px;
+        right: 9px;
+        top: 50%;
+        z-index: 5;
+        transform: translate(0, -50%);
+        background: url("/arrow-modalForm.svg") no-repeat;
+        pointer-events: none;
+      }
+    }
+
+    select,
+    input {
+      width: 100%;
+      font-size: 14px;
+      line-height: 16px;
+      color: #8e99a7;
+      outline: none;
+      height: 40px;
+      border-radius: 4px;
+      padding: 10px 16px;
+      border: 1px solid #8e99a7;
+      appearance: button;
+    }
+  }
+}
+
+.modal-record {
+
+
+  .form__record {
+    margin: 0 24px;
+
+    .sms {
+      display: flex;
+
+      img {
+        margin-bottom: auto;
+      }
+
+      p {
+        font-size: 14px;
+        line-height: 16px;
+        padding-left: 11px;
+      }
+    }
+  }
+}
+
+.modal-sms {
+  .under-header {
+    font-size: 14px;
+    line-height: 16px;
+    color: #8e99a7;
+    margin: 4px 0 13px;
+  }
+
+  .modal-body {
+    margin: 0 24px;
+
+    .sms-timer {
+      display: flex;
+      padding-bottom: 37px;
+      font-size: 14px;
+      line-height: 16px;
+      font-weight: 600;
+
+      a {
+        color: #1b559e;
+        padding-right: 24px;
+        text-decoration: none;
+      }
+    }
+  }
+
+  .modal-bottom {
+    text-align: center;
+    margin: 0 24px 14px;
+
+    p {
+      padding-top: 20px;
+      font-size: 14px;
+      line-height: 16px;
+
+      a {
+        color: #1b559e;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.modal-accept {
+  .modal-message {
+    position: relative;
+    font-size: 16px;
+    line-height: 24px;
+    padding: 20px 24px;
+
+    span {
+      color: #f15a22;
+    }
+
+    img {
+      position: absolute;
+      bottom: -10px;
+      left: 220px;
+    }
+  }
+}
