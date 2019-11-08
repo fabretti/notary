@@ -13,7 +13,7 @@
                 </div>
                 <div class="top-note__btn">
                   <button class="btn-left__action">Перенести прием</button>
-                  <button class="btn-right__action">Отменить запись</button>
+                  <button class="btn-right__action" @click="modalCancel">Отменить запись</button>
                 </div>
               </div>
               <div class="card-left">
@@ -147,5 +147,63 @@
         </div>
       </div>
     </div>
+    <client-only>
+      <modal class="modal modal-sms modal-cancel" name="modalCancel" width="400px" height="auto">
+        <div class="modal-header">
+          <h1>Отмена записи</h1>
+          <div
+            class="under-header"
+          >Введите номер, на него вы получите СМС с кодом подтверждения для отмена записи</div>
+        </div>
+        <div class="modal-body">
+          <div class="form__box">
+            <input type="text" placeholder="Введите ваш номер" />
+          </div>
+        </div>
+        <div class="modal-bottom">
+          <button class="bottom-accept" @click="modalCancelAccept">Продолжить</button>
+        </div>
+        <div class="modal-close" @click="$modal.hide('modalCancel')"></div>
+      </modal>
+      <modal
+        class="modal modal-sms modal-cancelAccept"
+        name="modalCancelAccept"
+        width="400px"
+        height="auto"
+      >
+        <div class="modal-header">
+          <img src="Error.svg" alt />
+          <h1>Отмена записи</h1>
+          <div class="under-header">Вы действительно хотите отменить запись?</div>
+        </div>
+        <div class="modal-bottom">
+          <button class="bottom-accept">Да</button>
+          <button class="bottom-cancel">Нет</button>
+        </div>
+        <div class="modal-close" @click="$modal.hide('modalCancelAccept')"></div>
+      </modal>
+    </client-only>
+    <v-map :center="center">
+      <v-marker :position="center" />
+    </v-map>
   </section>
 </template>
+<script>
+export default {
+  data: () => ({}),
+  methods: {
+    modalCancel() {
+      this.$modal.show("modalCancel");
+    },
+    modalCancelAccept() {
+      this.$modal.show("modalCancelAccept");
+      this.$modal.hide("modalCancel");
+    }
+  },
+  computed: {
+    center() {
+      return { lat: -23.4070511, lng: -51.9428867 };
+    }
+  }
+};
+</script>

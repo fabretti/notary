@@ -8,21 +8,22 @@
       </div>
       <div class="search">
         <form class="search-form">
-          <input id="srch" placeholder="Имя нотариуса, метро, город МО" />
-          <div @click="show = !show" class="search-date">
-            Вт, 24 сентября
-            <i></i>
-            <transition name="fade">
-              <div v-if="show" class="date-dropdown">
-                <ul>
-                  <li class="selected">Сегодня</li>
-                  <li>Завтра, 26 сен</li>
-                  <li>Пятница, 27 сен</li>
-                </ul>
-              </div>
-            </transition>
+          <div class="search-formDate">
+            <input id="srch" placeholder="Имя нотариуса, метро, город МО" />
+            <div @click="show = !show" class="search-date">
+              Вт, 24 сентября
+              <i></i>
+              <transition name="fade">
+                <div v-if="show" class="date-dropdown">
+                  <ul>
+                    <li class="selected">Сегодня</li>
+                    <li>Завтра, 26 сен</li>
+                    <li>Пятница, 27 сен</li>
+                  </ul>
+                </div>
+              </transition>
+            </div>
           </div>
-
           <a href="results" class="search-btn">Найти</a>
         </form>
       </div>
@@ -34,31 +35,33 @@
       <div class="sugg-new">
         <div class="sugg-title">На Нотариус РФ вы можете:</div>
         <div class="sugg-boxes">
-          <div class="sugg-box">
-            <div class="sugg-img">
-              <img src="/icon.location.svg" alt />
+          <div class="sugg-convert">
+            <div class="sugg-box">
+              <div class="sugg-img">
+                <img src="/icon.location.svg" alt />
+              </div>
+              <div class="sugg-info">
+                Найти нотариуса
+                поблизости
+              </div>
             </div>
-            <div class="sugg-info">
-              Найти нотариуса
-              поблизости
+            <div class="sugg-box">
+              <div class="sugg-img">
+                <img src="/icon.booking.svg" alt />
+              </div>
+              <div class="sugg-info">
+                Записаться на
+                прием к нотариусу
+              </div>
             </div>
-          </div>
-          <div class="sugg-box">
-            <div class="sugg-img">
-              <img src="/icon.booking.svg" alt />
-            </div>
-            <div class="sugg-info">
-              Записаться на
-              прием к нотариусу
-            </div>
-          </div>
-          <div class="sugg-box">
-            <div class="sugg-img">
-              <img src="/icon.consulting.svg" alt />
-            </div>
-            <div class="sugg-info">
-              Получить онлайн
-              консультацию
+            <div class="sugg-box">
+              <div class="sugg-img">
+                <img src="/icon.consulting.svg" alt />
+              </div>
+              <div class="sugg-info">
+                Получить онлайн
+                консультацию
+              </div>
             </div>
           </div>
         </div>
@@ -134,8 +137,8 @@
       </div>
 
       <div class="accordion" id="accordion">
-        <div class="accordion-item">
-          <h3 class="accordion-item-head" v-on:click="accordion">
+        <div class="accordion-item" v-on:click="accordion">
+          <div class="accordion-item-head">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -144,41 +147,20 @@
               viewBox="0 0 24 24"
             >
               <path
-                fill="#8E99A7"
-                d="M4 1.998h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2L13.904 18l-3.707 3.705a.994.994 0 0 1-.695.293L9.5 22H9a1 1 0 0 1-1-1v-3H4a2 2 0 0 1-2-2l.01-12.002c0-1.105.886-2 1.99-2zm8.185 3.5c-.882 0-1.595.182-2.136.545-.537.36-.827.941-.78 1.65h1.967c.008-.28.103-.49.282-.632.178-.142.401-.213.667-.213.33 0 .585.087.764.26.18.172.268.404.268.695 0 .28-.078.528-.233.742-.15.214-.36.394-.627.539-.516.315-.871.592-1.066.834-.195.242-.295.605-.299 1.086h2.016c0-.287.043-.514.13-.68.092-.17.266-.327.52-.472a3.04 3.04 0 0 0 1.127-.856c.298-.363.447-.76.447-1.193 0-.706-.271-1.267-.816-1.682-.54-.415-1.284-.623-2.23-.623h-.001zM11 12v2h2v-2h-2z"
-              />
-            </svg>Записаться на прием или прийти в порядке живой очереди?
-            <i class="icon-arrow"></i>
-          </h3>
-          <div class="accordion-item-body">
-            <p>Нотариальные услуги стоят столько-то и столько-то текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст</p>
-          </div>
-        </div>
-
-        <div class="accordion-item">
-          <h3 class="accordion-item-head" v-on:click="accordion">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              fill="none"
-              viewBox="0 0 24 24"
-            >
-              <path
-                fill="#8E99A7"
+                fill="#2d333d"
                 d="M4 1.998h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2L13.904 18l-3.707 3.705a.994.994 0 0 1-.695.293L9.5 22H9a1 1 0 0 1-1-1v-3H4a2 2 0 0 1-2-2l.01-12.002c0-1.105.886-2 1.99-2zm8.185 3.5c-.882 0-1.595.182-2.136.545-.537.36-.827.941-.78 1.65h1.967c.008-.28.103-.49.282-.632.178-.142.401-.213.667-.213.33 0 .585.087.764.26.18.172.268.404.268.695 0 .28-.078.528-.233.742-.15.214-.36.394-.627.539-.516.315-.871.592-1.066.834-.195.242-.295.605-.299 1.086h2.016c0-.287.043-.514.13-.68.092-.17.266-.327.52-.472a3.04 3.04 0 0 0 1.127-.856c.298-.363.447-.76.447-1.193 0-.706-.271-1.267-.816-1.682-.54-.415-1.284-.623-2.23-.623h-.001zM11 12v2h2v-2h-2z"
               />
             </svg>
-            Как пользоваться справочной?
+            <h3>Записаться на прием или прийти в порядке живой очереди?</h3>
             <i class="icon-arrow"></i>
-          </h3>
+          </div>
           <div class="accordion-item-body">
             <p>Нотариальные услуги стоят столько-то и столько-то текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст</p>
           </div>
         </div>
 
         <div class="accordion-item">
-          <h3 class="accordion-item-head" v-on:click="accordion">
+          <div class="accordion-item-head" v-on:click="accordion">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -187,12 +169,35 @@
               viewBox="0 0 24 24"
             >
               <path
-                fill="#8E99A7"
+                fill="#2d333d"
                 d="M4 1.998h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2L13.904 18l-3.707 3.705a.994.994 0 0 1-.695.293L9.5 22H9a1 1 0 0 1-1-1v-3H4a2 2 0 0 1-2-2l.01-12.002c0-1.105.886-2 1.99-2zm8.185 3.5c-.882 0-1.595.182-2.136.545-.537.36-.827.941-.78 1.65h1.967c.008-.28.103-.49.282-.632.178-.142.401-.213.667-.213.33 0 .585.087.764.26.18.172.268.404.268.695 0 .28-.078.528-.233.742-.15.214-.36.394-.627.539-.516.315-.871.592-1.066.834-.195.242-.295.605-.299 1.086h2.016c0-.287.043-.514.13-.68.092-.17.266-.327.52-.472a3.04 3.04 0 0 0 1.127-.856c.298-.363.447-.76.447-1.193 0-.706-.271-1.267-.816-1.682-.54-.415-1.284-.623-2.23-.623h-.001zM11 12v2h2v-2h-2z"
               />
-            </svg>Какие документы взять с собой при походе к нотариусу?
+            </svg>
+            <h3>Как пользоваться справочной?</h3>
             <i class="icon-arrow"></i>
-          </h3>
+          </div>
+          <div class="accordion-item-body">
+            <p>Нотариальные услуги стоят столько-то и столько-то текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <div class="accordion-item-head" v-on:click="accordion">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              fill="none"
+              viewBox="0 0 24 24"
+            >
+              <path
+                fill="#2d333d"
+                d="M4 1.998h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2L13.904 18l-3.707 3.705a.994.994 0 0 1-.695.293L9.5 22H9a1 1 0 0 1-1-1v-3H4a2 2 0 0 1-2-2l.01-12.002c0-1.105.886-2 1.99-2zm8.185 3.5c-.882 0-1.595.182-2.136.545-.537.36-.827.941-.78 1.65h1.967c.008-.28.103-.49.282-.632.178-.142.401-.213.667-.213.33 0 .585.087.764.26.18.172.268.404.268.695 0 .28-.078.528-.233.742-.15.214-.36.394-.627.539-.516.315-.871.592-1.066.834-.195.242-.295.605-.299 1.086h2.016c0-.287.043-.514.13-.68.092-.17.266-.327.52-.472a3.04 3.04 0 0 0 1.127-.856c.298-.363.447-.76.447-1.193 0-.706-.271-1.267-.816-1.682-.54-.415-1.284-.623-2.23-.623h-.001zM11 12v2h2v-2h-2z"
+              />
+            </svg>
+            <h3>Какие документы взять с собой при походе к нотариусу?</h3>
+            <i class="icon-arrow"></i>
+          </div>
           <div class="accordion-item-body">
             <p>Нотариальные услуги стоят столько-то и столько-то текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст</p>
           </div>
@@ -304,17 +309,23 @@
           </div>
         </div>
       </div>
-    </div> -->
+    </div>-->
     <div class="main__section qq">
       <div class="container">
         <div class="qq-title section-title">Часто используемые запросы</div>
         <div class="qq-content">
           <ul class="qq-links">
             <li>
-              <a href="#">Нотариусы, работающие в выходные</a>
+              <a href="#">
+                Нотариусы, работающие в
+                <span>выходные</span>
+              </a>
             </li>
             <li>
-              <a href="#">Нотариусы соверщающие выезды для нотариальных действий</a>
+              <a href="#">
+                Нотариусы соверщающие
+                <span>выезды</span> для нотариальных действий
+              </a>
             </li>
           </ul>
           <ul class="qq-exit">

@@ -8,16 +8,18 @@
               <img src="/arrowBack.svg" alt />
             </button>
             <input id="srch" placeholder="Имя нотариуса, метро, город МО" />
-            <div class="search-date">
+            <div @click="show = !show" class="search-date">
               Вт, 24 сентября
               <i></i>
-              <div class="date-dropdown">
-                <ul>
-                  <li>Сегодня</li>
-                  <li>Завтра, 26 сен</li>
-                  <li>Пятница, 27 сен</li>
-                </ul>
-              </div>
+              <transition name="fade">
+                <div v-if="show" class="date-dropdown">
+                  <ul>
+                    <li class="selected">Сегодня</li>
+                    <li>Завтра, 26 сен</li>
+                    <li>Пятница, 27 сен</li>
+                  </ul>
+                </div>
+              </transition>
             </div>
             <button class="search-btn">Найти</button>
           </form>
@@ -467,6 +469,7 @@
 <script>
 export default {
   data: () => ({
+    show: false,
     swiperOption1: {
       setTranslate: 130,
       slidesPerView: "auto",

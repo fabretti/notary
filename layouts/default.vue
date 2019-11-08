@@ -1,5 +1,5 @@
 <template>
-  <div class="default">
+  <div class="default" v-bind:class="{hidden: navOpen}">
     <header>
       <div class="wrap">
         <div class="header__left">
@@ -59,10 +59,104 @@
                 </div>
               </transition>
             </div>
-            <button>Личный кабинет</button>
+            <button @click="modalEnter">Личный кабинет</button>
           </div>
         </div>
+        <div class="header__hum" @click="navOpen = !navOpen">
+          <a href="#primary" class="menu-link" v-bind:class="{active: navOpen}">
+            <span class="line line-1"></span>
+            <span class="line line-2"></span>
+            <span class="line line-3"></span>
+          </a>
+        </div>
+        <aside class="header__nav" v-bind:class="{active: navOpen}">
+          <div class="nav__main">
+            <a href="#">
+              Главная
+              <img src="menu-home.svg" alt />
+            </a>
+          </div>
+          <div class="nav__city">
+            <a href="#">
+              Город: Москва
+              <img src="menu-map.svg" alt />
+            </a>
+          </div>
+          <div class="nav__line"></div>
+          <div class="nav__menu">
+            <ul>
+              <li>
+                <a href="#">
+                  Нотариальные действия
+                  <img src="menu-account.svg" alt />
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  Необходимые документы
+                  <img src="menu-file.svg" alt />
+                </a>
+              </li>
+              <li>
+                <a class="rub" href="#">
+                  Стоимость услуг
+                  <img src="menu-rub.svg" alt />
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="nav__enter">
+            <a href="#" @click="modalEnter">
+              Вход
+              <img src="menu-login.svg" alt />
+            </a>
+          </div>
+        </aside>
       </div>
+      <div class="black-list" @click="navOpen = !navOpen" v-bind:class="{active: navOpen}"></div>
+      <client-only>
+        <modal class="modal modal-sms modal-enter" name="modalEnter" width="400px" height="auto">
+          <div class="modal-header">
+            <h1>Вход</h1>
+            <div
+              class="under-header"
+            >Введите номер, на него вы получите СМС с кодом подтверждения для входа</div>
+          </div>
+          <div class="modal-body">
+            <div class="form__box">
+              <input type="text" placeholder="Введите ваш номер" />
+            </div>
+          </div>
+          <div class="modal-bottom">
+            <button class="bottom-accept" @click="modalEnterSms">Продолжить</button>
+          </div>
+          <div class="modal-close" @click="$modal.hide('modalEnter')"></div>
+        </modal>
+        <modal
+          class="modal modal-sms modal-enterSms"
+          name="modalEnterSms"
+          width="400px"
+          height="auto"
+        >
+          <div class="modal-header">
+            <h1>Вход</h1>
+            <div class="under-header">Вам на телефон выслан код</div>
+          </div>
+          <div class="modal-body">
+            <div class="form__box">
+              <input type="text" placeholder="Введите код из СМС" />
+            </div>
+            <div class="sms-timer">
+              <a href>Выслать СМС повторно</a>
+              <p>3:00</p>
+            </div>
+          </div>
+          <div class="modal-bottom">
+            <button class="bottom-accept">Войти</button>
+          </div>
+          <div class="modal-close" @click="$modal.hide('modalEnterSms')"></div>
+        </modal>
+      </client-only>
     </header>
     <div class="content-wrapper">
       <nuxt />
@@ -74,7 +168,7 @@
           <div class="footer__info">©2019.Нотариус рф. все Права защищены.</div>
           <div class="footer__dev">
             Разработано в
-            <a href="#">7reasons.ru</a>
+            <a href="7reasons.ru">7reasons.ru</a>
           </div>
         </div>
         <div class="footer__navs">
@@ -109,7 +203,17 @@
               <a href="#">contact@pravo-id.ru</a>
             </strong>
           </div>
-          <div class="footer__phone">Звоните нам: +7 999 323 96 54</div>
+          <div class="footer__phone">
+            Звоните нам:
+            <span>+7 999 323 96 54</span>
+          </div>
+        </div>
+        <div class="footer__infoDev">
+          <div class="footer__info">©2019.Нотариус рф. все Права защищены.</div>
+          <div class="footer__dev">
+            Разработано в
+            <a href="7reasons.ru">7reasons.ru</a>
+          </div>
         </div>
       </div>
     </footer>
@@ -121,7 +225,17 @@
 <script>
 export default {
   data: () => ({
-    show: false
-  })
+    show: false,
+    navOpen: false
+  }),
+  methods: {
+    modalEnter() {
+      this.$modal.show("modalEnter");
+    },
+    modalEnterSms() {
+      this.$modal.show("modalEnterSms");
+      this.$modal.hide("modalEnter");
+    }
+  }
 };
 </script>

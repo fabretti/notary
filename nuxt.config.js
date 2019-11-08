@@ -27,7 +27,7 @@ module.exports = {
     }, ],
     script: [{
       src: 'https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js'
-    }]
+    }, ]
   },
   /*
    ** Customize the progress bar color
@@ -69,5 +69,6 @@ module.exports = {
   css: [
     '~assets/css/style.css',
     '~assets/css/modals.css',
+    '~assets/css/responsive.css',
   ],
 }

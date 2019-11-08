@@ -11,10 +11,12 @@
             </div>
           </div>
           <form class="search-form">
-            <input id="srch" placeholder="Имя нотариуса, метро, город МО" />
-            <div @click="show = !show" class="search-date">
-              Вт, 24 сентября
-              <i></i>
+            <div class="search-formDate">
+              <input id="srch" placeholder="Имя нотариуса, метро, город МО" />
+              <div @click="show = !show" class="search-date">
+                Вт, 24 сентября
+                <i></i>
+              </div>
               <transition name="fade">
                 <div v-if="show" class="date-dropdown">
                   <ul>
@@ -248,7 +250,7 @@
         <div class="pagination"></div>
       </div>
       <client-only>
-        <modal class="modal modal-record" name="modalRecord1" height="auto">
+        <modal class="modal modal-record" name="modalRecord" height="auto">
           <div class="modal-header">
             <h1>Запись на прием</h1>
           </div>
@@ -323,7 +325,7 @@
                   Дата и время приёма
                   <span>*</span>
                 </label>
-                <div class="search-box">
+                <div class="search-box" @click="showTimeModal">
                   <select name id>
                     <option selected="true" disabled="disabled">Вид действия</option>
                     <option value>аывавыа</option>
@@ -360,9 +362,9 @@
           <div class="modal-bottom">
             <button class="modal-sign" @click="showSecondModal">Записаться</button>
           </div>
-          <div class="modal-close" @click="$modal.hide('modalRecord1')"></div>
+          <div class="modal-close" @click="$modal.hide('modalRecord')"></div>
         </modal>
-        <modal class="modal modal-sms" name="modalRecord2" width="400px" height="auto">
+        <modal class="modal modal-sms" name="modalSms" width="400px" height="auto">
           <div class="modal-header">
             <h1>Запись на прием</h1>
             <div class="under-header">Вам на телефон выслан код</div>
@@ -386,9 +388,9 @@
               <a href="#">обработку персональных данных.</a>
             </p>
           </div>
-          <div class="modal-close" @click="$modal.hide('modalRecord2')"></div>
+          <div class="modal-close" @click="$modal.hide('modalSms')"></div>
         </modal>
-        <modal class="modal modal-accept" name="modalRecord3" height="auto">
+        <modal class="modal modal-accept" name="modalAccept" height="auto">
           <div class="modal-header">
             <h1>Запись на прием</h1>
           </div>
@@ -454,9 +456,143 @@
             </div>
           </div>
           <div class="modal-bottom">
-            <button class="modal-bottomClose" @click="$modal.hide('modalRecord3')">Закрыть</button>
+            <button class="modal-bottomClose" @click="$modal.hide('modalAccept')">Закрыть</button>
           </div>
-          <div class="modal-close" @click="$modal.hide('modalRecord1')"></div>
+          <div class="modal-close" @click="$modal.hide('modalRecord')"></div>
+        </modal>
+        <modal class="modal modal-time" name="modalTime" height="auto">
+          <div class="modal-header">
+            <h1>Запись на прием</h1>
+          </div>
+          <div class="modal-body notary-list">
+            <div class="notary-card">
+              <div class="card-left">
+                <div class="card-avatar">
+                  <img class="notary-avatar" src="/ava.jpg" alt />
+                </div>
+                <div class="card-center">
+                  <div class="card-name">
+                    <a href="#">Ложкин Валерий Александрович</a>
+                  </div>
+                  <div class="card-underName">
+                    <div class="notary-stars">
+                      <div class="notary-star">
+                        <img src="/starO.svg" alt />
+                      </div>
+                      <div class="notary-star">
+                        <img src="/starO.svg" alt />
+                      </div>
+                      <div class="notary-star">
+                        <img src="/starO.svg" alt />
+                      </div>
+                      <div class="notary-star">
+                        <img src="/starO.svg" alt />
+                      </div>
+                      <div class="notary-star">
+                        <img src="/starD.svg" alt />
+                      </div>
+                    </div>
+                    <div class="rev">
+                      <a href="#">19 отзывов</a>
+                    </div>
+                  </div>
+                  <ul class="card-subway">
+                    <li class="subway-item">
+                      <span class="subway-color"></span>Авиамоторная
+                      <div class="subway-step">
+                        <img src="/footstep.svg" /> 323 м
+                      </div>
+                    </li>
+                  </ul>
+                  <div class="card-adress">г. Москва, ул. 2-я Кабельная, д.2, стр. 14</div>
+                </div>
+              </div>
+            </div>
+            <div class="card-right sign-date">
+              <div class="slider-month">
+                <swiper :options="swiperOption1">
+                  <swiper-slide>Сентябрь</swiper-slide>
+                  <swiper-slide>Октябрь</swiper-slide>
+                  <swiper-slide>Ноябрь</swiper-slide>
+                  <div class="swiper-button-prev" slot="button-prev"></div>
+                  <div class="swiper-button-next" slot="button-next"></div>
+                </swiper>
+              </div>
+              <div class="slider-days">
+                <swiper :options="swiperOptionSlider">
+                  <swiper-slide>
+                    <div class="slider-btn btn-day active">
+                      Вт
+                      <br />30 cен
+                    </div>
+                  </swiper-slide>
+                  <swiper-slide>
+                    <div class="slider-btn btn-day disabled">
+                      Ср
+                      <br />1 окт
+                    </div>
+                  </swiper-slide>
+                  <swiper-slide>
+                    <div class="slider-btn btn-day default">
+                      Чт
+                      <br />2 окт
+                    </div>
+                  </swiper-slide>
+                  <swiper-slide>
+                    <div class="slider-btn btn-day default">
+                      Пт
+                      <br />3 окт
+                    </div>
+                  </swiper-slide>
+                  <swiper-slide>
+                    <div class="slider-btn btn-day default">
+                      Сб
+                      <br />4 окт
+                    </div>
+                  </swiper-slide>
+                  <swiper-slide>
+                    <div class="slider-btn btn-day default">
+                      Сб
+                      <br />4 окт
+                    </div>
+                  </swiper-slide>
+                  <swiper-slide>
+                    <div class="slider-btn btn-day default">
+                      Сб
+                      <br />4 окт
+                    </div>
+                  </swiper-slide>
+                  <div class="swiper-button-prev" slot="button-prev"></div>
+                  <div class="swiper-button-next" slot="button-next"></div>
+                </swiper>
+              </div>
+              <div class="block-times">
+                <ul>
+                  <li>
+                    <div class="slider-btn btn-time default">15:30</div>
+                  </li>
+                  <li>
+                    <div class="slider-btn btn-time default">16:30</div>
+                  </li>
+                  <li>
+                    <div class="slider-btn btn-time default">17:30</div>
+                  </li>
+                  <li>
+                    <div class="slider-btn btn-time default">18:30</div>
+                  </li>
+                  <li>
+                    <div class="slider-btn btn-time default">19:30</div>
+                  </li>
+                  <li>
+                    <div class="slider-btn btn-time default">20:30</div>
+                  </li>
+                  <li>
+                    <div class="slider-btn btn-time default">21:30</div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </modal>
       </client-only>
     </div>
@@ -467,15 +603,18 @@ import AppLogo from "~/components/AppLogo.vue";
 export default {
   methods: {
     showModal() {
-      this.$modal.show("modalRecord1");
+      this.$modal.show("modalRecord");
     },
     showSecondModal() {
-      this.$modal.show("modalRecord2");
-      this.$modal.hide("modalRecord1");
+      this.$modal.show("modalSms");
+      this.$modal.hide("modalRecord");
     },
     showThirdModal() {
-      this.$modal.show("modalRecord3");
-      this.$modal.hide("modalRecord2");
+      this.$modal.show("modalAccept");
+      this.$modal.hide("modalSms");
+    },
+    showTimeModal() {
+      this.$modal.show("modalTime");
     }
   },
   data: () => ({
@@ -495,7 +634,6 @@ export default {
       }
     },
     swiperOption2: {
-      slidesPerView: "auto",
       slidesPerView: 5.3,
       slidesOffsetBefore: 25,
       slidesOffsetAfter: 25,
@@ -503,6 +641,12 @@ export default {
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev"
       }
+    },
+    swiperOptionSlider: {
+      slidesPerView: 7,
+      slidesOffsetBefore: 25,
+      slidesOffsetAfter: 25,
+      spaceBetween: 45
     }
   })
 };

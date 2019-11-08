@@ -247,3 +247,55 @@
     }
   }
 }
+
+.modal-time {
+  .card-right {
+    max-width: 100%;
+
+    .slider-days {
+      .slider-btn {
+        color: #8e99a7;
+        height: 50px;
+        font-weight: 600;
+        line-height: 24px;
+        font-size: 16px;
+        background: inherit;
+        border: none;
+
+        &.active {
+          color: #1b559e;
+        }
+      }
+
+      .swiper-container {
+        width: 100%;
+      }
+
+      .swiper-button-prev,
+      .swiper-button-next {
+        height: 100%;
+      }
+    }
+  }
+}
+
+.modal-enter,
+.modal-cancel,
+.modal-cancelAccept {
+  .modal-bottom {
+    margin-top: 44px;
+  }
+}
+
+.modal-cancelAccept {
+  .modal-bottom {
+    display: flex;
+    justify-content: space-between;
+    button {
+      height: 40px;
+    }
+    .bottom-cancel {
+      background-color: #8e99a7;
+    }
+  }
+}
