@@ -236,6 +236,9 @@
                       <swiper-slide>
                         <div class="slider-btn btn-day default">Сб, 28</div>
                       </swiper-slide>
+                      <swiper-slide>
+                        <div class="slider-btn btn-day default">Сб, 28</div>
+                      </swiper-slide>
                       <div class="swiper-button-prev" slot="button-prev"></div>
                       <div class="swiper-button-next" slot="button-next"></div>
                     </swiper>
@@ -458,9 +461,35 @@
               <swiper-slide>Slide 5</swiper-slide>
               <swiper-slide>Slide 6</swiper-slide>
               <swiper-slide>Slide 7</swiper-slide>
-              <div class="swiper-pagination" slot="pagination"></div>
+              <div class="swiper-button-prev" id="sp" slot="button-prev"></div>
+              <div class="swiper-button-next" id="sn" slot="button-next"></div>
             </swiper>
           </client-only>
+          <!-- <div class="street-buttons">
+            <div for="sp" class="street-prev">
+              <img src="PolygonL.svg" alt="">
+            </div>
+            <div for="sn" class="street-next">
+              <img src="Polygon.svg" alt="">
+            </div>
+          </div> -->
+        </div>
+        <div class="page-phone">
+          <div class="page__left">
+            <h1>Телефон:</h1>
+            <p><img src="phone-page.svg" alt="phone">+7 999 999 99 99</p>
+            <p><img src="phone-page.svg" alt="phone">+7 999 999 99 99</p>
+          </div>
+          <div class="page__right">
+            <div class="page-arrows">
+              <img src="PolygonPhone1.svg" alt="">
+              <img src="PolygonPhone2.svg" alt="">
+              <img src="PolygonPhone3.svg" alt="">
+              <img src="PolygonPhone4.svg" alt="">
+              <img src="PolygonPhone5.svg" alt="">
+            </div>
+            <button class="page-phone__btn">Записаться онлайн</button>
+          </div>
         </div>
       </div>
     </div>

@@ -4,7 +4,9 @@
       <div class="results__section search-fixed">
         <div class="search">
           <div class="search-top">
-            <div class="search-title">Нотариусы на метро Бульвар Адмирала Ушакова</div>
+            <div class="search-title">
+              <span>Нотариусы на метро</span> Бульвар Адмирала Ушакова
+            </div>
             <div class="search-icons">
               <img src="mdi-map-marker.svg" alt />
               <img src="mdi-comment-question.svg" alt />
@@ -14,22 +16,48 @@
             <div class="search-formDate">
               <input id="srch" placeholder="Имя нотариуса, метро, город МО" />
               <div @click="show = !show" class="search-date">
-                Вт, 24 сентября
+                <p>Вт, 24 сентября</p>
                 <i></i>
+                <transition name="fade">
+                  <div v-if="show" class="date-dropdown">
+                    <ul>
+                      <li class="selected">Сегодня</li>
+                      <li>Завтра, 26 сен</li>
+                      <li>Пятница, 27 сен</li>
+                    </ul>
+                  </div>
+                </transition>
               </div>
-              <transition name="fade">
-                <div v-if="show" class="date-dropdown">
-                  <ul>
-                    <li class="selected">Сегодня</li>
-                    <li>Завтра, 26 сен</li>
-                    <li>Пятница, 27 сен</li>
-                  </ul>
-                </div>
-              </transition>
             </div>
             <button class="search-btn">Найти</button>
           </form>
+
+          <form class="search-form mobile">
+            <div class="search-formDate">
+              <input id="srch" placeholder="Бульвар Адмирала Ушакова" />
+              <button class="search-btn">Найти</button>
+            </div>
+            <div class="search-bottomMobile">
+              <div @click="modalDate" class="search-date">
+                <p>Расписание на все дни</p>
+                <i></i>
+                <transition name="fade">
+                  <div v-if="show" class="date-dropdown">
+                    <ul>
+                      <li class="selected">Сегодня</li>
+                      <li>Завтра, 26 сен</li>
+                      <li>Пятница, 27 сен</li>
+                    </ul>
+                  </div>
+                </transition>
+              </div>
+              <div class="filter" @click="modalFilter">
+                <img src="Filter.svg" alt />
+              </div>
+            </div>
+          </form>
         </div>
+        
       </div>
       <div class="results__section notarys">
         <div class="notarys-filter">
@@ -46,32 +74,34 @@
           <div class="notary-card">
             <div class="card-left">
               <div class="card-avatar">
-                <img class="notary-avatar" src="/ava.jpg" alt />
-                <div class="notary-stars">
-                  <div class="notary-star">
-                    <img src="/starO.svg" alt />
+                <a href="page"><img class="notary-avatar" src="/ava.jpg" alt /></a>
+                <div class="card-rev">
+                  <div class="notary-stars">
+                    <div class="notary-star">
+                      <img src="/starO.svg" alt />
+                    </div>
+                    <div class="notary-star">
+                      <img src="/starO.svg" alt />
+                    </div>
+                    <div class="notary-star">
+                      <img src="/starO.svg" alt />
+                    </div>
+                    <div class="notary-star">
+                      <img src="/starO.svg" alt />
+                    </div>
+                    <div class="notary-star">
+                      <img src="/starD.svg" alt />
+                    </div>
                   </div>
-                  <div class="notary-star">
-                    <img src="/starO.svg" alt />
+                  <div class="rev">
+                    <a href="#">19 <span>отзывов</span></a>
                   </div>
-                  <div class="notary-star">
-                    <img src="/starO.svg" alt />
-                  </div>
-                  <div class="notary-star">
-                    <img src="/starO.svg" alt />
-                  </div>
-                  <div class="notary-star">
-                    <img src="/starD.svg" alt />
-                  </div>
-                </div>
-                <div class="rev">
-                  <a href="#">19 отзывов</a>
                 </div>
               </div>
               <div class="card-center">
                 <div class="card-spec">Нотариус</div>
                 <div class="card-name">
-                  <a href="#">Ложкин Валерий Александрович</a>
+                  <a href="page">Ложкин Валерий Александрович</a>
                 </div>
                 <div class="card-year">Стаж 8 лет</div>
                 <ul class="card-subway">
@@ -98,6 +128,7 @@
               </div>
             </div>
             <div class="card-right">
+              <p class="card-rightChoose">Выберите время для записи на <span>сегодня</span></p>
               <div class="slider-month">
                 <swiper :options="swiperOption1">
                   <swiper-slide>Сентябрь</swiper-slide>
@@ -158,32 +189,34 @@
           <div class="notary-card">
             <div class="card-left">
               <div class="card-avatar">
-                <img class="notary-avatar" src="/ava.jpg" alt />
-                <div class="notary-stars">
-                  <div class="notary-star">
-                    <img src="/starO.svg" alt />
+                <a href="page"><img class="notary-avatar" src="/ava.jpg" alt /></a>
+                <div class="card-rev">
+                  <div class="notary-stars">
+                    <div class="notary-star">
+                      <img src="/starO.svg" alt />
+                    </div>
+                    <div class="notary-star">
+                      <img src="/starO.svg" alt />
+                    </div>
+                    <div class="notary-star">
+                      <img src="/starO.svg" alt />
+                    </div>
+                    <div class="notary-star">
+                      <img src="/starO.svg" alt />
+                    </div>
+                    <div class="notary-star">
+                      <img src="/starD.svg" alt />
+                    </div>
                   </div>
-                  <div class="notary-star">
-                    <img src="/starO.svg" alt />
+                  <div class="rev">
+                    <a href="#">19 <span>отзывов</span></a>
                   </div>
-                  <div class="notary-star">
-                    <img src="/starO.svg" alt />
-                  </div>
-                  <div class="notary-star">
-                    <img src="/starO.svg" alt />
-                  </div>
-                  <div class="notary-star">
-                    <img src="/starD.svg" alt />
-                  </div>
-                </div>
-                <div class="rev">
-                  <a href="#">19 отзывов</a>
                 </div>
               </div>
               <div class="card-center">
                 <div class="card-spec">Нотариус</div>
                 <div class="card-name">
-                  <a href="#">Ложкин Валерий Александрович</a>
+                  <a href="page">Ложкин Валерий Александрович</a>
                 </div>
                 <div class="card-year">Стаж 8 лет</div>
                 <ul class="card-subway">
@@ -247,7 +280,22 @@
             </div>
           </div>
         </div>
-        <div class="pagination"></div>
+        <div class="pagination">
+          <button class="arrow__pag prev">
+            <img src="arrowBack.svg" alt="">
+          </button>
+          <button class="page__num active">1</button>
+          <button class="page__num">2</button>
+          <button class="page__num">3</button>
+          <button class="page__num">4</button>
+          <button class="page__num">5</button>
+          <button class="page__num">6</button>
+          <button class="page__num dots">...</button>
+          <button class="page__num">13</button>
+          <button class="arrow__pag next active">
+            <img src="arrowBack.svg" alt="">
+          </button>
+        </div>
       </div>
       <client-only>
         <modal class="modal modal-record" name="modalRecord" height="auto">
@@ -262,7 +310,7 @@
                 </div>
                 <div class="card-center">
                   <div class="card-name">
-                    <a href="#">Ложкин Валерий Александрович</a>
+                    <a href="page">Ложкин Валерий Александрович</a>
                   </div>
                   <div class="card-underName">
                     <div class="notary-stars">
@@ -402,7 +450,7 @@
                 </div>
                 <div class="card-center">
                   <div class="card-name">
-                    <a href="#">Ложкин Валерий Александрович</a>
+                    <a href="page">Ложкин Валерий Александрович</a>
                   </div>
                   <div class="card-underName">
                     <div class="notary-stars">
@@ -472,7 +520,7 @@
                 </div>
                 <div class="card-center">
                   <div class="card-name">
-                    <a href="#">Ложкин Валерий Александрович</a>
+                    <a href="page">Ложкин Валерий Александрович</a>
                   </div>
                   <div class="card-underName">
                     <div class="notary-stars">
@@ -594,6 +642,72 @@
             </div>
           </div>
         </modal>
+        <modal class="modal modal-sms modalBottom modal-date" name="modalDate" width="400px" height="auto">
+          <div class="modal-header">
+            <h1>Расписание</h1>
+          </div>
+          <div class="modal-body">
+            <div class="radio-btn">
+              <label for="opt1" class="radio">
+                <input type="radio" name="rdo" id="opt1" class="hidden" />
+                <span class="label"></span>Сегодня, 24 октября
+              </label>
+              <label for="opt2" class="radio">
+                <input type="radio" name="rdo" id="opt2" class="hidden" />
+                <span class="label"></span>Завтра, 25 октября
+              </label>
+              <label for="opt3" class="radio">
+                <input type="radio" name="rdo" id="opt3" class="hidden" />
+                <span class="label"></span>Сб, 26 октября
+              </label>
+              <label for="opt4" class="radio">
+                <input type="radio" name="rdo" id="opt4" class="hidden" />
+                <span class="label"></span>Расписание на все дни
+              </label>
+              <label class="chooseDate radio">
+                <img src="calendarGrey.svg" alt="">
+                <p>Выбрать другой день</p>
+              </label>
+            </div>
+          </div>
+          <div class="modal-bottom">
+            <button class="bottom-accept" @click="$modal.hide('modalDate')">Закрыть</button>
+          </div>
+          <div class="modal-close" @click="$modal.hide('modalDate')"></div>
+        </modal>
+        <modal class="modal modal-sms modal-date modal-filter" name="modalFilter" width="400px" height="auto">
+          <div class="modal-header">
+            <h1>Расписание</h1>
+          </div>
+          <div class="modal-body">
+            <div class="radio-btn">
+              <label for="opt1" class="radio">
+                <input type="radio" name="rdo" id="opt1" class="hidden" />
+                <span class="label"></span>Сегодня, 24 октября
+              </label>
+              <label for="opt2" class="radio">
+                <input type="radio" name="rdo" id="opt2" class="hidden" />
+                <span class="label"></span>Завтра, 25 октября
+              </label>
+              <label for="opt3" class="radio">
+                <input type="radio" name="rdo" id="opt3" class="hidden" />
+                <span class="label"></span>Сб, 26 октября
+              </label>
+              <label for="opt4" class="radio">
+                <input type="radio" name="rdo" id="opt4" class="hidden" />
+                <span class="label"></span>Расписание на все дни
+              </label>
+              <label class="chooseDate radio">
+                <img src="calendarGrey.svg" alt="">
+                <p>Выбрать другой день</p>
+              </label>
+            </div>
+          </div>
+          <div class="modal-bottom">
+            <button class="bottom-accept" @click="$modal.hide('modalFilter')">Закрыть</button>
+          </div>
+          <div class="modal-close" @click="$modal.hide('modaFilter')"></div>
+        </modal>
       </client-only>
     </div>
   </section>
@@ -615,6 +729,12 @@ export default {
     },
     showTimeModal() {
       this.$modal.show("modalTime");
+    },
+    modalDate() {
+      this.$modal.show("modalDate");
+    },
+    modalFilter() {
+      this.$modal.show("modalFilter");
     }
   },
   data: () => ({
@@ -640,6 +760,14 @@ export default {
       navigation: {
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev"
+      },
+      breakpoints: {
+        1010: {
+          slidesPerView: 4.3
+        },
+        590: {
+          slidesPerView: 6
+        }
       }
     },
     swiperOptionSlider: {

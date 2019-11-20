@@ -11,8 +11,11 @@
           <div class="search-formDate">
             <input id="srch" placeholder="Имя нотариуса, метро, город МО" />
             <div @click="show = !show" class="search-date">
-              Вт, 24 сентября
-              <i></i>
+              <p>
+                Вт, 24 сентября
+                <i></i>
+              </p>
+              <img @click="modalDate" src="calendar.svg" alt />
               <transition name="fade">
                 <div v-if="show" class="date-dropdown">
                   <ul>
@@ -27,6 +30,35 @@
           <a href="results" class="search-btn">Найти</a>
         </form>
       </div>
+      <modal class="modal modal-sms modal-date" name="modalDate" width="400px" height="auto">
+        <div class="modal-header">
+          <h1>Расписание</h1>
+        </div>
+        <div class="modal-body">
+          <div class="radio-btn">
+            <label for="opt1" class="radio">
+              <input type="radio" name="rdo" id="opt1" class="hidden" />
+              <span class="label"></span>Сегодня, 24 октября
+            </label>
+            <label for="opt2" class="radio">
+              <input type="radio" name="rdo" id="opt2" class="hidden" />
+              <span class="label"></span>Завтра, 25 октября
+            </label>
+            <label for="opt3" class="radio">
+              <input type="radio" name="rdo" id="opt3" class="hidden" />
+              <span class="label"></span>Сб, 26 октября
+            </label>
+            <label for="opt4" class="radio">
+              <input type="radio" name="rdo" id="opt4" class="hidden" />
+              <span class="label"></span>Расписание на все дни
+            </label>
+          </div>
+        </div>
+        <div class="modal-bottom">
+          <button class="bottom-accept" @click="$modal.hide('modalDate')">Закрыть</button>
+        </div>
+        <div class="modal-close" @click="$modal.hide('modalDate')"></div>
+      </modal>
       <div class="search-example">
         Например,
         <span>метро Авиамоторное</span>
@@ -571,9 +603,9 @@
     <div class="main__section map">
       <div class="container">
         <div class="map-title section-title">Все нотариусы на карте</div>
-        <div class="map-img">
-          <img src="/map.png" alt />
-        </div>
+        <yandex-map :coords="coords" zoom="10">
+          <ymap-marker :coords="coords" marker-id="123123" marker-type="placemark" />
+        </yandex-map>
       </div>
     </div>
   </section>
@@ -581,7 +613,40 @@
 <script>
 export default {
   data: () => ({
-    show: false
+    show: false,
+    coords: [54.82896654088406, 39.831893822753904],
+    placemarks: [
+      {
+        coords: [54.82896654088406, 39.831893822753904],
+        properties: {
+          balloonContentBody: "asdfd",
+          balloonContentFooter: "1",
+          balloonContentHeader: "1"
+        },
+        clusterName: "1",
+        markerId: "1"
+      },
+      {
+        coords: [54.82796654088306, 39.831893822753904],
+        properties: {
+          balloonContentBody: "asdfasdf",
+          balloonContentFooter: "1",
+          balloonContentHeader: "1"
+        },
+        clusterName: "1",
+        markerId: "2"
+      },
+      {
+        coords: [54.82996654088506, 39.831893822753904],
+        properties: {
+          balloonContentBody: "asdfasdf",
+          balloonContentFooter: "1",
+          balloonContentHeader: "1"
+        },
+        clusterName: "1",
+        markerId: "3"
+      }
+    ]
   }),
   methods: {
     accordion(event) {
@@ -590,6 +655,9 @@ export default {
       //   matches[i].classList.remove("active");
       // }
       event.target.classList.toggle("active");
+    },
+    modalDate() {
+      this.$modal.show("modalDate");
     }
   }
 };

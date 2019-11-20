@@ -165,8 +165,6 @@
 }
 
 .modal-record {
-
-
   .form__record {
     margin: 0 24px;
 
@@ -291,11 +289,111 @@
   .modal-bottom {
     display: flex;
     justify-content: space-between;
+
     button {
       height: 40px;
     }
+
     .bottom-cancel {
       background-color: #8e99a7;
     }
+  }
+}
+
+.modal-date {
+  .modal-header {
+    margin: 26px 16px 16px;
+
+    h1 {
+      font-size: 14px;
+      line-height: 16px;
+      font-weight: 600;
+    }
+  }
+
+  .modal-body {
+    margin: 0 16px;
+
+    .radio-btn {
+      display: flex;
+      flex-direction: column;
+
+      .radio {
+        position: relative;
+        cursor: pointer;
+        font-size: 12px;
+        line-height: 16px;
+        margin-bottom: 16px;
+
+        .label {
+          position: relative;
+          display: block;
+          float: left;
+          margin-right: 10px;
+          width: 16px;
+          height: 16px;
+          border: 1px solid #C8CCD4;
+          border-radius: 100%;
+          -webkit-tap-highlight-color: transparent;
+
+          &:after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 10px;
+            height: 10px;
+            border-radius: 100%;
+            background: #1b559e;
+            transform: scale(0);
+            transition: all .2s ease;
+            opacity: .08;
+            pointer-events: none;
+          }
+        }
+      }
+
+      .chooseDate {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0;
+
+        img {
+          margin-right: 10px;
+        }
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      input[type="radio"]:checked+.label {
+        border-color: #1b559e;
+
+        &:after {
+          transform: scale(1);
+          transition: all .2s cubic-bezier(.35, .9, .4, .9);
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  .modal-bottom {
+    margin-top: 52px;
+
+    button {
+      background-color: #8e99a7;
+      width: 100%;
+      height: 40px;
+      font-weight: 500;
+    }
+  }
+}
+
+.modal-filter {
+  .v--modal-overlay .v--modal-box {
+    height: 100% !important;
+    width: 100% !important;
   }
 }

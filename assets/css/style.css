@@ -75,7 +75,7 @@ footer .wrap {
   height: 48px;
 }
 
-.search-form input, .search-formDate input {
+.search input {
   font-size: 14px;
   line-height: 16px;
   color: #8e99a7;
@@ -86,9 +86,15 @@ footer .wrap {
   border-radius: 4px 0 0 4px;
 }
 
-.search-form .search-date,
-.search-form .search-btn, .search-formDate .search-date,
-.search-formDate .search-btn {
+.search input:focus {
+  border: solid 1px #f15a22;
+  border-right: 0;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.search .search-date,
+.search .search-btn {
   font-size: 14px;
   font-weight: 600;
   line-height: 16px;
@@ -98,8 +104,26 @@ footer .wrap {
   cursor: pointer;
 }
 
-.search-form .search-date, .search-formDate .search-date {
+.search .search-date {
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: #f15a22;
+  -webkit-box-shadow: 0 8px 25px 0 rgba(241, 90, 34, 0.15);
+          box-shadow: 0 8px 25px 0 rgba(241, 90, 34, 0.15);
+}
+
+.search .search-date:hover {
+  background-color: #e85516;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.search .search-date p {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -109,12 +133,9 @@ footer .wrap {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  background: #f15a22;
-  -webkit-box-shadow: 0 8px 25px 0 rgba(241, 90, 34, 0.15);
-          box-shadow: 0 8px 25px 0 rgba(241, 90, 34, 0.15);
 }
 
-.search-form .search-date i, .search-formDate .search-date i {
+.search .search-date p i {
   display: block;
   width: 9.4px;
   height: 8.5px;
@@ -123,7 +144,11 @@ footer .wrap {
   background-size: cover;
 }
 
-.search-form .date-dropdown, .search-formDate .date-dropdown {
+.search .search-date img {
+  display: none;
+}
+
+.search .date-dropdown {
   position: absolute;
   top: 40px;
   background: #fff;
@@ -136,12 +161,12 @@ footer .wrap {
   top: 53px;
 }
 
-.search-form .date-dropdown ul, .search-formDate .date-dropdown ul {
+.search .date-dropdown ul {
   padding: 15px 0;
   text-align: left;
 }
 
-.search-form .date-dropdown ul li, .search-formDate .date-dropdown ul li {
+.search .date-dropdown ul li {
   padding: 0 30px;
   cursor: pointer;
   font-size: 14px;
@@ -149,17 +174,17 @@ footer .wrap {
   line-height: 24px;
 }
 
-.search-form .date-dropdown ul li:hover, .search-formDate .date-dropdown ul li:hover {
+.search .date-dropdown ul li:hover {
   background: #dbebff;
 }
 
-.search-form .date-dropdown ul li.selected, .search-formDate .date-dropdown ul li.selected {
+.search .date-dropdown ul li.selected {
   position: relative;
   font-weight: 600;
 }
 
-.search-form .date-dropdown ul li.selected:before, .search-formDate .date-dropdown ul li.selected:before {
-  content: '';
+.search .date-dropdown ul li.selected:before {
+  content: "";
   position: absolute;
   top: 50%;
   left: 14px;
@@ -170,7 +195,7 @@ footer .wrap {
   background: url("/check.svg") no-repeat;
 }
 
-.search-form .search-btn, .search-formDate .search-btn {
+.search .search-btn {
   background: #1b559e;
   -webkit-box-shadow: 0 8px 25px 0 rgba(27, 85, 158, 0.15);
           box-shadow: 0 8px 25px 0 rgba(27, 85, 158, 0.15);
@@ -196,8 +221,9 @@ footer .wrap {
   padding: 24px 24px 14px 24px;
   background: #fff;
   border-radius: 4px;
-  -webkit-box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05);
-          box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05);
+  -webkit-box-shadow: 0 4px 3px 0 rgba(0, 0, 0, 0.03);
+          box-shadow: 0 4px 3px 0 rgba(0, 0, 0, 0.03);
+  border: solid 1px #e3e3e3;
 }
 
 .notary-list .notary-card .card-left {
@@ -441,8 +467,8 @@ header .header__right .header__select .header__city {
 
 header .header__right .header__select .header__city .fade-enter-active,
 header .header__right .header__select .header__city .fade-leave-active {
-  -webkit-transition: opacity .2s;
-  transition: opacity .2s;
+  -webkit-transition: opacity 0.2s;
+  transition: opacity 0.2s;
 }
 
 header .header__right .header__select .header__city .fade-enter,
@@ -517,7 +543,7 @@ header .header__right .header__select .header__city .city__list ul li.selected {
 }
 
 header .header__right .header__select .header__city .city__list ul li.selected:before {
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
   left: 14px;
@@ -723,8 +749,6 @@ header .black-list.active {
 
 .main .intro .sugg-new {
   margin: 74px 0 0 0;
-  font-size: 16px;
-  line-height: 24px;
   color: #2d333d;
 }
 
@@ -741,8 +765,7 @@ header .black-list.active {
   display: flex;
 }
 
-.main .intro .sugg-new .sugg-boxes .sugg-box,
-.main .intro .sugg-new .sugg-convert .sugg-box {
+.main .intro .sugg-new .sugg-box {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -754,19 +777,18 @@ header .black-list.active {
           align-items: center;
 }
 
-.main .intro .sugg-new .sugg-boxes .sugg-box:not(:last-child),
-.main .intro .sugg-new .sugg-convert .sugg-box:not(:last-child) {
+.main .intro .sugg-new .sugg-box:not(:last-child) {
   margin-right: 60px;
 }
 
-.main .intro .sugg-new .sugg-boxes .sugg-box .sugg-img,
-.main .intro .sugg-new .sugg-convert .sugg-box .sugg-img {
+.main .intro .sugg-new .sugg-box .sugg-img {
   line-height: 0;
 }
 
-.main .intro .sugg-new .sugg-boxes .sugg-box .sugg-info,
-.main .intro .sugg-new .sugg-convert .sugg-box .sugg-info {
+.main .intro .sugg-new .sugg-box .sugg-info {
   padding-left: 15px;
+  font-size: 16px;
+  line-height: 24px;
 }
 
 .main .container {
@@ -790,6 +812,18 @@ header .black-list.active {
   display: -ms-flexbox;
   display: flex;
   min-height: 192px;
+}
+
+.main .benefits .note-boxes .note-box .note-title {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 32px;
+  margin-bottom: 13px;
+}
+
+.main .benefits .note-boxes .note-box .note-info {
+  font-size: 16px;
+  line-height: 24px;
 }
 
 .main .benefits .note-boxes .note-box .note-1 {
@@ -819,7 +853,7 @@ header .black-list.active {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin-top: 20px;
+  margin-top: 32px;
 }
 
 .main .benefits .note-boxes .note-box .note-2 .note-btn .btn-time {
@@ -900,28 +934,10 @@ header .black-list.active {
 .main .benefits .note-boxes .note-box .note-2,
 .main .benefits .note-boxes .note-box .note-3,
 .main .benefits .note-boxes .note-box .note-4 {
-  padding: 25px 24px 0 24px;
+  padding: 25px 24px 20px;
   border-radius: 4px;
   -webkit-box-shadow: 0 4px 3px 0 rgba(0, 0, 0, 0.03);
           box-shadow: 0 4px 3px 0 rgba(0, 0, 0, 0.03);
-}
-
-.main .benefits .note-boxes .note-box .note-1 .note-title,
-.main .benefits .note-boxes .note-box .note-2 .note-title,
-.main .benefits .note-boxes .note-box .note-3 .note-title,
-.main .benefits .note-boxes .note-box .note-4 .note-title {
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 32px;
-  margin-bottom: 13px;
-}
-
-.main .benefits .note-boxes .note-box .note-1 .note-info,
-.main .benefits .note-boxes .note-box .note-2 .note-info,
-.main .benefits .note-boxes .note-box .note-3 .note-info,
-.main .benefits .note-boxes .note-box .note-4 .note-info {
-  font-size: 16px;
-  line-height: 24px;
 }
 
 .main .benefits .note-boxes .note-box .note-1,
@@ -1082,6 +1098,12 @@ header .black-list.active {
   margin: 24px 0 48px 0;
 }
 
+.main .qq .qq-content .qq-links li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 .main .qq .qq-content .qq-links li:first-child {
   padding-bottom: 8px;
 }
@@ -1097,6 +1119,9 @@ header .black-list.active {
 .main .qq .qq-content .qq-exit li {
   position: relative;
   padding-left: 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .main .qq .qq-content .qq-exit li:not(:last-child) {
@@ -1161,7 +1186,7 @@ header .black-list.active {
 }
 
 .main .action .action-content li h3:before {
-  content: '';
+  content: "";
   position: absolute;
   width: 87px;
   height: 1px;
@@ -1216,6 +1241,18 @@ header .black-list.active {
 .card-right .slider-btn.default {
   border: 1px solid #1b559e;
   color: #1b559e;
+}
+
+.card-right .card-rightChoose {
+  display: none;
+  font-size: 12px;
+  line-height: 16px;
+  margin-top: 9px;
+}
+
+.card-right .card-rightChoose span {
+  color: #1b559e;
+  font-weight: 600;
 }
 
 .card-right .swiper-button-next,
@@ -1302,7 +1339,7 @@ header .black-list.active {
   width: 48px;
 }
 
-.card-right .block-times ul li:nth-child(5n+5) {
+.card-right .block-times ul li:nth-child(5n + 5) {
   margin-right: 0;
 }
 
@@ -1351,8 +1388,9 @@ header .black-list.active {
   padding: 23px 23px 25px 23px;
   margin: 8px 0 41px 0;
   border-radius: 4px;
-  -webkit-box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.05);
-          box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.05);
+  -webkit-box-shadow: 0 4px 3px 0 rgba(0, 0, 0, 0.03);
+          box-shadow: 0 4px 3px 0 rgba(0, 0, 0, 0.03);
+  border: solid 1px #e3e3e3;
   background-color: #ffffff;
 }
 
@@ -1366,18 +1404,33 @@ header .black-list.active {
   border-right: 1px solid #1b559e;
 }
 
+.results .search-fixed .search input:focus {
+  border: solid 1px #f15a22;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
 .results .search-fixed .search-date {
   margin: 0 16px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .results .search-fixed .search-date i {
   width: 10.5px;
   height: 9.5px;
   margin-left: 10px;
+  background: url(/arrow-search.svg);
+  background-size: cover;
 }
 
 .results .search-fixed .search input, .results .search-fixed .search-date, .results .search-fixed .search-btn {
   border-radius: 4px;
+}
+
+.results .search-fixed .search .search-form.mobile {
+  display: none;
 }
 
 .results .notarys .notarys-filter {
@@ -1424,6 +1477,57 @@ header .black-list.active {
   background: #fff;
 }
 
+.results .notarys .pagination {
+  text-align: center;
+}
+
+.results .notarys .pagination button {
+  height: 40px;
+  text-decoration: none;
+  border: none;
+  background: #fff;
+  border-radius: 4px;
+}
+
+.results .notarys .pagination button:first-child, .results .notarys .pagination button:nth-last-child(2) {
+  margin-right: 12px;
+}
+
+.results .notarys .pagination .page__num {
+  width: 40px;
+  margin-right: 22px;
+  color: #8e99a7;
+  border: solid 1px #8e99a7;
+}
+
+.results .notarys .pagination .page__num.active {
+  color: #dde0e3;
+  border: solid 1px #dde0e3;
+}
+
+.results .notarys .pagination .page__num.dots {
+  width: inherit;
+  border: none;
+  font-weight: 600;
+}
+
+.results .notarys .pagination .arrow__pag {
+  width: 72px;
+  border-radius: 4px;
+  background: #fff;
+  border: solid 1px #dde0e3;
+}
+
+.results .notarys .pagination .arrow__pag.active {
+  background-color: #1b559e;
+  border: none;
+}
+
+.results .notarys .pagination .arrow__pag.next {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
 .page {
   padding: 10px 0;
 }
@@ -1451,8 +1555,9 @@ header .black-list.active {
   margin-bottom: 10px;
   background: #fff;
   border-radius: 4px;
-  -webkit-box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05);
-          box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.05);
+  -webkit-box-shadow: 0 4px 3px 0 rgba(0, 0, 0, 0.03);
+          box-shadow: 0 4px 3px 0 rgba(0, 0, 0, 0.03);
+  border: solid 1px #e3e3e3;
 }
 
 .page .center-container {
@@ -1480,6 +1585,7 @@ header .black-list.active {
           box-shadow: inherit;
   padding: 24px 0 0 0;
   margin-bottom: 0;
+  border: none;
 }
 
 .page .left-container .notary-card.result-card .card-bottom {
@@ -1678,18 +1784,18 @@ header .black-list.active {
   color: #fff;
 }
 
-.page .right-container .sticky-sign .card-right.sign-date .block-times li:nth-child(5n+5) {
+.page .right-container .sticky-sign .card-right.sign-date .block-times li:nth-child(5n + 5) {
   margin-right: 12px;
 }
 
-.page .right-container .sticky-sign .card-right.sign-date .block-times li:nth-child(6n+6) {
+.page .right-container .sticky-sign .card-right.sign-date .block-times li:nth-child(6n + 6) {
   margin-right: 0;
 }
 
 .page .notarys-slider {
   margin: 20px 72px 0;
-  -webkit-transition: .3s;
-  transition: .3s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 .page .notarys-slider h2 {
@@ -1706,6 +1812,9 @@ header .black-list.active {
 .page .notarys-slider .notary-card.other-card {
   padding: 16px;
   margin-bottom: 0;
+  -webkit-box-shadow: 0 4px 3px 0 rgba(0, 0, 0, 0.03);
+          box-shadow: 0 4px 3px 0 rgba(0, 0, 0, 0.03);
+  border: solid 1px #e3e3e3;
 }
 
 .page .notarys-slider .notary-card.other-card .card-left .card-avatar .notary-avatar {
@@ -1750,8 +1859,8 @@ header .black-list.active {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-transition: .3s;
-  transition: .3s;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 .page .notarys-slider .swiper-slide-next {
@@ -1763,6 +1872,88 @@ header .black-list.active {
   -webkit-box-shadow: 0 4px 3px 0 rgba(0, 0, 0, 0.03);
           box-shadow: 0 4px 3px 0 rgba(0, 0, 0, 0.03);
   border: solid 2px #8e99a7;
+}
+
+.page .notarys-slider .street-buttons .street-prev,
+.page .notarys-slider .street-buttons .street-next {
+  background-size: 12px 24px;
+}
+
+.page .notarys-slider .street-buttons .street-prev {
+  left: 0;
+}
+
+.page .page-phone {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 28px 24px;
+}
+
+.page .page-phone .page__left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.page .page-phone .page__left h1 {
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 32px;
+  margin-right: 24px;
+}
+
+.page .page-phone .page__left p {
+  font-size: 16px;
+  line-height: 24%;
+}
+
+.page .page-phone .page__left p img {
+  margin-right: 8px;
+}
+
+.page .page-phone .page__left p:first-of-type {
+  margin-right: 32px;
+}
+
+.page .page-phone .page__right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.page .page-phone .page__right .page-arrows {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.page .page-phone .page__right .page-arrows img {
+  margin-right: 18px;
+}
+
+.page .page-phone .page__right .page-arrows img:last-of-type {
+  margin-right: 24px;
+}
+
+.page .page-phone .page__right button {
+  font-size: 16px;
+  line-height: 24px;
+  width: 250px;
+  height: 52px;
+  border-radius: 4px;
+  border: none;
+  color: #fff;
+  background-color: #1b559e;
 }
 
 .notes.results {
@@ -1910,6 +2101,7 @@ header .black-list.active {
 
 .profile form .form-box {
   position: relative;
+  margin-bottom: 8px;
 }
 
 .profile form .form-box input {
@@ -1919,7 +2111,6 @@ header .black-list.active {
   border: solid 1px #8e99a7;
   color: #000;
   padding: 8px 16px;
-  margin-bottom: 8px;
 }
 
 .profile form .btn-profile {

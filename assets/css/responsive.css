@@ -5,20 +5,30 @@
 }
 
 @media (max-width: 1010px) {
-
   .header__menu,
   .header__right {
     display: none;
   }
-
   header .header__hum {
     display: block;
   }
-
   header .header__nav.active {
     display: block;
   }
-
+  .card-right {
+    max-width: 260px;
+  }
+  .card-right .slider-days .swiper-container {
+    width: 260px;
+  }
+  .card-right .block-times ul li,
+  .card-right .block-times ul li:nth-child(5n + 5) {
+    margin-right: 4px;
+  }
+  .card-right .block-times ul li:nth-child(4n + 4),
+  .card-right .block-times ul li:nth-child(5n + 5):nth-child(4n + 4) {
+    margin-right: 0px;
+  }
   footer .wrap .footer__navs .footer__nav:first-child {
     padding-right: 20px;
   }
@@ -26,28 +36,44 @@
 
 @media (max-width: 780px) {
   .sugg-convert {
-    max-width: 250px;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
-
   .main .intro .sugg-new .sugg-boxes {
-    flex-direction: column;
-    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
-
+  .main .intro .sugg-new .sugg-box {
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+  }
   .main .intro .sugg-new .sugg-boxes .sugg-box:not(:last-child) {
     margin-right: 0;
     margin-bottom: 16px;
   }
-
   .main .benefits .note-boxes .note-box {
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
-
+  .main .benefits .note-boxes .note-box:last-child {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+  }
   .main .benefits .note-boxes .note-box:first-child {
     margin-bottom: 0;
   }
-
   .main .benefits .note-boxes .note-box .note-1,
   .main .benefits .note-boxes .note-box .note-2,
   .main .benefits .note-boxes .note-box .note-3,
@@ -57,9 +83,20 @@
     padding: 20px 24px 14px;
     margin-bottom: 16px;
   }
-
   .main .benefits .note-boxes .note-box .note-1,
   .main .benefits .note-boxes .note-box .note-4 {
+    border: solid 1px #e3e3e3;
+  }
+  .notarys .notary-list .notary-card .card-left {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .notary-list .notary-card {
+    border-radius: 4px;
+    -webkit-box-shadow: 0 4px 3px 0 rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 3px 0 rgba(0, 0, 0, 0.1);
     border: solid 1px #e3e3e3;
   }
 }
@@ -68,19 +105,19 @@
   header .v--modal-overlay .v--modal-box {
     top: 150px !important;
   }
-
   .main .action .action-content {
-    column-count: 2;
+    -webkit-column-count: 2;
+            column-count: 2;
   }
-
   footer {
     padding-bottom: 25px;
   }
-
   footer .wrap .footer__navs {
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
-
   footer .wrap .footer__navs .footer__nav:first-child {
     padding-right: 0;
     padding-bottom: 16px;
@@ -91,84 +128,115 @@
   header {
     height: 70px;
   }
-
   header .header__left .header__logo {
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
-
   header .header__left .header__logo a {
     padding-top: 0;
     height: 32px;
     width: 35px;
   }
-
   header .header__left .header__logo a img {
     width: 100%;
   }
-
   header .header__left .header__logo p {
     font-size: 16px;
     line-height: 16px;
     font-weight: 500;
   }
-
   header .header__left .header__logo-title .header__counter {
     padding-top: 0;
     font-size: 12px;
   }
-
   .main__section {
     margin: 42px auto;
   }
-
+  .main__section .section-title {
+    font-size: 30px;
+    line-height: 30px;
+  }
   .search-form {
     height: auto;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
-
   .search-form .search-date,
   .search-formDate .search-date {
     border-radius: 0 4px 4px 0;
   }
-
+  .results .search-fixed .search-date {
+    margin-right: 0;
+  }
+  .results .modal-record .v--modal {
+    width: 100% !important;
+    left: 0 !important;
+  }
   .search-form .search-btn {
     border-radius: 4px;
     margin-top: 8px;
   }
-
   .main .intro .search-example {
     display: none;
   }
-
   .search-form .date-dropdown,
   .search-formDate .date-dropdown {
     left: -30px;
   }
-
   footer .wrap {
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
-
   footer .wrap .footer__left .footer__info,
   footer .wrap .footer__left .footer__dev {
     display: none;
   }
-
   footer .wrap .footer__right {
     margin-top: 34px;
   }
-
   footer .wrap .footer__infoDev {
     display: block;
     margin-top: 16px;
   }
-
   footer .wrap .footer__infoDev .footer__dev {
     padding-top: 8px;
   }
 }
 
+@media (max-width: 590px) {
+  .results .search-fixed .search-title {
+    font-size: 20px;
+    line-height: 24px;
+  }
+  .card-right {
+    max-width: 100%;
+    margin-top: 8px;
+  }
+  .card-right .slider-days .swiper-container {
+    width: auto;
+  }
+  .card-right .block-times ul li:nth-child(4n + 4) {
+    margin-right: 4px;
+  }
+  .search .search-top .search-icons {
+    display: none;
+  }
+  .notary-list .notary-card {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+
 @media (max-width: 480px) {
+  .main__section .v--modal-overlay .v--modal-box,
+  .modalBottom.v--modal-overlay .v--modal-box,
   header .v--modal-overlay .v--modal-box {
     position: absolute;
     width: 100% !important;
@@ -176,12 +244,337 @@
     left: 0 !important;
     bottom: 0;
   }
-
-  .default .content-wrapper {
+  header .header__hum .menu-link span {
+    width: 24px;
+  }
+  .main .main__section .section-title {
+    font-size: 14px;
+    line-height: 16px;
+    margin-bottom: 12px;
+  }
+  .main .intro .sugg-new {
+    margin: 32px 0 0 0;
+  }
+  .main .intro .sugg-new .sugg-title {
+    padding-bottom: 21px;
+  }
+  .main .intro .sugg-new .sugg-box .sugg-img img {
+    width: 40px;
+    height: 40px;
+  }
+  .main .intro .sugg-new .sugg-box .sugg-info {
+    font-size: 12px;
+    line-height: 16px;
+  }
+  .main .intro .search {
+    margin: 0;
+  }
+  .main .intro .search .search-formDate {
+    height: 32px;
+  }
+  .main .intro .search .search-btn {
+    line-height: 32px;
+    font-weight: 500;
+  }
+  .main .intro .search .search-form .date-dropdown,
+  .main .intro .search .search-formDate .date-dropdown {
+    display: none;
+  }
+  .main .intro .search .search-date p {
+    display: none;
+  }
+  .main .intro .search .search-date {
+    min-width: inherit;
+  }
+  .main .intro .search .search-date img {
+    display: block;
+    padding: 0 8px;
+  }
+  .main .benefits .note-boxes .note-box .note-title {
+    font-size: 14px;
+    line-height: 16px;
+    margin-bottom: 9px;
+  }
+  .main .benefits .note-boxes .note-box .note-1 .note-title .note-stars {
+    padding-left: 10px;
+  }
+  .main .benefits .note-boxes .note-box .note-title img {
+    width: 10px;
+    height: 10px;
+  }
+  .main .benefits .note-boxes .note-box .note-info {
+    font-size: 12px;
+    line-height: 16px;
+  }
+  .main .default .content-wrapper {
     padding: 0 25px;
   }
-
   .main .action .action-content {
-    column-count: 1;
+    -webkit-column-count: 1;
+            column-count: 1;
+  }
+  .main .faq .accordion {
+    margin-top: 0;
+  }
+  .main .faq .accordion .accordion-item {
+    margin-bottom: 8px;
+  }
+  .main .faq .accordion .accordion-item .accordion-item-head {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+  .main .faq .accordion .accordion-item .accordion-item-head h3 {
+    font-size: 12px;
+    line-height: 16px;
+  }
+  .main .faq .accordion .accordion-item .accordion-item-head svg {
+    min-width: 20px;
+    min-height: 20px;
+    margin: 0 14px;
+  }
+  .main .faq .accordion .accordion-item .accordion-item-head.active + .accordion-item-body {
+    font-size: 12px;
+    line-height: 16px;
+    padding: 0 30px 12px;
+  }
+  .main .faq .qq .qq-content .qq-links {
+    margin: 0 0 16px;
+  }
+  .main .faq .qq .qq-content a {
+    font-size: 12px;
+    line-height: 16px;
+  }
+  .main .faq .action .action-content li h3,
+  .main .faq .action .action-content li a {
+    font-size: 12px;
+    line-height: 16px;
+  }
+  .results .search-fixed .search {
+    margin-right: -15px;
+    margin-left: -15px;
+    margin-bottom: 12px;
+    -webkit-box-shadow: 0 4px 3px 0 rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 3px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 0;
+  }
+  .results .search-fixed .search input {
+    font-size: 12px;
+  }
+  .results .search-fixed .search-title {
+    font-size: 14px;
+    line-height: 16px;
+    padding-bottom: 16px;
+  }
+  .results .search-fixed .search-title span {
+    color: #8e99a7;
+  }
+  .results .results__section .search-form {
+    display: none;
+  }
+  .results .search-fixed .search .search-form.mobile {
+    display: block;
+  }
+  .results .search-fixed .search .search-form.mobile .search-formDate,
+  .results .search-fixed .search .search-form.mobile .search-bottomMobile {
+    height: 32px;
+  }
+  .results .search-fixed .search .search-form.mobile .search-formDate input {
+    border-radius: 4px 0 0 4px;
+  }
+  .results .search-fixed .search .search-form.mobile .search-formDate .search-btn {
+    min-width: 64px;
+    line-height: 16px;
+    font-weight: 500;
+    margin-top: 0;
+    border-radius: 0 4px 4px 0;
+  }
+  .results .search-fixed .search .search-form.mobile .search-bottomMobile {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-top: 8px;
+  }
+  .results .search-fixed .search .search-form.mobile .search-bottomMobile .search-date {
+    width: 100%;
+    height: 100%;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    padding: 0 16px;
+    margin-right: 16px;
+    font-weight: 500;
+    margin-left: 0;
+  }
+  .results .search-fixed .search .search-form.mobile .search-bottomMobile .filter {
+    cursor: pointer;
+  }
+  .results .notarys .notarys-filter {
+    display: none;
+  }
+  .results .notarys .notary-list .notary-card {
+    padding: 8px;
+  }
+  .results .notarys .notary-list .notary-card .card-left .card-avatar {
+    padding-right: 0;
+    position: relative;
+  }
+  .results .notarys .notary-list .notary-card .card-left .card-avatar .notary-avatar {
+    width: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+  .results .notarys .notary-list .notary-card .card-left .card-avatar .card-rev {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    position: absolute;
+    bottom: 0;
+    background: #fff;
+    padding: 0 3px;
+    margin: 0 0 12px 8px;
+    border-radius: 4px;
+  }
+  .results .notarys .notary-list .notary-card .card-left .card-avatar .card-rev .notary-stars {
+    height: 10px;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .results .notarys .notary-list .notary-card .card-left .card-avatar .card-rev .notary-stars img {
+    width: 10px;
+    height: 10px;
+  }
+  .results .notarys .notary-list .notary-card .card-left .card-avatar .card-rev .rev a {
+    font-size: 10px;
+    line-height: 16px;
+    padding-left: 4px;
+  }
+  .results .notarys .notary-list .notary-card .card-left .card-avatar .card-rev .rev a span {
+    display: none;
+  }
+  .results .notarys .notary-list .notary-card .card-left .card-center .card-spec {
+    font-size: 12px;
+    line-height: 16px;
+  }
+  .results .notarys .notary-list .notary-card .card-left .card-center .card-name {
+    font-size: 14px;
+    line-height: 16px;
+    font-weight: 600;
+  }
+  .results .notarys .notary-list .notary-card .card-left .card-center .card-year {
+    font-size: 12px;
+    line-height: 16px;
+    margin-top: 8px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #dde0e3;
+  }
+  .results .notarys .notary-list .notary-card .card-left .card-center .card-subway {
+    margin-top: 11px;
+  }
+  .results .notarys .notary-list .notary-card .card-left .card-center .card-subway .subway-item {
+    font-size: 12px;
+    line-height: 16px;
+  }
+  .results .notarys .notary-list .notary-card .card-left .card-center .card-subway .subway-item .subway-step {
+    font-size: 10px;
+    line-height: 16px;
+    padding-left: 3px;
+  }
+  .results .notarys .notary-list .notary-card .card-left .card-center .card-subway .subway-item .subway-step img {
+    width: 6px;
+    height: 8px;
+  }
+  .results .notarys .notary-list .notary-card .card-left .card-center .card-adress {
+    font-size: 12px;
+  }
+  .results .notarys .notary-list .notary-card .card-right {
+    max-width: 100%;
+  }
+  .results .notarys .notary-list .notary-card .card-right .card-rightChoose {
+    display: block;
+  }
+  .results .notarys .notary-list .notary-card .card-right .slider-month,
+  .results .notarys .notary-list .notary-card .card-right .slider-days {
+    display: none;
+  }
+  .results .notarys .notary-list .notary-card .card-right .block-times ul li {
+    margin-bottom: 8px;
+  }
+  .results .notarys .notary-list .notary-card .card-right .block-times ul li .slider-btn {
+    font-size: 12px;
+    height: 24px;
+    line-height: 24px;
+  }
+  .results .notarys .notary-list .notary-card .card-right .block-times {
+    border: none;
+    margin: 0;
+  }
+  .results .notarys .notary-list .notary-card .card-right .block-times ul li:nth-child(4n + 4) {
+    margin-right: 4px;
+  }
+  .results .notarys .notary-list .notary-card .card-right .error p {
+    font-size: 12px;
+    padding-left: 8px;
+  }
+  .results .modal-record .v--modal {
+    width: 100% !important;
+    height: 100% !important;
+    top: inherit !important;
+    left: 0 !important;
+    bottom: 0;
+  }
+  .results .modal-record .v--modal .modal-body.notary-list .notary-card .card-left .card-center .card-name {
+    font-size: 14px;
+    line-height: 16px;
+  }
+  .profile {
+    padding-top: 24px;
+  }
+  .profile .profile-title {
+    font-size: 14px;
+    line-height: 16px;
+    padding-bottom: 24px;
+  }
+  .profile form .form-box input {
+    height: 32px;
+    font-size: 12px;
+    line-height: 16px;
+  }
+  .profile form .btn-profile .profile-save {
+    height: 40px;
+    width: 136px;
+  }
+  footer {
+    padding-bottom: 5px;
+  }
+  footer .wrap .footer__left .footer__logo {
+    font-size: 14px;
+    line-height: 16px;
+  }
+  footer .wrap .footer__navs .footer__list li {
+    font-size: 12px;
+    line-height: 16px;
+  }
+  footer .wrap .footer__navs .footer__list li:not(:last-child) {
+    padding-bottom: 8px;
+  }
+  footer .wrap .footer__right {
+    font-size: 12px;
+  }
+  footer .wrap .footer__left .footer__info,
+  footer .wrap .footer__left .footer__dev,
+  footer .wrap .footer__infoDev .footer__info,
+  footer .wrap .footer__infoDev .footer__dev {
+    font-size: 10px;
+  }
+  footer .wrap .footer__infoDev .footer__dev {
+    padding-top: 4px;
   }
 }
+/*# sourceMappingURL=responsive.css.map */
