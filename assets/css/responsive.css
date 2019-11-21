@@ -150,10 +150,14 @@
     padding-top: 0;
     font-size: 12px;
   }
-  .main__section {
+  .main .map #map {
+    height: 340px;
+  }
+  .main__section, .result__section.map {
     margin: 42px auto;
   }
-  .main__section .section-title {
+  .main .section-title,
+  .results .section-title {
     font-size: 30px;
     line-height: 30px;
   }
@@ -348,6 +352,9 @@
   .main .faq .action .action-content li a {
     font-size: 12px;
     line-height: 16px;
+  }
+  .main .map {
+    display: none;
   }
   .results .search-fixed .search {
     margin-right: -15px;

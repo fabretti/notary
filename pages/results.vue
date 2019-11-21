@@ -297,6 +297,18 @@
           </button>
         </div>
       </div>
+      <div class="result__section map">
+      <div class="container">
+        <div class="map-title section-title">Все нотариусы на карте</div>
+        <div id="map">
+        <yandex-map :coords="coords" zoom="12">
+          <ymap-marker :coords="coords" marker-id="1" marker-type="placemark" />
+          <ymap-marker :coords="coords" marker-id="2" marker-type="placemark" />
+          <ymap-marker :coords="coords" marker-id="3" marker-type="placemark" />
+        </yandex-map>
+        </div>
+      </div>
+    </div>
       <client-only>
         <modal class="modal modal-record" name="modalRecord" height="auto">
           <div class="modal-header">
@@ -775,7 +787,20 @@ export default {
       slidesOffsetBefore: 25,
       slidesOffsetAfter: 25,
       spaceBetween: 45
-    }
+    },
+    coords: [55.778328, 37.674699],
+    placemarks: [
+      {
+        coords: [55.782800, 37.645904],
+        properties: {
+          balloonContentBody: "asdfd",
+          balloonContentFooter: "1",
+          balloonContentHeader: "1"
+        },
+        clusterName: "1",
+        markerId: "1"
+      },
+    ]
   })
 };
 </script>

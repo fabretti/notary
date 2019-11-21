@@ -603,9 +603,13 @@
     <div class="main__section map">
       <div class="container">
         <div class="map-title section-title">Все нотариусы на карте</div>
-        <yandex-map :coords="coords" zoom="10">
-          <ymap-marker :coords="coords" marker-id="123123" marker-type="placemark" />
+        <div id="map">
+        <yandex-map :coords="coords" zoom="12">
+          <ymap-marker :coords="coords" marker-id="1" marker-type="placemark" />
+          <ymap-marker :coords="coords" marker-id="2" marker-type="placemark" />
+          <ymap-marker :coords="coords" marker-id="3" marker-type="placemark" />
         </yandex-map>
+        </div>
       </div>
     </div>
   </section>
@@ -614,10 +618,10 @@
 export default {
   data: () => ({
     show: false,
-    coords: [54.82896654088406, 39.831893822753904],
+    coords: [55.778328, 37.674699],
     placemarks: [
       {
-        coords: [54.82896654088406, 39.831893822753904],
+        coords: [55.782800, 37.645904],
         properties: {
           balloonContentBody: "asdfd",
           balloonContentFooter: "1",
@@ -626,26 +630,6 @@ export default {
         clusterName: "1",
         markerId: "1"
       },
-      {
-        coords: [54.82796654088306, 39.831893822753904],
-        properties: {
-          balloonContentBody: "asdfasdf",
-          balloonContentFooter: "1",
-          balloonContentHeader: "1"
-        },
-        clusterName: "1",
-        markerId: "2"
-      },
-      {
-        coords: [54.82996654088506, 39.831893822753904],
-        properties: {
-          balloonContentBody: "asdfasdf",
-          balloonContentFooter: "1",
-          balloonContentHeader: "1"
-        },
-        clusterName: "1",
-        markerId: "3"
-      }
     ]
   }),
   methods: {

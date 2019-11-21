@@ -84,6 +84,107 @@
                       <div class="card-adress">г. Москва, ул. 2-я Кабельная, д.2, стр. 14</div>
                     </div>
                   </div>
+                  <div class="card-center">
+                    <div class="sign-map">
+                      <h2>Запишитесь на прием</h2>
+                    </div>
+                    <div class="card-right sign-date">
+                      <div class="slider-month">
+                        <client-only>
+                          <swiper :options="swiperOption1">
+                            <swiper-slide>Сентябрь</swiper-slide>
+                            <swiper-slide>Октябрь</swiper-slide>
+                            <swiper-slide>Ноябрь</swiper-slide>
+                            <div class="swiper-button-prev" slot="button-prev"></div>
+                            <div class="swiper-button-next" slot="button-next"></div>
+                          </swiper>
+                        </client-only>
+                      </div>
+                      <div class="slider-days">
+                        <client-only>
+                          <carousel :navigationEnabled="true" perPage="4" navigationNextLabel="<i class='material-icons'><img src='/Polygon.svg'></i>">
+                            <slide>
+                              <div class="slider-btn btn-day active">Вт, 24</div>
+                            </slide>
+                            <slide>
+                              <div class="slider-btn btn-day disabled">Вт, 24</div>
+                            </slide>
+                            <slide>
+                              <div class="slider-btn btn-day default">Вт, 24</div>
+                            </slide>
+                            <slide>
+                              <div class="slider-btn btn-day default">Вт, 24</div>
+                            </slide>
+                            <slide>
+                              <div class="slider-btn btn-day default">Вт, 24</div>
+                            </slide>
+                          </carousel>
+                          <!-- <swiper :options="swiperOption2">
+                            <swiper-slide>
+                              <div class="slider-btn btn-day active">Вт, 24</div>
+                            </swiper-slide>
+                            <swiper-slide>
+                              <div class="slider-btn btn-day disabled">Ср, 25</div>
+                            </swiper-slide>
+                            <swiper-slide>
+                              <div class="slider-btn btn-day default">Чт, 26</div>
+                            </swiper-slide>
+                            <swiper-slide>
+                              <div class="slider-btn btn-day default">Пт, 27</div>
+                            </swiper-slide>
+                            <swiper-slide>
+                              <div class="slider-btn btn-day default">Сб, 28</div>
+                            </swiper-slide>
+                            <swiper-slide>
+                              <div class="slider-btn btn-day default">Сб, 28</div>
+                            </swiper-slide>
+                            <div class="swiper-button-prev" slot="button-prev"></div>
+                            <div class="swiper-button-next" slot="button-next"></div>
+                          </swiper> -->
+                        </client-only>
+                      </div>
+                      <div class="fix__time">
+                        <ul>
+                          <li>
+                            <div class="fix__time-btn">15:30</div>
+                          </li>
+                          <li>
+                            <div class="fix__time-btn">16:30</div>
+                          </li>
+                          <li>
+                            <div class="fix__time-btn none">—</div>
+                          </li>
+                          <li>
+                            <div class="fix__time-btn none">—</div>
+                          </li>
+                          <li>
+                            <div class="fix__time-btn">17:30</div>
+                          </li>
+                          <li>
+                            <div class="fix__time-btn">18:30</div>
+                          </li>
+                          <li>
+                            <div class="fix__time-btn">19:30</div>
+                          </li>
+                          <li>
+                            <div class="fix__time-btn">20:30</div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <carousel :navigationEnabled="true"
+                    navigationNextLabel="<i class='material-icons'><img src='/Polygon.svg'></i>">
+                      <slide>
+                        Slide 1 Content
+                      </slide>
+                      <slide>
+                        Slide 2 Content
+                      </slide>
+                      <slide>
+                        Slide 23 Content
+                      </slide>
+                      </carousel>
+                  </div>
                   <div class="card-bottom">
                     <h2>Информация о нотариусе</h2>
                     <div class="info-notary">
@@ -209,63 +310,73 @@
               <div class="card-right sign-date">
                 <div class="slider-month">
                   <client-only>
-                    <swiper :options="swiperOption1">
-                      <swiper-slide>Сентябрь</swiper-slide>
-                      <swiper-slide>Октябрь</swiper-slide>
-                      <swiper-slide>Ноябрь</swiper-slide>
-                      <div class="swiper-button-prev" slot="button-prev"></div>
-                      <div class="swiper-button-next" slot="button-next"></div>
-                    </swiper>
+                    <carousel :paginationEnabled="false" :navigationEnabled="true" :perPage="1" navigationNextLabel="<i class='material-icons'><img src='/Polygon.svg'></i>"
+                    navigationPrevLabel="<i class='material-icons'><img src='/PolygonL.svg'></i>">
+                      <slide>
+                        <div>Октябрь</div>
+                      </slide>
+                      <slide>
+                        <div>Ноябрь</div>
+                      </slide>
+                      <slide>
+                        <div>Декабрь</div>
+                      </slide>
+                    </carousel>
                   </client-only>
                 </div>
                 <div class="slider-days">
                   <client-only>
-                    <swiper :options="swiperOption2">
-                      <swiper-slide>
-                        <div class="slider-btn btn-day active">Вт, 24</div>
-                      </swiper-slide>
-                      <swiper-slide>
-                        <div class="slider-btn btn-day disabled">Ср, 25</div>
-                      </swiper-slide>
-                      <swiper-slide>
-                        <div class="slider-btn btn-day default">Чт, 26</div>
-                      </swiper-slide>
-                      <swiper-slide>
-                        <div class="slider-btn btn-day default">Пт, 27</div>
-                      </swiper-slide>
-                      <swiper-slide>
-                        <div class="slider-btn btn-day default">Сб, 28</div>
-                      </swiper-slide>
-                      <swiper-slide>
-                        <div class="slider-btn btn-day default">Сб, 28</div>
-                      </swiper-slide>
-                      <div class="swiper-button-prev" slot="button-prev"></div>
-                      <div class="swiper-button-next" slot="button-next"></div>
-                    </swiper>
+                    <carousel :paginationEnabled="false" :navigationEnabled="true" :perPage="5" navigationNextLabel="<i class='material-icons'><img src='/Polygon.svg'></i>"
+                    navigationPrevLabel="<i class='material-icons'><img src='/PolygonL.svg'></i>">
+                            <slide>
+                              <div class="slider-btn btn-day active">Вт, 24</div>
+                            </slide>
+                            <slide>
+                              <div class="slider-btn btn-day disabled">Вт, 24</div>
+                            </slide>
+                            <slide>
+                              <div class="slider-btn btn-day default">Вт, 24</div>
+                            </slide>
+                            <slide>
+                              <div class="slider-btn btn-day default">Вт, 24</div>
+                            </slide>
+                            <slide>
+                              <div class="slider-btn btn-day default">Вт, 24</div>
+                            </slide>
+                            <slide>
+                              <div class="slider-btn btn-day default">Вт, 24</div>
+                            </slide>
+                            <slide>
+                              <div class="slider-btn btn-day default">Вт, 24</div>
+                            </slide>
+                          </carousel>
                   </client-only>
                 </div>
-                <div class="block-times">
+                <div class="fix__time">
                   <ul>
                     <li>
-                      <div class="slider-btn btn-time default">15:30</div>
+                      <div class="fix__time-btn">15:30</div>
                     </li>
                     <li>
-                      <div class="slider-btn btn-time default">16:30</div>
+                      <div class="fix__time-btn">16:30</div>
                     </li>
                     <li>
-                      <div class="slider-btn btn-time default">17:30</div>
+                      <div class="fix__time-btn none">—</div>
                     </li>
                     <li>
-                      <div class="slider-btn btn-time default">18:30</div>
+                      <div class="fix__time-btn none">—</div>
                     </li>
                     <li>
-                      <div class="slider-btn btn-time default">19:30</div>
+                      <div class="fix__time-btn">17:30</div>
                     </li>
                     <li>
-                      <div class="slider-btn btn-time default">20:30</div>
+                      <div class="fix__time-btn">18:30</div>
                     </li>
                     <li>
-                      <div class="slider-btn btn-time default">21:30</div>
+                      <div class="fix__time-btn">19:30</div>
+                    </li>
+                    <li>
+                      <div class="fix__time-btn">20:30</div>
                     </li>
                   </ul>
                 </div>

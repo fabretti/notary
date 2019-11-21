@@ -8,8 +8,7 @@ module.exports = {
    */
   head: {
     title: "project",
-    meta: [
-      {
+    meta: [{
         charset: "utf-8"
       },
       {
@@ -22,24 +21,19 @@ module.exports = {
         content: "Nuxt.js project"
       }
     ],
-    link: [
-      {
+    link: [{
         rel: "icon",
         type: "image/x-icon",
         href: "/favicon.ico"
       },
       {
         rel: "stylesheet",
-        href:
-          "https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap"
+        href: "https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap"
       }
     ],
-    script: [
-      {
-        src:
-          "https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"
-      }
-    ]
+    script: [{
+      src: "https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"
+    }]
   },
   /*
    ** Customize the progress bar color
@@ -54,7 +48,10 @@ module.exports = {
     /*
      ** Run ESLint on save
      */
-    extend(config, { isDev, isClient }) {
+    extend(config, {
+      isDev,
+      isClient
+    }) {
       if (isDev && isClient) {
         config.module.rules.push({
           enforce: "pre",
@@ -65,24 +62,22 @@ module.exports = {
       }
     }
   },
-  plugins: [
-    {
-      src: "~/plugins/slider.js",
-      mode: "client"
-    },
-    {
-      src: "~/plugins/modal.js",
-      mode: "client"
-    },
-    {
-      src: "~/plugins/inputmask.js",
-      mode: "client"
-    },
-    {
-      src: "~/plugins/map.js",
-      mode: "client"
-    }
-  ],
+  plugins: [{
+    src: "~/plugins/slider.js",
+    mode: "client"
+  }, {
+    src: "~/plugins/modal.js",
+    mode: "client"
+  }, {
+    src: "~/plugins/inputmask.js",
+    mode: "client"
+  }, {
+    src: "~/plugins/map.js",
+    mode: "client"
+  }, {
+    src: "~/plugins/vueCarousel.js",
+    mode: "client"
+  }, ],
   css: [
     "~assets/css/style.css",
     "~assets/css/modals.css",

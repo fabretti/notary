@@ -37,7 +37,7 @@ button {
     cursor: pointer;
 
     &.active {
-      background-color: #1b559e;
+      background-color: #f15a22;
       color: #fff;
     }
 
@@ -138,6 +138,7 @@ footer .wrap {
     border-right: none;
     padding-left: 16px;
     border-radius: 4px 0 0 4px;
+
     &:focus {
       border: solid 1px #f15a22;
       border-right: 0;
@@ -162,10 +163,12 @@ footer .wrap {
     justify-content: center;
     background: #f15a22;
     box-shadow: 0 8px 25px 0 rgba(241, 90, 34, 0.15);
+
     &:hover {
       background-color: #e85516;
       transition: 0.3s;
     }
+
     p {
       display: flex;
       align-items: center;
@@ -207,16 +210,20 @@ footer .wrap {
 }
 
 .notary-list {
+  margin-bottom: 30px;
   .notary-card {
     display: inline-flex;
     justify-content: space-between;
     width: 100%;
-    margin-bottom: 24px;
     padding: 24px 24px 14px 24px;
     background: #fff;
     border-radius: 4px;
     box-shadow: 0 4px 3px 0 rgba(0, 0, 0, 0.03);
     border: solid 1px #e3e3e3;
+
+    &:not(:last-child) {
+      margin-bottom: 24px;
+    }
 
     .card-left {
       display: flex;
@@ -630,16 +637,7 @@ header {
 
   &__section {
     max-width: 864px;
-    margin: 135px auto;
-
-    .section-title {
-      font-size: 36px;
-      margin-bottom: 24px;
-      line-height: 40px;
-      font-weight: 600;
-      text-align: center;
-      color: #171e2b;
-    }
+    margin: 110px auto;
   }
 
   .intro {
@@ -1069,18 +1067,34 @@ header {
       }
     }
   }
-
+}
+.main,
+.results {
+  .section-title {
+    font-size: 36px;
+    margin-bottom: 24px;
+    line-height: 40px;
+    font-weight: 600;
+    text-align: center;
+    color: #171e2b;
+  }
   .map {
-    .map-img {
-      max-width: 100%;
+    margin: 110px auto;
+    #map {
+      height: 456px;
+    }
 
-      img {
-        width: 100%;
+    .ymap-container {
+      height: 100%;
+
+      .ymaps-2-1-74-controls__control,
+      .ymaps-2-1-74-controls__toolbar,
+      .controller {
+        display: none;
       }
     }
   }
 }
-
 // Слайдер от results
 .card-right {
   @include slider-btn;
@@ -1097,68 +1111,40 @@ header {
       font-weight: 600;
     }
   }
-
-  .swiper-button-next,
-  .swiper-container-rtl .swiper-button-prev {
-    background-image: url("/Polygon.svg");
+  .VueCarousel-navigation-button {
+    outline: none;
   }
-
-  .swiper-button-prev,
-  .swiper-container-rtl .swiper-button-next {
-    background-image: url("/PolygonL.svg");
-  }
-
-  .swiper-button-prev,
-  .swiper-button-next {
-    width: 8px;
-    height: 15px;
-    margin-top: 0;
-    transform: translate(0, -50%);
-    background-size: inherit;
-  }
-
   .slider-month {
     cursor: pointer;
-
-    .swiper-container {
-      width: 130px;
-
-      .swiper-slide {
-        font-size: 16px;
-        line-height: 24px;
-        font-weight: 600;
-        color: #2d333d;
+    width: 80px;
+    margin: 0 auto;
+    .material-icons {
+      display: flex;
+      align-items: center;
+    }
+    div {
+      font-size: 16px;
+      line-height: 24px;
+      color: #1b559e;
+      img {
+        height: 9px;
+        width: 5px;
+        object-fit: cover;
       }
     }
   }
 
   .slider-days {
-    margin-top: 17px;
+    margin: 17px 40px 0;
 
-    .swiper-container {
-      width: 340px;
-    }
-
-    .swiper-button-prev,
-    .swiper-button-next,
-    .swiper-button-prev.swiper-button-disabled,
-    .swiper-button-next.swiper-button-disabled {
-      background-color: #fff;
-      height: 33px;
-      width: 20px;
-    }
-
-    .swiper-button-prev {
-      left: 0;
-    }
-
-    .swiper-button-next {
-      right: 0;
-      box-shadow: -18px 0px 21px 0px rgba(255, 255, 255, 1);
+    .VueCarousel-slide {
+      display: flex;
+      justify-content: center;
     }
   }
 
-  .block-times {
+  .block-times,
+  .fix__time {
     padding-top: 8px;
     margin: 8px 26px 0;
     border-top: 1px solid #dde0e3;
@@ -1169,7 +1155,6 @@ header {
 
       li {
         margin: 0 12px 16px 0;
-
         .btn-time {
           width: 48px;
         }
@@ -1181,6 +1166,36 @@ header {
     }
   }
 
+  .fix__time {
+    ul {
+      justify-content: space-between;
+      column-gap: 26px;
+      column-count: 4;
+      .fix__time-btn {
+        height: 32px;
+        width: 72px;
+        line-height: 32px;
+        border-radius: 4px;
+        color: #fff;
+        background-color: #1b559e;
+
+        &.none {
+          color: #dde0e3;
+          background-color: #fff;
+          border: 1px solid #dde0e3;
+          line-height: 28px;
+        }
+      }
+      li {
+        &:nth-child(4n + 4) {
+          margin-right: 0;
+        }
+        &:nth-child(5n + 5) {
+          margin-right: 12px;
+        }
+      }
+    }
+  }
   .error {
     display: flex;
 
@@ -1194,11 +1209,6 @@ header {
       padding-left: 10px;
     }
   }
-}
-
-.swiper-slide {
-  display: flex;
-  justify-content: center;
 }
 
 .wrap {
@@ -1231,6 +1241,7 @@ header {
       input {
         border-right: 1px solid #1b559e;
       }
+
       input:focus {
         border: solid 1px #f15a22;
         transition: 0.3s;
@@ -1264,7 +1275,7 @@ header {
   .notarys {
     .notarys-filter {
       display: flex;
-      margin-bottom: 10px;
+      margin: 0 0 10px 24px;
 
       .checkbox {
         margin-right: 16px;
@@ -1282,7 +1293,7 @@ header {
           display: block;
           font-weight: 300;
           position: relative;
-          margin-left: 31px;
+          margin-left: 26px;
           cursor: pointer;
           border-bottom: 1px solid transparent;
 
@@ -1407,7 +1418,20 @@ header {
       padding: 24px 0 0 0;
       margin-bottom: 0;
       border: none;
-
+      .card-center {
+        .sign-map {
+          width: 100%;
+          height: 40px;
+          border-radius: 4px 4px 0 0;
+          background-color: #1b559e;
+          h2 {
+            color: #fff;
+            text-align: center;
+            font-weight: 600;
+            padding: 11px 0;
+          }
+        }
+      }
       .card-bottom {
         padding: 28px 0;
         border-bottom: solid 1px #f2f2f2;
@@ -1599,7 +1623,7 @@ header {
   }
 
   .notarys-slider {
-    margin: 20px 72px 0;
+    margin: 20px 0;
     transition: 0.3s;
 
     h2 {
@@ -1610,7 +1634,7 @@ header {
     }
 
     .swiper-container {
-      padding: 40px 0;
+      padding: 40px 70px;
     }
 
     .notary-card.other-card {
@@ -1679,52 +1703,65 @@ header {
         border: solid 2px #8e99a7;
       }
     }
+
     .street-buttons {
       .street-prev,
       .street-next {
         background-size: 12px 24px;
       }
+
       .street-prev {
         left: 0;
       }
     }
   }
+
   .page-phone {
     display: flex;
     justify-content: space-between;
     margin: 28px 24px;
+
     .page__left {
       display: flex;
       align-items: center;
+
       h1 {
         font-size: 24px;
         font-weight: 500;
         line-height: 32px;
         margin-right: 24px;
       }
+
       p {
         font-size: 16px;
         line-height: 24%;
+
         img {
           margin-right: 8px;
         }
+
         &:first-of-type {
           margin-right: 32px;
         }
       }
     }
+
     .page__right {
       display: flex;
+
       .page-arrows {
         display: flex;
         align-items: center;
+
         img {
           margin-right: 18px;
+
           &:last-of-type {
             margin-right: 24px;
           }
         }
       }
+
       button {
         font-size: 16px;
         line-height: 24px;

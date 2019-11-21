@@ -123,42 +123,53 @@
 @media (max-width: 680px) {
   header {
     height: 70px;
+
+    .header__left {
+      .header__logo {
+        align-items: center;
+
+        a {
+          padding-top: 0;
+          height: 32px;
+          width: 35px;
+
+          img {
+            width: 100%;
+          }
+        }
+
+        p {
+          font-size: 16px;
+          line-height: 16px;
+          font-weight: 500;
+        }
+      }
+
+      .header__logo-title .header__counter {
+        padding-top: 0;
+        font-size: 12px;
+      }
+    }
   }
 
-  header .header__left .header__logo {
-    align-items: center;
+  .main {
+    .map {
+      #map {
+        height: 340px;
+      }
+    }
   }
 
-  header .header__left .header__logo a {
-    padding-top: 0;
-    height: 32px;
-    width: 35px;
-  }
-
-  header .header__left .header__logo a img {
-    width: 100%;
-  }
-
-  header .header__left .header__logo p {
-    font-size: 16px;
-    line-height: 16px;
-    font-weight: 500;
-  }
-
-  header .header__left .header__logo-title .header__counter {
-    padding-top: 0;
-    font-size: 12px;
-  }
-
-  .main__section {
+  .main__section, .result__section.map {
     margin: 42px auto;
   }
-
-  .main__section .section-title {
-    font-size: 30px;
-    line-height: 30px;
+  .main,
+  .results {
+    .section-title {
+      font-size: 30px;
+      line-height: 30px;
+    }
   }
-
   .search-form {
     height: auto;
     flex-direction: column;
@@ -173,6 +184,7 @@
     .search-fixed .search-date {
       margin-right: 0;
     }
+
     .modal-record .v--modal {
       width: 100% !important;
       left: 0 !important;
@@ -267,6 +279,7 @@
         margin-bottom: 12px;
       }
     }
+
     .intro {
       .sugg-new {
         margin: 32px 0 0 0;
@@ -400,7 +413,11 @@
         line-height: 16px;
       }
     }
+    .map {
+      display: none;
+    }
   }
+
   .results {
     .search-fixed .search {
       margin-right: -15px;
@@ -464,6 +481,7 @@
           font-weight: 500;
           margin-left: 0;
         }
+
         .filter {
           cursor: pointer;
         }
@@ -604,6 +622,7 @@
         }
       }
     }
+
     .modal-record {
       .v--modal {
         width: 100% !important;
@@ -611,6 +630,7 @@
         top: inherit !important;
         left: 0 !important;
         bottom: 0;
+
         .modal-body.notary-list {
           .notary-card .card-left .card-center .card-name {
             font-size: 14px;
@@ -623,17 +643,20 @@
 
   .profile {
     padding-top: 24px;
+
     .profile-title {
       font-size: 14px;
       line-height: 16px;
       padding-bottom: 24px;
     }
+
     form {
       .form-box input {
         height: 32px;
         font-size: 12px;
         line-height: 16px;
       }
+
       .btn-profile .profile-save {
         height: 40px;
         width: 136px;
