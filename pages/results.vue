@@ -32,7 +32,7 @@
             <button class="search-btn">Найти</button>
           </form>
 
-          <form class="search-form mobile">
+          <form class="search-form-mb">
             <div class="search-formDate">
               <input id="srch" placeholder="Бульвар Адмирала Ушакова" />
               <button class="search-btn">Найти</button>
@@ -130,34 +130,44 @@
             <div class="card-right">
               <p class="card-rightChoose">Выберите время для записи на <span>сегодня</span></p>
               <div class="slider-month">
-                <swiper :options="swiperOption1">
-                  <swiper-slide>Сентябрь</swiper-slide>
-                  <swiper-slide>Октябрь</swiper-slide>
-                  <swiper-slide>Ноябрь</swiper-slide>
-                  <div class="swiper-button-prev" slot="button-prev"></div>
-                  <div class="swiper-button-next" slot="button-next"></div>
-                </swiper>
+                <carousel :paginationEnabled="false" :navigationEnabled="true" :perPage="1" navigationNextLabel="<i class='material-icons'><img src='/Polygon.svg'></i>"
+                navigationPrevLabel="<i class='material-icons'><img src='/PolygonL.svg'></i>">
+                  <slide>
+                    <div>Октябрь</div>
+                  </slide>
+                  <slide>
+                    <div>Ноябрь</div>
+                  </slide>
+                  <slide>
+                    <div>Декабрь</div>
+                  </slide>
+                </carousel>
               </div>
               <div class="slider-days">
-                <swiper :options="swiperOption2">
-                  <swiper-slide>
+                <carousel :paginationEnabled="false" :navigationEnabled="true" :perPageCustom="[[400, 5], [500, 5], [590, 7], [781, 3.5], [1011, 4.5]]" navigationNextLabel="<i class='material-icons'><img src='/Polygon.svg'></i>"
+                navigationPrevLabel="<i class='material-icons'><img src='/PolygonL.svg'></i>">
+                  <slide>
                     <div class="slider-btn btn-day active">Вт, 24</div>
-                  </swiper-slide>
-                  <swiper-slide>
-                    <div class="slider-btn btn-day disabled">Ср, 25</div>
-                  </swiper-slide>
-                  <swiper-slide>
-                    <div class="slider-btn btn-day default">Чт, 26</div>
-                  </swiper-slide>
-                  <swiper-slide>
-                    <div class="slider-btn btn-day default">Пт, 27</div>
-                  </swiper-slide>
-                  <swiper-slide>
-                    <div class="slider-btn btn-day default">Сб, 28</div>
-                  </swiper-slide>
-                  <div class="swiper-button-prev" slot="button-prev"></div>
-                  <div class="swiper-button-next" slot="button-next"></div>
-                </swiper>
+                  </slide>
+                  <slide>
+                    <div class="slider-btn btn-day disabled">Вт, 24</div>
+                  </slide>
+                  <slide>
+                    <div class="slider-btn btn-day default">Вт, 24</div>
+                  </slide>
+                  <slide>
+                    <div class="slider-btn btn-day default">Вт, 24</div>
+                  </slide>
+                  <slide>
+                    <div class="slider-btn btn-day default">Вт, 24</div>
+                  </slide>
+                  <slide>
+                    <div class="slider-btn btn-day default">Вт, 24</div>
+                  </slide>
+                  <slide>
+                    <div class="slider-btn btn-day default">Вт, 24</div>
+                  </slide>
+                </carousel>
               </div>
               <div class="block-times">
                 <ul>
@@ -244,38 +254,51 @@
             </div>
             <div class="card-right">
               <div class="slider-month">
-                <swiper :options="swiperOption1">
-                  <swiper-slide>Сентябрь</swiper-slide>
-                  <swiper-slide>Октябрь</swiper-slide>
-                  <swiper-slide>Ноябрь</swiper-slide>
-                  <div class="swiper-button-prev" slot="button-prev"></div>
-                  <div class="swiper-button-next" slot="button-next"></div>
-                </swiper>
+                <carousel :paginationEnabled="false" :navigationEnabled="true" :perPage="1" navigationNextLabel="<i class='material-icons'><img src='/Polygon.svg'></i>"
+                navigationPrevLabel="<i class='material-icons'><img src='/PolygonL.svg'></i>">
+                  <slide>
+                    <div>Октябрь</div>
+                  </slide>
+                  <slide>
+                    <div>Ноябрь</div>
+                  </slide>
+                  <slide>
+                    <div>Декабрь</div>
+                  </slide>
+                </carousel>
               </div>
               <div class="slider-days">
-                <swiper :options="swiperOption2">
-                  <swiper-slide>
+                <carousel :paginationEnabled="false" :navigationEnabled="true" :perPageCustom="[[400, 5], [500, 6], [590, 3.5], [768, 3.5], [1011, 4.5]]" navigationNextLabel="<i class='material-icons'><img src='/Polygon.svg'></i>"
+                navigationPrevLabel="<i class='material-icons'><img src='/PolygonL.svg'></i>">
+                  <slide>
                     <div class="slider-btn btn-day active">Вт, 24</div>
-                  </swiper-slide>
-                  <swiper-slide>
-                    <div class="slider-btn btn-day disabled">Ср, 25</div>
-                  </swiper-slide>
-                  <swiper-slide>
-                    <div class="slider-btn btn-day default">Чт, 26</div>
-                  </swiper-slide>
-                  <swiper-slide>
-                    <div class="slider-btn btn-day default">Пт, 27</div>
-                  </swiper-slide>
-                  <swiper-slide>
-                    <div class="slider-btn btn-day default">Сб, 28</div>
-                  </swiper-slide>
-                  <div class="swiper-button-prev" slot="button-prev"></div>
-                  <div class="swiper-button-next" slot="button-next"></div>
-                </swiper>
+                  </slide>
+                  <slide>
+                    <div class="slider-btn btn-day disabled">Вт, 24</div>
+                  </slide>
+                  <slide>
+                    <div class="slider-btn btn-day default">Вт, 24</div>
+                  </slide>
+                  <slide>
+                    <div class="slider-btn btn-day default">Вт, 24</div>
+                  </slide>
+                  <slide>
+                    <div class="slider-btn btn-day default">Вт, 24</div>
+                  </slide>
+                  <slide>
+                    <div class="slider-btn btn-day default">Вт, 24</div>
+                  </slide>
+                  <slide>
+                    <div class="slider-btn btn-day default">Вт, 24</div>
+                  </slide>
+                </carousel>
               </div>
               <div class="block-times error">
                 <img src="busy.svg" alt />
                 <p>Сегодня занято, ближайшая запись на Чт, 26 сен</p>
+              </div>
+              <div class="change_date">
+                <button>Расписание на Чт, 26 сен</button>
               </div>
             </div>
           </div>
@@ -287,9 +310,6 @@
           <button class="page__num active">1</button>
           <button class="page__num">2</button>
           <button class="page__num">3</button>
-          <button class="page__num">4</button>
-          <button class="page__num">5</button>
-          <button class="page__num">6</button>
           <button class="page__num dots">...</button>
           <button class="page__num">13</button>
           <button class="arrow__pag next active">
@@ -298,17 +318,17 @@
         </div>
       </div>
       <div class="result__section map">
-      <div class="container">
-        <div class="map-title section-title">Все нотариусы на карте</div>
-        <div id="map">
-        <yandex-map :coords="coords" zoom="12">
-          <ymap-marker :coords="coords" marker-id="1" marker-type="placemark" />
-          <ymap-marker :coords="coords" marker-id="2" marker-type="placemark" />
-          <ymap-marker :coords="coords" marker-id="3" marker-type="placemark" />
-        </yandex-map>
+        <div class="container">
+          <div class="map-title section-title">Все нотариусы на карте</div>
+          <div id="map">
+          <yandex-map :coords="coords" zoom="12">
+            <ymap-marker :coords="coords" marker-id="1" marker-type="placemark" />
+            <ymap-marker :coords="coords" marker-id="2" marker-type="placemark" />
+            <ymap-marker :coords="coords" marker-id="3" marker-type="placemark" />
+          </yandex-map>
+          </div>
         </div>
       </div>
-    </div>
       <client-only>
         <modal class="modal modal-record" name="modalRecord" height="auto">
           <div class="modal-header">
@@ -318,13 +338,8 @@
             <div class="notary-card">
               <div class="card-left">
                 <div class="card-avatar">
-                  <img class="notary-avatar" src="/ava.jpg" alt />
-                </div>
-                <div class="card-center">
-                  <div class="card-name">
-                    <a href="page">Ложкин Валерий Александрович</a>
-                  </div>
-                  <div class="card-underName">
+                  <a href="page"><img class="notary-avatar" src="/ava.jpg" alt /></a>
+                  <div class="card-rev">
                     <div class="notary-stars">
                       <div class="notary-star">
                         <img src="/starO.svg" alt />
@@ -343,8 +358,13 @@
                       </div>
                     </div>
                     <div class="rev">
-                      <a href="#">19 отзывов</a>
+                      <a href="#">19 <span>отзывов</span></a>
                     </div>
+                  </div>
+                </div>
+                <div class="card-center">
+                  <div class="card-name">
+                    <a href="page">Ложкин Валерий Александрович</a>
                   </div>
                   <ul class="card-subway">
                     <li class="subway-item">
@@ -358,7 +378,8 @@
                 </div>
               </div>
             </div>
-            <div class="form__record">
+          </div>
+          <div class="modal-center"><div class="form__record">
               <div class="form__box">
                 <label for="vnd">
                   Вид нотариального действия
@@ -417,14 +438,13 @@
                 <img src="sms.svg" alt />
                 <p>На этот номер вы получите SMS с кодом подтверждения и информацию о записи.</p>
               </div>
-            </div>
-          </div>
+            </div></div>
           <div class="modal-bottom">
             <button class="modal-sign" @click="showSecondModal">Записаться</button>
           </div>
           <div class="modal-close" @click="$modal.hide('modalRecord')"></div>
         </modal>
-        <modal class="modal modal-sms" name="modalSms" width="400px" height="auto">
+        <modal class="modal modal-sms modalBottom" name="modalSms" width="400px" height="auto">
           <div class="modal-header">
             <h1>Запись на прием</h1>
             <div class="under-header">Вам на телефон выслан код</div>
@@ -518,23 +538,19 @@
           <div class="modal-bottom">
             <button class="modal-bottomClose" @click="$modal.hide('modalAccept')">Закрыть</button>
           </div>
-          <div class="modal-close" @click="$modal.hide('modalRecord')"></div>
+          <div class="modal-close" @click="$modal.hide('modalAccept')"></div>
         </modal>
         <modal class="modal modal-time" name="modalTime" height="auto">
           <div class="modal-header">
             <h1>Запись на прием</h1>
+            <div class="modal-close" @click="$modal.hide('modalTime')"></div>
           </div>
           <div class="modal-body notary-list">
             <div class="notary-card">
               <div class="card-left">
                 <div class="card-avatar">
-                  <img class="notary-avatar" src="/ava.jpg" alt />
-                </div>
-                <div class="card-center">
-                  <div class="card-name">
-                    <a href="page">Ложкин Валерий Александрович</a>
-                  </div>
-                  <div class="card-underName">
+                  <a href="page"><img class="notary-avatar" src="/ava.jpg" alt /></a>
+                  <div class="card-rev">
                     <div class="notary-stars">
                       <div class="notary-star">
                         <img src="/starO.svg" alt />
@@ -553,8 +569,13 @@
                       </div>
                     </div>
                     <div class="rev">
-                      <a href="#">19 отзывов</a>
+                      <a href="#">19 <span>отзывов</span></a>
                     </div>
+                  </div>
+                </div>
+                <div class="card-center">
+                  <div class="card-name">
+                    <a href="page">Ложкин Валерий Александрович</a>
                   </div>
                   <ul class="card-subway">
                     <li class="subway-item">
@@ -569,67 +590,36 @@
               </div>
             </div>
             <div class="card-right sign-date">
-              <div class="slider-month">
-                <swiper :options="swiperOption1">
-                  <swiper-slide>Сентябрь</swiper-slide>
-                  <swiper-slide>Октябрь</swiper-slide>
-                  <swiper-slide>Ноябрь</swiper-slide>
-                  <div class="swiper-button-prev" slot="button-prev"></div>
-                  <div class="swiper-button-next" slot="button-next"></div>
-                </swiper>
-              </div>
               <div class="slider-days">
-                <swiper :options="swiperOptionSlider">
-                  <swiper-slide>
-                    <div class="slider-btn btn-day active">
-                      Вт
-                      <br />30 cен
-                    </div>
-                  </swiper-slide>
-                  <swiper-slide>
-                    <div class="slider-btn btn-day disabled">
-                      Ср
-                      <br />1 окт
-                    </div>
-                  </swiper-slide>
-                  <swiper-slide>
-                    <div class="slider-btn btn-day default">
-                      Чт
-                      <br />2 окт
-                    </div>
-                  </swiper-slide>
-                  <swiper-slide>
-                    <div class="slider-btn btn-day default">
-                      Пт
-                      <br />3 окт
-                    </div>
-                  </swiper-slide>
-                  <swiper-slide>
-                    <div class="slider-btn btn-day default">
-                      Сб
-                      <br />4 окт
-                    </div>
-                  </swiper-slide>
-                  <swiper-slide>
-                    <div class="slider-btn btn-day default">
-                      Сб
-                      <br />4 окт
-                    </div>
-                  </swiper-slide>
-                  <swiper-slide>
-                    <div class="slider-btn btn-day default">
-                      Сб
-                      <br />4 окт
-                    </div>
-                  </swiper-slide>
-                  <div class="swiper-button-prev" slot="button-prev"></div>
-                  <div class="swiper-button-next" slot="button-next"></div>
-                </swiper>
+                <carousel :paginationEnabled="false" :navigationEnabled="true" :perPageCustom="[[300, 3], [400, 4], [560, 6]]" navigationNextLabel="<i class='material-icons'><img src='/Polygon.svg'></i>"
+                navigationPrevLabel="<i class='material-icons'><img src='/PolygonL.svg'></i>">
+                  <slide>
+                    <div class="slider-btn btn-day active">Вт, 24 окт</div>
+                  </slide>
+                  <slide>
+                    <div class="slider-btn btn-day disabled">Вт, 24 окт</div>
+                  </slide>
+                  <slide>
+                    <div class="slider-btn btn-day default">Вт, 24 окт</div>
+                  </slide>
+                  <slide>
+                    <div class="slider-btn btn-day default">Вт, 24 окт</div>
+                  </slide>
+                  <slide>
+                    <div class="slider-btn btn-day default">Вт, 24 окт</div>
+                  </slide>
+                  <slide>
+                    <div class="slider-btn btn-day default">Вт, 24 окт</div>
+                  </slide>
+                  <slide>
+                    <div class="slider-btn btn-day default">Вт, 24 окт</div>
+                  </slide>
+                </carousel>
               </div>
               <div class="block-times">
                 <ul>
                   <li>
-                    <div class="slider-btn btn-time default">15:30</div>
+                    <div class="slider-btn btn-time default" @click="showModal">15:30</div>
                   </li>
                   <li>
                     <div class="slider-btn btn-time default">16:30</div>
@@ -654,7 +644,7 @@
             </div>
           </div>
         </modal>
-        <modal class="modal modal-sms modalBottom modal-date" name="modalDate" width="400px" height="auto">
+        <modal class="modal modal-date modal-sms modalBottom" name="modalDate" width="400px" height="auto">
           <div class="modal-header">
             <h1>Расписание</h1>
           </div>
@@ -687,38 +677,36 @@
           </div>
           <div class="modal-close" @click="$modal.hide('modalDate')"></div>
         </modal>
-        <modal class="modal modal-sms modal-date modal-filter" name="modalFilter" width="400px" height="auto">
+        <modal class="modal modal-filter modalBottom modal-date" name="modalFilter" width="400px" height="auto">
           <div class="modal-header">
-            <h1>Расписание</h1>
+            <h1>Настройка поиска</h1>
+            <div class="modal-close" @click="$modal.hide('modaFilter')"></div>
           </div>
           <div class="modal-body">
             <div class="radio-btn">
+              <h2>Сортировка</h2>
               <label for="opt1" class="radio">
                 <input type="radio" name="rdo" id="opt1" class="hidden" />
-                <span class="label"></span>Сегодня, 24 октября
+                <span class="label"></span>По рейтингу
               </label>
               <label for="opt2" class="radio">
                 <input type="radio" name="rdo" id="opt2" class="hidden" />
-                <span class="label"></span>Завтра, 25 октября
+                <span class="label"></span>Параметр
               </label>
+              <h2>Прочее</h2>
               <label for="opt3" class="radio">
                 <input type="radio" name="rdo" id="opt3" class="hidden" />
-                <span class="label"></span>Сб, 26 октября
+                <span class="label"></span>Нотариусы с выездом
               </label>
               <label for="opt4" class="radio">
                 <input type="radio" name="rdo" id="opt4" class="hidden" />
-                <span class="label"></span>Расписание на все дни
-              </label>
-              <label class="chooseDate radio">
-                <img src="calendarGrey.svg" alt="">
-                <p>Выбрать другой день</p>
+                <span class="label"></span>Работают в выходные
               </label>
             </div>
           </div>
           <div class="modal-bottom">
-            <button class="bottom-accept" @click="$modal.hide('modalFilter')">Закрыть</button>
+            <button class="bottom-accept">Сохранить</button>
           </div>
-          <div class="modal-close" @click="$modal.hide('modaFilter')"></div>
         </modal>
       </client-only>
     </div>
@@ -733,7 +721,6 @@ export default {
     },
     showSecondModal() {
       this.$modal.show("modalSms");
-      this.$modal.hide("modalRecord");
     },
     showThirdModal() {
       this.$modal.show("modalAccept");
@@ -754,39 +741,6 @@ export default {
     dynamicMask: "###.###.###/###",
     models: {
       phoneNumber: ""
-    },
-    swiperOption1: {
-      setTranslate: 130,
-      slidesPerView: "auto",
-      centeredSlides: true,
-      autoResize: false,
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev"
-      }
-    },
-    swiperOption2: {
-      slidesPerView: 5.3,
-      slidesOffsetBefore: 25,
-      slidesOffsetAfter: 25,
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev"
-      },
-      breakpoints: {
-        1010: {
-          slidesPerView: 4.3
-        },
-        590: {
-          slidesPerView: 6
-        }
-      }
-    },
-    swiperOptionSlider: {
-      slidesPerView: 7,
-      slidesOffsetBefore: 25,
-      slidesOffsetAfter: 25,
-      spaceBetween: 45
     },
     coords: [55.778328, 37.674699],
     placemarks: [

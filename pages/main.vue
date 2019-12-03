@@ -13,7 +13,7 @@
             <div @click="show = !show" class="search-date">
               <p>
                 Вт, 24 сентября
-                <i></i>
+                <i class="icon-arrow" :class="{ rotate: show }"></i>
               </p>
               <img @click="modalDate" src="calendar.svg" alt />
               <transition name="fade">

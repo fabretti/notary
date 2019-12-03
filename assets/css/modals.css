@@ -17,13 +17,22 @@
   padding: 10px 24px;
 }
 
-.modal .modal-body.notary-list .notary-card .card-left .card-avatar {
-  margin: auto 0;
+.modal .modal-body.notary-list .notary-card .card-left .card-left-mb {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
-.modal .modal-body.notary-list .notary-card .card-left .card-avatar img {
-  width: 72px;
-  height: 72px;
+.modal .modal-body.notary-list .notary-card .card-left .card-left-mb .card-name-mb {
+  display: none;
+}
+
+.modal .modal-body.notary-list .notary-card .card-left .card-left-mb .card-name-mb .card-year {
+  border-bottom: 0;
+}
+
+.modal .modal-body.notary-list .notary-card .card-left .card-avatar {
+  margin: auto 0;
 }
 
 .modal .modal-body.notary-list .notary-card .card-left .card-center .card-name {
@@ -81,7 +90,7 @@
 .modal .modal-close {
   position: absolute;
   right: 10px;
-  top: 10px;
+  top: 16px;
   width: 16px;
   height: 16px;
   cursor: pointer;
@@ -95,7 +104,7 @@
 .modal .modal-close:before, .modal .modal-close:after {
   position: absolute;
   left: 7px;
-  content: ' ';
+  content: " ";
   height: 16px;
   width: 2px;
   background-color: #8e99a7;
@@ -139,7 +148,7 @@
 }
 
 .modal .form__box .search-box:before {
-  content: '';
+  content: "";
   position: absolute;
   width: 9px;
   height: 5px;
@@ -166,6 +175,60 @@
   -webkit-appearance: button;
      -moz-appearance: button;
           appearance: button;
+}
+
+.modal.modal-date .modal-header, .modal.modal-filter .modal-header {
+  margin: 0 0 16px;
+  padding: 12px 18px;
+  -webkit-box-shadow: 0 4px 3px 0 rgba(0, 0, 0, 0.03);
+          box-shadow: 0 4px 3px 0 rgba(0, 0, 0, 0.03);
+  border-bottom: solid 1px #e3e3e3;
+}
+
+.modal-review .modal-center {
+  text-align: center;
+  margin: 0 48px;
+}
+
+.modal-review .modal-center h2 {
+  font-size: 24px;
+  line-height: 32px;
+  margin-bottom: 8px;
+}
+
+.modal-review .modal-center .review-act {
+  margin-bottom: 50px;
+}
+
+.modal-review .modal-center .review-act .notary-stars {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.modal-review .modal-center .review-act .notary-stars .notary-star {
+  padding: 0 2px;
+}
+
+.modal-review .modal-center .review-act .notary-stars .notary-star img {
+  width: 38px;
+  height: 38px;
+}
+
+.modal-review .modal-center .review-comment textarea {
+  font-family: Open Sans;
+  font-size: 12px;
+  width: 100%;
+  height: 216px;
+  resize: none;
+  padding: 20px 24px;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 4px 3px 0 rgba(0, 0, 0, 0.03);
+          box-shadow: 0 4px 3px 0 rgba(0, 0, 0, 0.03);
+  border: solid 1px #e3e3e3;
 }
 
 .modal-record .form__record {
@@ -266,13 +329,15 @@
   color: #1b559e;
 }
 
-.modal-time .card-right .slider-days .swiper-container {
-  width: 100%;
+.modal-time .card-right .block-times ul {
+  -ms-grid-columns: (minmax(78px, 1fr))[auto-fill];
+      grid-template-columns: repeat(auto-fill, minmax(78px, 1fr));
+  grid-auto-rows: 48px;
 }
 
-.modal-time .card-right .slider-days .swiper-button-prev,
-.modal-time .card-right .slider-days .swiper-button-next {
-  height: 100%;
+.modal-time .card-right .block-times ul .slider-btn {
+  width: 64px;
+  height: 34px;
 }
 
 .modal-enter .modal-bottom,
@@ -337,13 +402,13 @@
   margin-right: 10px;
   width: 16px;
   height: 16px;
-  border: 1px solid #C8CCD4;
+  border: 1px solid #c8ccd4;
   border-radius: 100%;
   -webkit-tap-highlight-color: transparent;
 }
 
 .modal-date .modal-body .radio-btn .radio .label:after {
-  content: '';
+  content: "";
   position: absolute;
   top: 2px;
   left: 2px;
@@ -353,9 +418,9 @@
   background: #1b559e;
   -webkit-transform: scale(0);
           transform: scale(0);
-  -webkit-transition: all .2s ease;
-  transition: all .2s ease;
-  opacity: .08;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  opacity: 0.08;
   pointer-events: none;
 }
 
@@ -400,8 +465,18 @@
   font-weight: 500;
 }
 
-.modal-filter .v--modal-overlay .v--modal-box {
-  height: 100% !important;
-  width: 100% !important;
+.modal-filter .modal-body h2 {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 16px;
+  margin: 0 0 16px;
+}
+
+.modal-filter .modal-bottom {
+  margin: 52px 24px 14px;
+}
+
+.modal-filter .modal-bottom .bottom-accept {
+  background: #1b559e;
 }
 /*# sourceMappingURL=modals.css.map */

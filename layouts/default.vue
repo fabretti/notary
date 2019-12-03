@@ -1,5 +1,5 @@
 <template>
-  <div class="default" v-bind:class="{hidden: navOpen}">
+  <div class="default" v-bind:class="{ hidden: navOpen }">
     <header>
       <div class="wrap">
         <div class="header__left">
@@ -44,7 +44,7 @@
             <div class="header__city">
               <div @click="show = !show" class="city__selected">
                 <span class="city__title">Москва</span>
-                <i class="icon-arrow"></i>
+                <i class="icon-arrow" :class="{ rotate: show }"></i>
               </div>
               <transition name="fade">
                 <div v-if="show" class="city__list">
@@ -63,13 +63,17 @@
           </div>
         </div>
         <div class="header__hum" @click="navOpen = !navOpen">
-          <a href="#primary" class="menu-link" v-bind:class="{active: navOpen}">
+          <a
+            href="#primary"
+            class="menu-link"
+            v-bind:class="{ active: navOpen }"
+          >
             <span class="line line-1"></span>
             <span class="line line-2"></span>
             <span class="line line-3"></span>
           </a>
         </div>
-        <aside class="header__nav" v-bind:class="{active: navOpen}">
+        <aside class="header__nav" v-bind:class="{ active: navOpen }">
           <div class="nav__main">
             <a href="#">
               Главная
@@ -113,14 +117,24 @@
           </div>
         </aside>
       </div>
-      <div class="black-list" @click="navOpen = !navOpen" v-bind:class="{active: navOpen}"></div>
+      <div
+        class="black-list"
+        @click="navOpen = !navOpen"
+        v-bind:class="{ active: navOpen }"
+      ></div>
       <client-only>
-        <modal class="modal modal-sms modal-enter" name="modalEnter" width="400px" height="auto">
+        <modal
+          class="modal modal-sms modal-enter"
+          name="modalEnter"
+          width="400px"
+          height="auto"
+        >
           <div class="modal-header">
             <h1>Вход</h1>
-            <div
-              class="under-header"
-            >Введите номер, на него вы получите СМС с кодом подтверждения для входа</div>
+            <div class="under-header">
+              Введите номер, на него вы получите СМС с кодом подтверждения для
+              входа
+            </div>
           </div>
           <div class="modal-body">
             <div class="form__box">
@@ -128,7 +142,9 @@
             </div>
           </div>
           <div class="modal-bottom">
-            <button class="bottom-accept" @click="modalEnterSms">Продолжить</button>
+            <button class="bottom-accept" @click="modalEnterSms">
+              Продолжить
+            </button>
           </div>
           <div class="modal-close" @click="$modal.hide('modalEnter')"></div>
         </modal>
@@ -220,8 +236,7 @@
   </div>
 </template>
 
-<style>
-</style>
+<style></style>
 <script>
 export default {
   data: () => ({

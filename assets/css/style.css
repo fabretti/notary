@@ -119,8 +119,8 @@ footer .wrap {
 
 .search .search-date:hover {
   background-color: #e85516;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
 }
 
 .search .search-date p {
@@ -142,6 +142,13 @@ footer .wrap {
   margin-left: 15px;
   background: url("/arrow-search.svg");
   background-size: cover;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+
+.search .search-date p i.rotate {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
 }
 
 .search .search-date img {
@@ -224,8 +231,8 @@ footer .wrap {
   padding: 24px 24px 14px 24px;
   background: #fff;
   border-radius: 4px;
-  -webkit-box-shadow: 0 4px 3px 0 rgba(0, 0, 0, 0.03);
-          box-shadow: 0 4px 3px 0 rgba(0, 0, 0, 0.03);
+  -webkit-box-shadow: 0 4px 3px 0 rgba(0, 0, 0, 0.1);
+          box-shadow: 0 4px 3px 0 rgba(0, 0, 0, 0.1);
   border: solid 1px #e3e3e3;
 }
 
@@ -258,6 +265,9 @@ footer .wrap {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .notary-list .notary-card .card-left .card-avatar .notary-stars .notary-star:not(:last-child) {
@@ -513,6 +523,13 @@ header .header__right .header__select .header__city .city__selected i {
   margin-left: 10px;
   background: url("/arrow-header.svg");
   background-size: cover;
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+
+header .header__right .header__select .header__city .city__selected i.rotate {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
 }
 
 header .header__right .header__select .header__city .city__list {
@@ -899,6 +916,9 @@ header .black-list.active {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   font-size: 16px;
   line-height: 24px;
   padding-left: 17px;
@@ -1253,7 +1273,7 @@ header .black-list.active {
 }
 
 .card-right .slider-btn.active {
-  background-color: #f15a22;
+  background-color: #1b559e;
   color: #fff;
 }
 
@@ -1333,36 +1353,24 @@ header .black-list.active {
 
 .card-right .block-times ul,
 .card-right .fix__time ul {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+  display: -ms-grid;
+  display: grid;
+  grid-gap: 0;
 }
 
 .card-right .block-times ul li,
 .card-right .fix__time ul li {
-  margin: 0 12px 16px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .card-right .block-times ul li .btn-time,
 .card-right .fix__time ul li .btn-time {
   width: 48px;
-}
-
-.card-right .block-times ul li:nth-child(5n + 5),
-.card-right .fix__time ul li:nth-child(5n + 5) {
-  margin-right: 0;
-}
-
-.card-right .fix__time ul {
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-column-gap: 26px;
-          column-gap: 26px;
-  -webkit-column-count: 4;
-          column-count: 4;
 }
 
 .card-right .fix__time ul .fix__time-btn {
@@ -1381,14 +1389,6 @@ header .black-list.active {
   line-height: 28px;
 }
 
-.card-right .fix__time ul li:nth-child(4n + 4) {
-  margin-right: 0;
-}
-
-.card-right .fix__time ul li:nth-child(5n + 5) {
-  margin-right: 12px;
-}
-
 .card-right .error {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1405,6 +1405,25 @@ header .black-list.active {
   padding-left: 10px;
 }
 
+.card-right .change_date {
+  display: none;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 13px 0 8px 0;
+}
+
+.card-right .change_date button {
+  height: 24px;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 3px 22px 5px 22px;
+  color: #1b559e;
+  background: #fff;
+  border: 1px solid #1b559e;
+  border-radius: 4px;
+}
+
 .wrap {
   max-width: 1110px;
   margin: 0 auto;
@@ -1412,6 +1431,12 @@ header .black-list.active {
 
 .results {
   color: #2d333d;
+}
+
+.results .results__section.notarys .card-right .block-times ul {
+  -ms-grid-columns: (minmax(52px, 1fr))[auto-fill];
+      grid-template-columns: repeat(auto-fill, minmax(52px, 1fr));
+  grid-auto-rows: 48px;
 }
 
 .results .search-fixed {
@@ -1466,8 +1491,21 @@ header .black-list.active {
   border-radius: 4px;
 }
 
-.results .search-fixed .search .search-form.mobile {
+.results .search-fixed .search .search-form-mb {
   display: none;
+}
+
+.results .notarys .slider-days {
+  margin: 17px 26px 0;
+}
+
+.results .notarys .slider-month {
+  text-align: center;
+}
+
+.results .notarys .slider-month div img {
+  height: 13px;
+  width: 7px;
 }
 
 .results .notarys .notarys-filter {
@@ -1574,6 +1612,12 @@ header .black-list.active {
 }
 
 .page .search-fixed .search form .back-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   background: inherit;
   height: 48px;
   width: 72px;
@@ -1625,18 +1669,82 @@ header .black-list.active {
   border: none;
 }
 
-.page .left-container .notary-card.result-card .card-center .sign-map {
+.page .left-container .notary-card.result-card .card-left-mb {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.page .left-container .notary-card.result-card .card-left-mb .card-name-mb {
+  display: none;
+}
+
+.page .left-container .notary-card.result-card .card-left-mb .card-name-mb .card-year {
+  border-bottom: 0;
+}
+
+.page .left-container .notary-card.result-card .showMap {
+  display: none;
+  padding-top: 8px;
+  font-size: 12px;
+  line-height: 16px;
+  color: #1b559e;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.page .left-container .notary-card.result-card .card-center-mb {
+  display: none;
+  margin-top: 30px;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 4px 3px 0 rgba(0, 0, 0, 0.03);
+          box-shadow: 0 4px 3px 0 rgba(0, 0, 0, 0.03);
+  border: solid 1px #e3e3e3;
+}
+
+.page .left-container .notary-card.result-card .card-center-mb .sign-map {
   width: 100%;
-  height: 40px;
   border-radius: 4px 4px 0 0;
   background-color: #1b559e;
 }
 
-.page .left-container .notary-card.result-card .card-center .sign-map h2 {
+.page .left-container .notary-card.result-card .card-center-mb .sign-map h2 {
+  font-size: 14px;
+  line-height: 16px;
   color: #fff;
   text-align: center;
   font-weight: 600;
   padding: 11px 0;
+}
+
+.page .left-container .notary-card.result-card .card-center-mb .card-right {
+  max-width: 100%;
+}
+
+.page .left-container .notary-card.result-card .card-center-mb .card-right .slider-month,
+.page .left-container .notary-card.result-card .card-center-mb .card-right .slider-days {
+  width: 100%;
+}
+
+.page .left-container .notary-card.result-card .card-center-mb .card-right .slider-month > div,
+.page .left-container .notary-card.result-card .card-center-mb .card-right .slider-days > div {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.page .left-container .notary-card.result-card .card-center-mb .card-right .slider-month {
+  padding: 8px 0;
+  border-bottom: 1px solid #e3e3e3;
+}
+
+.page .left-container .notary-card.result-card .card-center-mb .card-right .slider-days {
+  margin: 12px 0;
+}
+
+.page .left-container .notary-card.result-card .card-center-mb .card-right .slider-days .slider-btn {
+  height: 24px;
+  line-height: 24px;
+  width: 56px;
 }
 
 .page .left-container .notary-card.result-card .card-bottom {
@@ -1796,36 +1904,6 @@ header .black-list.active {
   padding-top: 10px;
 }
 
-.page .right-container .sticky-sign .card-right.sign-date .slider-month .swiper-container {
-  position: relative;
-}
-
-.page .right-container .sticky-sign .card-right.sign-date .slider-days {
-  position: relative;
-}
-
-.page .right-container .sticky-sign .card-right.sign-date .slider-days .swiper-container,
-.page .right-container .sticky-sign .card-right.sign-date .slider-days .swiper-wrapper {
-  position: static;
-}
-
-.page .right-container .sticky-sign .card-right.sign-date .slider-days .swiper-button-prev,
-.page .right-container .sticky-sign .card-right.sign-date .slider-days .swiper-button-next,
-.page .right-container .sticky-sign .card-right.sign-date .slider-days .swiper-button-prev.swiper-button-disabled,
-.page .right-container .sticky-sign .card-right.sign-date .slider-days .swiper-button-next.swiper-button-disabled {
-  width: 10px;
-}
-
-.page .right-container .sticky-sign .card-right.sign-date .slider-days .swiper-button-prev {
-  left: 20px;
-}
-
-.page .right-container .sticky-sign .card-right.sign-date .slider-days .swiper-button-next {
-  right: 20px;
-  -webkit-box-shadow: none;
-          box-shadow: none;
-}
-
 .page .right-container .sticky-sign .card-right.sign-date .block-times {
   margin: 8px 30px 0;
 }
@@ -1843,8 +1921,14 @@ header .black-list.active {
   margin-right: 0;
 }
 
+.page .right-container .sticky-sign .card-right.sign-date .fix__time ul {
+  -ms-grid-columns: (minmax(78px, 1fr))[auto-fill];
+      grid-template-columns: repeat(auto-fill, minmax(78px, 1fr));
+  grid-auto-rows: 48px;
+}
+
 .page .notarys-slider {
-  margin: 20px 0;
+  margin: 20px 72px;
   -webkit-transition: 0.3s;
   transition: 0.3s;
 }
@@ -1854,10 +1938,11 @@ header .black-list.active {
   line-height: 32px;
   text-align: center;
   font-weight: 500;
+  margin-bottom: 32px;
 }
 
-.page .notarys-slider .swiper-container {
-  padding: 40px 70px;
+.page .notarys-slider .notary-list {
+  margin: 0 8px;
 }
 
 .page .notarys-slider .notary-card.other-card {
@@ -1903,35 +1988,13 @@ header .black-list.active {
   height: 10px;
 }
 
-.page .notarys-slider .swiper-slide {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
+.page .notarys-slider .card-bottom-mb {
+  display: none;
 }
 
-.page .notarys-slider .swiper-slide-next {
-  -webkit-transform: scale(1.14);
-          transform: scale(1.14);
-}
-
-.page .notarys-slider .swiper-slide-next .notary-list .notary-card {
-  -webkit-box-shadow: 0 4px 3px 0 rgba(0, 0, 0, 0.03);
-          box-shadow: 0 4px 3px 0 rgba(0, 0, 0, 0.03);
-  border: solid 2px #8e99a7;
-}
-
-.page .notarys-slider .street-buttons .street-prev,
-.page .notarys-slider .street-buttons .street-next {
-  background-size: 12px 24px;
-}
-
-.page .notarys-slider .street-buttons .street-prev {
-  left: 0;
+.page .notarys-slider .VueCarousel-navigation-button img {
+  width: 12px;
+  height: 24px;
 }
 
 .page .page-phone {
@@ -1951,6 +2014,8 @@ header .black-list.active {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .page .page-phone .page__left h1 {
@@ -1960,16 +2025,24 @@ header .black-list.active {
   margin-right: 24px;
 }
 
-.page .page-phone .page__left p {
+.page .page-phone .page__left .page__left-num {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.page .page-phone .page__left .page__left-num p {
   font-size: 16px;
   line-height: 24%;
 }
 
-.page .page-phone .page__left p img {
+.page .page-phone .page__left .page__left-num p img {
   margin-right: 8px;
 }
 
-.page .page-phone .page__left p:first-of-type {
+.page .page-phone .page__left .page__left-num p:first-of-type {
   margin-right: 32px;
 }
 
@@ -2089,7 +2162,7 @@ header .black-list.active {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding-right: 0;
+  padding-right: 5px;
 }
 
 .notes.results .notarys .notary-list .result-card.notes-card .card-left .card-avatar .notary-avatar {

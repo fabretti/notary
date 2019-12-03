@@ -20,18 +20,19 @@
 
   .card-right {
     max-width: 260px;
+
+    .slider-days .swiper-container {
+      width: 260px;
+    }
   }
 
-  .card-right .slider-days .swiper-container {
-    width: 260px;
-  }
+  .page {
+    .notarys-slider {
+      margin: 20px 36px;
+    }
 
-  .card-right .block-times ul li,
-  .card-right .block-times ul li:nth-child(5n + 5) {
-    margin-right: 4px;
-
-    &:nth-child(4n + 4) {
-      margin-right: 0px;
+    .page-phone .page__right .page-arrows {
+      display: none;
     }
   }
 
@@ -40,60 +41,121 @@
   }
 }
 
+@media (max-width: 890px) {
+  .page {
+    .left-container {
+      max-width: 100%;
+
+      .notary-card.result-card {
+        .showMap {
+          display: block;
+        }
+
+        .card-center-mb {
+          display: block;
+        }
+      }
+    }
+
+    .right-container {
+      display: none;
+    }
+  }
+}
+
 @media (max-width: 780px) {
   .sugg-convert {
     flex-direction: column;
   }
 
-  .main .intro .sugg-new .sugg-boxes {
+  .main {
+    .intro {
+      .sugg-new {
+        .sugg-boxes {
+          flex-direction: column;
+          align-items: center;
+
+          .sugg-box {
+            justify-content: flex-start;
+
+            &:not(:last-child) {
+              margin-right: 0;
+              margin-bottom: 16px;
+            }
+          }
+        }
+      }
+    }
+
+    .benefits {
+      .note-boxes {
+        .note-box {
+          flex-direction: column;
+
+          &:last-child {
+            flex-direction: column-reverse;
+          }
+
+          &:first-child {
+            margin-bottom: 0;
+          }
+
+          .note-1,
+          .note-2,
+          .note-3,
+          .note-4 {
+            max-width: 100%;
+            margin: 0;
+            padding: 20px 24px 14px;
+            margin-bottom: 16px;
+          }
+
+          .note-1,
+          .note-4 {
+            border: solid 1px #e3e3e3;
+          }
+        }
+      }
+    }
+  }
+
+  .center-container .notarys .notary-list .notary-card .card-left {
     flex-direction: column;
-    align-items: center;
   }
 
-  .main .intro .sugg-new .sugg-box {
-    justify-content: flex-start;
+  .results {
+    .results__section {
+      .notary-list .notary-card {
+        flex-direction: column;
+
+        .card-right {
+          max-width: 100%;
+          margin-top: 8px;
+
+          .slider-days .swiper-container {
+            width: auto;
+          }
+
+          .block-times ul li:nth-child(4n + 4) {
+            margin-right: 4px;
+          }
+        }
+      }
+    }
   }
 
-  .main .intro .sugg-new .sugg-boxes .sugg-box:not(:last-child) {
-    margin-right: 0;
-    margin-bottom: 16px;
-  }
+  .page {
+    .left-container .notary-card.result-card {
+      .card-left .card-center {
+        .card-nameTitle {
+          display: none;
+        }
+      }
 
-  .main .benefits .note-boxes .note-box {
-    flex-direction: column;
-  }
-
-  .main .benefits .note-boxes .note-box:last-child {
-    flex-direction: column-reverse;
-  }
-
-  .main .benefits .note-boxes .note-box:first-child {
-    margin-bottom: 0;
-  }
-
-  .main .benefits .note-boxes .note-box .note-1,
-  .main .benefits .note-boxes .note-box .note-2,
-  .main .benefits .note-boxes .note-box .note-3,
-  .main .benefits .note-boxes .note-box .note-4 {
-    max-width: 100%;
-    margin: 0;
-    padding: 20px 24px 14px;
-    margin-bottom: 16px;
-  }
-
-  .main .benefits .note-boxes .note-box .note-1,
-  .main .benefits .note-boxes .note-box .note-4 {
-    border: solid 1px #e3e3e3;
-  }
-
-  .notarys .notary-list .notary-card .card-left {
-    flex-direction: column;
-  }
-
-  .notary-list .notary-card {
-    border-radius: 4px;
-    box-shadow: 0 4px 3px 0 rgba(0, 0, 0, 0.1);
-    border: solid 1px #e3e3e3;
+      .card-left-mb .card-name-mb {
+        display: block;
+      }
+    }
   }
 }
 
@@ -104,6 +166,32 @@
 
   .main .action .action-content {
     column-count: 2;
+  }
+
+  .page {
+    .page-phone {
+      flex-direction: column;
+
+      .page__left {
+        flex-direction: column;
+
+        .page__left-num {
+          flex-direction: column;
+
+          p:first-child {
+            margin-top: 8px;
+          }
+
+          p:last-child {
+            margin-top: 24px;
+          }
+        }
+      }
+
+      .page__right {
+        margin-top: 24px;
+      }
+    }
   }
 
   footer {
@@ -160,9 +248,11 @@
     }
   }
 
-  .main__section, .result__section.map {
+  .main__section,
+  .result__section.map {
     margin: 42px auto;
   }
+
   .main,
   .results {
     .section-title {
@@ -170,6 +260,7 @@
       line-height: 30px;
     }
   }
+
   .search-form {
     height: auto;
     flex-direction: column;
@@ -185,9 +276,12 @@
       margin-right: 0;
     }
 
-    .modal-record .v--modal {
-      width: 100% !important;
-      left: 0 !important;
+    .modal-record,
+    .modal-time {
+      .v--modal {
+        width: 100% !important;
+        left: 0 !important;
+      }
     }
   }
 
@@ -200,59 +294,56 @@
     display: none;
   }
 
+  .page {
+    .v--modal {
+      width: 100% !important;
+      left: 0 !important;
+    }
+  }
+
   .search-form .date-dropdown,
   .search-formDate .date-dropdown {
     left: -30px;
   }
 
-  footer .wrap {
-    flex-direction: column;
-  }
+  footer {
+    .wrap {
+      flex-direction: column;
 
-  footer .wrap .footer__left .footer__info,
-  footer .wrap .footer__left .footer__dev {
-    display: none;
-  }
+      .footer__left .footer__info,
+      .footer__left .footer__dev {
+        display: none;
+      }
 
-  footer .wrap .footer__right {
-    margin-top: 34px;
-  }
+      .footer__right {
+        margin-top: 34px;
+      }
 
-  footer .wrap .footer__infoDev {
-    display: block;
-    margin-top: 16px;
-  }
-
-  footer .wrap .footer__infoDev .footer__dev {
-    padding-top: 8px;
+      .footer__infoDev {
+        display: block;
+        margin-top: 16px;
+        .footer__dev {
+          padding-top: 8px;
+        }
+      }
+    }
   }
 }
 
 @media (max-width: 590px) {
-  .results .search-fixed .search-title {
-    font-size: 20px;
-    line-height: 24px;
-  }
-
-  .card-right {
-    max-width: 100%;
-    margin-top: 8px;
-
-    .slider-days .swiper-container {
-      width: auto;
+  .results {
+    .search-fixed .search-title {
+      font-size: 20px;
+      line-height: 24px;
     }
 
-    .block-times ul li:nth-child(4n + 4) {
-      margin-right: 4px;
+    .notarys .pagination .page__num {
+      margin-right: 16px;
     }
   }
 
   .search .search-top .search-icons {
     display: none;
-  }
-
-  .notary-list .notary-card {
-    flex-direction: column;
   }
 }
 
@@ -332,35 +423,38 @@
     }
 
     .benefits {
-      .note-boxes .note-box .note-title {
-        font-size: 14px;
-        line-height: 16px;
-        margin-bottom: 9px;
-      }
+      .note-boxes {
+        .note-box {
+          .note-title {
+            font-size: 14px;
+            line-height: 16px;
+            margin-bottom: 9px;
 
-      .note-boxes .note-box .note-1 .note-title .note-stars {
-        padding-left: 10px;
-      }
+            img {
+              width: 10px;
+              height: 10px;
+            }
+          }
 
-      .note-boxes .note-box .note-title img {
-        width: 10px;
-        height: 10px;
-      }
+          .note-1 .note-title .note-stars {
+            padding-left: 10px;
+          }
 
-      .note-boxes .note-box .note-info {
-        font-size: 12px;
-        line-height: 16px;
+          .note-info {
+            font-size: 12px;
+            line-height: 16px;
+          }
+
+          .note-4 .note-range {
+            font-size: 14px;
+            line-height: 16px;
+          }
+        }
       }
     }
 
     .default .content-wrapper {
       padding: 0 25px;
-    }
-
-    .action {
-      .action-content {
-        column-count: 1;
-      }
     }
 
     .faq {
@@ -413,229 +507,296 @@
         line-height: 16px;
       }
     }
+
+    .qq {
+      .qq-content {
+        a {
+          font-size: 12px;
+          line-height: 16px;
+        }
+
+        .qq-links {
+          margin: 16px 0;
+        }
+      }
+    }
+
+    .action {
+      .action-content {
+        column-count: 1;
+
+        li {
+          h3,
+          a {
+            font-size: 12px;
+            line-height: 16px;
+          }
+
+          a {
+            margin-bottom: 4px;
+          }
+        }
+      }
+    }
+
     .map {
       display: none;
     }
   }
 
   .results {
-    .search-fixed .search {
-      margin-right: -15px;
-      margin-left: -15px;
-      margin-bottom: 12px;
-      box-shadow: 0 4px 3px 0 rgba(0, 0, 0, 0.1);
-      border-radius: 0;
+    .results__section {
+      &.search-fixed {
+        position: inherit;
 
-      input {
-        font-size: 12px;
-      }
-    }
-
-    .search-fixed .search-title {
-      font-size: 14px;
-      line-height: 16px;
-      padding-bottom: 16px;
-
-      span {
-        color: #8e99a7;
-      }
-    }
-
-    .results__section .search-form {
-      display: none;
-    }
-
-    .search-fixed .search .search-form.mobile {
-      display: block;
-
-      .search-formDate,
-      .search-bottomMobile {
-        height: 32px;
-      }
-
-      .search-formDate {
-        input {
-          border-radius: 4px 0 0 4px;
-        }
-
-        .search-btn {
-          min-width: 64px;
-          line-height: 16px;
-          font-weight: 500;
-          margin-top: 0;
-          border-radius: 0 4px 4px 0;
-        }
-      }
-
-      .search-bottomMobile {
-        display: flex;
-        align-items: center;
-        margin-top: 8px;
-
-        .search-date {
-          width: 100%;
-          height: 100%;
-          justify-content: space-between;
-          padding: 0 16px;
-          margin-right: 16px;
-          font-weight: 500;
+        .search {
+          box-shadow: none;
+          border: 0;
+          margin-right: 0;
           margin-left: 0;
-        }
+          padding: 10px 0;
+          margin-bottom: 12px;
 
-        .filter {
-          cursor: pointer;
-        }
-      }
-    }
-
-    .notarys {
-      .notarys-filter {
-        display: none;
-      }
-
-      .notary-list .notary-card {
-        padding: 8px;
-
-        .card-left {
-          .card-avatar {
-            padding-right: 0;
-            position: relative;
-
-            .notary-avatar {
-              width: 100%;
-              object-fit: cover;
-            }
-
-            .card-rev {
-              display: flex;
-              align-items: center;
-              position: absolute;
-              bottom: 0;
-              background: #fff;
-              padding: 0 3px;
-              margin: 0 0 12px 8px;
-              border-radius: 4px;
-
-              .notary-stars {
-                height: 10px;
-                align-items: center;
-
-                img {
-                  width: 10px;
-                  height: 10px;
-                }
-              }
-
-              .rev a {
-                font-size: 10px;
-                line-height: 16px;
-                padding-left: 4px;
-
-                span {
-                  display: none;
-                }
-              }
-            }
-          }
-
-          .card-center {
-            .card-spec {
-              font-size: 12px;
-              line-height: 16px;
-            }
-
-            .card-name {
-              font-size: 14px;
-              line-height: 16px;
-              font-weight: 600;
-            }
-
-            .card-year {
-              font-size: 12px;
-              line-height: 16px;
-              margin-top: 8px;
-              padding-bottom: 4px;
-              border-bottom: 1px solid #dde0e3;
-            }
-
-            .card-subway {
-              margin-top: 11px;
-
-              .subway-item {
-                font-size: 12px;
-                line-height: 16px;
-
-                .subway-step {
-                  font-size: 10px;
-                  line-height: 16px;
-                  padding-left: 3px;
-
-                  img {
-                    width: 6px;
-                    height: 8px;
-                  }
-                }
-              }
-            }
-
-            .card-adress {
-              font-size: 12px;
-            }
-          }
-        }
-
-        .card-right {
-          max-width: 100%;
-
-          .card-rightChoose {
-            display: block;
-          }
-
-          .slider-month,
-          .slider-days {
+          .search-form {
             display: none;
           }
 
-          .block-times ul li {
-            margin-bottom: 8px;
-
-            .slider-btn {
-              font-size: 12px;
-              height: 24px;
-              line-height: 24px;
-            }
-          }
-
-          .block-times {
-            border: none;
-            margin: 0;
-
-            ul li:nth-child(4n + 4) {
-              margin-right: 4px;
-            }
-          }
-
-          .error p {
+          input {
             font-size: 12px;
-            padding-left: 8px;
+          }
+
+          .search-form-mb {
+            display: block;
+
+            .search-formDate,
+            .search-bottomMobile {
+              height: 32px;
+            }
+
+            .search-formDate {
+              input {
+                border-radius: 4px 0 0 4px;
+              }
+
+              .search-btn {
+                min-width: 64px;
+                line-height: 16px;
+                font-weight: 500;
+                margin-top: 0;
+                border-radius: 0 4px 4px 0;
+              }
+            }
+
+            .search-bottomMobile {
+              display: flex;
+              align-items: center;
+              margin-top: 8px;
+
+              .search-date {
+                width: 100%;
+                height: 100%;
+                justify-content: space-between;
+                padding: 0 16px;
+                margin-right: 16px;
+                font-weight: 500;
+                margin-left: 0;
+              }
+
+              .filter {
+                cursor: pointer;
+              }
+            }
+          }
+        }
+
+        .search-title {
+          font-size: 14px;
+          line-height: 16px;
+          padding-bottom: 16px;
+
+          span {
+            color: #8e99a7;
+          }
+        }
+      }
+
+      &.notarys {
+        .notarys-filter {
+          display: none;
+        }
+
+        .notary-list .notary-card .card-right .block-times {
+          ul {
+            grid-auto-rows: 32px;
+
+            li {
+              margin: 0;
+            }
+          }
+        }
+
+        .search-form {
+          display: none;
+        }
+
+        .card-rev {
+          display: flex;
+          align-items: center;
+          position: absolute;
+          bottom: 20px;
+          left: 5px;
+          background: #fff;
+          padding: 0 3px;
+          border-radius: 4px;
+
+          .notary-stars {
+            height: 10px;
+            align-items: center;
+
+            img {
+              width: 10px;
+              height: 10px;
+            }
+          }
+
+          .rev a {
+            font-size: 10px;
+            line-height: 16px;
+            padding-left: 4px;
+
+            span {
+              display: none;
+            }
+          }
+        }
+
+        .pagination {
+          button {
+            height: 30px;
+          }
+
+          .arrow__pag {
+            width: 50px;
+          }
+
+          .page__num {
+            width: 26px;
+            margin-right: 6px;
+          }
+
+          button:first-child,
+          button:nth-last-child(2) {
+            margin-right: 8px;
           }
         }
       }
     }
+  }
 
-    .modal-record {
-      .v--modal {
-        width: 100% !important;
-        height: 100% !important;
-        top: inherit !important;
-        left: 0 !important;
-        bottom: 0;
+  @mixin mb-card {
+    .card-left {
+      .card-avatar {
+        position: relative;
 
-        .modal-body.notary-list {
-          .notary-card .card-left .card-center .card-name {
-            font-size: 14px;
+        .notary-avatar {
+          object-fit: cover;
+        }
+        .notary-star img {
+          width: 12px;
+          height: 12px;
+        }
+      }
+
+      .card-center {
+        .card-spec {
+          font-size: 12px;
+          line-height: 16px;
+        }
+
+        .card-name {
+          font-size: 14px;
+          line-height: 16px;
+          font-weight: 600;
+        }
+
+        .card-year {
+          font-size: 12px;
+          line-height: 16px;
+          margin-top: 8px;
+          padding-bottom: 4px;
+          border-bottom: 1px solid #dde0e3;
+        }
+
+        .card-subway {
+          margin-top: 11px;
+
+          .subway-item {
+            font-size: 12px;
             line-height: 16px;
+
+            .subway-step {
+              font-size: 10px;
+              line-height: 16px;
+              padding-left: 3px;
+
+              img {
+                width: 6px;
+                height: 8px;
+              }
+            }
           }
+        }
+
+        .card-adress {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+
+  .notarys {
+    .notary-list .notary-card {
+      padding: 8px;
+
+      @include mb-card;
+      .card-right {
+        max-width: 100%;
+
+        .card-rightChoose {
+          display: block;
+        }
+
+        .slider-month,
+        .slider-days {
+          display: none;
+        }
+
+        .block-times ul li {
+          margin-bottom: 8px;
+
+          .slider-btn {
+            font-size: 12px;
+            height: 24px;
+            line-height: 24px;
+          }
+        }
+
+        .block-times {
+          border: none;
+          margin: 0;
+
+          ul li:nth-child(4n + 4) {
+            margin-right: 4px;
+          }
+        }
+
+        .error p {
+          font-size: 12px;
+          padding-left: 8px;
+        }
+
+        .change_date {
+          display: flex;
         }
       }
     }
@@ -660,6 +821,191 @@
       .btn-profile .profile-save {
         height: 40px;
         width: 136px;
+      }
+    }
+  }
+
+  .page {
+    &.results .notarys .notary-list .notary-card .card-right .slider-month,
+    &.results .notarys .notary-list .notary-card .card-right .slider-days {
+      display: block;
+    }
+
+    .container {
+      border: none;
+      box-shadow: none;
+    }
+
+    .left-container {
+      padding: 0;
+
+      .notary-card.result-card .card-center-mb .card-right .slider-month > div,
+      .notary-card.result-card .card-center-mb .card-right .slider-days > div {
+        width: 85%;
+      }
+
+      .page-reviews {
+        .v--modal {
+          height: 100% !important;
+        }
+      }
+    }
+
+    .notarys-slider {
+      .notary-card.other-card {
+        display: block;
+        padding: 0;
+
+        .card-left {
+          padding: 8px;
+          border-bottom: 1px solid #dde0e3;
+
+          .card-avatar {
+            padding-right: inherit;
+
+            .notary-stars {
+              height: 10px;
+              margin-top: 0;
+
+              .notary-star img {
+                height: 10px;
+                width: 10px;
+              }
+            }
+
+            .rev {
+              font-size: 8px;
+            }
+          }
+
+          .card-center .card-year {
+            border-bottom: 0;
+            margin-top: 0;
+            padding-bottom: 0;
+          }
+        }
+      }
+
+      .notary-list .notary-card .card-left .card-center .card-subway {
+        display: none;
+      }
+
+      .card-bottom-mb {
+        display: block;
+        padding: 8px 8px 12px;
+
+        ul {
+          display: flex;
+          flex-wrap: wrap;
+
+          li {
+            display: flex;
+            align-items: center;
+            font-size: 10px;
+            line-height: 16px;
+            padding-right: 5px;
+
+            span {
+              width: 8px;
+              height: 8px;
+              border-radius: 50%;
+              background: #ffa800;
+              margin-right: 5px;
+            }
+          }
+        }
+      }
+    }
+
+    .page-phone {
+      .page__left {
+        h1 {
+          font-size: 14px;
+          font-weight: 600;
+          margin-right: 0;
+        }
+
+        .page__left-num p {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 12px;
+
+          &:first-child {
+            margin-right: 0;
+          }
+        }
+      }
+
+      .page__right {
+        justify-content: center;
+
+        button {
+          font-size: 12px;
+          width: 128px;
+          height: 32px;
+        }
+      }
+    }
+  }
+
+  .modal {
+    .modal-header {
+      margin: 14px 16px 10px;
+
+      h1 {
+        font-size: 16px;
+        line-height: 24px;
+      }
+    }
+
+    .modal-body.notary-list {
+      margin-bottom: 24px;
+
+      .notary-card {
+        padding: 10px 16px;
+
+        .card-left {
+          .card-avatar {
+            margin: 0;
+            padding-right: 8px;
+            .notary-avatar {
+              width: 80px;
+              height: 76px;
+            }
+            .notary-stars {
+              line-height: 10px;
+            }
+          }
+        }
+
+        margin: 0;
+      }
+    }
+
+    &.modal-record,
+    &.modal-time,
+    &.modal-accept {
+      .v--modal {
+        width: 100% !important;
+        height: 100vh !important;
+        top: inherit !important;
+        left: 0 !important;
+        bottom: 0;
+
+        .modal-body.notary-list {
+          .notary-card {
+            @include mb-card;
+            .card-left {
+              .card-center {
+                .card-name {
+                  font-size: 14px;
+                  line-height: 16px;
+                }
+              }
+            }
+          }
+        }
       }
     }
   }
