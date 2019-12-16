@@ -4,22 +4,24 @@
       <div class="search-fixed">
         <div class="search">
           <form class="search-form">
-            <a href="results" class="back-btn">
-              <img src="/arrowBack.svg" alt />
-            </a>
-            <input id="srch" placeholder="Имя нотариуса, метро, город МО" />
-            <div @click="show = !show" class="search-date">
-              Вт, 24 сентября
-              <i></i>
-              <transition name="fade">
-                <div v-if="show" class="date-dropdown">
-                  <ul>
-                    <li class="selected">Сегодня</li>
-                    <li>Завтра, 26 сен</li>
-                    <li>Пятница, 27 сен</li>
-                  </ul>
-                </div>
-              </transition>
+            <div class="search-formDate">
+              <a href="results" class="back-btn">
+                <img src="/arrowBack.svg" alt />
+              </a>
+              <input id="srch" placeholder="Имя нотариуса, метро, город МО" />
+              <div @click="show = !show" class="search-date">
+                <p>Вт, 24 сентября</p>
+                <i></i>
+                <transition name="fade">
+                  <div v-if="show" class="date-dropdown">
+                    <ul>
+                      <li class="selected">Сегодня</li>
+                      <li>Завтра, 26 сен</li>
+                      <li>Пятница, 27 сен</li>
+                    </ul>
+                  </div>
+                </transition>
+              </div>
             </div>
             <button class="search-btn">Найти</button>
           </form>
@@ -174,7 +176,9 @@
                     </div>
                   </div>
                   <div class="card-bottom">
-                    <h2>Информация о нотариусе</h2>
+                    <div class="title-page">
+                      <h2>Информация о нотариусе</h2>
+                    </div>
                     <div class="info-notary">
                       <ul>
                         <li>
@@ -185,11 +189,6 @@
                         <li>
                           <p>
                             <span>Нотариальный округ:</span> Московский городской нотариальный округ
-                          </p>
-                        </li>
-                        <li>
-                          <p>
-                            <span>Субъект РФ:</span> г. Москва
                           </p>
                         </li>
                         <li>
@@ -225,66 +224,119 @@
             </div>
 
             <div class="page-reviews">
-              <h2>Отзывы о нотариусе</h2>
-              <div class="reviews-list">
-                <div class="review-item">
-                  <div class="review-stars">
-                    <div class="review-star">
-                      <img src="/starO.svg" alt />
-                    </div>
-                    <div class="review-star">
-                      <img src="/starO.svg" alt />
-                    </div>
-                    <div class="review-star">
-                      <img src="/starO.svg" alt />
-                    </div>
-                    <div class="review-star">
-                      <img src="/starD.svg" alt />
-                    </div>
-                    <div class="review-star">
-                      <img src="/starD.svg" alt />
-                    </div>
-                    <p>Отлично</p>
-                  </div>
-                  <div class="review-text">
-                    Lorem ipsum dolor sit, amet consectetur
-                    adipisicing elit. Illo tempora dolor
-                    magni veniam iste suscipit dolorem quasi
-                    ad non officiis.
-                  </div>
-                  <div class="review-name">Кристина, 12 октября 2019</div>
-                </div>
-                <div class="review-item">
-                  <div class="review-stars">
-                    <div class="review-star">
-                      <img src="/starO.svg" alt />
-                    </div>
-                    <div class="review-star">
-                      <img src="/starO.svg" alt />
-                    </div>
-                    <div class="review-star">
-                      <img src="/starO.svg" alt />
-                    </div>
-                    <div class="review-star">
-                      <img src="/starD.svg" alt />
-                    </div>
-                    <div class="review-star">
-                      <img src="/starD.svg" alt />
-                    </div>
-                    <p>Отлично</p>
-                  </div>
-                  <div class="review-text">
-                    Lorem ipsum dolor sit, amet consectetur
-                    adipisicing elit. Illo tempora dolor
-                    magni veniam iste suscipit dolorem quasi
-                    ad non officiis.
-                  </div>
-                  <div class="review-name">Кристина, 12 октября 2019</div>
-                </div>
+              <div class="title-page">
+                <h2>Отзывы о нотариусе</h2>
               </div>
-              <div class="reviews-btn">
-                <button class="show-btn">Показать еще 5 отзывов</button>
-                <button class="review-btn" @click="showReviewModal">Оставить отзыв</button>
+              <div class="tabs">
+                  <a v-on:click="activetab=1" v-bind:class="[ activetab === 1 ? 'active' : '' ]">Отзывы</a>
+                  <a v-on:click="activetab=2" v-bind:class="[ activetab === 2 ? 'active' : '' ]">О нотариусе</a>
+              </div>
+              <div class="content">
+                  <div v-if="activetab === 1" class="tabcontent">
+                      <div class="reviews-list">
+                        <div class="review-item">
+                          <div class="review-stars">
+                            <div class="review-star">
+                              <img src="/starO.svg" alt />
+                            </div>
+                            <div class="review-star">
+                              <img src="/starO.svg" alt />
+                            </div>
+                            <div class="review-star">
+                              <img src="/starO.svg" alt />
+                            </div>
+                            <div class="review-star">
+                              <img src="/starD.svg" alt />
+                            </div>
+                            <div class="review-star">
+                              <img src="/starD.svg" alt />
+                            </div>
+                            <p>Отлично</p>
+                          </div>
+                          <div class="review-text">
+                            Lorem ipsum dolor sit, amet consectetur
+                            adipisicing elit. Illo tempora dolor
+                            magni veniam iste suscipit dolorem quasi
+                            ad non officiis.
+                          </div>
+                          <div class="review-name">Кристина, 12 октября 2019</div>
+                        </div>
+                        <div class="review-item">
+                          <div class="review-stars">
+                            <div class="review-star">
+                              <img src="/starO.svg" alt />
+                            </div>
+                            <div class="review-star">
+                              <img src="/starO.svg" alt />
+                            </div>
+                            <div class="review-star">
+                              <img src="/starO.svg" alt />
+                            </div>
+                            <div class="review-star">
+                              <img src="/starD.svg" alt />
+                            </div>
+                            <div class="review-star">
+                              <img src="/starD.svg" alt />
+                            </div>
+                            <p>Отлично</p>
+                          </div>
+                          <div class="review-text">
+                            Lorem ipsum dolor sit, amet consectetur
+                            adipisicing elit. Illo tempora dolor
+                            magni veniam iste suscipit dolorem quasi
+                            ad non officiis.
+                          </div>
+                          <div class="review-name">Кристина, 12 октября 2019</div>
+                        </div>
+                      </div>
+                      <div class="reviews-btn">
+                        <button class="show-btn">Показать еще 5 отзывов</button>
+                        <button class="review-btn" @click="showReviewModal">Оставить отзыв</button>
+                      </div>
+                  </div>
+                  <div v-if="activetab === 2" class="tabcontent">
+                    <div class="notary-card result-card">
+                      <div class="info-notary">
+                        <ul>
+                          <li>
+                            <p>
+                              <span>Вид деятельности:</span> Нотариус, занимающийся частной практикой
+                            </p>
+                          </li>
+                          <li>
+                            <p>
+                              <span>Нотариальный округ:</span> Московский городской нотариальный округ
+                            </p>
+                          </li>
+                          <li>
+                            <p>
+                              <span>Субъект РФ:</span> г. Москва
+                            </p>
+                          </li>
+                          <li>
+                            <p>
+                              <span>Палата:</span> Московская городская нотариальная палата (ID 2200510)
+                            </p>
+                          </li>
+                          <li>
+                            <p>
+                              <span>Текущий статус:</span> Действующий
+                            </p>
+                          </li>
+                          <li>
+                            <p>
+                              <span>Приказ:</span> 352-ч ст 05.10.1998
+                            </p>
+                          </li>
+                          <li>
+                            <p>
+                              <span>Лицензия:</span> с 1995 года
+                            </p>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
               </div>
               <client-only>
                 <modal class="modal modal-review" name="modalReview" height="auto">
@@ -295,13 +347,13 @@
                     <div class="notary-card">
                       <div class="card-left">
                         <div class="card-avatar">
-                          <img class="notary-avatar" src="/ava.jpg" alt />
+                          <a href="page"><img class="notary-avatar" src="/ava.jpg" alt /></a>
                         </div>
                         <div class="card-center">
                           <div class="card-name">
                             <a href="page">Ложкин Валерий Александрович</a>
                           </div>
-                          <div class="card-underName">
+                          <div class="card-rev">
                             <div class="notary-stars">
                               <div class="notary-star">
                                 <img src="/starO.svg" alt />
@@ -320,7 +372,7 @@
                               </div>
                             </div>
                             <div class="rev">
-                              <a href="#">19 отзывов</a>
+                              <a href="#">19 <span>отзывов</span></a>
                             </div>
                           </div>
                           <ul class="card-subway">
@@ -461,7 +513,9 @@
           </div>
         </div>
         <div class="notarys-slider">
-          <h2>Нотариусы района</h2>
+          <div class="title-page">
+            <h2>Нотариусы района</h2>
+          </div>
           <client-only>
             <carousel
               :paginationEnabled="false"
@@ -739,7 +793,7 @@
         </div>
         <div class="page-phone">
           <div class="page__left">
-            <h1>Телефон:</h1>
+            <h1>Телефоны:</h1>
             <div class="page__left-num">
               <p>
                 <img src="phone-page.svg" alt="phone" />+7 999 999 99 99
@@ -772,7 +826,8 @@ export default {
     },
   },
   data: () => ({
-    show: false
+    show: false,
+    activetab: 1,
   })
 };
 </script>

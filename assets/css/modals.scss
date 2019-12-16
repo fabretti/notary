@@ -9,23 +9,29 @@
     }
   }
 
+  &.v--modal-overlay .v--modal-box {
+    overflow-y: auto;
+  }
+
   .modal-body.notary-list .notary-card {
     background: #dde0e3;
     box-shadow: none;
     border-radius: 0;
-    margin-bottom: 7px;
     padding: 10px 24px;
 
     .card-left {
       .card-left-mb {
         display: flex;
+
         .card-name-mb {
           display: none;
+
           .card-year {
             border-bottom: 0;
           }
         }
       }
+
       .card-avatar {
         margin: auto 0;
       }
@@ -36,7 +42,14 @@
           line-height: 24px;
         }
 
-        .card-underName {
+        .dropdown-menu {
+          a {
+            color: #fff;
+            display: flex;
+          }
+        }
+
+        .card-rev {
           display: inline-flex;
 
           .notary-stars {
@@ -148,10 +161,37 @@
         background: url("/arrow-modalForm.svg") no-repeat;
         pointer-events: none;
       }
+      &.showTime {
+        &:before {
+          width: 12px;
+          height: 12px;
+          background: url("/mdi-av-timer.svg") no-repeat;
+        }
+      }
+      option {
+        width: 100%;
+      }
     }
-
+    .input-box {
+      &:before {
+          content: "";
+          position: absolute;
+          width: 12px;
+          height: 12px;
+          top: 56%;
+          right: 9px;
+          z-index: 5;
+        }
+        &.name:before {
+          background: url("/mdi-account.svg") no-repeat;
+        }
+        &.tel:before {
+          background: url("/mdi-phone.svg") no-repeat;
+        }
+    }
+    
     select,
-    input {
+    input, .time {
       width: 100%;
       font-size: 14px;
       line-height: 16px;
@@ -162,6 +202,10 @@
       padding: 10px 16px;
       border: 1px solid #8e99a7;
       appearance: button;
+    }
+    .time {
+      cursor: pointer;
+      appearance: none;
     }
   }
 
@@ -177,6 +221,13 @@
 }
 
 .modal-review {
+  .modal-body.notary-list {
+    .card-left .card-avatar .notary-avatar {
+      width: 72px;
+      height: 72px;
+    }
+  }
+
   .modal-center {
     text-align: center;
     margin: 0 48px;
@@ -185,10 +236,11 @@
       font-size: 24px;
       line-height: 32px;
       margin-bottom: 8px;
+      font-weight: 500;
     }
 
     .review-act {
-      margin-bottom: 50px;
+      margin: 26px 0 50px;
 
       .notary-stars {
         display: flex;
@@ -224,7 +276,6 @@
 .modal-record {
   .form__record {
     margin: 0 24px;
-
     .sms {
       display: flex;
 
@@ -289,7 +340,7 @@
     position: relative;
     font-size: 16px;
     line-height: 24px;
-    padding: 20px 24px;
+    margin: 20px 24px;
 
     span {
       color: #f15a22;
@@ -427,7 +478,7 @@
         display: none;
       }
 
-      input[type="radio"]:checked + .label {
+      input[type="radio"]:checked+.label {
         border-color: #1b559e;
 
         &:after {

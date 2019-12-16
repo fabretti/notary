@@ -8,12 +8,15 @@
   line-height: 32px;
 }
 
+.modal.v--modal-overlay .v--modal-box {
+  overflow-y: auto;
+}
+
 .modal .modal-body.notary-list .notary-card {
   background: #dde0e3;
   -webkit-box-shadow: none;
           box-shadow: none;
   border-radius: 0;
-  margin-bottom: 7px;
   padding: 10px 24px;
 }
 
@@ -40,24 +43,31 @@
   line-height: 24px;
 }
 
-.modal .modal-body.notary-list .notary-card .card-left .card-center .card-underName {
+.modal .modal-body.notary-list .notary-card .card-left .card-center .dropdown-menu a {
+  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.modal .modal-body.notary-list .notary-card .card-left .card-center .card-rev {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
 
-.modal .modal-body.notary-list .notary-card .card-left .card-center .card-underName .notary-stars {
+.modal .modal-body.notary-list .notary-card .card-left .card-center .card-rev .notary-stars {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
 
-.modal .modal-body.notary-list .notary-card .card-left .card-center .card-underName .notary-stars img {
+.modal .modal-body.notary-list .notary-card .card-left .card-center .card-rev .notary-stars img {
   width: 12px;
   height: 12px;
 }
 
-.modal .modal-body.notary-list .notary-card .card-left .card-center .card-underName .rev a {
+.modal .modal-body.notary-list .notary-card .card-left .card-center .card-rev .rev a {
   padding-left: 4px;
   color: #2d333d;
   font-size: 14px;
@@ -161,8 +171,36 @@
   pointer-events: none;
 }
 
+.modal .form__box .search-box.showTime:before {
+  width: 12px;
+  height: 12px;
+  background: url("/mdi-av-timer.svg") no-repeat;
+}
+
+.modal .form__box .search-box option {
+  width: 100%;
+}
+
+.modal .form__box .input-box:before {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  top: 56%;
+  right: 9px;
+  z-index: 5;
+}
+
+.modal .form__box .input-box.name:before {
+  background: url("/mdi-account.svg") no-repeat;
+}
+
+.modal .form__box .input-box.tel:before {
+  background: url("/mdi-phone.svg") no-repeat;
+}
+
 .modal .form__box select,
-.modal .form__box input {
+.modal .form__box input, .modal .form__box .time {
   width: 100%;
   font-size: 14px;
   line-height: 16px;
@@ -177,12 +215,24 @@
           appearance: button;
 }
 
+.modal .form__box .time {
+  cursor: pointer;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
 .modal.modal-date .modal-header, .modal.modal-filter .modal-header {
   margin: 0 0 16px;
   padding: 12px 18px;
   -webkit-box-shadow: 0 4px 3px 0 rgba(0, 0, 0, 0.03);
           box-shadow: 0 4px 3px 0 rgba(0, 0, 0, 0.03);
   border-bottom: solid 1px #e3e3e3;
+}
+
+.modal-review .modal-body.notary-list .card-left .card-avatar .notary-avatar {
+  width: 72px;
+  height: 72px;
 }
 
 .modal-review .modal-center {
@@ -194,10 +244,11 @@
   font-size: 24px;
   line-height: 32px;
   margin-bottom: 8px;
+  font-weight: 500;
 }
 
 .modal-review .modal-center .review-act {
-  margin-bottom: 50px;
+  margin: 26px 0 50px;
 }
 
 .modal-review .modal-center .review-act .notary-stars {
@@ -298,7 +349,7 @@
   position: relative;
   font-size: 16px;
   line-height: 24px;
-  padding: 20px 24px;
+  margin: 20px 24px;
 }
 
 .modal-accept .modal-message span {

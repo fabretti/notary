@@ -35,7 +35,8 @@
           <form class="search-form-mb">
             <div class="search-formDate">
               <input id="srch" placeholder="Бульвар Адмирала Ушакова" />
-              <button class="search-btn">Найти</button>
+              <button class="search-btn"><img src="bx-search.svg" alt=""></button>
+              
             </div>
             <div class="search-bottomMobile">
               <div @click="modalDate" class="search-date">
@@ -302,6 +303,7 @@
               </div>
             </div>
           </div>
+          <notaryCard />
         </div>
         <div class="pagination">
           <button class="arrow__pag prev">
@@ -317,7 +319,7 @@
           </button>
         </div>
       </div>
-      <div class="result__section map">
+      <div class="results__section map">
         <div class="container">
           <div class="map-title section-title">Все нотариусы на карте</div>
           <div id="map">
@@ -339,6 +341,11 @@
               <div class="card-left">
                 <div class="card-avatar">
                   <a href="page"><img class="notary-avatar" src="/ava.jpg" alt /></a>
+                </div>
+                <div class="card-center">
+                  <div class="card-name">
+                    <a href="page">Ложкин Валерий Александрович</a>
+                  </div>
                   <div class="card-rev">
                     <div class="notary-stars">
                       <div class="notary-star">
@@ -361,11 +368,6 @@
                       <a href="#">19 <span>отзывов</span></a>
                     </div>
                   </div>
-                </div>
-                <div class="card-center">
-                  <div class="card-name">
-                    <a href="page">Ложкин Валерий Александрович</a>
-                  </div>
                   <ul class="card-subway">
                     <li class="subway-item">
                       <span class="subway-color"></span>Авиамоторная
@@ -386,18 +388,30 @@
                   <span>*</span>
                 </label>
                 <div class="search-box">
-                  <select name id>
-                    <option selected="true" disabled="disabled">Вид действия</option>
-                    <option value>Действие 1</option>
+                  <select v-model="notarialActTypeId">
+                    <option value="" disabled="true">Выберите тип НД</option>
+                    <option 
+                      v-for="(item, index) in notarialActTypes" 
+                      :key="index" 
+                      :value="item.id"
+                      >
+                      {{ item.title }}
+                    </option>
                   </select>
                 </div>
               </div>
               <div class="form__box">
                 <label for="vnd">Нотариальное действие</label>
                 <div class="search-box">
-                  <select name id>
-                    <option selected="true" disabled="disabled">Вид действия</option>
-                    <option value>Действие 1</option>
+                  <select v-model="notarialActId">
+                    <option value="" disabled="true">Вид действия</option>
+                    <option 
+                      v-for="(item, index) in notarialActs" 
+                      :key="index" 
+                      :value="item.id"
+                      >
+                      {{ item.title }}
+                    </option>
                   </select>
                 </div>
               </div>
@@ -406,11 +420,8 @@
                   Дата и время приёма
                   <span>*</span>
                 </label>
-                <div class="search-box" @click="showTimeModal">
-                  <select name id>
-                    <option selected="true" disabled="disabled">Вид действия</option>
-                    <option value>аывавыа</option>
-                  </select>
+                <div class="search-box showTime" @click="showTimeModal">
+                  <div class="time"></div>
                 </div>
               </div>
               <div class="form__box">
@@ -418,21 +429,29 @@
                   Ваше имя
                   <span>*</span>
                 </label>
-                <input type="text" placeholder="Ваше имя" />
+                <div class="input-box name">
+                  <input 
+                    type="text" 
+                    placeholder="Ваше имя" 
+                    v-model="customerFirstName"
+                  />
+                </div>
               </div>
               <div class="form__box">
                 <label for="vnd">
                   Телефон для подтверждения записи
                   <span>*</span>
                 </label>
-                <input
+                <div class="input-box tel">
+                  <input
                   class="u-full-width"
                   id="phone-number-ex"
                   type="text"
                   placeholder="+7 (___) ___-__-__"
                   v-mask="'+7 (###) ###-##-##'"
-                  v-model="models.phoneNumber"
+                  v-model="customerPhoneNumber"
                 />
+                </div>
               </div>
               <div class="sms">
                 <img src="sms.svg" alt />
@@ -440,7 +459,7 @@
               </div>
             </div></div>
           <div class="modal-bottom">
-            <button class="modal-sign" @click="showSecondModal">Записаться</button>
+            <button class="modal-sign" @click="createOrder">Записаться</button>
           </div>
           <div class="modal-close" @click="$modal.hide('modalRecord')"></div>
         </modal>
@@ -484,7 +503,7 @@
                   <div class="card-name">
                     <a href="page">Ложкин Валерий Александрович</a>
                   </div>
-                  <div class="card-underName">
+                  <div class="card-rev">
                     <div class="notary-stars">
                       <div class="notary-star">
                         <img src="/starO.svg" alt />
@@ -550,6 +569,11 @@
               <div class="card-left">
                 <div class="card-avatar">
                   <a href="page"><img class="notary-avatar" src="/ava.jpg" alt /></a>
+                </div>
+                <div class="card-center">
+                  <div class="card-name">
+                    <a href="page">Ложкин Валерий Александрович</a>
+                  </div>
                   <div class="card-rev">
                     <div class="notary-stars">
                       <div class="notary-star">
@@ -571,11 +595,6 @@
                     <div class="rev">
                       <a href="#">19 <span>отзывов</span></a>
                     </div>
-                  </div>
-                </div>
-                <div class="card-center">
-                  <div class="card-name">
-                    <a href="page">Ложкин Валерий Александрович</a>
                   </div>
                   <ul class="card-subway">
                     <li class="subway-item">
@@ -714,7 +733,55 @@
 </template>
 <script>
 import AppLogo from "~/components/AppLogo.vue";
+import notaryCard from '~/components/notaryCard';
 export default {
+  components: {
+    notaryCard,
+  },
+  data: () => ({
+    show: false,
+    dynamicMask: "###.###.###/###",
+      notarialActTypeId: '',
+      notarialActId: '',
+      customerFirstName: '',
+      customerPhoneNumber: '',
+      companyId: 1,
+      date: 1576454400,
+      time: 57600,
+    coords: [55.778328, 37.674699],
+    placemarks: [
+      {
+        coords: [55.782800, 37.645904],
+        properties: {
+          balloonContentBody: "asdfd",
+          balloonContentFooter: "1",
+          balloonContentHeader: "1"
+        },
+        clusterName: "1",
+        markerId: "1"
+      },
+    ]
+  }),
+  computed: {
+    notarialActTypes() {
+      return this.$store.getters['notarialActTypes/getList']
+    },
+    notarialActs() {
+      return this.$store.getters['notarialActs/getList']
+    },
+  },
+  watch: {
+    notarialActTypeId(value, old) {
+      if (!value || value == old) {
+        return
+      }
+      this.notarialActId = ''
+      this.loadNotarialActs(value)
+    },
+  },
+  mounted() {
+    this.loadNotarialActTypes()
+  },
   methods: {
     showModal() {
       this.$modal.show("modalRecord");
@@ -734,27 +801,24 @@ export default {
     },
     modalFilter() {
       this.$modal.show("modalFilter");
-    }
-  },
-  data: () => ({
-    show: false,
-    dynamicMask: "###.###.###/###",
-    models: {
-      phoneNumber: ""
     },
-    coords: [55.778328, 37.674699],
-    placemarks: [
-      {
-        coords: [55.782800, 37.645904],
-        properties: {
-          balloonContentBody: "asdfd",
-          balloonContentFooter: "1",
-          balloonContentHeader: "1"
-        },
-        clusterName: "1",
-        markerId: "1"
-      },
-    ]
-  })
+    loadNotarialActTypes() {
+      this.$store.dispatch('notarialActTypes/loadList');
+    },
+    loadNotarialActs(value) {
+      this.$store.dispatch('notarialActs/loadList', value)
+    },
+    createOrder() {
+      this.$store.dispatch('orders/create', {
+        notarialActTypeId: this.notarialActTypeId,
+        notarialActId: this.notarialActId,
+        customerFirstName: this.customerFirstName,
+        customerPhoneNumber: this.customerPhoneNumber,
+        companyId: this.companyId,
+        date: this.date,
+        time: this.time,
+      })
+    },
+  },
 };
 </script>

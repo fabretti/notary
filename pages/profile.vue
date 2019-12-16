@@ -18,10 +18,12 @@
         <div class="form-box">
           <!-- <label for="number">Телефон</label> -->
           <input
-            type="tel"
-            onkeypress="return event.charCode >= 48 && event.charCode <= 57"
-            name="number"
+            class="u-full-width"
+            id="phone-number-ex"
+            type="text"
             placeholder="+7 (___) ___-__-__"
+            v-mask="'+7 (###) ###-##-##'"
+            v-model="models.phoneNumber"
           />
         </div>
         <div class="btn-profile">
@@ -31,3 +33,13 @@
     </div>
   </section>
 </template>
+<script>
+export default {
+  data: () => ({
+    dynamicMask: "###.###.###/###",
+    models: {
+      phoneNumber: ""
+    },
+  })
+};
+</script>

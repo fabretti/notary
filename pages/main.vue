@@ -169,8 +169,8 @@
       </div>
 
       <div class="accordion" id="accordion">
-        <div class="accordion-item" v-on:click="accordion">
-          <div class="accordion-item-head">
+        <div class="accordion-item" @click="accordion1 = !accordion1">
+          <div class="accordion-item-head" :class="{ active : accordion1}">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -191,8 +191,8 @@
           </div>
         </div>
 
-        <div class="accordion-item">
-          <div class="accordion-item-head" v-on:click="accordion">
+        <div class="accordion-item" @click="accordion2 = !accordion2">
+          <div class="accordion-item-head" :class="{ active : accordion2}">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -213,8 +213,8 @@
           </div>
         </div>
 
-        <div class="accordion-item">
-          <div class="accordion-item-head" v-on:click="accordion">
+        <div class="accordion-item" @click="accordion3 = !accordion3">
+          <div class="accordion-item-head" :class="{ active : accordion3}">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -618,6 +618,9 @@
 export default {
   data: () => ({
     show: false,
+    accordion1: false,
+    accordion2: false,
+    accordion3: false,
     coords: [55.778328, 37.674699],
     placemarks: [
       {
@@ -633,13 +636,13 @@ export default {
     ]
   }),
   methods: {
-    accordion(event) {
-      // var matches = document.querySelectorAll(".accordion-item-head");
-      // for (var i = 0; i < matches.length; i++) {
-      //   matches[i].classList.remove("active");
-      // }
-      event.target.classList.toggle("active");
-    },
+    // accordion(event) {
+    //   // var matches = document.querySelectorAll(".accordion-item-head");
+    //   // for (var i = 0; i < matches.length; i++) {
+    //   //   matches[i].classList.remove("active");
+    //   // }
+    //   event.target.classList.toggle("active");
+    // },
     modalDate() {
       this.$modal.show("modalDate");
     }

@@ -77,10 +77,18 @@ module.exports = {
   }, {
     src: "~/plugins/vueCarousel.js",
     mode: "client"
-  }, ],
+  }, {
+    src: "~/plugins/filters.js",
+    mode: "client"
+  },
+],
+  modules: ['cookie-universal-nuxt'],
   css: [
     "~assets/css/style.css",
     "~assets/css/modals.css",
     "~assets/css/responsive.css"
-  ]
+  ],
+  env: {
+    apiUrl: 'https://api-notary-lk.sevenreasons.ru/',
+  },
 };
