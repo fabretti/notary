@@ -147,7 +147,7 @@ footer .wrap {
     }
   }
 
-  .search-date,
+  .custom__selected,
   .search-btn {
     font-size: 14px;
     font-weight: 600;
@@ -158,10 +158,12 @@ footer .wrap {
     cursor: pointer;
   }
 
-  .search-date {
+  .custom__selected {
     position: relative;
     display: flex;
+    height: 100%;
     justify-content: center;
+    outline: none;
     background: #f15a22;
     box-shadow: 0 8px 25px 0 rgba(241, 90, 34, 0.15);
 
@@ -170,7 +172,7 @@ footer .wrap {
       transition: all 0.2s linear;
     }
 
-    p {
+    .custom__title {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -190,6 +192,10 @@ footer .wrap {
       }
     }
 
+    .custom__list {
+      top: 50px;
+    }
+
     img {
       display: none;
     }
@@ -199,6 +205,7 @@ footer .wrap {
     @include dropdown;
     left: 0;
     top: 53px;
+    min-width: 210px;
   }
 
   .search-btn {
@@ -212,6 +219,10 @@ footer .wrap {
 
   &-formDate {
     width: 100%;
+    img {
+      display: none;
+      cursor: pointer;
+    }
   }
 }
 
@@ -439,59 +450,50 @@ header {
       display: inline-flex;
       align-items: center;
 
-      .header__city {
+      .customSelect {
         position: relative;
         user-select: none;
 
-        .fade-enter-active,
-        .fade-leave-active {
-          transition: opacity 0.2s;
-        }
-
-        .fade-enter,
-        .fade-leave-to
-
-        /* .fade-leave-active до версии 2.1.8 */
- {
-          opacity: 0;
-        }
-
-        .city__selected {
+        .custom__selected {
           display: flex;
           align-items: center;
           padding: 0 10px;
           border-radius: 5px;
           margin-right: 5px;
           cursor: pointer;
+          outline: none;
 
           &:hover {
             background: rgb(241, 241, 241);
           }
 
-          span {
-            font-size: 16px;
+          .custom__title {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
             line-height: 24px;
             color: #8e99a7;
-          }
 
-          i {
-            display: block;
-            width: 8px;
-            height: 7px;
-            margin-left: 10px;
-            background: url("/arrow-header.svg");
-            background-size: cover;
-            transition: all 0.2s linear;
+            p {
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
 
-            &.rotate {
-              transform: rotate(180deg);
+            i {
+              display: block;
+              width: 8px;
+              height: 7px;
+              margin-left: 10px;
+              background: url("/arrow-header.svg");
+              background-size: cover;
+              transition: all 0.2s linear;
+
+              &.rotate {
+                transform: rotate(180deg);
+              }
             }
           }
-        }
-
-        .city__list {
-          @include dropdown;
-          z-index: 99;
         }
       }
 
@@ -571,16 +573,45 @@ header {
     width: 260px;
     background: #1b559e;
 
-    a {
+    a,
+    .nav__city {
       align-items: center;
       display: flex;
-      justify-content: flex-end;
+      justify-content: flex-start;
       font-weight: 600;
       font-size: 14px;
       line-height: 16px;
       color: #fff;
       text-decoration: none;
       margin-bottom: 16px;
+
+      form {
+        text-align: right;
+        position: relative;
+
+        select {
+          width: 260px;
+          position: absolute;
+          left: -48px;
+          top: -7px;
+          padding-left: 48px;
+          border: 0;
+          font-weight: 600;
+          font-size: 14px;
+          line-height: 16px;
+          background: none;
+          color: #fff;
+          appearance: none;
+          outline: none;
+          z-index: 2;
+          cursor: pointer;
+          border-radius: 0;
+
+          option {
+            background: #1b559e;
+          }
+        }
+      }
 
       img {
         margin: 0 16px;
@@ -612,6 +643,10 @@ header {
 
     .nav__enter {
       margin-top: 120px;
+
+      a {
+        justify-content: flex-end;
+      }
     }
   }
 
@@ -1289,7 +1324,7 @@ header {
         transition: 0.3s;
       }
 
-      &-date {
+      .custom__selected {
         margin: 0 16px;
         align-items: center;
 
@@ -1303,7 +1338,7 @@ header {
       }
 
       input,
-      &-date,
+      .custom__selected,
       &-btn {
         border-radius: 4px;
       }
@@ -1442,6 +1477,7 @@ header {
           border: solid 1px #dde0e3;
 
           img {
+            display: block;
             max-width: 33px;
             height: 12px;
           }
@@ -1888,13 +1924,16 @@ header {
 .notes.results {
   .search {
     margin: 16px 0 36px 0;
+
     .search-formDate {
       margin-right: 12px;
+
       button:last-of-type {
         display: none;
       }
     }
   }
+
   .notes-title {
     font-size: 36px;
     line-height: 40px;

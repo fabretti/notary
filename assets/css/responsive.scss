@@ -327,6 +327,9 @@
       font-size: 30px;
       line-height: 30px;
     }
+    .custom__list {
+      left: -30px;
+    }
   }
 
   .search-form {
@@ -340,10 +343,14 @@
   }
 
   .results {
-    .search-fixed .search-date {
-      margin-right: 0;
+    .search-fixed {
+      .search-date {
+        margin-right: 0;
+      }
+      .search .custom__selected {
+        margin-right: 0;
+      }
     }
-
     .modal-record,
     .modal-time,
     .modal-accept {
@@ -456,6 +463,25 @@
       display: none;
     }
   }
+
+  .modal {
+    &.modal-record,
+    &.modal-time,
+    &.modal-accept,
+    &.modal-review {
+      .modal-body.notary-list {
+        .card-left {
+          .card-avatar .card-rev {
+            display: block;
+          }
+
+          .card-center .card-rev {
+            display: none;
+          }
+        }
+      }
+    }
+  }
 }
 
 @media (max-width: 480px) {
@@ -469,7 +495,7 @@
         }
 
         .notary-star img {
-          height: 12px;
+          height: 10px;
         }
       }
 
@@ -519,6 +545,7 @@
       }
     }
   }
+
   @mixin cardRev {
     .card-rev {
       display: flex;
@@ -551,6 +578,7 @@
       }
     }
   }
+
   .main__section .v--modal-overlay .v--modal-box,
   .modalBottom.v--modal-overlay .v--modal-box,
   header .v--modal-overlay .v--modal-box {
@@ -598,6 +626,16 @@
 
         .search-formDate {
           height: 32px;
+
+          .search-date {
+            display: none;
+          }
+
+          img {
+            display: block;
+            background-color: #f15a22;
+            padding: 0 8px;
+          }
         }
 
         .search-btn {
@@ -610,17 +648,8 @@
           display: none;
         }
 
-        .search-date p {
-          display: none;
-        }
-
         .search-date {
           min-width: inherit;
-        }
-
-        .search-date img {
-          display: block;
-          padding: 0 8px;
         }
       }
     }
@@ -751,12 +780,14 @@
     .results__section {
       &.map {
         margin: 44px 0;
+
         .section-title {
           font-size: 14px;
           line-height: 16px;
           margin-bottom: 12px;
         }
       }
+
       &.search-fixed {
         position: inherit;
 
@@ -790,11 +821,16 @@
               }
 
               .search-btn {
+                display: flex;
+                justify-content: space-around;
                 min-width: 64px;
                 line-height: 16px;
                 font-weight: 500;
                 margin-top: 0;
                 border-radius: 0 4px 4px 0;
+                img {
+                  display: block;
+                }
               }
             }
 
@@ -806,11 +842,28 @@
               .search-date {
                 width: 100%;
                 height: 100%;
+                display: flex;
                 justify-content: space-between;
+                align-items: center;
+                background: #f15a22;
+                border-radius: 4px;
                 padding: 0 16px;
                 margin-right: 16px;
-                font-weight: 500;
-                margin-left: 0;
+                cursor: pointer;
+                p {
+                  font-size: 12px;
+                  line-height: 16px;
+                  font-weight: 500;
+                  color: #fff;
+                }
+                i {
+                  display: block;
+                  width: 9.4px;
+                  height: 8.5px;
+                  margin-left: 15px;
+                  background: url("/arrow-search.svg");
+                  background-size: cover;
+                }
               }
 
               .filter {
@@ -830,6 +883,7 @@
           }
         }
       }
+
       &.notarys {
         .notarys-filter {
           display: none;
@@ -861,6 +915,7 @@
             }
           }
         }
+
         .search-form {
           display: none;
         }
@@ -1190,31 +1245,38 @@
     &.results {
       .search {
         margin-bottom: 16px;
+
         .search-formDate {
           height: 32px;
+
           input {
             font-size: 12px;
           }
+
           button {
             min-width: 64px;
             line-height: 16px;
             font-weight: 500;
             margin-top: 0;
             border-radius: 0 4px 4px 0;
+
             &:first-of-type {
               display: none;
             }
+
             &:last-of-type {
               display: block;
             }
           }
         }
       }
+
       .notes-title {
         font-size: 14px;
         line-height: 16px;
         margin-bottom: 16px;
       }
+
       .notarys .notary-list .result-card.notes-card {
         .notary-top {
           padding: 8px;
@@ -1252,16 +1314,20 @@
               height: 160px;
               width: 100%;
             }
+
             .card-rev {
               bottom: 6px;
+
               .notary-stars {
                 padding-top: 0;
+
                 img {
                   height: 12px;
                 }
               }
             }
           }
+
           .card-center {
             padding-left: 0;
             margin-top: 10px;
@@ -1311,18 +1377,16 @@
         line-height: 16px;
       }
     }
+
     .modal-bottom {
       margin-right: 16px;
       margin-left: 16px;
+
       button {
         height: 40px;
       }
     }
-    &.modal-sms {
-      .modal-body {
-        margin: 0 16px;
-      }
-    }
+
     &.modal-record,
     &.modal-time,
     &.modal-accept,
@@ -1347,13 +1411,29 @@
               }
             }
           }
+
           .modal-message {
             margin-right: 16px;
             margin-left: 16px;
           }
         }
+
         .form__record {
           margin: 0 16px;
+        }
+      }
+    }
+
+    &.modal-record {
+      .modal-body.notary-list {
+        .card-left {
+          .card-avatar {
+            .card-rev {
+              .rev {
+                font-size: 8px;
+              }
+            }
+          }
         }
       }
     }
@@ -1361,15 +1441,60 @@
     &.modal-review {
       .modal-center {
         margin: 0 16px;
+
         h2 {
           font-size: 16px;
           line-height: 24px;
         }
+
         .review-act {
           margin: 14px 0 27px;
+
           .notary-stars .notary-star img {
             width: 20px;
             height: 20px;
+          }
+        }
+      }
+    }
+
+    &.modal-sms {
+      .modal-body {
+        margin: 0 16px;
+      }
+    }
+
+    &.modal-time {
+      .notary-card {
+        &:not(:last-child) {
+          margin-bottom: 16px;
+        }
+      }
+
+      .card-right {
+        .slider-month {
+          div {
+            font-size: 14px;
+            line-height: 16px;
+          }
+        }
+
+        .slider-days {
+          margin: 15px 40px 0;
+
+          .slider-btn {
+            height: 34px;
+            font-size: 14px;
+            line-height: 16px;
+          }
+        }
+
+        .block-times {
+          margin: 8px 16px;
+
+          ul {
+            max-height: 215px;
+            overflow-y: auto;
           }
         }
       }

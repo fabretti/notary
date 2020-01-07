@@ -9,7 +9,7 @@
                 <img src="/arrowBack.svg" alt />
               </a>
               <input id="srch" placeholder="Имя нотариуса, метро, город МО" />
-              <div @click="show = !show" class="search-date">
+              <!-- <div @click="show = !show" class="search-date">
                 <p>Вт, 24 сентября</p>
                 <i></i>
                 <transition name="fade">
@@ -21,7 +21,8 @@
                     </ul>
                   </div>
                 </transition>
-              </div>
+              </div> -->
+              <CustomSelect :options="['Вт, 24 сентября', 'Сегодня', 'Завтра, 26 сен', 'Пятница, 27 сен']" />
             </div>
             <button class="search-btn">Найти</button>
           </form>
@@ -348,6 +349,28 @@
                       <div class="card-left">
                         <div class="card-avatar">
                           <a href="page"><img class="notary-avatar" src="/ava.jpg" alt /></a>
+                          <div class="card-rev">
+                            <div class="notary-stars">
+                              <div class="notary-star">
+                                <img src="/starO.svg" alt />
+                              </div>
+                              <div class="notary-star">
+                                <img src="/starO.svg" alt />
+                              </div>
+                              <div class="notary-star">
+                                <img src="/starO.svg" alt />
+                              </div>
+                              <div class="notary-star">
+                                <img src="/starO.svg" alt />
+                              </div>
+                              <div class="notary-star">
+                                <img src="/starD.svg" alt />
+                              </div>
+                            </div>
+                            <div class="rev">
+                              <a href="#">19 <span>отзывов</span></a>
+                            </div>
+                          </div>
                         </div>
                         <div class="card-center">
                           <div class="card-name">
@@ -391,23 +414,13 @@
                   <div class="modal-center">
                     <div class="review-act">
                       <h2>Оцените качество работы</h2>
-                      <div class="notary-stars">
-                        <div class="notary-star">
-                          <img src="/starO.svg" alt />
-                        </div>
-                        <div class="notary-star">
-                          <img src="/starO.svg" alt />
-                        </div>
-                        <div class="notary-star">
-                          <img src="/starO.svg" alt />
-                        </div>
-                        <div class="notary-star">
-                          <img src="/starO.svg" alt />
-                        </div>
-                        <div class="notary-star">
-                          <img src="/starD.svg" alt />
-                        </div>
-                      </div>
+                      <fieldset>
+                        <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Outstanding">5 stars</label>
+                        <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Very Good">4 stars</label>
+                        <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Good">3 stars</label>
+                        <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Poor">2 stars</label>
+                        <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Very Poor">1 star</label>
+                      </fieldset>
                     </div>
                     <div class="review-comment">
                       <h2>Напишите комментарий</h2>
@@ -604,25 +617,27 @@
                       <div class="card-left">
                         <div class="card-avatar">
                           <img class="notary-avatar" src="/ava.jpg" alt />
-                          <div class="notary-stars">
-                            <div class="notary-star">
-                              <img src="/starO.svg" alt />
+                          <div class="card-rev">
+                            <div class="notary-stars">
+                              <div class="notary-star">
+                                <img src="/starO.svg" alt />
+                              </div>
+                              <div class="notary-star">
+                                <img src="/starO.svg" alt />
+                              </div>
+                              <div class="notary-star">
+                                <img src="/starO.svg" alt />
+                              </div>
+                              <div class="notary-star">
+                                <img src="/starO.svg" alt />
+                              </div>
+                              <div class="notary-star">
+                                <img src="/starD.svg" alt />
+                              </div>
                             </div>
-                            <div class="notary-star">
-                              <img src="/starO.svg" alt />
+                            <div class="rev">
+                              <a href="#">19 <span>отзывов</span></a>
                             </div>
-                            <div class="notary-star">
-                              <img src="/starO.svg" alt />
-                            </div>
-                            <div class="notary-star">
-                              <img src="/starO.svg" alt />
-                            </div>
-                            <div class="notary-star">
-                              <img src="/starD.svg" alt />
-                            </div>
-                          </div>
-                          <div class="rev">
-                            <a href="#">19 отзывов</a>
                           </div>
                         </div>
                         <div class="card-center">
@@ -664,25 +679,27 @@
                       <div class="card-left">
                         <div class="card-avatar">
                           <img class="notary-avatar" src="/ava.jpg" alt />
-                          <div class="notary-stars">
-                            <div class="notary-star">
-                              <img src="/starO.svg" alt />
+                          <div class="card-rev">
+                            <div class="notary-stars">
+                              <div class="notary-star">
+                                <img src="/starO.svg" alt />
+                              </div>
+                              <div class="notary-star">
+                                <img src="/starO.svg" alt />
+                              </div>
+                              <div class="notary-star">
+                                <img src="/starO.svg" alt />
+                              </div>
+                              <div class="notary-star">
+                                <img src="/starO.svg" alt />
+                              </div>
+                              <div class="notary-star">
+                                <img src="/starD.svg" alt />
+                              </div>
                             </div>
-                            <div class="notary-star">
-                              <img src="/starO.svg" alt />
+                            <div class="rev">
+                              <a href="#">19 <span>отзывов</span></a>
                             </div>
-                            <div class="notary-star">
-                              <img src="/starO.svg" alt />
-                            </div>
-                            <div class="notary-star">
-                              <img src="/starO.svg" alt />
-                            </div>
-                            <div class="notary-star">
-                              <img src="/starD.svg" alt />
-                            </div>
-                          </div>
-                          <div class="rev">
-                            <a href="#">19 отзывов</a>
                           </div>
                         </div>
                         <div class="card-center">
@@ -724,25 +741,27 @@
                       <div class="card-left">
                         <div class="card-avatar">
                           <img class="notary-avatar" src="/ava.jpg" alt />
-                          <div class="notary-stars">
-                            <div class="notary-star">
-                              <img src="/starO.svg" alt />
+                          <div class="card-rev">
+                            <div class="notary-stars">
+                              <div class="notary-star">
+                                <img src="/starO.svg" alt />
+                              </div>
+                              <div class="notary-star">
+                                <img src="/starO.svg" alt />
+                              </div>
+                              <div class="notary-star">
+                                <img src="/starO.svg" alt />
+                              </div>
+                              <div class="notary-star">
+                                <img src="/starO.svg" alt />
+                              </div>
+                              <div class="notary-star">
+                                <img src="/starD.svg" alt />
+                              </div>
                             </div>
-                            <div class="notary-star">
-                              <img src="/starO.svg" alt />
+                            <div class="rev">
+                              <a href="#">19 <span>отзывов</span></a>
                             </div>
-                            <div class="notary-star">
-                              <img src="/starO.svg" alt />
-                            </div>
-                            <div class="notary-star">
-                              <img src="/starO.svg" alt />
-                            </div>
-                            <div class="notary-star">
-                              <img src="/starD.svg" alt />
-                            </div>
-                          </div>
-                          <div class="rev">
-                            <a href="#">19 отзывов</a>
                           </div>
                         </div>
                         <div class="card-center">
@@ -819,7 +838,11 @@
   </section>
 </template>
 <script>
+import CustomSelect from "~/components/CustomSelect.vue";
 export default {
+  components: {
+    CustomSelect,
+  },
   methods: {
     showReviewModal() {
       this.$modal.show("modalReview")

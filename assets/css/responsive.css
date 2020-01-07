@@ -271,6 +271,10 @@
     font-size: 30px;
     line-height: 30px;
   }
+  .main .custom__list,
+  .results .custom__list {
+    left: -30px;
+  }
   .search-form {
     height: auto;
     -webkit-box-orient: vertical;
@@ -283,6 +287,9 @@
     border-radius: 0 4px 4px 0;
   }
   .results .search-fixed .search-date {
+    margin-right: 0;
+  }
+  .results .search-fixed .search .custom__selected {
     margin-right: 0;
   }
   .results .modal-record .v--modal,
@@ -361,6 +368,12 @@
   .page .search-fixed {
     display: none;
   }
+  .modal.modal-record .modal-body.notary-list .card-left .card-avatar .card-rev, .modal.modal-time .modal-body.notary-list .card-left .card-avatar .card-rev, .modal.modal-accept .modal-body.notary-list .card-left .card-avatar .card-rev, .modal.modal-review .modal-body.notary-list .card-left .card-avatar .card-rev {
+    display: block;
+  }
+  .modal.modal-record .modal-body.notary-list .card-left .card-center .card-rev, .modal.modal-time .modal-body.notary-list .card-left .card-center .card-rev, .modal.modal-accept .modal-body.notary-list .card-left .card-center .card-rev, .modal.modal-review .modal-body.notary-list .card-left .card-center .card-rev {
+    display: none;
+  }
 }
 
 @media (max-width: 480px) {
@@ -401,6 +414,14 @@
   .main .intro .search .search-formDate {
     height: 32px;
   }
+  .main .intro .search .search-formDate .search-date {
+    display: none;
+  }
+  .main .intro .search .search-formDate img {
+    display: block;
+    background-color: #f15a22;
+    padding: 0 8px;
+  }
   .main .intro .search .search-btn {
     line-height: 32px;
     font-weight: 500;
@@ -409,15 +430,8 @@
   .main .intro .search .search-formDate .date-dropdown {
     display: none;
   }
-  .main .intro .search .search-date p {
-    display: none;
-  }
   .main .intro .search .search-date {
     min-width: inherit;
-  }
-  .main .intro .search .search-date img {
-    display: block;
-    padding: 0 8px;
   }
   .main .benefits .note-boxes .note-box .note-title {
     font-size: 14px;
@@ -537,11 +551,19 @@
     border-radius: 4px 0 0 4px;
   }
   .results .results__section.search-fixed .search .search-form-mb .search-formDate .search-btn {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
     min-width: 64px;
     line-height: 16px;
     font-weight: 500;
     margin-top: 0;
     border-radius: 0 4px 4px 0;
+  }
+  .results .results__section.search-fixed .search .search-form-mb .search-formDate .search-btn img {
+    display: block;
   }
   .results .results__section.search-fixed .search .search-form-mb .search-bottomMobile {
     display: -webkit-box;
@@ -555,13 +577,34 @@
   .results .results__section.search-fixed .search .search-form-mb .search-bottomMobile .search-date {
     width: 100%;
     height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    background: #f15a22;
+    border-radius: 4px;
     padding: 0 16px;
     margin-right: 16px;
+    cursor: pointer;
+  }
+  .results .results__section.search-fixed .search .search-form-mb .search-bottomMobile .search-date p {
+    font-size: 12px;
+    line-height: 16px;
     font-weight: 500;
-    margin-left: 0;
+    color: #fff;
+  }
+  .results .results__section.search-fixed .search .search-form-mb .search-bottomMobile .search-date i {
+    display: block;
+    width: 9.4px;
+    height: 8.5px;
+    margin-left: 15px;
+    background: url("/arrow-search.svg");
+    background-size: cover;
   }
   .results .results__section.search-fixed .search .search-form-mb .search-bottomMobile .filter {
     cursor: pointer;
@@ -655,7 +698,7 @@
        object-fit: cover;
   }
   .notarys .notary-list .notary-card .card-left .card-avatar .notary-star img {
-    height: 12px;
+    height: 10px;
   }
   .notarys .notary-list .notary-card .card-left .card-center .card-spec {
     font-size: 12px;
@@ -1073,9 +1116,6 @@
   .modal .modal-bottom button {
     height: 40px;
   }
-  .modal.modal-sms .modal-body {
-    margin: 0 16px;
-  }
   .modal.modal-record .v--modal, .modal.modal-time .v--modal, .modal.modal-accept .v--modal, .modal.modal-review .v--modal {
     width: 100% !important;
     height: 100vh !important;
@@ -1091,7 +1131,7 @@
        object-fit: cover;
   }
   .modal.modal-record .v--modal .modal-body.notary-list .notary-card .card-left .card-avatar .notary-star img, .modal.modal-time .v--modal .modal-body.notary-list .notary-card .card-left .card-avatar .notary-star img, .modal.modal-accept .v--modal .modal-body.notary-list .notary-card .card-left .card-avatar .notary-star img, .modal.modal-review .v--modal .modal-body.notary-list .notary-card .card-left .card-avatar .notary-star img {
-    height: 12px;
+    height: 10px;
   }
   .modal.modal-record .v--modal .modal-body.notary-list .notary-card .card-left .card-center .card-spec, .modal.modal-time .v--modal .modal-body.notary-list .notary-card .card-left .card-center .card-spec, .modal.modal-accept .v--modal .modal-body.notary-list .notary-card .card-left .card-center .card-spec, .modal.modal-review .v--modal .modal-body.notary-list .notary-card .card-left .card-center .card-spec {
     font-size: 12px;
@@ -1139,6 +1179,9 @@
   .modal.modal-record .v--modal .form__record, .modal.modal-time .v--modal .form__record, .modal.modal-accept .v--modal .form__record, .modal.modal-review .v--modal .form__record {
     margin: 0 16px;
   }
+  .modal.modal-record .modal-body.notary-list .card-left .card-avatar .card-rev .rev {
+    font-size: 8px;
+  }
   .modal.modal-review .modal-center {
     margin: 0 16px;
   }
@@ -1152,6 +1195,31 @@
   .modal.modal-review .modal-center .review-act .notary-stars .notary-star img {
     width: 20px;
     height: 20px;
+  }
+  .modal.modal-sms .modal-body {
+    margin: 0 16px;
+  }
+  .modal.modal-time .notary-card:not(:last-child) {
+    margin-bottom: 16px;
+  }
+  .modal.modal-time .card-right .slider-month div {
+    font-size: 14px;
+    line-height: 16px;
+  }
+  .modal.modal-time .card-right .slider-days {
+    margin: 15px 40px 0;
+  }
+  .modal.modal-time .card-right .slider-days .slider-btn {
+    height: 34px;
+    font-size: 14px;
+    line-height: 16px;
+  }
+  .modal.modal-time .card-right .block-times {
+    margin: 8px 16px;
+  }
+  .modal.modal-time .card-right .block-times ul {
+    max-height: 215px;
+    overflow-y: auto;
   }
   footer {
     padding-bottom: 5px;

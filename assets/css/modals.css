@@ -200,7 +200,8 @@
 }
 
 .modal .form__box select,
-.modal .form__box input, .modal .form__box .time {
+.modal .form__box input,
+.modal .form__box .time {
   width: 100%;
   font-size: 14px;
   line-height: 16px;
@@ -251,22 +252,51 @@
   margin: 26px 0 50px;
 }
 
-.modal-review .modal-center .review-act .notary-stars {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+.modal-review .modal-center .review-act fieldset {
+  font-family: "FontAwesome";
+  border: none;
+  display: inline-block;
 }
 
-.modal-review .modal-center .review-act .notary-stars .notary-star {
-  padding: 0 2px;
+.modal-review .modal-center .review-act fieldset:not(:checked) input {
+  position: absolute;
+  top: -9999px;
+  clip: rect(0, 0, 0, 0);
 }
 
-.modal-review .modal-center .review-act .notary-stars .notary-star img {
-  width: 38px;
-  height: 38px;
+.modal-review .modal-center .review-act fieldset:not(:checked) label {
+  float: right;
+  width: 1em;
+  padding: 0 0.05em;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 200%;
+  color: #f15a22;
+}
+
+.modal-review .modal-center .review-act fieldset:not(:checked) label:before {
+  content: "\f006";
+}
+
+.modal-review .modal-center .review-act fieldset:not(:checked) label:hover,
+.modal-review .modal-center .review-act fieldset:not(:checked) label:hover ~ label {
+  color: #f15a22;
+  text-shadow: 0 0 3px #f15a22;
+}
+
+.modal-review .modal-center .review-act fieldset:not(:checked) label:hover:before,
+.modal-review .modal-center .review-act fieldset:not(:checked) label:hover ~ label:before {
+  content: "\f005";
+}
+
+.modal-review .modal-center .review-act fieldset input:checked ~ label:before {
+  content: "\f005";
+}
+
+.modal-review .modal-center .review-act fieldset > label:active {
+  position: relative;
+  top: 2px;
 }
 
 .modal-review .modal-center .review-comment textarea {
@@ -280,6 +310,10 @@
   -webkit-box-shadow: 0 4px 3px 0 rgba(0, 0, 0, 0.03);
           box-shadow: 0 4px 3px 0 rgba(0, 0, 0, 0.03);
   border: solid 1px #e3e3e3;
+}
+
+.modal-record .modal-body.notary-list .card-avatar .card-rev {
+  display: none;
 }
 
 .modal-record .form__record {
@@ -366,6 +400,15 @@
   max-width: 100%;
 }
 
+.modal-time .card-right .slider-month {
+  text-align: center;
+}
+
+.modal-time .card-right .slider-month div {
+  color: #2d333d;
+  font-weight: 600;
+}
+
 .modal-time .card-right .slider-days .slider-btn {
   color: #8e99a7;
   height: 50px;
@@ -378,6 +421,10 @@
 
 .modal-time .card-right .slider-days .slider-btn.active {
   color: #1b559e;
+}
+
+.modal-time .card-right .block-times {
+  padding-top: 16px;
 }
 
 .modal-time .card-right .block-times ul {

@@ -94,7 +94,7 @@ footer .wrap {
   transition: 0.3s;
 }
 
-.search .search-date,
+.search .custom__selected,
 .search .search-btn {
   font-size: 14px;
   font-weight: 600;
@@ -105,26 +105,28 @@ footer .wrap {
   cursor: pointer;
 }
 
-.search .search-date {
+.search .custom__selected {
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  height: 100%;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  outline: none;
   background: #f15a22;
   -webkit-box-shadow: 0 8px 25px 0 rgba(241, 90, 34, 0.15);
           box-shadow: 0 8px 25px 0 rgba(241, 90, 34, 0.15);
 }
 
-.search .search-date:hover {
+.search .custom__selected:hover {
   background-color: #e85516;
   -webkit-transition: all 0.2s linear;
   transition: all 0.2s linear;
 }
 
-.search .search-date p {
+.search .custom__selected .custom__title {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -136,7 +138,7 @@ footer .wrap {
           justify-content: center;
 }
 
-.search .search-date p i {
+.search .custom__selected .custom__title i {
   display: block;
   width: 9.4px;
   height: 8.5px;
@@ -147,12 +149,16 @@ footer .wrap {
   transition: all 0.2s linear;
 }
 
-.search .search-date p i.rotate {
+.search .custom__selected .custom__title i.rotate {
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
 }
 
-.search .search-date img {
+.search .custom__selected .custom__list {
+  top: 50px;
+}
+
+.search .custom__selected img {
   display: none;
 }
 
@@ -167,6 +173,7 @@ footer .wrap {
   min-width: 190px;
   left: 0;
   top: 53px;
+  min-width: 210px;
 }
 
 .search .date-dropdown ul {
@@ -215,6 +222,11 @@ footer .wrap {
 
 .search-formDate {
   width: 100%;
+}
+
+.search-formDate img {
+  display: none;
+  cursor: pointer;
 }
 
 .notary-list {
@@ -475,7 +487,7 @@ header .header__right .header__select {
           align-items: center;
 }
 
-header .header__right .header__select .header__city {
+header .header__right .header__select .customSelect {
   position: relative;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -483,18 +495,7 @@ header .header__right .header__select .header__city {
           user-select: none;
 }
 
-header .header__right .header__select .header__city .fade-enter-active,
-header .header__right .header__select .header__city .fade-leave-active {
-  -webkit-transition: opacity 0.2s;
-  transition: opacity 0.2s;
-}
-
-header .header__right .header__select .header__city .fade-enter,
-header .header__right .header__select .header__city .fade-leave-to {
-  opacity: 0;
-}
-
-header .header__right .header__select .header__city .city__selected {
+header .header__right .header__select .customSelect .custom__selected {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -505,19 +506,32 @@ header .header__right .header__select .header__city .city__selected {
   border-radius: 5px;
   margin-right: 5px;
   cursor: pointer;
+  outline: none;
 }
 
-header .header__right .header__select .header__city .city__selected:hover {
+header .header__right .header__select .customSelect .custom__selected:hover {
   background: #f1f1f1;
 }
 
-header .header__right .header__select .header__city .city__selected span {
-  font-size: 16px;
+header .header__right .header__select .customSelect .custom__selected .custom__title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 14px;
   line-height: 24px;
   color: #8e99a7;
 }
 
-header .header__right .header__select .header__city .city__selected i {
+header .header__right .header__select .customSelect .custom__selected .custom__title p {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+header .header__right .header__select .customSelect .custom__selected .custom__title i {
   display: block;
   width: 8px;
   height: 7px;
@@ -528,55 +542,9 @@ header .header__right .header__select .header__city .city__selected i {
   transition: all 0.2s linear;
 }
 
-header .header__right .header__select .header__city .city__selected i.rotate {
+header .header__right .header__select .customSelect .custom__selected .custom__title i.rotate {
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
-}
-
-header .header__right .header__select .header__city .city__list {
-  position: absolute;
-  top: 40px;
-  background: #fff;
-  font-weight: 500;
-  border-radius: 4px;
-  -webkit-box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
-          box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
-  min-width: 190px;
-  z-index: 99;
-}
-
-header .header__right .header__select .header__city .city__list ul {
-  padding: 15px 0;
-  text-align: left;
-}
-
-header .header__right .header__select .header__city .city__list ul li {
-  padding: 0 30px;
-  cursor: pointer;
-  font-size: 14px;
-  color: #2d333d;
-  line-height: 24px;
-}
-
-header .header__right .header__select .header__city .city__list ul li:hover {
-  background: #dbebff;
-}
-
-header .header__right .header__select .header__city .city__list ul li.selected {
-  position: relative;
-  font-weight: 600;
-}
-
-header .header__right .header__select .header__city .city__list ul li.selected:before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 14px;
-  -webkit-transform: translate(0, -50%);
-          transform: translate(0, -50%);
-  width: 6.5px;
-  height: 6.5px;
-  background: url("/check.svg") no-repeat;
 }
 
 header .header__right .header__select button {
@@ -659,16 +627,17 @@ header .header__nav {
   background: #1b559e;
 }
 
-header .header__nav a {
+header .header__nav a,
+header .header__nav .nav__city {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   font-weight: 600;
   font-size: 14px;
   line-height: 16px;
@@ -677,7 +646,41 @@ header .header__nav a {
   margin-bottom: 16px;
 }
 
-header .header__nav a img {
+header .header__nav a form,
+header .header__nav .nav__city form {
+  text-align: right;
+  position: relative;
+}
+
+header .header__nav a form select,
+header .header__nav .nav__city form select {
+  width: 260px;
+  position: absolute;
+  left: -48px;
+  top: -7px;
+  padding-left: 48px;
+  border: 0;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 16px;
+  background: none;
+  color: #fff;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  outline: none;
+  z-index: 2;
+  cursor: pointer;
+  border-radius: 0;
+}
+
+header .header__nav a form select option,
+header .header__nav .nav__city form select option {
+  background: #1b559e;
+}
+
+header .header__nav a img,
+header .header__nav .nav__city img {
   margin: 0 16px;
   width: 16px;
 }
@@ -702,6 +705,12 @@ header .header__nav .nav__line {
 
 header .header__nav .nav__enter {
   margin-top: 120px;
+}
+
+header .header__nav .nav__enter a {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 
 header .black-list {
@@ -1475,14 +1484,14 @@ header .black-list.active {
   transition: 0.3s;
 }
 
-.results .search-fixed .search-date {
+.results .search-fixed .search .custom__selected {
   margin: 0 16px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
 
-.results .search-fixed .search-date i {
+.results .search-fixed .search .custom__selected i {
   width: 10.5px;
   height: 9.5px;
   margin-left: 10px;
@@ -1490,7 +1499,8 @@ header .black-list.active {
   background-size: cover;
 }
 
-.results .search-fixed .search input, .results .search-fixed .search-date, .results .search-fixed .search-btn {
+.results .search-fixed .search input,
+.results .search-fixed .search .custom__selected, .results .search-fixed .search-btn {
   border-radius: 4px;
 }
 
@@ -1631,6 +1641,7 @@ header .black-list.active {
 }
 
 .page .search-fixed .search form .back-btn img {
+  display: block;
   max-width: 33px;
   height: 12px;
 }

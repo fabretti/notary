@@ -10,7 +10,7 @@
         <form class="search-form">
           <div class="search-formDate">
             <input id="srch" placeholder="Имя нотариуса, метро, город МО" />
-            <div @click="show = !show" class="search-date">
+            <!-- <div @click="show = !show" class="search-date">
               <p>
                 Вт, 24 сентября
                 <i class="icon-arrow" :class="{ rotate: show }"></i>
@@ -22,10 +22,14 @@
                     <li class="selected">Сегодня</li>
                     <li>Завтра, 26 сен</li>
                     <li>Пятница, 27 сен</li>
+                    <li @click="showDate = !showDate">Выбрать другой день</li>
                   </ul>
                 </div>
               </transition>
-            </div>
+              <datepicker :language="ru" v-if="showDate"></datepicker>
+            </div>-->
+            <CustomSelect class="search-date" :options="['Вт, 24 сентября', 'Сегодня', 'Завтра, 26 сен']" />
+            <img @click="modalDate" src="calendar.svg" alt />
           </div>
           <a href="results" class="search-btn">Найти</a>
         </form>
@@ -72,28 +76,19 @@
               <div class="sugg-img">
                 <img src="/icon.location.svg" alt />
               </div>
-              <div class="sugg-info">
-                Найти нотариуса
-                поблизости
-              </div>
+              <div class="sugg-info">Найти нотариуса поблизости</div>
             </div>
             <div class="sugg-box">
               <div class="sugg-img">
                 <img src="/icon.booking.svg" alt />
               </div>
-              <div class="sugg-info">
-                Записаться на
-                прием к нотариусу
-              </div>
+              <div class="sugg-info">Записаться на прием к нотариусу</div>
             </div>
             <div class="sugg-box">
               <div class="sugg-img">
                 <img src="/icon.consulting.svg" alt />
               </div>
-              <div class="sugg-info">
-                Получить онлайн
-                консультацию
-              </div>
+              <div class="sugg-info">Получить онлайн консультацию</div>
             </div>
           </div>
         </div>
@@ -130,7 +125,8 @@
               </div>
               <div class="note-info">
                 Рейтинг нотариуса основан на проверенных отзывах его клиентов.
-                Мы публикуем отзывы о нотариусе только от его клиентов, побывавших на приеме.
+                Мы публикуем отзывы о нотариусе только от его клиентов,
+                побывавших на приеме.
               </div>
             </div>
             <div class="note-2">
@@ -145,9 +141,10 @@
           <div class="note-box">
             <div class="note-3">
               <div class="note-title">СПРАВОЧНАЯ</div>
-              <div
-                class="note-info"
-              >Узнайте какие документы вам нужны для приема, цену или описание для любой нотариальной услуги.</div>
+              <div class="note-info">
+                Узнайте какие документы вам нужны для приема, цену или описание
+                для любой нотариальной услуги.
+              </div>
             </div>
             <div class="note-4">
               <div class="note-title">НОТАРИУСЫ РЯДОМ</div>
@@ -170,7 +167,7 @@
 
       <div class="accordion" id="accordion">
         <div class="accordion-item" @click="accordion1 = !accordion1">
-          <div class="accordion-item-head" :class="{ active : accordion1}">
+          <div class="accordion-item-head" :class="{ active: accordion1 }">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -187,12 +184,16 @@
             <i class="icon-arrow"></i>
           </div>
           <div class="accordion-item-body">
-            <p>Нотариальные услуги стоят столько-то и столько-то текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст</p>
+            <p>
+              Нотариальные услуги стоят столько-то и столько-то текст текст
+              текст текст текст текст текст текст текст текст текст текст текст
+              текст текст
+            </p>
           </div>
         </div>
 
         <div class="accordion-item" @click="accordion2 = !accordion2">
-          <div class="accordion-item-head" :class="{ active : accordion2}">
+          <div class="accordion-item-head" :class="{ active: accordion2 }">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -209,12 +210,16 @@
             <i class="icon-arrow"></i>
           </div>
           <div class="accordion-item-body">
-            <p>Нотариальные услуги стоят столько-то и столько-то текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст</p>
+            <p>
+              Нотариальные услуги стоят столько-то и столько-то текст текст
+              текст текст текст текст текст текст текст текст текст текст текст
+              текст текст
+            </p>
           </div>
         </div>
 
         <div class="accordion-item" @click="accordion3 = !accordion3">
-          <div class="accordion-item-head" :class="{ active : accordion3}">
+          <div class="accordion-item-head" :class="{ active: accordion3 }">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -231,7 +236,11 @@
             <i class="icon-arrow"></i>
           </div>
           <div class="accordion-item-body">
-            <p>Нотариальные услуги стоят столько-то и столько-то текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст</p>
+            <p>
+              Нотариальные услуги стоят столько-то и столько-то текст текст
+              текст текст текст текст текст текст текст текст текст текст текст
+              текст текст
+            </p>
           </div>
         </div>
       </div>
@@ -604,27 +613,33 @@
       <div class="container">
         <div class="map-title section-title">Все нотариусы на карте</div>
         <div id="map">
-        <yandex-map :coords="coords" zoom="12">
-          <ymap-marker :coords="coords" marker-id="1" marker-type="placemark" />
-          <ymap-marker :coords="coords" marker-id="2" marker-type="placemark" />
-          <ymap-marker :coords="coords" marker-id="3" marker-type="placemark" />
-        </yandex-map>
+          <yandex-map :coords="coords" zoom="12">
+            <ymap-marker :coords="coords" marker-id="1" marker-type="placemark" />
+            <ymap-marker :coords="coords" marker-id="2" marker-type="placemark" />
+            <ymap-marker :coords="coords" marker-id="3" marker-type="placemark" />
+          </yandex-map>
         </div>
       </div>
     </div>
   </section>
 </template>
 <script>
+import CustomSelect from "~/components/CustomSelect.vue";
 export default {
+  components: {
+    CustomSelect
+  },
   data: () => ({
     show: false,
+    showDate: false,
     accordion1: false,
     accordion2: false,
     accordion3: false,
     coords: [55.778328, 37.674699],
+
     placemarks: [
       {
-        coords: [55.782800, 37.645904],
+        coords: [55.7828, 37.645904],
         properties: {
           balloonContentBody: "asdfd",
           balloonContentFooter: "1",
@@ -632,7 +647,7 @@ export default {
         },
         clusterName: "1",
         markerId: "1"
-      },
+      }
     ]
   }),
   methods: {

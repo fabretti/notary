@@ -29,6 +29,10 @@ module.exports = {
       {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap"
+      },
+      {
+        rel: "stylesheet",
+        href: "https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"
       }
     ],
     script: [{
@@ -63,32 +67,41 @@ module.exports = {
     }
   },
   plugins: [{
-    src: "~/plugins/slider.js",
-    mode: "client"
-  }, {
-    src: "~/plugins/modal.js",
-    mode: "client"
-  }, {
-    src: "~/plugins/inputmask.js",
-    mode: "client"
-  }, {
-    src: "~/plugins/map.js",
-    mode: "client"
-  }, {
-    src: "~/plugins/vueCarousel.js",
-    mode: "client"
-  }, {
-    src: "~/plugins/filters.js",
-    mode: "client"
-  },
-],
-  modules: ['cookie-universal-nuxt'],
+      src: "~/plugins/slider.js",
+      mode: "client"
+    },
+    {
+      src: "~/plugins/modal.js",
+      mode: "client"
+    },
+    {
+      src: "~/plugins/inputmask.js",
+      mode: "client"
+    },
+    {
+      src: "~/plugins/map.js",
+      mode: "client"
+    },
+    {
+      src: "~/plugins/vueCarousel.js",
+      mode: "client"
+    },
+    {
+      src: "~/plugins/filters.js",
+      mode: "client"
+    },
+    {
+      src: "~/plugins/calendar.js",
+      mode: "client"
+    }
+  ],
+  modules: ["cookie-universal-nuxt"],
   css: [
     "~assets/css/style.css",
     "~assets/css/modals.css",
     "~assets/css/responsive.css"
   ],
   env: {
-    apiUrl: 'https://api-notary-lk.sevenreasons.ru/',
-  },
+    apiUrl: "https://api-notary-lk.sevenreasons.ru/"
+  }
 };

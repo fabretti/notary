@@ -15,7 +15,7 @@
           <form class="search-form">
             <div class="search-formDate">
               <input id="srch" placeholder="Имя нотариуса, метро, город МО" />
-              <div @click="show = !show" class="search-date">
+              <!-- <div @click="show = !show" class="search-date">
                 <p>Вт, 24 сентября</p>
                 <i></i>
                 <transition name="fade">
@@ -27,7 +27,8 @@
                     </ul>
                   </div>
                 </transition>
-              </div>
+              </div> -->
+              <CustomSelect :options="['Вт, 24 сентября', 'Сегодня', 'Завтра, 26 сен', 'Пятница, 27 сен']" />
             </div>
             <button class="search-btn">Найти</button>
           </form>
@@ -36,12 +37,11 @@
             <div class="search-formDate">
               <input id="srch" placeholder="Бульвар Адмирала Ушакова" />
               <button class="search-btn"><img src="bx-search.svg" alt=""></button>
-              
             </div>
             <div class="search-bottomMobile">
               <div @click="modalDate" class="search-date">
                 <p>Расписание на все дни</p>
-                <i></i>
+                <i class="icon-arrow" ></i>
                 <transition name="fade">
                   <div v-if="show" class="date-dropdown">
                     <ul>
@@ -72,131 +72,7 @@
           </div>
         </div>
         <div class="notary-list">
-          <div class="notary-card">
-            <div class="card-left">
-              <div class="card-avatar">
-                <a href="page"><img class="notary-avatar" src="/ava.jpg" alt /></a>
-                <div class="card-rev">
-                  <div class="notary-stars">
-                    <div class="notary-star">
-                      <img src="/starO.svg" alt />
-                    </div>
-                    <div class="notary-star">
-                      <img src="/starO.svg" alt />
-                    </div>
-                    <div class="notary-star">
-                      <img src="/starO.svg" alt />
-                    </div>
-                    <div class="notary-star">
-                      <img src="/starO.svg" alt />
-                    </div>
-                    <div class="notary-star">
-                      <img src="/starD.svg" alt />
-                    </div>
-                  </div>
-                  <div class="rev">
-                    <a href="#">19 <span>отзывов</span></a>
-                  </div>
-                </div>
-              </div>
-              <div class="card-center">
-                <div class="card-spec">Нотариус</div>
-                <div class="card-name">
-                  <a href="page">Ложкин Валерий Александрович</a>
-                </div>
-                <div class="card-year">Стаж 8 лет</div>
-                <ul class="card-subway">
-                  <li class="subway-item">
-                    <span class="subway-color"></span>Авиамоторная
-                    <div class="subway-step">
-                      <img src="/footstep.svg" /> 323 м
-                    </div>
-                  </li>
-                  <li class="subway-item">
-                    <span class="subway-color"></span>Парк победы
-                    <div class="subway-step">
-                      <img src="/footstep.svg" /> 323 м
-                    </div>
-                  </li>
-                  <li class="subway-item">
-                    <span class="subway-color"></span>Павелецкая
-                    <div class="subway-step">
-                      <img src="/footstep.svg" /> 323 м
-                    </div>
-                  </li>
-                </ul>
-                <div class="card-adress">г. Москва, ул. 2-я Кабельная, д.2, стр. 14</div>
-              </div>
-            </div>
-            <div class="card-right">
-              <p class="card-rightChoose">Выберите время для записи на <span>сегодня</span></p>
-              <div class="slider-month">
-                <carousel :paginationEnabled="false" :navigationEnabled="true" :perPage="1" navigationNextLabel="<i class='material-icons'><img src='/Polygon.svg'></i>"
-                navigationPrevLabel="<i class='material-icons'><img src='/PolygonL.svg'></i>">
-                  <slide>
-                    <div>Октябрь</div>
-                  </slide>
-                  <slide>
-                    <div>Ноябрь</div>
-                  </slide>
-                  <slide>
-                    <div>Декабрь</div>
-                  </slide>
-                </carousel>
-              </div>
-              <div class="slider-days">
-                <carousel :paginationEnabled="false" :navigationEnabled="true" :perPageCustom="[[400, 5], [500, 5], [590, 7], [781, 3.5], [1011, 4.5]]" navigationNextLabel="<i class='material-icons'><img src='/Polygon.svg'></i>"
-                navigationPrevLabel="<i class='material-icons'><img src='/PolygonL.svg'></i>">
-                  <slide>
-                    <div class="slider-btn btn-day active">Вт, 24</div>
-                  </slide>
-                  <slide>
-                    <div class="slider-btn btn-day disabled">Вт, 24</div>
-                  </slide>
-                  <slide>
-                    <div class="slider-btn btn-day default">Вт, 24</div>
-                  </slide>
-                  <slide>
-                    <div class="slider-btn btn-day default">Вт, 24</div>
-                  </slide>
-                  <slide>
-                    <div class="slider-btn btn-day default">Вт, 24</div>
-                  </slide>
-                  <slide>
-                    <div class="slider-btn btn-day default">Вт, 24</div>
-                  </slide>
-                  <slide>
-                    <div class="slider-btn btn-day default">Вт, 24</div>
-                  </slide>
-                </carousel>
-              </div>
-              <div class="block-times">
-                <ul>
-                  <li>
-                    <div class="slider-btn btn-time default" @click="showModal">15:30</div>
-                  </li>
-                  <li>
-                    <div class="slider-btn btn-time default">16:30</div>
-                  </li>
-                  <li>
-                    <div class="slider-btn btn-time default">17:30</div>
-                  </li>
-                  <li>
-                    <div class="slider-btn btn-time default">18:30</div>
-                  </li>
-                  <li>
-                    <div class="slider-btn btn-time default">19:30</div>
-                  </li>
-                  <li>
-                    <div class="slider-btn btn-time default">20:30</div>
-                  </li>
-                  <li>
-                    <div class="slider-btn btn-time default">21:30</div>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
+          <notaryCard />
           <div class="notary-card">
             <div class="card-left">
               <div class="card-avatar">
@@ -303,7 +179,6 @@
               </div>
             </div>
           </div>
-          <notaryCard />
         </div>
         <div class="pagination">
           <button class="arrow__pag prev">
@@ -341,6 +216,28 @@
               <div class="card-left">
                 <div class="card-avatar">
                   <a href="page"><img class="notary-avatar" src="/ava.jpg" alt /></a>
+                  <div class="card-rev">
+                    <div class="notary-stars">
+                      <div class="notary-star">
+                        <img src="/starO.svg" alt />
+                      </div>
+                      <div class="notary-star">
+                        <img src="/starO.svg" alt />
+                      </div>
+                      <div class="notary-star">
+                        <img src="/starO.svg" alt />
+                      </div>
+                      <div class="notary-star">
+                        <img src="/starO.svg" alt />
+                      </div>
+                      <div class="notary-star">
+                        <img src="/starD.svg" alt />
+                      </div>
+                    </div>
+                    <div class="rev">
+                      <a href="#">19 <span>отзывов</span></a>
+                    </div>
+                  </div>
                 </div>
                 <div class="card-center">
                   <div class="card-name">
@@ -444,13 +341,13 @@
                 </label>
                 <div class="input-box tel">
                   <input
-                  class="u-full-width"
-                  id="phone-number-ex"
-                  type="text"
-                  placeholder="+7 (___) ___-__-__"
-                  v-mask="'+7 (###) ###-##-##'"
-                  v-model="customerPhoneNumber"
-                />
+                    class="u-full-width"
+                    id="phone-number-ex"
+                    type="text"
+                    placeholder="+7 (___) ___-__-__"
+                    v-mask="'+7 (###) ###-##-##'"
+                    v-model="customerPhoneNumber"
+                  />
                 </div>
               </div>
               <div class="sms">
@@ -522,7 +419,7 @@
                       </div>
                     </div>
                     <div class="rev">
-                      <a href="#">19 отзывов</a>
+                      <a href="#">19 <span>отзывов</span></a>
                     </div>
                   </div>
                   <ul class="card-subway">
@@ -569,6 +466,28 @@
               <div class="card-left">
                 <div class="card-avatar">
                   <a href="page"><img class="notary-avatar" src="/ava.jpg" alt /></a>
+                  <div class="card-rev">
+                    <div class="notary-stars">
+                      <div class="notary-star">
+                        <img src="/starO.svg" alt />
+                      </div>
+                      <div class="notary-star">
+                        <img src="/starO.svg" alt />
+                      </div>
+                      <div class="notary-star">
+                        <img src="/starO.svg" alt />
+                      </div>
+                      <div class="notary-star">
+                        <img src="/starO.svg" alt />
+                      </div>
+                      <div class="notary-star">
+                        <img src="/starD.svg" alt />
+                      </div>
+                    </div>
+                    <div class="rev">
+                      <a href="#">19 <span>отзывов</span></a>
+                    </div>
+                  </div>
                 </div>
                 <div class="card-center">
                   <div class="card-name">
@@ -609,29 +528,43 @@
               </div>
             </div>
             <div class="card-right sign-date">
+              <div class="slider-month">
+                <carousel :paginationEnabled="false" :navigationEnabled="true" :perPage="1" navigationNextLabel="<i class='material-icons'><img src='/Polygon.svg'></i>"
+                navigationPrevLabel="<i class='material-icons'><img src='/PolygonL.svg'></i>">
+                  <slide>
+                    <div>Октябрь</div>
+                  </slide>
+                  <slide>
+                    <div>Ноябрь</div>
+                  </slide>
+                  <slide>
+                    <div>Декабрь</div>
+                  </slide>
+                </carousel>
+              </div>
               <div class="slider-days">
                 <carousel :paginationEnabled="false" :navigationEnabled="true" :perPageCustom="[[300, 3], [400, 4], [560, 6]]" navigationNextLabel="<i class='material-icons'><img src='/Polygon.svg'></i>"
                 navigationPrevLabel="<i class='material-icons'><img src='/PolygonL.svg'></i>">
                   <slide>
-                    <div class="slider-btn btn-day active">Вт, 24 окт</div>
+                    <div class="slider-btn btn-day active">Вт<br> 24 окт</div>
                   </slide>
                   <slide>
-                    <div class="slider-btn btn-day disabled">Вт, 24 окт</div>
+                    <div class="slider-btn btn-day disabled">Вт<br> 24 окт</div>
                   </slide>
                   <slide>
-                    <div class="slider-btn btn-day default">Вт, 24 окт</div>
+                    <div class="slider-btn btn-day default">Вт<br> 24 окт</div>
                   </slide>
                   <slide>
-                    <div class="slider-btn btn-day default">Вт, 24 окт</div>
+                    <div class="slider-btn btn-day default">Вт<br> 24 окт</div>
                   </slide>
                   <slide>
-                    <div class="slider-btn btn-day default">Вт, 24 окт</div>
+                    <div class="slider-btn btn-day default">Вт<br> 24 окт</div>
                   </slide>
                   <slide>
-                    <div class="slider-btn btn-day default">Вт, 24 окт</div>
+                    <div class="slider-btn btn-day default">Вт<br> 24 окт</div>
                   </slide>
                   <slide>
-                    <div class="slider-btn btn-day default">Вт, 24 окт</div>
+                    <div class="slider-btn btn-day default">Вт<br> 24 окт</div>
                   </slide>
                 </carousel>
               </div>
@@ -734,9 +667,11 @@
 <script>
 import AppLogo from "~/components/AppLogo.vue";
 import notaryCard from '~/components/notaryCard';
+import CustomSelect from "~/components/CustomSelect.vue";
 export default {
   components: {
     notaryCard,
+    CustomSelect,
   },
   data: () => ({
     show: false,
