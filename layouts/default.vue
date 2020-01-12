@@ -73,12 +73,12 @@
         <aside class="header__nav" v-bind:class="{ active: navOpen }">
           <div class="nav__main">
             <a href="#">
-              <img src="menu-home.svg" alt />
+              <img src="/menu-home.svg" alt />
               Главная
             </a>
           </div>
           <div class="nav__city">
-            <img src="menu-map.svg" alt />
+            <img src="/menu-map.svg" alt />
             <form>
               <select>
                 <option>Москва</option>
@@ -95,19 +95,19 @@
             <ul>
               <li>
                 <a href="#">
-                  <img src="menu-account.svg" alt />
+                  <img src="/menu-account.svg" alt />
                   Нотариальные действия
                 </a>
               </li>
               <li>
                 <a href="#">
-                  <img src="menu-file.svg" alt />
+                  <img src="/menu-file.svg" alt />
                   Необходимые документы
                 </a>
               </li>
               <li>
                 <a class="rub" href="#">
-                  <img src="menu-rub.svg" alt />
+                  <img src="/menu-rub.svg" alt />
                   Стоимость услуг
                 </a>
               </li>
@@ -116,13 +116,13 @@
           <div v-if="isAuth" class="nav__enter">
             <a href="#" @click="logout">
               Выход
-              <img src="menu-login.svg" alt />
+              <img src="/menu-login.svg" alt />
             </a>
           </div>
           <div v-else class="nav__enter">
             <a href="#" @click="modalEnter">
               Вход
-              <img src="menu-login.svg" alt />
+              <img src="/menu-login.svg" alt />
             </a>
           </div>
         </aside>

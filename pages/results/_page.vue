@@ -8,8 +8,8 @@
               <span>Нотариусы на метро</span> Бульвар Адмирала Ушакова
             </div>
             <div class="search-icons">
-              <img src="mdi-map-marker.svg" alt />
-              <img src="mdi-comment-question.svg" alt />
+              <img src="/mdi-map-marker.svg" alt />
+              <img src="/mdi-comment-question.svg" alt />
             </div>
           </div>
           <form class="search-form">
@@ -27,8 +27,10 @@
                     </ul>
                   </div>
                 </transition>
-              </div> -->
-              <CustomSelect :options="['Вт, 24 сентября', 'Сегодня', 'Завтра, 26 сен', 'Пятница, 27 сен']" />
+              </div>-->
+              <CustomSelect
+                :options="['Вт, 24 сентября', 'Сегодня', 'Завтра, 26 сен', 'Пятница, 27 сен']"
+              />
             </div>
             <button class="search-btn">Найти</button>
           </form>
@@ -36,12 +38,14 @@
           <form class="search-form-mb">
             <div class="search-formDate">
               <input id="srch" placeholder="Бульвар Адмирала Ушакова" />
-              <button class="search-btn"><img src="bx-search.svg" alt=""></button>
+              <button class="search-btn">
+                <img src="/bx-search.svg" alt />
+              </button>
             </div>
             <div class="search-bottomMobile">
               <div @click="modalDate" class="search-date">
                 <p>Расписание на все дни</p>
-                <i class="icon-arrow" ></i>
+                <i class="icon-arrow"></i>
                 <transition name="fade">
                   <div v-if="show" class="date-dropdown">
                     <ul>
@@ -53,12 +57,11 @@
                 </transition>
               </div>
               <div class="filter" @click="modalFilter">
-                <img src="Filter.svg" alt />
+                <img src="/Filter.svg" alt />
               </div>
             </div>
           </form>
         </div>
-        
       </div>
       <div class="results__section notarys">
         <div class="notarys-filter">
@@ -72,11 +75,12 @@
           </div>
         </div>
         <div class="notary-list">
-          <notaryCard />
-          <div class="notary-card">
+          <div v-for="(company, index) in companies" :key="index" class="notary-card">
             <div class="card-left">
               <div class="card-avatar">
-                <a href="page"><img class="notary-avatar" src="/ava.jpg" alt /></a>
+                <a href="page">
+                  <img class="notary-avatar" src="/ava.jpg" alt />
+                </a>
                 <div class="card-rev">
                   <div class="notary-stars">
                     <div class="notary-star">
@@ -96,14 +100,17 @@
                     </div>
                   </div>
                   <div class="rev">
-                    <a href="#">19 <span>отзывов</span></a>
+                    <a href="#">
+                      19
+                      <span>отзывов</span>
+                    </a>
                   </div>
                 </div>
               </div>
               <div class="card-center">
                 <div class="card-spec">Нотариус</div>
                 <div class="card-name">
-                  <a href="page">Ложкин Валерий Александрович</a>
+                  <a href="page">{{ company.title }}</a>
                 </div>
                 <div class="card-year">Стаж 8 лет</div>
                 <ul class="card-subway">
@@ -131,8 +138,13 @@
             </div>
             <div class="card-right">
               <div class="slider-month">
-                <carousel :paginationEnabled="false" :navigationEnabled="true" :perPage="1" navigationNextLabel="<i class='material-icons'><img src='/Polygon.svg'></i>"
-                navigationPrevLabel="<i class='material-icons'><img src='/PolygonL.svg'></i>">
+                <carousel
+                  :paginationEnabled="false"
+                  :navigationEnabled="true"
+                  :perPage="1"
+                  navigationNextLabel="<i class='material-icons'><img src='/Polygon.svg'></i>"
+                  navigationPrevLabel="<i class='material-icons'><img src='/PolygonL.svg'></i>"
+                >
                   <slide>
                     <div>Октябрь</div>
                   </slide>
@@ -145,8 +157,13 @@
                 </carousel>
               </div>
               <div class="slider-days">
-                <carousel :paginationEnabled="false" :navigationEnabled="true" :perPageCustom="[[400, 5], [500, 6], [590, 3.5], [768, 3.5], [1011, 4.5]]" navigationNextLabel="<i class='material-icons'><img src='/Polygon.svg'></i>"
-                navigationPrevLabel="<i class='material-icons'><img src='/PolygonL.svg'></i>">
+                <carousel
+                  :paginationEnabled="false"
+                  :navigationEnabled="true"
+                  :perPageCustom="[[400, 5], [500, 6], [590, 3.5], [768, 3.5], [1011, 4.5]]"
+                  navigationNextLabel="<i class='material-icons'><img src='/Polygon.svg'></i>"
+                  navigationPrevLabel="<i class='material-icons'><img src='/PolygonL.svg'></i>"
+                >
                   <slide>
                     <div class="slider-btn btn-day active">Вт, 24</div>
                   </slide>
@@ -171,7 +188,7 @@
                 </carousel>
               </div>
               <div class="block-times error">
-                <img src="busy.svg" alt />
+                <img src="/busy.svg" alt />
                 <p>Сегодня занято, ближайшая запись на Чт, 26 сен</p>
               </div>
               <div class="change_date">
@@ -180,17 +197,23 @@
             </div>
           </div>
         </div>
-        <div class="pagination">
-          <button class="arrow__pag prev">
-            <img src="arrowBack.svg" alt="">
+        <div
+            class="pagination">
+          <button :class="{active: currentPage - 1 > 0}"
+                  @click="handlePagination(currentPage - 1)"
+                  class="arrow__pag prev">
+            <img src="/arrowBack.svg" alt />
           </button>
-          <button class="page__num active">1</button>
-          <button class="page__num">2</button>
-          <button class="page__num">3</button>
-          <button class="page__num dots">...</button>
-          <button class="page__num">13</button>
-          <button class="arrow__pag next active">
-            <img src="arrowBack.svg" alt="">
+          <button v-for="(p, i) in paginationList"
+                  :key="i"
+                  class="page__num"
+                  :class="{active: p == currentPage}"
+                  @click="handlePagination(p)"
+                  >{{ p }}</button>
+          <button :class="{active: currentPage + 1 <= quantityPages}"
+                  @click="handlePagination(currentPage + 1)"
+                  class="arrow__pag next">
+            <img src="/arrowBack.svg" alt />
           </button>
         </div>
       </div>
@@ -198,11 +221,11 @@
         <div class="container">
           <div class="map-title section-title">Все нотариусы на карте</div>
           <div id="map">
-          <yandex-map :coords="coords" zoom="12">
-            <ymap-marker :coords="coords" marker-id="1" marker-type="placemark" />
-            <ymap-marker :coords="coords" marker-id="2" marker-type="placemark" />
-            <ymap-marker :coords="coords" marker-id="3" marker-type="placemark" />
-          </yandex-map>
+            <yandex-map :coords="coords" zoom="12">
+              <ymap-marker :coords="coords" marker-id="1" marker-type="placemark" />
+              <ymap-marker :coords="coords" marker-id="2" marker-type="placemark" />
+              <ymap-marker :coords="coords" marker-id="3" marker-type="placemark" />
+            </yandex-map>
           </div>
         </div>
       </div>
@@ -215,7 +238,9 @@
             <div class="notary-card">
               <div class="card-left">
                 <div class="card-avatar">
-                  <a href="page"><img class="notary-avatar" src="/ava.jpg" alt /></a>
+                  <a href="page">
+                    <img class="notary-avatar" src="/ava.jpg" alt />
+                  </a>
                   <div class="card-rev">
                     <div class="notary-stars">
                       <div class="notary-star">
@@ -235,7 +260,10 @@
                       </div>
                     </div>
                     <div class="rev">
-                      <a href="#">19 <span>отзывов</span></a>
+                      <a href="#">
+                        19
+                        <span>отзывов</span>
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -262,7 +290,10 @@
                       </div>
                     </div>
                     <div class="rev">
-                      <a href="#">19 <span>отзывов</span></a>
+                      <a href="#">
+                        19
+                        <span>отзывов</span>
+                      </a>
                     </div>
                   </div>
                   <ul class="card-subway">
@@ -278,7 +309,8 @@
               </div>
             </div>
           </div>
-          <div class="modal-center"><div class="form__record">
+          <div class="modal-center">
+            <div class="form__record">
               <div class="form__box">
                 <label for="vnd">
                   Вид нотариального действия
@@ -286,14 +318,12 @@
                 </label>
                 <div class="search-box">
                   <select v-model="notarialActTypeId">
-                    <option value="" disabled="true">Выберите тип НД</option>
-                    <option 
-                      v-for="(item, index) in notarialActTypes" 
-                      :key="index" 
+                    <option value disabled="true">Выберите тип НД</option>
+                    <option
+                      v-for="(item, index) in notarialActTypes"
+                      :key="index"
                       :value="item.id"
-                      >
-                      {{ item.title }}
-                    </option>
+                    >{{ item.title }}</option>
                   </select>
                 </div>
               </div>
@@ -301,14 +331,12 @@
                 <label for="vnd">Нотариальное действие</label>
                 <div class="search-box">
                   <select v-model="notarialActId">
-                    <option value="" disabled="true">Вид действия</option>
-                    <option 
-                      v-for="(item, index) in notarialActs" 
-                      :key="index" 
+                    <option value disabled="true">Вид действия</option>
+                    <option
+                      v-for="(item, index) in notarialActs"
+                      :key="index"
                       :value="item.id"
-                      >
-                      {{ item.title }}
-                    </option>
+                    >{{ item.title }}</option>
                   </select>
                 </div>
               </div>
@@ -327,11 +355,7 @@
                   <span>*</span>
                 </label>
                 <div class="input-box name">
-                  <input 
-                    type="text" 
-                    placeholder="Ваше имя" 
-                    v-model="customerFirstName"
-                  />
+                  <input type="text" placeholder="Ваше имя" v-model="customerFirstName" />
                 </div>
               </div>
               <div class="form__box">
@@ -351,10 +375,11 @@
                 </div>
               </div>
               <div class="sms">
-                <img src="sms.svg" alt />
+                <img src="/sms.svg" alt />
                 <p>На этот номер вы получите SMS с кодом подтверждения и информацию о записи.</p>
               </div>
-            </div></div>
+            </div>
+          </div>
           <div class="modal-bottom">
             <button class="modal-sign" @click="createOrder">Записаться</button>
           </div>
@@ -419,7 +444,10 @@
                       </div>
                     </div>
                     <div class="rev">
-                      <a href="#">19 <span>отзывов</span></a>
+                      <a href="#">
+                        19
+                        <span>отзывов</span>
+                      </a>
                     </div>
                   </div>
                   <ul class="card-subway">
@@ -448,7 +476,7 @@
                 <br />
                 <br />Сервис Право - ID
               </p>
-              <img src="signature.svg" alt />
+              <img src="/signature.svg" alt />
             </div>
           </div>
           <div class="modal-bottom">
@@ -465,7 +493,9 @@
             <div class="notary-card">
               <div class="card-left">
                 <div class="card-avatar">
-                  <a href="page"><img class="notary-avatar" src="/ava.jpg" alt /></a>
+                  <a href="page">
+                    <img class="notary-avatar" src="/ava.jpg" alt />
+                  </a>
                   <div class="card-rev">
                     <div class="notary-stars">
                       <div class="notary-star">
@@ -485,7 +515,10 @@
                       </div>
                     </div>
                     <div class="rev">
-                      <a href="#">19 <span>отзывов</span></a>
+                      <a href="#">
+                        19
+                        <span>отзывов</span>
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -512,7 +545,10 @@
                       </div>
                     </div>
                     <div class="rev">
-                      <a href="#">19 <span>отзывов</span></a>
+                      <a href="#">
+                        19
+                        <span>отзывов</span>
+                      </a>
                     </div>
                   </div>
                   <ul class="card-subway">
@@ -529,8 +565,13 @@
             </div>
             <div class="card-right sign-date">
               <div class="slider-month">
-                <carousel :paginationEnabled="false" :navigationEnabled="true" :perPage="1" navigationNextLabel="<i class='material-icons'><img src='/Polygon.svg'></i>"
-                navigationPrevLabel="<i class='material-icons'><img src='/PolygonL.svg'></i>">
+                <carousel
+                  :paginationEnabled="false"
+                  :navigationEnabled="true"
+                  :perPage="1"
+                  navigationNextLabel="<i class='material-icons'><img src='/Polygon.svg'></i>"
+                  navigationPrevLabel="<i class='material-icons'><img src='/PolygonL.svg'></i>"
+                >
                   <slide>
                     <div>Октябрь</div>
                   </slide>
@@ -543,28 +584,54 @@
                 </carousel>
               </div>
               <div class="slider-days">
-                <carousel :paginationEnabled="false" :navigationEnabled="true" :perPageCustom="[[300, 3], [400, 4], [560, 6]]" navigationNextLabel="<i class='material-icons'><img src='/Polygon.svg'></i>"
-                navigationPrevLabel="<i class='material-icons'><img src='/PolygonL.svg'></i>">
+                <carousel
+                  :paginationEnabled="false"
+                  :navigationEnabled="true"
+                  :perPageCustom="[[300, 3], [400, 4], [560, 6]]"
+                  navigationNextLabel="<i class='material-icons'><img src='/Polygon.svg'></i>"
+                  navigationPrevLabel="<i class='material-icons'><img src='/PolygonL.svg'></i>"
+                >
                   <slide>
-                    <div class="slider-btn btn-day active">Вт<br> 24 окт</div>
+                    <div class="slider-btn btn-day active">
+                      Вт
+                      <br />24 окт
+                    </div>
                   </slide>
                   <slide>
-                    <div class="slider-btn btn-day disabled">Вт<br> 24 окт</div>
+                    <div class="slider-btn btn-day disabled">
+                      Вт
+                      <br />24 окт
+                    </div>
                   </slide>
                   <slide>
-                    <div class="slider-btn btn-day default">Вт<br> 24 окт</div>
+                    <div class="slider-btn btn-day default">
+                      Вт
+                      <br />24 окт
+                    </div>
                   </slide>
                   <slide>
-                    <div class="slider-btn btn-day default">Вт<br> 24 окт</div>
+                    <div class="slider-btn btn-day default">
+                      Вт
+                      <br />24 окт
+                    </div>
                   </slide>
                   <slide>
-                    <div class="slider-btn btn-day default">Вт<br> 24 окт</div>
+                    <div class="slider-btn btn-day default">
+                      Вт
+                      <br />24 окт
+                    </div>
                   </slide>
                   <slide>
-                    <div class="slider-btn btn-day default">Вт<br> 24 окт</div>
+                    <div class="slider-btn btn-day default">
+                      Вт
+                      <br />24 окт
+                    </div>
                   </slide>
                   <slide>
-                    <div class="slider-btn btn-day default">Вт<br> 24 окт</div>
+                    <div class="slider-btn btn-day default">
+                      Вт
+                      <br />24 окт
+                    </div>
                   </slide>
                 </carousel>
               </div>
@@ -596,7 +663,12 @@
             </div>
           </div>
         </modal>
-        <modal class="modal modal-date modal-sms modalBottom" name="modalDate" width="400px" height="auto">
+        <modal
+          class="modal modal-date modal-sms modalBottom"
+          name="modalDate"
+          width="400px"
+          height="auto"
+        >
           <div class="modal-header">
             <h1>Расписание</h1>
           </div>
@@ -619,7 +691,7 @@
                 <span class="label"></span>Расписание на все дни
               </label>
               <label class="chooseDate radio">
-                <img src="calendarGrey.svg" alt="">
+                <img src="/calendarGrey.svg" alt />
                 <p>Выбрать другой день</p>
               </label>
             </div>
@@ -629,7 +701,12 @@
           </div>
           <div class="modal-close" @click="$modal.hide('modalDate')"></div>
         </modal>
-        <modal class="modal modal-filter modalBottom modal-date" name="modalFilter" width="400px" height="auto">
+        <modal
+          class="modal modal-filter modalBottom modal-date"
+          name="modalFilter"
+          width="400px"
+          height="auto"
+        >
           <div class="modal-header">
             <h1>Настройка поиска</h1>
             <div class="modal-close" @click="$modal.hide('modaFilter')"></div>
@@ -666,27 +743,27 @@
 </template>
 <script>
 import AppLogo from "~/components/AppLogo.vue";
-import notaryCard from '~/components/notaryCard';
+import notaryCard from "~/components/notaryCard";
 import CustomSelect from "~/components/CustomSelect.vue";
 export default {
   components: {
     notaryCard,
-    CustomSelect,
+    CustomSelect
   },
   data: () => ({
     show: false,
     dynamicMask: "###.###.###/###",
-      notarialActTypeId: '',
-      notarialActId: '',
-      customerFirstName: '',
-      customerPhoneNumber: '',
-      companyId: 1,
-      date: 1576454400,
-      time: 57600,
+    notarialActTypeId: "",
+    notarialActId: "",
+    customerFirstName: "",
+    customerPhoneNumber: "",
+    companyId: 1,
+    date: 1576454400,
+    time: 57600,
     coords: [55.778328, 37.674699],
     placemarks: [
       {
-        coords: [55.782800, 37.645904],
+        coords: [55.7828, 37.645904],
         properties: {
           balloonContentBody: "asdfd",
           balloonContentFooter: "1",
@@ -694,28 +771,84 @@ export default {
         },
         clusterName: "1",
         markerId: "1"
-      },
+      }
     ]
   }),
   computed: {
     notarialActTypes() {
-      return this.$store.getters['notarialActTypes/getList']
+      return this.$store.getters["notarialActTypes/getList"];
     },
     notarialActs() {
-      return this.$store.getters['notarialActs/getList']
+      return this.$store.getters["notarialActs/getList"];
     },
+    companies() {
+      return this.$store.getters["companies/getList"];
+    },
+    currentPage() {
+      return this.$store.getters["companies/getCurrentPage"];
+    },
+    quantityPages() {
+      return this.$store.getters["companies/getQuantityPages"];
+    },
+    paginationList() {
+      let 
+          currentPage = this.currentPage, 
+          quantityPages = this.quantityPages
+      if (!currentPage || !quantityPages) {
+        return {}
+      }
+      
+      if (quantityPages <= 5) {
+        return [...Array(5).keys()].reduce((r, i) => {
+          r[i] = i + 1
+          return r
+        }, {})
+      }
+
+      const pag = {}
+
+      const offsets = [-25, -10, -1, 0, 1, 10, 25]
+
+      /**
+       * first
+       */
+      pag[0] = 1
+
+      let p
+      /**
+       * offsets
+       */
+      for (let offset of offsets) {
+        p = currentPage + offset
+        if (p > 1 && p < quantityPages) {
+          pag[p - 1] = p
+        }
+      }
+      /**
+       * last
+       */
+      pag[quantityPages - 1] = quantityPages
+
+      return pag
+    }
+  },
+  mounted() {
+    this.loadNotarialActTypes() 
+    let page = this.$route.params.page
+    if (page === undefined || page < 1) {
+      page = 1
+    }
+    this.loadCompanies(Number(page))
+    console.log(123)
   },
   watch: {
     notarialActTypeId(value, old) {
       if (!value || value == old) {
-        return
+        return;
       }
-      this.notarialActId = ''
-      this.loadNotarialActs(value)
-    },
-  },
-  mounted() {
-    this.loadNotarialActTypes()
+      this.notarialActId = "";
+      this.loadNotarialActs(value);
+    }
   },
   methods: {
     showModal() {
@@ -738,22 +871,33 @@ export default {
       this.$modal.show("modalFilter");
     },
     loadNotarialActTypes() {
-      this.$store.dispatch('notarialActTypes/loadList');
+      this.$store.dispatch("notarialActTypes/loadList");
     },
     loadNotarialActs(value) {
-      this.$store.dispatch('notarialActs/loadList', value)
+      this.$store.dispatch("notarialActs/loadList", value);
     },
     createOrder() {
-      this.$store.dispatch('orders/create', {
+      this.$store.dispatch("orders/create", {
         notarialActTypeId: this.notarialActTypeId,
         notarialActId: this.notarialActId,
         customerFirstName: this.customerFirstName,
         customerPhoneNumber: this.customerPhoneNumber,
         companyId: this.companyId,
         date: this.date,
-        time: this.time,
-      })
+        time: this.time
+      });
     },
-  },
+    loadCompanies(page) {
+      this.$store.dispatch("companies/loadList", page);
+    },
+    handlePagination(page) {
+      if (page == this.currentPage || page < 1 || page > this.quantityPages) {
+        return
+      }
+      // this.$store.dispatch("companies/loadList", page);
+      console.log(page)
+      this.$router.push({path:'/results/' + page})
+    }
+  }
 };
 </script>

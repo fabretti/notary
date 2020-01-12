@@ -439,7 +439,7 @@
           <div class="right-container">
             <div class="sticky-sign">
               <div class="sign-map">
-                <img src="map.png" alt />
+                <img src="/map.png" alt />
                 <h2>Запишитесь на прием</h2>
               </div>
               <div class="card-right sign-date">

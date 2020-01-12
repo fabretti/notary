@@ -162,16 +162,17 @@ export default {
   data: () => ({
     customerPhoneNumber: ""
   }),
-  mounted() {
-    this.loadOrders();
-  },
+  
   computed: {
     center() {
       return { lat: -23.4070511, lng: -51.9428867 };
     },
     orders() {
       return this.$store.getters["orders/getList"];
-    }
+    },
+  },
+  mounted() {
+    this.loadOrders();
   },
   methods: {
     modalCancel() {
@@ -183,7 +184,7 @@ export default {
     },
     loadOrders() {
       this.$store.dispatch("orders/loadList");
-    }
+    },
   }
 };
 </script>
