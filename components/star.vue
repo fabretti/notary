@@ -22,3 +22,14 @@ export default {
     }
 }
 </script>
+<style lang="scss" scoped>
+    .notary-stars {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .notary-star:not(:last-child) {
+        margin-right: 2px;
+        }
+    }
+</style>

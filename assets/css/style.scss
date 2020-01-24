@@ -26,6 +26,17 @@ button {
   cursor: pointer;
 }
 
+button[disabled] {
+  opacity: 0.7;
+}
+
+$orangeStatic: #f15a22;
+$blueStatic: #1b559e;
+$blueHover: #004397;
+$blueActive: #003d8a;
+$grey: #8e99a7;
+$lightGrey: #f2f2f2;
+
 @mixin slider-btn {
   .slider-btn {
     width: 56px;
@@ -38,18 +49,23 @@ button {
     cursor: pointer;
 
     &.active {
-      background-color: #1b559e;
+      background-color: $blueStatic;
       color: #fff;
+      transition: 0.2s;
+
+      &:hover {
+        background-color: $blueHover;
+      }
     }
 
     &.disabled {
-      color: #8e99a7;
-      border: 1px solid #8e99a7;
+      color: $grey;
+      border: 1px solid $grey;
     }
 
     &.default {
-      border: 1px solid #1b559e;
-      color: #1b559e;
+      border: 1px solid $blueStatic;
+      color: $blueStatic;
     }
   }
 }
@@ -133,15 +149,15 @@ footer .wrap {
   input {
     font-size: 14px;
     line-height: 16px;
-    color: #8e99a7;
+    color: $grey;
     width: 100%;
-    border: 1px solid #1b559e;
+    border: 1px solid $grey;
     border-right: none;
     padding-left: 16px;
     border-radius: 4px 0 0 4px;
 
     &:focus {
-      border: solid 1px #f15a22;
+      border: solid 1px $blueStatic;
       border-right: 0;
       transition: 0.3s;
     }
@@ -164,7 +180,7 @@ footer .wrap {
     height: 100%;
     justify-content: center;
     outline: none;
-    background: #f15a22;
+    background: $orangeStatic;
     box-shadow: 0 8px 25px 0 rgba(241, 90, 34, 0.15);
 
     &:hover {
@@ -209,16 +225,26 @@ footer .wrap {
   }
 
   .search-btn {
-    background: #1b559e;
+    background: $blueStatic;
     box-shadow: 0 8px 25px 0 rgba(27, 85, 158, 0.15);
     border: none;
     text-decoration: none;
     line-height: 48px;
     border-radius: 0 4px 4px 0;
+    transition: 0.2s;
+
+    &:hover {
+      background: $blueHover;
+    }
+
+    &:active {
+      background: $blueActive;
+    }
   }
 
   &-formDate {
     width: 100%;
+
     img {
       display: none;
       cursor: pointer;
@@ -257,16 +283,6 @@ footer .wrap {
           border-radius: 4px;
         }
 
-        .notary-stars {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-
-          .notary-star:not(:last-child) {
-            margin-right: 2px;
-          }
-        }
-
         .rev {
           font-size: 12px;
           line-height: 16px;
@@ -282,7 +298,7 @@ footer .wrap {
         .card-spec {
           font-size: 12px;
           line-height: 4px;
-          color: #8e99a7;
+          color: $grey;
         }
 
         .card-name {
@@ -298,7 +314,7 @@ footer .wrap {
         .card-year {
           font-size: 16px;
           line-height: 24px;
-          color: #8e99a7;
+          color: $grey;
         }
 
         .card-subway {
@@ -313,7 +329,7 @@ footer .wrap {
 
             .subway-step {
               padding-left: 10px;
-              color: #8e99a7;
+              color: $grey;
               font-weight: normal;
             }
 
@@ -329,7 +345,7 @@ footer .wrap {
 
         .card-adress {
           font-size: 14px;
-          color: #8e99a7;
+          color: $grey;
           line-height: 16px;
           margin-top: 8px;
         }
@@ -369,7 +385,7 @@ header {
       justify-content: center;
       font-size: 14px;
       line-height: 16px;
-      color: #8e99a7;
+      color: $grey;
       padding-left: 17px;
 
       .header__counter {
@@ -406,14 +422,14 @@ header {
     .header__caption {
       font-size: 14px;
       line-height: 16px;
-      color: #8e99a7;
+      color: $grey;
       padding-bottom: 6px;
 
       p {
         width: 100%;
 
         strong {
-          color: #f15a22;
+          color: $orangeStatic;
         }
       }
     }
@@ -429,7 +445,7 @@ header {
         height: 24px;
         width: 24px;
         margin-right: 13px;
-        background: #1b559e;
+        background: $blueStatic;
         border-radius: 50%;
 
         &:before {
@@ -450,7 +466,8 @@ header {
       display: inline-flex;
       align-items: center;
 
-      .customSelect {
+      .customSelect,
+      .lk {
         position: relative;
         user-select: none;
 
@@ -464,7 +481,11 @@ header {
           outline: none;
 
           &:hover {
-            background: rgb(241, 241, 241);
+            background: #f2f2f2;
+          }
+
+          &:active {
+            background: #ececec;
           }
 
           .custom__title {
@@ -472,11 +493,13 @@ header {
             align-items: center;
             font-size: 14px;
             line-height: 24px;
-            color: #8e99a7;
+            color: $grey;
 
             p {
               white-space: nowrap;
               overflow: hidden;
+              width: 62px;
+              text-align: left;
               text-overflow: ellipsis;
             }
 
@@ -495,15 +518,73 @@ header {
             }
           }
         }
+
+        .custom__list {
+          position: absolute;
+          top: 30px;
+          left: 0;
+          background: #fff;
+          font-weight: 500;
+          border-radius: 4px;
+          box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+          min-width: 190px;
+          z-index: 99;
+          padding: 15px 0;
+          text-align: left;
+
+          .item {
+            padding: 0 30px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #2d333d;
+            line-height: 24px;
+
+            &:hover {
+              background: #dbebff;
+            }
+
+            &.selected {
+              position: relative;
+              font-weight: 600;
+
+              &:before {
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 14px;
+                transform: translate(0, -50%);
+                width: 6.5px;
+                height: 6.5px;
+                background: url("/check.svg") no-repeat;
+              }
+            }
+          }
+        }
+
+        .selectHide {
+          display: none;
+        }
       }
 
-      button {
+      .lk {
         font-size: 14px;
         line-height: 16px;
-        text-decoration: none;
-        color: #1b559e;
-        background: none;
-        border: none;
+        color: $blueStatic;
+        cursor: pointer;
+
+        &:hover {
+          color: $blueHover;
+        }
+
+        .custom__list {
+          right: 0;
+          top: inherit;
+          left: inherit;
+
+          a {
+            text-decoration: none;
+          }
+        }
       }
     }
   }
@@ -524,7 +605,7 @@ header {
         display: block;
         height: 2px;
         width: 32px;
-        background: #1b559e;
+        background: $blueStatic;
         margin: 5px 0;
         transition: transform 0.1s linear;
       }
@@ -571,7 +652,7 @@ header {
     z-index: 100;
     color: #fff;
     width: 260px;
-    background: #1b559e;
+    background: $blueStatic;
 
     a,
     .nav__city {
@@ -608,7 +689,7 @@ header {
           border-radius: 0;
 
           option {
-            background: #1b559e;
+            background: $blueStatic;
           }
         }
       }
@@ -691,14 +772,14 @@ header {
   .intro {
     .search-title {
       span {
-        color: #f15a22;
+        color: $orangeStatic;
       }
     }
 
     .search-example {
       font-size: 14px;
       line-height: 16px;
-      color: #8e99a7;
+      color: $grey;
 
       span {
         color: #2d333d;
@@ -751,7 +832,7 @@ header {
 
     .benefits-title {
       span {
-        color: #1b559e;
+        color: $blueStatic;
       }
     }
 
@@ -808,7 +889,7 @@ header {
               border-radius: 4px;
 
               &.btn-time-1 {
-                color: #1b559e;
+                color: $blueStatic;
                 background: #fff;
                 margin-right: 16px;
               }
@@ -859,7 +940,7 @@ header {
 
             .range-step {
               margin-left: 10px;
-              color: #8e99a7;
+              color: $grey;
             }
           }
         }
@@ -879,13 +960,13 @@ header {
           border: solid 1px #f2f2f2;
 
           .note-title {
-            color: #1b559e;
+            color: $blueStatic;
           }
         }
 
         .note-2,
         .note-3 {
-          background: #1b559e;
+          background: $blueStatic;
           color: #fff;
         }
 
@@ -948,10 +1029,10 @@ header {
           }
 
           &.active {
-            color: #f15a22;
+            color: $orangeStatic;
 
             path {
-              fill: #f15a22;
+              fill: $orangeStatic;
             }
 
             i {
@@ -965,7 +1046,7 @@ header {
           display: none;
         }
 
-        .accordion-item-head.active + .accordion-item-body {
+        .accordion-item-head.active+.accordion-item-body {
           display: block !important;
           line-height: 24px;
           color: #2d333d;
@@ -978,7 +1059,7 @@ header {
   .calc {
     .calc-text {
       font-size: 16px;
-      color: #8e99a7;
+      color: $grey;
       font-weight: 500;
     }
 
@@ -1001,7 +1082,7 @@ header {
             width: 100%;
             height: 40px;
             border-radius: 4px;
-            border: solid 1px #8e99a7;
+            border: solid 1px $grey;
             outline: none;
           }
         }
@@ -1055,14 +1136,14 @@ header {
           width: 8px;
           height: 8px;
           border-radius: 2px;
-          background-color: #f15a22;
+          background-color: $orangeStatic;
         }
       }
 
       a {
         font-size: 16px;
         line-height: 24px;
-        color: #1b559e;
+        color: $blueStatic;
         text-decoration: none;
       }
     }
@@ -1070,11 +1151,12 @@ header {
 
   .action {
     .action-content {
-      column-count: 3;
-      grid-column-gap: 45px;
-      column-gap: 45px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
 
       .action-list {
+        width: 33%;
         margin-bottom: 14px;
       }
 
@@ -1111,7 +1193,7 @@ header {
           font-size: 14px;
           line-height: 16px;
           text-decoration: none;
-          color: #1b559e;
+          color: $blueStatic;
         }
       }
     }
@@ -1161,7 +1243,7 @@ header {
     margin-top: 9px;
 
     span {
-      color: #1b559e;
+      color: $blueStatic;
       font-weight: 600;
     }
   }
@@ -1183,7 +1265,7 @@ header {
     div {
       font-size: 16px;
       line-height: 24px;
-      color: #1b559e;
+      color: $blueStatic;
 
       img {
         height: 9px;
@@ -1231,7 +1313,7 @@ header {
         line-height: 32px;
         border-radius: 4px;
         color: #fff;
-        background-color: #1b559e;
+        background-color: $blueStatic;
 
         &.none {
           color: #dde0e3;
@@ -1244,7 +1326,7 @@ header {
   }
 
   .error {
-    display: flex;
+    display: none;
 
     img {
       margin-bottom: auto;
@@ -1260,16 +1342,16 @@ header {
   .change_date {
     display: none;
     justify-content: center;
-    margin: 13px 0 8px 0;
+    -margin: 13px 0 8px 0;
 
     button {
       height: 24px;
       font-size: 12px;
       line-height: 16px;
       padding: 3px 22px 5px 22px;
-      color: #1b559e;
+      color: $blueStatic;
       background: #fff;
-      border: 1px solid #1b559e;
+      border: 1px solid $blueStatic;
       border-radius: 4px;
     }
   }
@@ -1316,11 +1398,11 @@ header {
       }
 
       input {
-        border-right: 1px solid #1b559e;
+        border-right: 1px solid $grey;
       }
 
       input:focus {
-        border: solid 1px #f15a22;
+        border: solid 1px $blueStatic;
         transition: 0.3s;
       }
 
@@ -1373,9 +1455,9 @@ header {
         .checkbox__input {
           display: none;
 
-          &:checked + label::before {
+          &:checked+label::before {
             background: url("/checkbox.svg") no-repeat center;
-            border-color: #f15a22;
+            border-color: $orangeStatic;
           }
         }
 
@@ -1392,7 +1474,7 @@ header {
             width: 16px;
             height: 16px;
             border-radius: 4px;
-            border: 1px solid #8e99a7;
+            border: 1px solid $grey;
             position: absolute;
             left: -26px;
             top: 50%;
@@ -1423,8 +1505,8 @@ header {
       .page__num {
         width: 40px;
         margin-right: 22px;
-        color: #8e99a7;
-        border: solid 1px #8e99a7;
+        color: $grey;
+        border: solid 1px $grey;
 
         &.active {
           color: #dde0e3;
@@ -1445,8 +1527,16 @@ header {
         border: solid 1px #dde0e3;
 
         &.active {
-          background-color: #1b559e;
+          background-color: $blueStatic;
           border: none;
+
+          &:hover {
+            background-color: $blueHover;
+          }
+
+          &:active {
+            background-color: $blueActive;
+          }
         }
 
         &.next {
@@ -1475,6 +1565,11 @@ header {
           padding: 0 20px;
           border-radius: 4px;
           border: solid 1px #dde0e3;
+          transition: 0.2s;
+
+          &:hover {
+            border-color: $grey;
+          }
 
           img {
             display: block;
@@ -1542,7 +1637,7 @@ header {
           padding-top: 8px;
           font-size: 12px;
           line-height: 16px;
-          color: #1b559e;
+          color: $blueStatic;
           cursor: pointer;
           text-decoration: underline;
         }
@@ -1557,7 +1652,7 @@ header {
           .sign-map {
             width: 100%;
             border-radius: 4px 4px 0 0;
-            background-color: #1b559e;
+            background-color: $blueStatic;
 
             h2 {
               font-size: 14px;
@@ -1576,7 +1671,7 @@ header {
             .slider-days {
               width: 100%;
 
-              & > div {
+              &>div {
                 width: 90%;
                 margin: 0 auto;
               }
@@ -1620,7 +1715,7 @@ header {
                   line-height: 16px;
 
                   span {
-                    color: #8e99a7;
+                    color: $grey;
                   }
                 }
               }
@@ -1650,7 +1745,7 @@ header {
           }
 
           &.active {
-            border-bottom: 2px solid #f15a22;
+            border-bottom: 2px solid $orangeStatic;
           }
         }
       }
@@ -1690,7 +1785,7 @@ header {
           }
 
           .review-name {
-            color: #8e99a7;
+            color: $grey;
             font-weight: 600;
           }
         }
@@ -1713,11 +1808,26 @@ header {
         }
 
         .show-btn {
-          background: #8e99a7;
+          background: $grey;
+          transition: 0.2s;
+
+          &:hover {
+            background: #8a94a0;
+          }
         }
 
         .review-btn {
-          background: #1b559e;
+          background: $blueStatic;
+          transition: 0.2s;
+
+          &:hover {
+            background: $blueHover;
+          }
+        }
+
+        .review-btn[disabled]:hover {
+          background: $blueStatic;
+          cursor: not-allowed;
         }
       }
     }
@@ -1731,11 +1841,11 @@ header {
       position: sticky;
       top: 110px;
       max-width: 100%;
-      border: 1px solid #1b559e;
+      border: 1px solid $blueStatic;
 
       .sign-map {
         padding: 20px;
-        background: #1b559e;
+        background: $blueStatic;
         text-align: center;
 
         img {
@@ -1758,7 +1868,7 @@ header {
           margin: 8px 30px 0;
 
           .btn-time {
-            background: #1b559e;
+            background: $blueStatic;
             color: #fff;
           }
 
@@ -1915,7 +2025,7 @@ header {
         border-radius: 4px;
         border: none;
         color: #fff;
-        background-color: #1b559e;
+        background-color: $blueStatic;
       }
     }
   }
@@ -1955,7 +2065,7 @@ header {
     .notary-top {
       display: flex;
       justify-content: space-between;
-      background: #1b559e;
+      background: $blueStatic;
       color: #fff;
       padding: 11px 24px;
       border-radius: 4px 4px 0 0;
@@ -2063,7 +2173,7 @@ header {
         width: 100%;
         height: 40px;
         border-radius: 4px;
-        border: solid 1px #8e99a7;
+        border: solid 1px $grey;
         color: #000;
         padding: 8px 16px;
       }
@@ -2077,7 +2187,7 @@ header {
         width: 160px;
         height: 40px;
         border-radius: 4px;
-        background-color: #1b559e;
+        background-color: $blueStatic;
         color: #fff;
         font-size: 14px;
         line-height: 16px;
@@ -2109,14 +2219,14 @@ footer {
       .footer__dev {
         font-size: 14px;
         line-height: 16px;
-        color: #8e99a7;
+        color: $grey;
       }
 
       .footer__dev {
         padding-top: 15px;
 
         a {
-          color: #8e99a7;
+          color: $grey;
         }
       }
     }

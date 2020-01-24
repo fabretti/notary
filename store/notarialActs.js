@@ -13,7 +13,7 @@ export const mutations = {
 }
 
 export const actions = {
-    loadList({ commit }, id) {
+    loadList({ commit }, id = null) {
         axios({
             url: process.env.apiUrl + 'notarialActs',
             method: 'GET',

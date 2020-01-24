@@ -28,7 +28,10 @@
               </transition>
               <datepicker :language="ru" v-if="showDate"></datepicker>
             </div>-->
-            <CustomSelect class="search-date" :options="['Вт, 24 сентября', 'Сегодня', 'Завтра, 26 сен']" />
+            <CustomSelect
+              class="search-date"
+              :options="[{value: 1, title: 'Сегодня'}, {value: 2, title: 'Вт, 25 сентября'}, {value: 3, title: 'Ср, 26 сентября'}]"
+            />
             <img @click="modalDate" src="calendar.svg" alt />
           </div>
           <a href="results" class="search-btn">Найти</a>
@@ -52,7 +55,7 @@
               <input type="radio" name="rdo" id="opt3" class="hidden" />
               <span class="label"></span>Сб, 26 октября
             </label>
-            <label for="opt4" class="radio">
+            <label for="opt4" class="radio" @click="modalCalendar">
               <input type="radio" name="rdo" id="opt4" class="hidden" />
               <span class="label"></span>Расписание на все дни
             </label>
@@ -62,6 +65,20 @@
           <button class="bottom-accept" @click="$modal.hide('modalDate')">Закрыть</button>
         </div>
         <div class="modal-close" @click="$modal.hide('modalDate')"></div>
+      </modal>
+      <modal
+        class="modal modal-sms modal-calendar"
+        name="modalCalendar"
+        width="400px"
+        height="auto"
+      >
+        <div class="modal-body">
+          <date-pick v-model="date" :hasInputElement="false" :months="months" :weekdays="weekdays"></date-pick>
+          <p class="info">Онлайн запись доступна только на ближайшие две недели</p>
+        </div>
+        <div class="modal-bottom">
+          <button class="bottom-accept" @click="$modal.hide('modalCalendar')">Назад</button>
+        </div>
       </modal>
       <div class="search-example">
         Например,
@@ -390,220 +407,16 @@
       <div class="container">
         <div class="action-title section-title">Нотариальные действия</div>
         <div class="action-content">
-          <ul class="action-list">
+          <ul 
+            v-for="(notarialAct, index) in notarialActs"
+            :key="index"
+            class="action-list">
             <li>
-              <h3>Недвижимость</h3>
-              <a href="#">Купля-продажа, дарение квартир и т.д.</a>
-              <a href="#">Ипотека долей в общей собственности</a>
-              <a href="#">Договора ренты и пожизненного чего-то</a>
-              <a href="#">Материнский капитал</a>
-            </li>
-          </ul>
-          <ul class="action-list">
-            <li>
-              <h3>Название секции</h3>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-            </li>
-          </ul>
-          <ul class="action-list">
-            <li>
-              <h3>Название секции</h3>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-            </li>
-          </ul>
-          <ul class="action-list">
-            <li>
-              <h3>Название секции</h3>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-            </li>
-          </ul>
-          <ul class="action-list">
-            <li>
-              <h3>Название секции</h3>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-            </li>
-          </ul>
-          <ul class="action-list">
-            <li>
-              <h3>Название секции</h3>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-            </li>
-          </ul>
-          <ul class="action-list">
-            <li>
-              <h3>Недвижимость</h3>
-              <a href="#">Купля-продажа, дарение квартир и т.д.</a>
-              <a href="#">Ипотека долей в общей собственности</a>
-              <a href="#">Договора ренты и пожизненного чего-то</a>
-              <a href="#">Материнский капитал</a>
-            </li>
-          </ul>
-          <ul class="action-list">
-            <li>
-              <h3>Название секции</h3>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-            </li>
-          </ul>
-          <ul class="action-list">
-            <li>
-              <h3>Название секции</h3>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-            </li>
-          </ul>
-          <ul class="action-list">
-            <li>
-              <h3>Название секции</h3>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-            </li>
-          </ul>
-          <ul class="action-list">
-            <li>
-              <h3>Название секции</h3>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-            </li>
-          </ul>
-          <ul class="action-list">
-            <li>
-              <h3>Название секции</h3>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-            </li>
-          </ul>
-          <ul class="action-list">
-            <li>
-              <h3>Недвижимость</h3>
-              <a href="#">Купля-продажа, дарение квартир и т.д.</a>
-              <a href="#">Ипотека долей в общей собственности</a>
-              <a href="#">Договора ренты и пожизненного чего-то</a>
-              <a href="#">Материнский капитал</a>
-            </li>
-          </ul>
-          <ul class="action-list">
-            <li>
-              <h3>Название секции</h3>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-            </li>
-          </ul>
-          <ul class="action-list">
-            <li>
-              <h3>Название секции</h3>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-            </li>
-          </ul>
-          <ul class="action-list">
-            <li>
-              <h3>Название секции</h3>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-            </li>
-          </ul>
-          <ul class="action-list">
-            <li>
-              <h3>Название секции</h3>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-            </li>
-          </ul>
-          <ul class="action-list">
-            <li>
-              <h3>Название секции</h3>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-            </li>
-          </ul>
-          <ul class="action-list">
-            <li>
-              <h3>Недвижимость</h3>
-              <a href="#">Купля-продажа, дарение квартир и т.д.</a>
-              <a href="#">Ипотека долей в общей собственности</a>
-              <a href="#">Договора ренты и пожизненного чего-то</a>
-              <a href="#">Материнский капитал</a>
-            </li>
-          </ul>
-          <ul class="action-list">
-            <li>
-              <h3>Название секции</h3>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-            </li>
-          </ul>
-          <ul class="action-list">
-            <li>
-              <h3>Название секции</h3>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-            </li>
-          </ul>
-          <ul class="action-list">
-            <li>
-              <h3>Название секции</h3>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-            </li>
-          </ul>
-          <ul class="action-list">
-            <li>
-              <h3>Название секции</h3>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-            </li>
-          </ul>
-          <ul class="action-list">
-            <li>
-              <h3>Название секции</h3>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
-              <a href="#">Пример</a>
+              <h3>{{ index }}</h3>
+              <a 
+                v-for="(act, subIndex) in notarialAct"
+                :key="subIndex"
+                href="#">{{ act.title }}</a>
             </li>
           </ul>
         </div>
@@ -613,10 +426,19 @@
       <div class="container">
         <div class="map-title section-title">Все нотариусы на карте</div>
         <div id="map">
-          <yandex-map :coords="coords" zoom="12">
-            <ymap-marker :coords="coords" marker-id="1" marker-type="placemark" />
-            <ymap-marker :coords="coords" marker-id="2" marker-type="placemark" />
-            <ymap-marker :coords="coords" marker-id="3" marker-type="placemark" />
+          <yandex-map 
+            :coords="coords" 
+            zoom="12">
+            <ymap-marker 
+              v-for="(mark, index) in marksMap"
+              :key="index"
+              :coords="[mark.lat, mark.lon]" 
+              :marker-id="index"
+            >
+            <template slot="balloon">
+              <nuxt-link to="/page">{{ mark.title }}</nuxt-link>
+            </template>
+            </ymap-marker>
           </yandex-map>
         </div>
       </div>
@@ -625,9 +447,34 @@
 </template>
 <script>
 import CustomSelect from "~/components/CustomSelect.vue";
+import DatePick from "vue-date-pick";
 export default {
   components: {
-    CustomSelect
+    CustomSelect,
+    DatePick,
+  },
+  props: {
+    weekdays: {
+      type: Array,
+      default: () => ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"]
+    },
+    months: {
+      type: Array,
+      default: () => [
+        "Январь",
+        "Февраль",
+        "Март",
+        "Апрель",
+        "Май",
+        "Июнь",
+        "Июль",
+        "Август",
+        "Сентябрь",
+        "Октябрь",
+        "Ноябрь",
+        "Декабрь"
+      ]
+    }
   },
   data: () => ({
     show: false,
@@ -635,21 +482,39 @@ export default {
     accordion1: false,
     accordion2: false,
     accordion3: false,
+    currentCompanyTitle: '',
     coords: [55.778328, 37.674699],
-
-    placemarks: [
-      {
-        coords: [55.7828, 37.645904],
-        properties: {
-          balloonContentBody: "asdfd",
-          balloonContentFooter: "1",
-          balloonContentHeader: "1"
-        },
-        clusterName: "1",
-        markerId: "1"
-      }
-    ]
+    date: "2019-02-12",
   }),
+  computed: {
+    notarialActs() {
+      let acts = this.$store.getters['notarialActs/getList']
+      
+      return acts.reduce((reduce, item) => {
+        let firstIndex = item.notarialActTypeTitle, 
+            secondIndex = item.id
+
+        if (!reduce[firstIndex]) {
+          reduce[firstIndex] = {}
+        }
+
+        reduce[firstIndex][secondIndex] = item
+        return reduce
+      }, {})
+    },
+    marksMap() {
+      return this.$store.getters['companies/getMap']
+    },
+     balloonTemplate() {
+        return `
+          <h1>${this.currentCompanyTitle}</h1>
+        `
+    },
+  },
+  created() {
+    this.loadNotarialActs()
+    this.loadMarksMap()
+  },
   methods: {
     // accordion(event) {
     //   // var matches = document.querySelectorAll(".accordion-item-head");
@@ -660,7 +525,19 @@ export default {
     // },
     modalDate() {
       this.$modal.show("modalDate");
+    },
+    modalCalendar() {
+      this.$modal.show("modalCalendar");
+    },
+    handleMarkClick(mark) {
+      console.log(mark)
+    },
+    loadNotarialActs() {
+      this.$store.dispatch("notarialActs/loadList");
+    },
+    loadMarksMap() {
+      this.$store.dispatch("companies/loadMap");
     }
-  }
+  },
 };
 </script>

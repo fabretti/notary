@@ -7,7 +7,7 @@ export const state = () => ({
 
 export const getters = {
  token: s =>  s.token,
- isAuth: s => s.token !== null,
+ isAuth: s => s.token != null,
  uuid: s => s.uuid,
 }
 
@@ -51,10 +51,13 @@ export const actions = {
             })
             .then(e => {
                 commit('setToken', null)
+                this.$cookies.remove('token')
                 resolve()
             })
-            .catch(() => {
-                reject()
+            .catch(e => {
+                commit('setToken', null)
+                this.$cookies.remove('token')
+                resolve()
             })
         })
     },

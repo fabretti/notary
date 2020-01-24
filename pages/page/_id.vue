@@ -5,9 +5,9 @@
         <div class="search">
           <form class="search-form">
             <div class="search-formDate">
-              <a href="results" class="back-btn">
+              <nuxt-link to="/results" class="back-btn">
                 <img src="/arrowBack.svg" alt />
-              </a>
+              </nuxt-link>
               <input id="srch" placeholder="Имя нотариуса, метро, город МО" />
               <!-- <div @click="show = !show" class="search-date">
                 <p>Вт, 24 сентября</p>
@@ -38,48 +38,32 @@
                     <div class="card-left-mb">
                       <div class="card-avatar">
                         <img class="notary-avatar" src="/ava.jpg" alt />
-                        <div class="notary-stars">
-                          <div class="notary-star">
-                            <img src="/starO.svg" alt />
-                          </div>
-                          <div class="notary-star">
-                            <img src="/starO.svg" alt />
-                          </div>
-                          <div class="notary-star">
-                            <img src="/starO.svg" alt />
-                          </div>
-                          <div class="notary-star">
-                            <img src="/starO.svg" alt />
-                          </div>
-                          <div class="notary-star">
-                            <img src="/starD.svg" alt />
-                          </div>
-                        </div>
+                        <star :rating="company.rating" />
                         <div class="rev">
-                          <a href="#">19 отзывов</a>
+                          <a href="#">{{ profile.voteQuantity }} отзывов</a>
                         </div>
                       </div>
                       <div class="card-name-mb card-center ">
-                        <div class="card-spec">Нотариус</div>
+                        <div class="card-spec">{{ profile.typeOfWork }}</div>
                         <div class="card-name">
-                          <a href="#">Ложкин Валерий Александрович</a>
+                          <a href="#">{{ company.title }}</a>
                         </div>
-                        <div class="card-year">Стаж 8 лет</div>
+                        <div class="card-year">{{ profile.workExperience }}</div>
                       </div>
                     </div>
                     <div class="card-center">
                       <div class="card-nameTitle">
-                        <div class="card-spec">Нотариус</div>
+                        <div class="card-spec">{{ profile.typeOfWork }}</div>
                         <div class="card-name">
-                          <a href="#">Ложкин Валерий Александрович</a>
+                          <a href="#">{{ company.title }}</a>
                         </div>
-                        <div class="card-year">Стаж 8 лет</div>
+                        <div class="card-year">{{ profile.workExperience }}</div>
                       </div>
                       <ul class="card-subway">
                         <li class="subway-item">
-                          <span class="subway-color"></span>Авиамоторная
+                          <span class="subway-color"></span>{{ profile.districtTitle }}
                           <div class="subway-step">
-                            <img src="/footstep.svg" /> 323 м
+                            <img src="/footstep.svg" /> {{ company.districtDistance }} м
                           </div>
                         </li>
                         <li class="subway-item">
@@ -95,7 +79,7 @@
                           </div>
                         </li>
                       </ul>
-                      <div class="card-adress">г. Москва, ул. 2-я Кабельная, д.2, стр. 14</div>
+                      <div class="card-adress">{{ profile.address }}</div>
                       <div class="showMap">
                         <p>Как добраться?</p>
                       </div>
@@ -184,37 +168,37 @@
                       <ul>
                         <li>
                           <p>
-                            <span>Вид деятельности:</span> Нотариус, занимающийся частной практикой
+                            <span>Вид деятельности: </span>{{ profile.typeOfWork }}
                           </p>
                         </li>
                         <li>
                           <p>
-                            <span>Нотариальный округ:</span> Московский городской нотариальный округ
+                            <span>Нотариальный округ: </span>{{ profile.notarialArea}}
                           </p>
                         </li>
                         <li>
                           <p>
-                            <span>Субъект РФ:</span> г. Москва
+                            <span>Субъект РФ: </span>{{ profile.subjectTitle }}
                           </p>
                         </li>
                         <li>
                           <p>
-                            <span>Палата:</span> Московская городская нотариальная палата (ID 2200510)
+                            <span>Палата: </span>{{ profile.notarialChamber }}
                           </p>
                         </li>
                         <li>
                           <p>
-                            <span>Текущий статус:</span> Действующий
+                            <span>Текущий статус: </span>{{ profile.statusString }}
                           </p>
                         </li>
                         <li>
                           <p>
-                            <span>Приказ:</span> 352-ч ст 05.10.1998
+                            <span>Приказ: </span>{{ profile.orderNumber }}
                           </p>
                         </li>
                         <li>
                           <p>
-                            <span>Лицензия:</span> с 1995 года
+                            <span>Лицензия: </span>{{ profile.licenseNumber }}
                           </p>
                         </li>
                       </ul>
@@ -229,70 +213,33 @@
                 <h2>Отзывы о нотариусе</h2>
               </div>
               <div class="tabs">
-                  <a v-on:click="activetab=1" v-bind:class="[ activetab === 1 ? 'active' : '' ]">Отзывы</a>
-                  <a v-on:click="activetab=2" v-bind:class="[ activetab === 2 ? 'active' : '' ]">О нотариусе</a>
+                  <a @click="activetab=1" :class="[ activetab === 1 ? 'active' : '' ]">Отзывы</a>
+                  <a @click="activetab=2" :class="[ activetab === 2 ? 'active' : '' ]">О нотариусе</a>
               </div>
               <div class="content">
                   <div v-if="activetab === 1" class="tabcontent">
                       <div class="reviews-list">
-                        <div class="review-item">
+                        <div 
+                          v-for="(rating, index) in ratings"
+                          :key="index"
+                          class="review-item"
+                          >
                           <div class="review-stars">
-                            <div class="review-star">
-                              <img src="/starO.svg" alt />
-                            </div>
-                            <div class="review-star">
-                              <img src="/starO.svg" alt />
-                            </div>
-                            <div class="review-star">
-                              <img src="/starO.svg" alt />
-                            </div>
-                            <div class="review-star">
-                              <img src="/starD.svg" alt />
-                            </div>
-                            <div class="review-star">
-                              <img src="/starD.svg" alt />
-                            </div>
-                            <p>Отлично</p>
+                            <star :rating="rating.value" />
                           </div>
                           <div class="review-text">
-                            Lorem ipsum dolor sit, amet consectetur
-                            adipisicing elit. Illo tempora dolor
-                            magni veniam iste suscipit dolorem quasi
-                            ad non officiis.
+                            {{ rating.description }}
                           </div>
-                          <div class="review-name">Кристина, 12 октября 2019</div>
-                        </div>
-                        <div class="review-item">
-                          <div class="review-stars">
-                            <div class="review-star">
-                              <img src="/starO.svg" alt />
-                            </div>
-                            <div class="review-star">
-                              <img src="/starO.svg" alt />
-                            </div>
-                            <div class="review-star">
-                              <img src="/starO.svg" alt />
-                            </div>
-                            <div class="review-star">
-                              <img src="/starD.svg" alt />
-                            </div>
-                            <div class="review-star">
-                              <img src="/starD.svg" alt />
-                            </div>
-                            <p>Отлично</p>
-                          </div>
-                          <div class="review-text">
-                            Lorem ipsum dolor sit, amet consectetur
-                            adipisicing elit. Illo tempora dolor
-                            magni veniam iste suscipit dolorem quasi
-                            ad non officiis.
-                          </div>
-                          <div class="review-name">Кристина, 12 октября 2019</div>
+                          <div class="review-name">{{ rating.customerFullName }}, {{ rating.createdAt | calendarFormat }}</div>
                         </div>
                       </div>
                       <div class="reviews-btn">
                         <button class="show-btn">Показать еще 5 отзывов</button>
-                        <button class="review-btn" @click="showReviewModal">Оставить отзыв</button>
+                        <button 
+                          class="review-btn" 
+                          :disabled="disabledReview"
+                          @click="showReviewModal"
+                        >Оставить отзыв</button>
                       </div>
                   </div>
                   <div v-if="activetab === 2" class="tabcontent">
@@ -301,37 +248,37 @@
                         <ul>
                           <li>
                             <p>
-                              <span>Вид деятельности:</span> Нотариус, занимающийся частной практикой
+                              <span>Вид деятельности: </span>{{ profile.typeOfWork }}
                             </p>
                           </li>
                           <li>
                             <p>
-                              <span>Нотариальный округ:</span> Московский городской нотариальный округ
+                              <span>Нотариальный округ: </span>{{ profile.notarialArea}}
                             </p>
                           </li>
                           <li>
                             <p>
-                              <span>Субъект РФ:</span> г. Москва
+                              <span>Субъект РФ: </span>{{ profile.subjectTitle }}
                             </p>
                           </li>
                           <li>
                             <p>
-                              <span>Палата:</span> Московская городская нотариальная палата (ID 2200510)
+                              <span>Палата: </span>{{ profile.notarialChamber }}
                             </p>
                           </li>
                           <li>
                             <p>
-                              <span>Текущий статус:</span> Действующий
+                              <span>Текущий статус: </span>{{ profile.statusString }}
                             </p>
                           </li>
                           <li>
                             <p>
-                              <span>Приказ:</span> 352-ч ст 05.10.1998
+                              <span>Приказ:</span>{{ profile.orderNumber }}
                             </p>
                           </li>
                           <li>
                             <p>
-                              <span>Лицензия:</span> с 1995 года
+                              <span>Лицензия:</span>{{ profile.licenseNumber }}
                             </p>
                           </li>
                         </ul>
@@ -350,63 +297,31 @@
                         <div class="card-avatar">
                           <a href="page"><img class="notary-avatar" src="/ava.jpg" alt /></a>
                           <div class="card-rev">
-                            <div class="notary-stars">
-                              <div class="notary-star">
-                                <img src="/starO.svg" alt />
-                              </div>
-                              <div class="notary-star">
-                                <img src="/starO.svg" alt />
-                              </div>
-                              <div class="notary-star">
-                                <img src="/starO.svg" alt />
-                              </div>
-                              <div class="notary-star">
-                                <img src="/starO.svg" alt />
-                              </div>
-                              <div class="notary-star">
-                                <img src="/starD.svg" alt />
-                              </div>
-                            </div>
+                            <star :rating="company.rating" />
                             <div class="rev">
-                              <a href="#">19 <span>отзывов</span></a>
+                              <a href="#">{{ profile.voteQuantity }} отзывов</a>
                             </div>
                           </div>
                         </div>
                         <div class="card-center">
                           <div class="card-name">
-                            <a href="page">Ложкин Валерий Александрович</a>
+                            <a href="page">{{ company.title }}</a>
                           </div>
                           <div class="card-rev">
-                            <div class="notary-stars">
-                              <div class="notary-star">
-                                <img src="/starO.svg" alt />
-                              </div>
-                              <div class="notary-star">
-                                <img src="/starO.svg" alt />
-                              </div>
-                              <div class="notary-star">
-                                <img src="/starO.svg" alt />
-                              </div>
-                              <div class="notary-star">
-                                <img src="/starO.svg" alt />
-                              </div>
-                              <div class="notary-star">
-                                <img src="/starD.svg" alt />
-                              </div>
-                            </div>
+                            <star :rating="company.rating" />
                             <div class="rev">
-                              <a href="#">19 <span>отзывов</span></a>
+                              <a href="#">{{ profile.voteQuantity }} отзывов</a>
                             </div>
                           </div>
                           <ul class="card-subway">
                             <li class="subway-item">
-                              <span class="subway-color"></span>Авиамоторная
+                              <span class="subway-color"></span>{{ profile.districtTitle }}
                               <div class="subway-step">
-                                <img src="/footstep.svg" /> 323 м
+                                <img src="/footstep.svg" />{{ company.districtDistance }}
                               </div>
                             </li>
                           </ul>
-                          <div class="card-adress">г. Москва, ул. 2-я Кабельная, д.2, стр. 14</div>
+                          <div class="card-adress">{{ profile.address }}</div>
                         </div>
                       </div>
                     </div>
@@ -415,20 +330,63 @@
                     <div class="review-act">
                       <h2>Оцените качество работы</h2>
                       <fieldset>
-                        <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Outstanding">5 stars</label>
-                        <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Very Good">4 stars</label>
-                        <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Good">3 stars</label>
-                        <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Poor">2 stars</label>
-                        <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Very Poor">1 star</label>
+                        <input 
+                          type="radio" 
+                          id="star5" 
+                          name="rating" 
+                          :value="5"
+                          v-model="rating"
+                        />
+                        <label for="star5" title="Outstanding"></label>
+                        <input 
+                          type="radio" 
+                          id="star4" 
+                          name="rating" 
+                          :value="4"
+                          v-model="rating"
+                        />
+                        <label for="star4" title="Very Good"></label>
+                        <input 
+                          type="radio" 
+                          id="star3" 
+                          name="rating" 
+                          :value="3"
+                          v-model="rating"
+                        />
+                        <label for="star3" title="Good"></label>
+                        <input 
+                          type="radio" 
+                          id="star2" 
+                          name="rating" 
+                          :value="2"
+                          v-model="rating"
+                        />
+                        <label for="star2" title="Poor"></label>
+                        <input 
+                          type="radio" 
+                          id="star1" 
+                          name="rating" 
+                          :value="1"
+                          v-model="rating"
+                        />
+                        <label for="star1" title="Very Poor"></label>
                       </fieldset>
                     </div>
                     <div class="review-comment">
                       <h2>Напишите комментарий</h2>
-                      <textarea name="comment" placeholder="Введите комментарий... "></textarea>
+                      <textarea 
+                        v-model="description"
+                        name="comment"
+                        placeholder="Введите комментарий... "
+                      >
+                      </textarea>
                     </div>
                   </div>
                   <div class="modal-bottom">
-                    <button class="modal-sign">Оставить отзыв</button>
+                    <button 
+                      @click="sendReview()"
+                      class="modal-sign"
+                    >Оставить отзыв</button>
                   </div>
                   <div class="modal-close" @click="$modal.hide('modalReview')"></div>
                 </modal>
@@ -544,23 +502,7 @@
                       <div class="card-left">
                         <div class="card-avatar">
                           <img class="notary-avatar" src="/ava.jpg" alt />
-                          <div class="notary-stars">
-                            <div class="notary-star">
-                              <img src="/starO.svg" alt />
-                            </div>
-                            <div class="notary-star">
-                              <img src="/starO.svg" alt />
-                            </div>
-                            <div class="notary-star">
-                              <img src="/starO.svg" alt />
-                            </div>
-                            <div class="notary-star">
-                              <img src="/starO.svg" alt />
-                            </div>
-                            <div class="notary-star">
-                              <img src="/starD.svg" alt />
-                            </div>
-                          </div>
+                          <star :rating="company.rating" />
                           <div class="rev">
                             <a href="#">19 отзывов</a>
                           </div>
@@ -618,23 +560,7 @@
                         <div class="card-avatar">
                           <img class="notary-avatar" src="/ava.jpg" alt />
                           <div class="card-rev">
-                            <div class="notary-stars">
-                              <div class="notary-star">
-                                <img src="/starO.svg" alt />
-                              </div>
-                              <div class="notary-star">
-                                <img src="/starO.svg" alt />
-                              </div>
-                              <div class="notary-star">
-                                <img src="/starO.svg" alt />
-                              </div>
-                              <div class="notary-star">
-                                <img src="/starO.svg" alt />
-                              </div>
-                              <div class="notary-star">
-                                <img src="/starD.svg" alt />
-                              </div>
-                            </div>
+                            <star :rating="company.rating" />
                             <div class="rev">
                               <a href="#">19 <span>отзывов</span></a>
                             </div>
@@ -680,23 +606,7 @@
                         <div class="card-avatar">
                           <img class="notary-avatar" src="/ava.jpg" alt />
                           <div class="card-rev">
-                            <div class="notary-stars">
-                              <div class="notary-star">
-                                <img src="/starO.svg" alt />
-                              </div>
-                              <div class="notary-star">
-                                <img src="/starO.svg" alt />
-                              </div>
-                              <div class="notary-star">
-                                <img src="/starO.svg" alt />
-                              </div>
-                              <div class="notary-star">
-                                <img src="/starO.svg" alt />
-                              </div>
-                              <div class="notary-star">
-                                <img src="/starD.svg" alt />
-                              </div>
-                            </div>
+                            <star :rating="company.rating" />
                             <div class="rev">
                               <a href="#">19 <span>отзывов</span></a>
                             </div>
@@ -742,23 +652,7 @@
                         <div class="card-avatar">
                           <img class="notary-avatar" src="/ava.jpg" alt />
                           <div class="card-rev">
-                            <div class="notary-stars">
-                              <div class="notary-star">
-                                <img src="/starO.svg" alt />
-                              </div>
-                              <div class="notary-star">
-                                <img src="/starO.svg" alt />
-                              </div>
-                              <div class="notary-star">
-                                <img src="/starO.svg" alt />
-                              </div>
-                              <div class="notary-star">
-                                <img src="/starO.svg" alt />
-                              </div>
-                              <div class="notary-star">
-                                <img src="/starD.svg" alt />
-                              </div>
-                            </div>
+                            <star :rating="company.rating" />
                             <div class="rev">
                               <a href="#">19 <span>отзывов</span></a>
                             </div>
@@ -815,20 +709,20 @@
             <h1>Телефоны:</h1>
             <div class="page__left-num">
               <p>
-                <img src="phone-page.svg" alt="phone" />+7 999 999 99 99
+                <img src="/phone-page.svg" alt="phone" />+7 999 999 99 99
               </p>
               <p>
-                <img src="phone-page.svg" alt="phone" />+7 999 999 99 99
+                <img src="/phone-page.svg" alt="phone" />+7 999 999 99 99
               </p>
             </div>
           </div>
           <div class="page__right">
             <div class="page-arrows">
-              <img src="PolygonPhone1.svg" alt />
-              <img src="PolygonPhone2.svg" alt />
-              <img src="PolygonPhone3.svg" alt />
-              <img src="PolygonPhone4.svg" alt />
-              <img src="PolygonPhone5.svg" alt />
+              <img src="/PolygonPhone1.svg" alt />
+              <img src="/PolygonPhone2.svg" alt />
+              <img src="/PolygonPhone3.svg" alt />
+              <img src="/PolygonPhone4.svg" alt />
+              <img src="/PolygonPhone5.svg" alt />
             </div>
             <button class="page-phone__btn">Записаться онлайн</button>
           </div>
@@ -839,18 +733,57 @@
 </template>
 <script>
 import CustomSelect from "~/components/CustomSelect.vue";
+import star from "~/components/star";
 export default {
   components: {
     CustomSelect,
+    star,
+  },
+  data: () => ({
+    show: false,
+    activetab: 1,
+    rating: 0,
+    description: '',
+  }),
+  computed: {
+    company() {
+      return this.$store.getters["companies/getItem"];
+    },
+    profile() {
+      return this.company.profile || {}
+    },
+    ratings() {
+      return this.company.ratings || []
+    },
+    disabledReview() {
+      return Boolean(this.company.hasReview) || !this.$store.getters['auth/isAuth']
+    }
+  },
+  created() {
+    let id = this.$route.params.id
+    this.loadCompany(id)
   },
   methods: {
     showReviewModal() {
       this.$modal.show("modalReview")
     },
+    loadCompany(id) {
+      this.$store.dispatch("companies/loadItem", id);
+    },
+    async sendReview() {
+      if (this.disabledReview) {
+        return
+      }
+
+      let data = {
+        id: this.$route.params.id, 
+        rating: this.rating,
+        description: this.description,
+      }
+
+      await this.$store.dispatch('companies/sendReview', data)
+      this.$modal.hide("modalReview")
+    },
   },
-  data: () => ({
-    show: false,
-    activetab: 1,
-  })
 };
 </script>

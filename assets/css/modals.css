@@ -563,6 +563,84 @@
   font-weight: 500;
 }
 
+.modal.modal-calendar .modal-body .info {
+  font-size: 12px;
+  line-height: 16px;
+  color: #8e99a7;
+  max-width: 250px;
+  margin: 16px auto;
+  text-align: center;
+}
+
+.modal.modal-calendar .modal-body .vdpComponent {
+  margin: 0 -16px;
+}
+
+.modal.modal-calendar .modal-body .vdpComponent .vdpInnerWrap {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border: none;
+  padding: 0;
+}
+
+.modal.modal-calendar .modal-body .vdpComponent .vdpInnerWrap .vdpHeader {
+  text-align: left;
+  margin: 0 0 -2.5em;
+}
+
+.modal.modal-calendar .modal-body .vdpComponent .vdpInnerWrap .vdpHeader .vdpArrowPrev {
+  left: 90px;
+}
+
+.modal.modal-calendar .modal-body .vdpComponent .vdpInnerWrap .vdpHeader .vdpArrowNext {
+  left: 170px;
+}
+
+.modal.modal-calendar .modal-body .vdpComponent .vdpInnerWrap .vdpHeader .vdpPeriodControls .vdpPeriodControl:last-child {
+  display: none;
+}
+
+.modal.modal-calendar .modal-body .vdpComponent .vdpInnerWrap .vdpHeader .vdpPeriodControls .vdpPeriodControl > button {
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 600;
+  color: #2d333d;
+}
+
+.modal.modal-calendar .modal-body .vdpComponent .vdpInnerWrap thead .vdpHeadCell .vdpHeadCellContent {
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 600;
+  color: #8e99a7;
+}
+
+.modal.modal-calendar .modal-body .vdpComponent .vdpInnerWrap thead .vdpHeadCell:nth-child(6) .vdpHeadCellContent, .modal.modal-calendar .modal-body .vdpComponent .vdpInnerWrap thead .vdpHeadCell:nth-child(7) .vdpHeadCellContent {
+  color: #f12222;
+}
+
+.modal.modal-calendar .modal-body .vdpComponent .vdpInnerWrap tbody .vdpCell.selectable .vdpCellContent {
+  height: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.modal.modal-calendar .modal-body .vdpComponent .vdpInnerWrap tbody .vdpCell.selected .vdpCellContent,
+.modal.modal-calendar .modal-body .vdpComponent .vdpInnerWrap tbody .vdpCell.selectable:hover .vdpCellContent {
+  border: solid 1px #1b559e;
+  background: inherit;
+  color: #1b559e;
+  border-radius: 50%;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+.modal.modal-calendar .modal-bottom button {
+  background-color: #8e99a7;
+  width: 100%;
+  font-weight: 500;
+}
+
 .modal-filter .modal-body h2 {
   font-size: 14px;
   font-weight: 600;

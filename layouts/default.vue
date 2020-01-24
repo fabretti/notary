@@ -41,26 +41,23 @@
             +7 999 323 96 54
           </div>
           <div class="header__select">
-            <!-- <div class="header__city">
-              <div @click="show = !show" class="city__selected">
-                <span class="city__title">Москва</span>
-                <i class="icon-arrow" :class="{ rotate: show }"></i>
+            <CustomSelect 
+              :options="subjects" 
+              v-model="selectedSubject"
+            />
+            <div 
+              class="lk" 
+              :class="{ open: open }" 
+              @mouseover="open = true"
+              @mouseleave="open = false"
+              >
+              <div class="lk__title">Личный кабинет</div>
+              <div class="custom__list" :class="{ selectHide: !open }">
+                <div class="item"><nuxt-link to="/notes">Мои записи</nuxt-link></div>
+                <div class="item" v-if="isAuth" @click="logout">Выход</div>
+                <div class="item" v-else @click="modalEnter">Вход</div>
               </div>
-              <transition name="fade">
-                <div v-if="show" class="city__list">
-                  <ul>
-                    <li class="selected">Москва</li>
-                    <li>Санкт-Петербург</li>
-                    <li>Новосибирск</li>
-                    <li>Екатеринбург</li>
-                    <li>Нижний Новгород</li>
-                    <li>Казань</li>
-                  </ul>
-                </div>
-              </transition>
-            </div>-->
-            <CustomSelect :options="['Москва', 'Новосибирск']" />
-            <button @click="modalEnter">Личный кабинет</button>
+            </div>
           </div>
         </div>
         <div class="header__hum" @click="navOpen = !navOpen">
@@ -220,7 +217,7 @@
           <div class="footer__info">©2019.Нотариус рф. все Права защищены.</div>
           <div class="footer__dev">
             Разработано в
-            <a href="7reasons.ru">7reasons.ru</a>
+            <a href="https://sevenreasons.ru">sevenreasons.ru</a>
           </div>
         </div>
         <div class="footer__navs">
@@ -264,7 +261,7 @@
           <div class="footer__info">©2019.Нотариус рф. все Права защищены.</div>
           <div class="footer__dev">
             Разработано в
-            <a href="7reasons.ru">7reasons.ru</a>
+            <a href="https://sevenreasons.ru">sevenreasons.ru</a>
           </div>
         </div>
       </div>
@@ -280,16 +277,25 @@ export default {
   data: () => ({
     show: false,
     navOpen: false,
+    open: false,
     phoneNumber: "",
-    code: ""
+    code: "",
+    selectedSubject: null,
   }),
   computed: {
     isAuth() {
       return this.$store.getters["auth/isAuth"];
-    }
+    },
+    subjects() {
+      return this.$store.getters['subject/getList'].map(i => ({
+        value: i.id,
+        title: i.title,
+      }))
+    },
   },
   mounted() {
     this.$store.dispatch("auth/loadToken");
+    this.loadSubjects();
   },
   methods: {
     modalEnter() {
@@ -323,6 +329,9 @@ export default {
         .dispatch("auth/logout", this.phoneNumber)
         .then(() => {})
         .catch(() => {});
+    },
+    loadSubjects() {
+      this.$store.dispatch('subject/loadList')
     }
   }
 };

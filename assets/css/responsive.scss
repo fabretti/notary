@@ -5,6 +5,7 @@
 }
 
 @media (max-width: 1010px) {
+
   .header__menu,
   .header__right {
     display: none;
@@ -44,6 +45,7 @@
 @media (max-width: 890px) {
   .page {
     .left-container {
+      width: 100%;
       max-width: 100%;
 
       .notary-card.result-card {
@@ -327,6 +329,7 @@
       font-size: 30px;
       line-height: 30px;
     }
+
     .custom__list {
       left: -30px;
     }
@@ -347,10 +350,12 @@
       .search-date {
         margin-right: 0;
       }
+
       .search .custom__selected {
         margin-right: 0;
       }
     }
+
     .modal-record,
     .modal-time,
     .modal-accept {
@@ -430,6 +435,7 @@
   }
 
   .notes.results .notarys .notary-list .result-card.notes-card {
+
     .notary-top,
     .card-left {
       padding: 12px;
@@ -465,6 +471,7 @@
   }
 
   .modal {
+
     &.modal-record,
     &.modal-time,
     &.modal-accept,
@@ -711,7 +718,7 @@
               margin: 0 14px;
             }
 
-            &.active + .accordion-item-body {
+            &.active+.accordion-item-body {
               font-size: 12px;
               line-height: 16px;
               padding: 0 30px 12px;
@@ -758,6 +765,7 @@
         column-count: 1;
 
         li {
+
           h3,
           a {
             font-size: 12px;
@@ -828,6 +836,7 @@
                 font-weight: 500;
                 margin-top: 0;
                 border-radius: 0 4px 4px 0;
+
                 img {
                   display: block;
                 }
@@ -850,12 +859,14 @@
                 padding: 0 16px;
                 margin-right: 16px;
                 cursor: pointer;
+
                 p {
                   font-size: 12px;
                   line-height: 16px;
                   font-weight: 500;
                   color: #fff;
                 }
+
                 i {
                   display: block;
                   width: 9.4px;
@@ -1019,6 +1030,7 @@
   }
 
   .page {
+
     &.results .notarys .notary-list .notary-card .card-right .slider-month,
     &.results .notarys .notary-list .notary-card .card-right .slider-days {
       display: block;
@@ -1042,8 +1054,8 @@
     .left-container {
       padding: 0;
 
-      .notary-card.result-card .card-center-mb .card-right .slider-month > div,
-      .notary-card.result-card .card-center-mb .card-right .slider-days > div {
+      .notary-card.result-card .card-center-mb .card-right .slider-month>div,
+      .notary-card.result-card .card-center-mb .card-right .slider-days>div {
         width: 85%;
       }
 

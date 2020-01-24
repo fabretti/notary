@@ -78,62 +78,49 @@
           <div v-for="(company, index) in companies" :key="index" class="notary-card">
             <div class="card-left">
               <div class="card-avatar">
-                <a href="page">
+                <nuxt-link :to="'/page/' + company.id">
                   <img class="notary-avatar" src="/ava.jpg" alt />
-                </a>
+                </nuxt-link>
                 <div class="card-rev">
-                  <div class="notary-stars">
-                    <div class="notary-star">
-                      <img src="/starO.svg" alt />
-                    </div>
-                    <div class="notary-star">
-                      <img src="/starO.svg" alt />
-                    </div>
-                    <div class="notary-star">
-                      <img src="/starO.svg" alt />
-                    </div>
-                    <div class="notary-star">
-                      <img src="/starO.svg" alt />
-                    </div>
-                    <div class="notary-star">
-                      <img src="/starD.svg" alt />
-                    </div>
-                  </div>
+                  <star :rating="company.rating" />
                   <div class="rev">
-                    <a href="#">
-                      19
-                      <span>отзывов</span>
-                    </a>
+                    <a href="#">{{ company.voteQuantity }}</a>
                   </div>
                 </div>
               </div>
               <div class="card-center">
-                <div class="card-spec">Нотариус</div>
+                <div class="card-spec">{{ company.typeOfWork }}</div>
                 <div class="card-name">
-                  <a href="page">{{ company.title }}</a>
+                  <nuxt-link :to="'/page/' + company.id">{{ company.title }}</nuxt-link>
                 </div>
-                <div class="card-year">Стаж 8 лет</div>
+                <div class="card-year">{{ company.workExperience }}</div>
                 <ul class="card-subway">
                   <li class="subway-item">
-                    <span class="subway-color"></span>Авиамоторная
+                    <span class="subway-color" :style="{ background: company.districtColor }"></span>
+                    {{ company.districtTitle }}
                     <div class="subway-step">
-                      <img src="/footstep.svg" /> 323 м
+                      <img src="/footstep.svg" />
+                      {{ company.districtDistance }}
                     </div>
                   </li>
                   <li class="subway-item">
-                    <span class="subway-color"></span>Парк победы
+                    <span class="subway-color" :style="{ background: company.secondDistrictColor }"></span>
+                    {{ company.secondDistrictTitle }}
                     <div class="subway-step">
-                      <img src="/footstep.svg" /> 323 м
+                      <img src="/footstep.svg" />
+                      {{ company.secondDistrictDistance }}
                     </div>
                   </li>
                   <li class="subway-item">
-                    <span class="subway-color"></span>Павелецкая
+                    <span class="subway-color" :style="{ background: company.thirdDistrictColor }"></span>
+                    {{ company.thirdDistrictTitle }}
                     <div class="subway-step">
-                      <img src="/footstep.svg" /> 323 м
+                      <img src="/footstep.svg" />
+                      {{ company.thirdDistrictDistance }}
                     </div>
                   </li>
                 </ul>
-                <div class="card-adress">г. Москва, ул. 2-я Кабельная, д.2, стр. 14</div>
+                <div class="card-adress">{{ company.address }}</div>
               </div>
             </div>
             <div class="card-right">
@@ -160,7 +147,7 @@
                 <carousel
                   :paginationEnabled="false"
                   :navigationEnabled="true"
-                  :perPageCustom="[[400, 5], [500, 6], [590, 3.5], [768, 3.5], [1011, 4.5]]"
+                  :perPageCustom="[[400, 5], [500, 6], [590, 6.5], [780, 3.5], [1011, 4.5]]"
                   navigationNextLabel="<i class='material-icons'><img src='/Polygon.svg'></i>"
                   navigationPrevLabel="<i class='material-icons'><img src='/PolygonL.svg'></i>"
                 >
@@ -194,25 +181,54 @@
               <div class="change_date">
                 <button>Расписание на Чт, 26 сен</button>
               </div>
+              <div class="block-times">
+                <ul>
+                  <li>
+                    <div class="slider-btn btn-time default" @click="showModal">15:30</div>
+                  </li>
+                  <li>
+                    <div class="slider-btn btn-time default">16:30</div>
+                  </li>
+                  <li>
+                    <div class="slider-btn btn-time default">17:30</div>
+                  </li>
+                  <li>
+                    <div class="slider-btn btn-time default">18:30</div>
+                  </li>
+                  <li>
+                    <div class="slider-btn btn-time default">19:30</div>
+                  </li>
+                  <li>
+                    <div class="slider-btn btn-time default">20:30</div>
+                  </li>
+                  <li>
+                    <div class="slider-btn btn-time default">21:30</div>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
-        <div
-            class="pagination">
-          <button :class="{active: currentPage - 1 > 0}"
-                  @click="handlePagination(currentPage - 1)"
-                  class="arrow__pag prev">
+        <div class="pagination">
+          <button
+            :class="{active: currentPage - 1 > 0}"
+            @click="handlePagination(currentPage - 1)"
+            class="arrow__pag prev"
+          >
             <img src="/arrowBack.svg" alt />
           </button>
-          <button v-for="(p, i) in paginationList"
-                  :key="i"
-                  class="page__num"
-                  :class="{active: p == currentPage}"
-                  @click="handlePagination(p)"
-                  >{{ p }}</button>
-          <button :class="{active: currentPage + 1 <= quantityPages}"
-                  @click="handlePagination(currentPage + 1)"
-                  class="arrow__pag next">
+          <button
+            v-for="(p, i) in paginationList"
+            :key="i"
+            class="page__num"
+            :class="{active: p == currentPage}"
+            @click="handlePagination(p)"
+          >{{ p }}</button>
+          <button
+            :class="{active: currentPage + 1 <= quantityPages}"
+            @click="handlePagination(currentPage + 1)"
+            class="arrow__pag next"
+          >
             <img src="/arrowBack.svg" alt />
           </button>
         </div>
@@ -222,9 +238,7 @@
           <div class="map-title section-title">Все нотариусы на карте</div>
           <div id="map">
             <yandex-map :coords="coords" zoom="12">
-              <ymap-marker :coords="coords" marker-id="1" marker-type="placemark" />
-              <ymap-marker :coords="coords" marker-id="2" marker-type="placemark" />
-              <ymap-marker :coords="coords" marker-id="3" marker-type="placemark" />
+              <ymap-marker marker-id="123" :coords="coords" :balloon-template="balloonTemplate" />
             </yandex-map>
           </div>
         </div>
@@ -745,10 +759,12 @@
 import AppLogo from "~/components/AppLogo.vue";
 import notaryCard from "~/components/notaryCard";
 import CustomSelect from "~/components/CustomSelect.vue";
+import star from "~/components/star";
 export default {
   components: {
     notaryCard,
-    CustomSelect
+    CustomSelect,
+    star
   },
   data: () => ({
     show: false,
@@ -760,19 +776,7 @@ export default {
     companyId: 1,
     date: 1576454400,
     time: 57600,
-    coords: [55.778328, 37.674699],
-    placemarks: [
-      {
-        coords: [55.7828, 37.645904],
-        properties: {
-          balloonContentBody: "asdfd",
-          balloonContentFooter: "1",
-          balloonContentHeader: "1"
-        },
-        clusterName: "1",
-        markerId: "1"
-      }
-    ]
+    coords: [55.778328, 37.674699]
   }),
   computed: {
     notarialActTypes() {
@@ -791,55 +795,59 @@ export default {
       return this.$store.getters["companies/getQuantityPages"];
     },
     paginationList() {
-      let 
-          currentPage = this.currentPage, 
-          quantityPages = this.quantityPages
+      let currentPage = this.currentPage,
+        quantityPages = this.quantityPages;
       if (!currentPage || !quantityPages) {
-        return {}
+        return {};
       }
-      
+
       if (quantityPages <= 5) {
         return [...Array(5).keys()].reduce((r, i) => {
-          r[i] = i + 1
-          return r
-        }, {})
+          r[i] = i + 1;
+          return r;
+        }, {});
       }
 
-      const pag = {}
+      const pag = {};
 
-      const offsets = [-25, -10, -1, 0, 1, 10, 25]
+      const offsets = [-10, -1, 0, 1, 10];
 
       /**
        * first
        */
-      pag[0] = 1
+      pag[0] = 1;
 
-      let p
+      let p;
       /**
        * offsets
        */
       for (let offset of offsets) {
-        p = currentPage + offset
+        p = currentPage + offset;
         if (p > 1 && p < quantityPages) {
-          pag[p - 1] = p
+          pag[p - 1] = p;
         }
       }
       /**
        * last
        */
-      pag[quantityPages - 1] = quantityPages
+      pag[quantityPages - 1] = quantityPages;
 
-      return pag
+      return pag;
+    },
+    balloonTemplate() {
+      return `
+        <h1 class="red">Hi, everyone!</h1>
+      `;
     }
   },
   mounted() {
-    this.loadNotarialActTypes() 
-    let page = this.$route.params.page
+    this.loadNotarialActTypes();
+    let page = this.$route.params.page;
     if (page === undefined || page < 1) {
-      page = 1
+      page = 1;
     }
-    this.loadCompanies(Number(page))
-    console.log(123)
+    this.loadCompanies(Number(page));
+    console.log(123);
   },
   watch: {
     notarialActTypeId(value, old) {
@@ -892,11 +900,11 @@ export default {
     },
     handlePagination(page) {
       if (page == this.currentPage || page < 1 || page > this.quantityPages) {
-        return
+        return;
       }
       // this.$store.dispatch("companies/loadList", page);
-      console.log(page)
-      this.$router.push({path:'/results/' + page})
+      console.log(page);
+      this.$router.push({ path: "/results/" + page });
     }
   }
 };

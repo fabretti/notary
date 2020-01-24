@@ -28,7 +28,7 @@
                 <div class="notary-top">
                   <div class="top-note">
                     <div class="note-date">
-                      {{ item.timestamp | dateFormat }}
+                      {{ item.timestamp | dateTimeFormat }}
                     </div>
                     <div class="note-status">
                       Запись подтверждена, ждем вас на прием

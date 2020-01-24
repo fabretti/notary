@@ -34,6 +34,7 @@
 
 @media (max-width: 890px) {
   .page .left-container {
+    width: 100%;
     max-width: 100%;
   }
   .page .left-container .notary-card.result-card .showMap {

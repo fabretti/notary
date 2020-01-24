@@ -27,6 +27,10 @@ button {
   cursor: pointer;
 }
 
+button[disabled] {
+  opacity: 0.7;
+}
+
 header .wrap,
 footer .wrap {
   display: -webkit-box;
@@ -81,14 +85,14 @@ footer .wrap {
   line-height: 16px;
   color: #8e99a7;
   width: 100%;
-  border: 1px solid #1b559e;
+  border: 1px solid #8e99a7;
   border-right: none;
   padding-left: 16px;
   border-radius: 4px 0 0 4px;
 }
 
 .search input:focus {
-  border: solid 1px #f15a22;
+  border: solid 1px #1b559e;
   border-right: 0;
   -webkit-transition: 0.3s;
   transition: 0.3s;
@@ -218,6 +222,16 @@ footer .wrap {
   text-decoration: none;
   line-height: 48px;
   border-radius: 0 4px 4px 0;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.search .search-btn:hover {
+  background: #004397;
+}
+
+.search .search-btn:active {
+  background: #003d8a;
 }
 
 .search-formDate {
@@ -269,22 +283,6 @@ footer .wrap {
   width: 160px;
   height: 160px;
   border-radius: 4px;
-}
-
-.notary-list .notary-card .card-left .card-avatar .notary-stars {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.notary-list .notary-card .card-left .card-avatar .notary-stars .notary-star:not(:last-child) {
-  margin-right: 2px;
 }
 
 .notary-list .notary-card .card-left .card-avatar .rev {
@@ -487,7 +485,8 @@ header .header__right .header__select {
           align-items: center;
 }
 
-header .header__right .header__select .customSelect {
+header .header__right .header__select .customSelect,
+header .header__right .header__select .lk {
   position: relative;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -495,7 +494,8 @@ header .header__right .header__select .customSelect {
           user-select: none;
 }
 
-header .header__right .header__select .customSelect .custom__selected {
+header .header__right .header__select .customSelect .custom__selected,
+header .header__right .header__select .lk .custom__selected {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -509,11 +509,18 @@ header .header__right .header__select .customSelect .custom__selected {
   outline: none;
 }
 
-header .header__right .header__select .customSelect .custom__selected:hover {
-  background: #f1f1f1;
+header .header__right .header__select .customSelect .custom__selected:hover,
+header .header__right .header__select .lk .custom__selected:hover {
+  background: #f2f2f2;
 }
 
-header .header__right .header__select .customSelect .custom__selected .custom__title {
+header .header__right .header__select .customSelect .custom__selected:active,
+header .header__right .header__select .lk .custom__selected:active {
+  background: #ececec;
+}
+
+header .header__right .header__select .customSelect .custom__selected .custom__title,
+header .header__right .header__select .lk .custom__selected .custom__title {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -525,13 +532,17 @@ header .header__right .header__select .customSelect .custom__selected .custom__t
   color: #8e99a7;
 }
 
-header .header__right .header__select .customSelect .custom__selected .custom__title p {
+header .header__right .header__select .customSelect .custom__selected .custom__title p,
+header .header__right .header__select .lk .custom__selected .custom__title p {
   white-space: nowrap;
   overflow: hidden;
+  width: 62px;
+  text-align: left;
   text-overflow: ellipsis;
 }
 
-header .header__right .header__select .customSelect .custom__selected .custom__title i {
+header .header__right .header__select .customSelect .custom__selected .custom__title i,
+header .header__right .header__select .lk .custom__selected .custom__title i {
   display: block;
   width: 8px;
   height: 7px;
@@ -542,18 +553,85 @@ header .header__right .header__select .customSelect .custom__selected .custom__t
   transition: all 0.2s linear;
 }
 
-header .header__right .header__select .customSelect .custom__selected .custom__title i.rotate {
+header .header__right .header__select .customSelect .custom__selected .custom__title i.rotate,
+header .header__right .header__select .lk .custom__selected .custom__title i.rotate {
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
 }
 
-header .header__right .header__select button {
+header .header__right .header__select .customSelect .custom__list,
+header .header__right .header__select .lk .custom__list {
+  position: absolute;
+  top: 30px;
+  left: 0;
+  background: #fff;
+  font-weight: 500;
+  border-radius: 4px;
+  -webkit-box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+          box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+  min-width: 190px;
+  z-index: 99;
+  padding: 15px 0;
+  text-align: left;
+}
+
+header .header__right .header__select .customSelect .custom__list .item,
+header .header__right .header__select .lk .custom__list .item {
+  padding: 0 30px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #2d333d;
+  line-height: 24px;
+}
+
+header .header__right .header__select .customSelect .custom__list .item:hover,
+header .header__right .header__select .lk .custom__list .item:hover {
+  background: #dbebff;
+}
+
+header .header__right .header__select .customSelect .custom__list .item.selected,
+header .header__right .header__select .lk .custom__list .item.selected {
+  position: relative;
+  font-weight: 600;
+}
+
+header .header__right .header__select .customSelect .custom__list .item.selected:before,
+header .header__right .header__select .lk .custom__list .item.selected:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 14px;
+  -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+  width: 6.5px;
+  height: 6.5px;
+  background: url("/check.svg") no-repeat;
+}
+
+header .header__right .header__select .customSelect .selectHide,
+header .header__right .header__select .lk .selectHide {
+  display: none;
+}
+
+header .header__right .header__select .lk {
   font-size: 14px;
   line-height: 16px;
-  text-decoration: none;
   color: #1b559e;
-  background: none;
-  border: none;
+  cursor: pointer;
+}
+
+header .header__right .header__select .lk:hover {
+  color: #004397;
+}
+
+header .header__right .header__select .lk .custom__list {
+  right: 0;
+  top: inherit;
+  left: inherit;
+}
+
+header .header__right .header__select .lk .custom__list a {
+  text-decoration: none;
 }
 
 header .header__hum {
@@ -1177,14 +1255,18 @@ header .black-list.active {
 }
 
 .main .action .action-content {
-  -webkit-column-count: 3;
-          column-count: 3;
-  grid-column-gap: 45px;
-  -webkit-column-gap: 45px;
-          column-gap: 45px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .main .action .action-content .action-list {
+  width: 33%;
   margin-bottom: 14px;
 }
 
@@ -1287,6 +1369,12 @@ header .black-list.active {
 .card-right .slider-btn.active {
   background-color: #1b559e;
   color: #fff;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.card-right .slider-btn.active:hover {
+  background-color: #004397;
 }
 
 .card-right .slider-btn.disabled {
@@ -1402,9 +1490,7 @@ header .black-list.active {
 }
 
 .card-right .error {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: none;
 }
 
 .card-right .error img {
@@ -1422,7 +1508,7 @@ header .black-list.active {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  margin: 13px 0 8px 0;
+  -margin: 13px 0 8px 0;
 }
 
 .card-right .change_date button {
@@ -1475,11 +1561,11 @@ header .black-list.active {
 }
 
 .results .search-fixed .search input {
-  border-right: 1px solid #1b559e;
+  border-right: 1px solid #8e99a7;
 }
 
 .results .search-fixed .search input:focus {
-  border: solid 1px #f15a22;
+  border: solid 1px #1b559e;
   -webkit-transition: 0.3s;
   transition: 0.3s;
 }
@@ -1611,6 +1697,14 @@ header .black-list.active {
   border: none;
 }
 
+.results .notarys .pagination .arrow__pag.active:hover {
+  background-color: #004397;
+}
+
+.results .notarys .pagination .arrow__pag.active:active {
+  background-color: #003d8a;
+}
+
 .results .notarys .pagination .arrow__pag.next {
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
@@ -1638,6 +1732,12 @@ header .black-list.active {
   padding: 0 20px;
   border-radius: 4px;
   border: solid 1px #dde0e3;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.page .search-fixed .search form .back-btn:hover {
+  border-color: #8e99a7;
 }
 
 .page .search-fixed .search form .back-btn img {
@@ -1908,10 +2008,27 @@ header .black-list.active {
 
 .page .left-container .page-reviews .reviews-btn .show-btn {
   background: #8e99a7;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.page .left-container .page-reviews .reviews-btn .show-btn:hover {
+  background: #8a94a0;
 }
 
 .page .left-container .page-reviews .reviews-btn .review-btn {
   background: #1b559e;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.page .left-container .page-reviews .reviews-btn .review-btn:hover {
+  background: #004397;
+}
+
+.page .left-container .page-reviews .reviews-btn .review-btn[disabled]:hover {
+  background: #1b559e;
+  cursor: not-allowed;
 }
 
 .page .right-container {

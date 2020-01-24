@@ -276,7 +276,7 @@
             }
 
             &:hover,
-            &:hover ~ label {
+            &:hover~label {
               color: #f15a22;
               text-shadow: 0 0 3px #f15a22;
 
@@ -288,14 +288,14 @@
         }
 
         input:checked {
-          & ~ label {
+          &~label {
             &:before {
               content: "\f005";
             }
           }
         }
 
-        > label:active {
+        >label:active {
           position: relative;
           top: 2px;
         }
@@ -543,7 +543,7 @@
         display: none;
       }
 
-      input[type="radio"]:checked + .label {
+      input[type="radio"]:checked+.label {
         border-color: #1b559e;
 
         &:after {
@@ -562,6 +562,101 @@
       background-color: #8e99a7;
       width: 100%;
       height: 40px;
+      font-weight: 500;
+    }
+  }
+}
+
+.modal.modal-calendar {
+  .modal-body {
+    .info {
+      font-size: 12px;
+      line-height: 16px;
+      color: #8e99a7;
+      max-width: 250px;
+      margin: 16px auto;
+      text-align: center;
+    }
+
+    .vdpComponent {
+      margin: 0 -16px;
+
+      .vdpInnerWrap {
+        box-shadow: none;
+        border: none;
+        padding: 0;
+
+        .vdpHeader {
+          text-align: left;
+          margin: 0 0 -2.5em;
+
+          .vdpArrowPrev {
+            left: 90px;
+          }
+
+          .vdpArrowNext {
+            left: 170px;
+          }
+
+          .vdpPeriodControls {
+            .vdpPeriodControl:last-child {
+              display: none;
+            }
+
+            .vdpPeriodControl>button {
+              font-size: 14px;
+              line-height: 16px;
+              font-weight: 600;
+              color: #2d333d;
+            }
+          }
+        }
+
+        thead {
+          .vdpHeadCell {
+            .vdpHeadCellContent {
+              font-size: 14px;
+              line-height: 16px;
+              font-weight: 600;
+              color: #8e99a7;
+            }
+
+            &:nth-child(6),
+            &:nth-child(7) {
+              .vdpHeadCellContent {
+                color: #f12222;
+              }
+            }
+          }
+        }
+
+        tbody {
+          .vdpCell.selectable {
+            .vdpCellContent {
+              height: inherit;
+              font-size: 14px;
+              font-weight: 600;
+              line-height: 24px;
+            }
+          }
+
+          .vdpCell.selected .vdpCellContent,
+          .vdpCell.selectable:hover .vdpCellContent {
+            border: solid 1px #1b559e;
+            background: inherit;
+            color: #1b559e;
+            border-radius: 50%;
+            transition: .2s;
+          }
+        }
+      }
+    }
+  }
+
+  .modal-bottom {
+    button {
+      background-color: #8e99a7;
+      width: 100%;
       font-weight: 500;
     }
   }
