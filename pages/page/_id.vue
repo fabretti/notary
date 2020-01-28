@@ -9,19 +9,6 @@
                 <img src="/arrowBack.svg" alt />
               </nuxt-link>
               <input id="srch" placeholder="Имя нотариуса, метро, город МО" />
-              <!-- <div @click="show = !show" class="search-date">
-                <p>Вт, 24 сентября</p>
-                <i></i>
-                <transition name="fade">
-                  <div v-if="show" class="date-dropdown">
-                    <ul>
-                      <li class="selected">Сегодня</li>
-                      <li>Завтра, 26 сен</li>
-                      <li>Пятница, 27 сен</li>
-                    </ul>
-                  </div>
-                </transition>
-              </div> -->
               <CustomSelect :options="['Вт, 24 сентября', 'Сегодня', 'Завтра, 26 сен', 'Пятница, 27 сен']" />
             </div>
             <button class="search-btn">Найти</button>
@@ -494,8 +481,8 @@
               :perPageCustom="[[0, 1], [890, 2], [1120, 3]]"
               navigationNextLabel="<i class='material-icons'><img src='/Polygon.svg'></i>"
               navigationPrevLabel="<i class='material-icons'><img src='/PolygonL.svg'></i>"
-            >
-              <slide>
+              >
+              <slide v-for="(company, index) in companies" :key="index">
                 <div class="notarys">
                   <div class="notary-list">
                     <div class="notary-card other-card">
@@ -504,32 +491,20 @@
                           <img class="notary-avatar" src="/ava.jpg" alt />
                           <star :rating="company.rating" />
                           <div class="rev">
-                            <a href="#">19 отзывов</a>
+                            <a href="#">{{ profile.voteQuantity }} отзывов</a>
                           </div>
                         </div>
                         <div class="card-center">
                           <div class="card-spec">Нотариус</div>
                           <div class="card-name">
-                            <a href="#">Ложкин Валерий Александрович</a>
+                            <a href="#">{{ company.title }}</a>
                           </div>
                           <div class="card-year">Стаж 8 лет</div>
                           <ul class="card-subway">
                             <li class="subway-item">
-                              <span class="subway-color"></span>Авиамоторная
+                              <span class="subway-color"></span>{{ profile.districtTitle }}
                               <div class="subway-step">
-                                <img src="/footstep.svg" /> 323 м
-                              </div>
-                            </li>
-                            <li class="subway-item">
-                              <span class="subway-color"></span>Парк победы
-                              <div class="subway-step">
-                                <img src="/footstep.svg" /> 323 м
-                              </div>
-                            </li>
-                            <li class="subway-item">
-                              <span class="subway-color"></span>Павелецкая
-                              <div class="subway-step">
-                                <img src="/footstep.svg" /> 323 м
+                                <img src="/footstep.svg" /> {{ company.districtDistance }}
                               </div>
                             </li>
                           </ul>
@@ -538,13 +513,7 @@
                       <div class="card-bottom-mb">
                         <ul class="card-subway">
                           <li class="subway-item">
-                            <span class="subway-color"></span>Авиамоторная
-                          </li>
-                          <li class="subway-item">
-                            <span class="subway-color"></span>Парк победы
-                          </li>
-                          <li class="subway-item">
-                            <span class="subway-color"></span>Павелецкая
+                            <span class="subway-color"></span>{{ profile.districtTitle }}
                           </li>
                         </ul>
                       </div>
@@ -552,157 +521,8 @@
                   </div>
                 </div>
               </slide>
-              <slide>
-                <div class="notarys">
-                  <div class="notary-list">
-                    <div class="notary-card other-card">
-                      <div class="card-left">
-                        <div class="card-avatar">
-                          <img class="notary-avatar" src="/ava.jpg" alt />
-                          <div class="card-rev">
-                            <star :rating="company.rating" />
-                            <div class="rev">
-                              <a href="#">19 <span>отзывов</span></a>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="card-center">
-                          <div class="card-spec">Нотариус</div>
-                          <div class="card-name">
-                            <a href="#">Ложкин Валерий Александрович</a>
-                          </div>
-                          <div class="card-year">Стаж 8 лет</div>
-                          <ul class="card-subway">
-                            <li class="subway-item">
-                              <span class="subway-color"></span>Авиамоторная
-                              <div class="subway-step">
-                                <img src="/footstep.svg" /> 323 м
-                              </div>
-                            </li>
-                            <li class="subway-item">
-                              <span class="subway-color"></span>Парк победы
-                              <div class="subway-step">
-                                <img src="/footstep.svg" /> 323 м
-                              </div>
-                            </li>
-                            <li class="subway-item">
-                              <span class="subway-color"></span>Павелецкая
-                              <div class="subway-step">
-                                <img src="/footstep.svg" /> 323 м
-                              </div>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </slide>
-              <slide>
-                <div class="notarys">
-                  <div class="notary-list">
-                    <div class="notary-card other-card">
-                      <div class="card-left">
-                        <div class="card-avatar">
-                          <img class="notary-avatar" src="/ava.jpg" alt />
-                          <div class="card-rev">
-                            <star :rating="company.rating" />
-                            <div class="rev">
-                              <a href="#">19 <span>отзывов</span></a>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="card-center">
-                          <div class="card-spec">Нотариус</div>
-                          <div class="card-name">
-                            <a href="#">Ложкин Валерий Александрович</a>
-                          </div>
-                          <div class="card-year">Стаж 8 лет</div>
-                          <ul class="card-subway">
-                            <li class="subway-item">
-                              <span class="subway-color"></span>Авиамоторная
-                              <div class="subway-step">
-                                <img src="/footstep.svg" /> 323 м
-                              </div>
-                            </li>
-                            <li class="subway-item">
-                              <span class="subway-color"></span>Парк победы
-                              <div class="subway-step">
-                                <img src="/footstep.svg" /> 323 м
-                              </div>
-                            </li>
-                            <li class="subway-item">
-                              <span class="subway-color"></span>Павелецкая
-                              <div class="subway-step">
-                                <img src="/footstep.svg" /> 323 м
-                              </div>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </slide>
-              <slide>
-                <div class="notarys">
-                  <div class="notary-list">
-                    <div class="notary-card other-card">
-                      <div class="card-left">
-                        <div class="card-avatar">
-                          <img class="notary-avatar" src="/ava.jpg" alt />
-                          <div class="card-rev">
-                            <star :rating="company.rating" />
-                            <div class="rev">
-                              <a href="#">19 <span>отзывов</span></a>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="card-center">
-                          <div class="card-spec">Нотариус</div>
-                          <div class="card-name">
-                            <a href="#">Ложкин Валерий Александрович</a>
-                          </div>
-                          <div class="card-year">Стаж 8 лет</div>
-                          <ul class="card-subway">
-                            <li class="subway-item">
-                              <span class="subway-color"></span>Авиамоторная
-                              <div class="subway-step">
-                                <img src="/footstep.svg" /> 323 м
-                              </div>
-                            </li>
-                            <li class="subway-item">
-                              <span class="subway-color"></span>Парк победы
-                              <div class="subway-step">
-                                <img src="/footstep.svg" /> 323 м
-                              </div>
-                            </li>
-                            <li class="subway-item">
-                              <span class="subway-color"></span>Павелецкая
-                              <div class="subway-step">
-                                <img src="/footstep.svg" /> 323 м
-                              </div>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </slide>
-              <slide>Slide 5</slide>
-              <slide>Slide 6</slide>
-              <slide>Slide 7</slide>
             </carousel>
           </client-only>
-          <!-- <div class="street-buttons">
-            <div for="sp" class="street-prev">
-              <img src="PolygonL.svg" alt="">
-            </div>
-            <div for="sn" class="street-next">
-              <img src="Polygon.svg" alt="">
-            </div>
-          </div>-->
         </div>
         <div class="page-phone">
           <div class="page__left">
@@ -757,11 +577,19 @@ export default {
     },
     disabledReview() {
       return Boolean(this.company.hasReview) || !this.$store.getters['auth/isAuth']
-    }
+    },
+    companies() {
+      return this.$store.getters["companies/getList"];
+    },
   },
   created() {
     let id = this.$route.params.id
     this.loadCompany(id)
+  },
+  watch: {
+    company() {
+      this.loadCompanies()
+    }
   },
   methods: {
     showReviewModal() {
@@ -783,6 +611,10 @@ export default {
 
       await this.$store.dispatch('companies/sendReview', data)
       this.$modal.hide("modalReview")
+    },
+    loadCompanies() {
+      let districtId = this.company.districtId
+      this.$store.dispatch("companies/loadList", {districtId});
     },
   },
 };

@@ -631,7 +631,12 @@ header .header__right .header__select .lk .custom__list {
 }
 
 header .header__right .header__select .lk .custom__list a {
+  color: #2d333d;
   text-decoration: none;
+}
+
+header .header__right .header__select .lk .custom__list a:hover {
+  color: #2d333d;
 }
 
 header .header__hum {
@@ -1255,19 +1260,12 @@ header .black-list.active {
 }
 
 .main .action .action-content {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-}
-
-.main .action .action-content .action-list {
-  width: 33%;
-  margin-bottom: 14px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(218px, 1fr))[auto-fill];
+      grid-template-columns: repeat(auto-fill, minmax(218px, 1fr));
+  grid-column-gap: 24px;
+  grid-row-gap: 10px;
 }
 
 .main .action .action-content li {
@@ -1447,7 +1445,7 @@ header .black-list.active {
 .card-right .block-times,
 .card-right .fix__time {
   padding-top: 8px;
-  margin: 8px 26px 0;
+  margin: 8px 26px 40px;
   border-top: 1px solid #dde0e3;
 }
 
@@ -1455,7 +1453,6 @@ header .black-list.active {
 .card-right .fix__time ul {
   display: -ms-grid;
   display: grid;
-  grid-gap: 0;
 }
 
 .card-right .block-times ul li,
@@ -1487,10 +1484,6 @@ header .black-list.active {
   background-color: #fff;
   border: 1px solid #dde0e3;
   line-height: 28px;
-}
-
-.card-right .error {
-  display: none;
 }
 
 .card-right .error img {
@@ -2085,9 +2078,10 @@ header .black-list.active {
 }
 
 .page .right-container .sticky-sign .card-right.sign-date .fix__time ul {
-  -ms-grid-columns: (minmax(78px, 1fr))[auto-fill];
-      grid-template-columns: repeat(auto-fill, minmax(78px, 1fr));
-  grid-auto-rows: 48px;
+  -ms-grid-columns: (minmax(72px, 1fr))[auto-fill];
+      grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
+  grid-column-gap: 25px;
+  grid-row-gap: 12px;
 }
 
 .page .notarys-slider {

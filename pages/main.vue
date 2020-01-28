@@ -34,7 +34,7 @@
             />
             <img @click="modalDate" src="calendar.svg" alt />
           </div>
-          <a href="results" class="search-btn">Найти</a>
+          <nuxt-link to="/results" class="search-btn">Найти</nuxt-link>
         </form>
       </div>
       <modal class="modal modal-sms modal-date" name="modalDate" width="400px" height="auto">
@@ -191,7 +191,7 @@
               height="24"
               fill="none"
               viewBox="0 0 24 24"
-            >
+              >
               <path
                 fill="#2d333d"
                 d="M4 1.998h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2L13.904 18l-3.707 3.705a.994.994 0 0 1-.695.293L9.5 22H9a1 1 0 0 1-1-1v-3H4a2 2 0 0 1-2-2l.01-12.002c0-1.105.886-2 1.99-2zm8.185 3.5c-.882 0-1.595.182-2.136.545-.537.36-.827.941-.78 1.65h1.967c.008-.28.103-.49.282-.632.178-.142.401-.213.667-.213.33 0 .585.087.764.26.18.172.268.404.268.695 0 .28-.078.528-.233.742-.15.214-.36.394-.627.539-.516.315-.871.592-1.066.834-.195.242-.295.605-.299 1.086h2.016c0-.287.043-.514.13-.68.092-.17.266-.327.52-.472a3.04 3.04 0 0 0 1.127-.856c.298-.363.447-.76.447-1.193 0-.706-.271-1.267-.816-1.682-.54-.415-1.284-.623-2.23-.623h-.001zM11 12v2h2v-2h-2z"
@@ -434,6 +434,7 @@
               :key="index"
               :coords="[mark.lat, mark.lon]" 
               :marker-id="index"
+              clusterName="1"
             >
             <template slot="balloon">
               <nuxt-link to="/page">{{ mark.title }}</nuxt-link>
@@ -510,6 +511,14 @@ export default {
           <h1>${this.currentCompanyTitle}</h1>
         `
     },
+    selectedSubject() {
+      return this.$store.getters['subject/getSelectedSubject']
+    },
+  },
+  watch: {
+    selectedSubject() {
+      this.loadMarksMap()
+    }
   },
   created() {
     this.loadNotarialActs()
@@ -536,7 +545,7 @@ export default {
       this.$store.dispatch("notarialActs/loadList");
     },
     loadMarksMap() {
-      this.$store.dispatch("companies/loadMap");
+      this.$store.dispatch("companies/loadMap", {subjectId: this.selectedSubject});
     }
   },
 };

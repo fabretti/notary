@@ -36,7 +36,11 @@
                   </div>
                   <div class="top-note__btn">
                     <button class="btn-left__action">Перенести прием</button>
-                    <button class="btn-right__action" @click="modalCancel">
+                    <button 
+                      class="btn-right__action" 
+                      @click="modalCancelAccept(item)"
+                      :disabled="loadingCancelOrder"
+                      >
                       Отменить запись
                     </button>
                   </div>
@@ -96,7 +100,7 @@
       </div>
     </div>
     <client-only>
-      <modal
+      <modal v-if="false"
         class="modal modal-sms modal-cancel modalBottom"
         name="modalCancel"
         width="400px"
@@ -138,12 +142,19 @@
           <img src="Error.svg" alt />
           <h1>Отмена записи</h1>
           <div class="under-header">
-            Вы действительно хотите отменить запись?
+            Вы действительно хотите отменить запись у <b>{{ currentTitle }}</b>?
           </div>
         </div>
         <div class="modal-bottom">
-          <button class="bottom-accept">Да</button>
-          <button class="bottom-cancel">Нет</button>
+          <button 
+            class="bottom-accept"
+            @click="cancelOrder"
+            :disabled="loadingCancelOrder"
+            >Да</button>
+          <button 
+            class="bottom-cancel" 
+            @click="$modal.hide('modalCancelAccept')"
+            >Нет</button>
         </div>
         <div
           class="modal-close"
@@ -160,7 +171,10 @@ export default {
     star
   },
   data: () => ({
-    customerPhoneNumber: ""
+    customerPhoneNumber: "",
+    currentId: null,
+    currentTitle: null,
+    loadingCancelOrder: false,
   }),
   
   computed: {
@@ -178,12 +192,26 @@ export default {
     modalCancel() {
       this.$modal.show("modalCancel");
     },
-    modalCancelAccept() {
+    modalCancelAccept({id, companyTitle}) {
+      this.currentId = id
+      this.currentTitle = companyTitle
       this.$modal.show("modalCancelAccept");
-      this.$modal.hide("modalCancel");
     },
     loadOrders() {
       this.$store.dispatch("orders/loadList");
+    },
+    async cancelOrder() {
+      if (this.loadingCancelOrder) {
+        return
+      }
+      this.loadingCancelOrder = true
+      let result = await this.$store.dispatch('orders/delete', this.currentId)
+      this.loadingCancelOrder = false
+      if (!result) {
+        return
+      }
+      this.loadOrders()
+      this.$modal.hide('modalCancelAccept')
     },
   }
 };

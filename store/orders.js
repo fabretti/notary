@@ -13,17 +13,40 @@ export const mutations = {
 }
 
 export const actions = {
-    create({ }, models) {
-        axios({
+    async create({ }, models) {
+        const token = this.$cookies.get('token')
+        let e = await axios({
             url: process.env.apiUrl + 'orders',
             method: 'POST',
             data: models,
+            headers: {
+                'X-Authorization': token || null
+            },
 
         })
-        .then(e => {
-            console.log(e)
+        .catch(() => false)
+        if (e === false) {
+            return false
+        }
+        // TODO 
+        return true
+    },
+    async delete({ }, id) {
+        const token = this.$cookies.get('token')
+        let e = await axios({
+            url: process.env.apiUrl + 'orders/' + id,
+            method: 'DELETE',
+            headers: {
+                'X-Authorization': token || null
+            },
+
         })
-        .catch(() => {})
+        .catch(() => false)
+        if (e === false) {
+            return false
+        }
+        // TODO 
+        return true
     },
     loadList({ commit }) {
         const token = this.$cookies.get('token')

@@ -37,10 +37,10 @@
     width: 100%;
     max-width: 100%;
   }
-  .page .left-container .notary-card.result-card .showMap {
+  .page .left-container .notary-list .notary-card.result-card .showMap {
     display: block;
   }
-  .page .left-container .notary-card.result-card .card-center-mb {
+  .page .left-container .notary-list .notary-card.result-card .card-center-mb {
     display: block;
   }
   .page .right-container {
@@ -810,12 +810,22 @@
   .page .left-container {
     padding: 0;
   }
-  .page .left-container .notary-card.result-card .card-center-mb .card-right .slider-month > div,
-  .page .left-container .notary-card.result-card .card-center-mb .card-right .slider-days > div {
-    width: 85%;
-  }
   .page .left-container .card-bottom {
     display: none;
+  }
+  .page .left-container .notary-list .notary-card.result-card .card-center-mb .card-right .slider-month div {
+    font-size: 14px;
+    line-height: 16px;
+  }
+  .page .left-container .notary-list .notary-card.result-card .card-center-mb .card-right .slider-days {
+    margin: 10px 0;
+  }
+  .page .left-container .notary-list .notary-card.result-card .card-center-mb .card-right .slider-days .slider-btn {
+    font-size: 12px;
+  }
+  .page .left-container .notary-list .notary-card.result-card .card-center-mb .card-right .slider-month > div,
+  .page .left-container .notary-list .notary-card.result-card .card-center-mb .card-right .slider-days > div {
+    width: 85%;
   }
   .page .left-container .page-reviews {
     padding-bottom: 0;

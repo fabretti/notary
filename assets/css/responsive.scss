@@ -48,7 +48,7 @@
       width: 100%;
       max-width: 100%;
 
-      .notary-card.result-card {
+      .notary-list .notary-card.result-card {
         .showMap {
           display: block;
         }
@@ -1054,13 +1054,30 @@
     .left-container {
       padding: 0;
 
-      .notary-card.result-card .card-center-mb .card-right .slider-month>div,
-      .notary-card.result-card .card-center-mb .card-right .slider-days>div {
-        width: 85%;
-      }
-
       .card-bottom {
         display: none;
+      }
+
+      .notary-list .notary-card.result-card .card-center-mb {
+        .card-right {
+          .slider-month div {
+            font-size: 14px;
+            line-height: 16px;
+          }
+
+          .slider-days {
+            margin: 10px 0;
+
+            .slider-btn {
+              font-size: 12px;
+            }
+          }
+
+          .slider-month>div,
+          .slider-days>div {
+            width: 85%;
+          }
+        }
       }
 
       .page-reviews {

@@ -2,20 +2,21 @@ import axios from 'axios'
 
 export const state = () => ({
   list: [],
+  selectedSubject: null,
 })
 
 export const getters = {
   getList: s => s.list,
+  getSelectedSubject: s => s.selectedSubject,
 }
 
 export const mutations = {
   setList: (s, p) => (s.list = p),
+  setSelectedSubject: (s, p) => (s.selectedSubject = p),
 }
 
 export const actions = {
-  loadList({
-    commit
-  }) {
+  loadList({commit}) {
     const token = this.$cookies.get('token')
     axios({
         url: process.env.apiUrl + 'subjects',
@@ -25,7 +26,8 @@ export const actions = {
         },
       })
       .then(e => {
-        const data = e.data.data,
+        const 
+          data = e.data.data,
           list = data.items
         commit('setList', list)
       })

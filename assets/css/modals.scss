@@ -207,7 +207,7 @@
       border-radius: 4px;
       padding: 10px 16px;
       border: 1px solid #8e99a7;
-      appearance: button;
+      appearance: none;
     }
 
     .time {
@@ -409,6 +409,10 @@
 }
 
 .modal-time {
+  .modal-body.notary-list .card-avatar .card-rev {
+    display: none;
+  }
+
   .card-right {
     max-width: 100%;
 

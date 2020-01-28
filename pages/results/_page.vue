@@ -75,138 +75,59 @@
           </div>
         </div>
         <div class="notary-list">
-          <div v-for="(company, index) in companies" :key="index" class="notary-card">
+          <div v-for="(cp, index) in companies" :key="index" class="notary-card">
             <div class="card-left">
               <div class="card-avatar">
-                <nuxt-link :to="'/page/' + company.id">
+                <nuxt-link :to="'/page/' + cp.id">
                   <img class="notary-avatar" src="/ava.jpg" alt />
                 </nuxt-link>
                 <div class="card-rev">
-                  <star :rating="company.rating" />
+                  <star :rating="cp.rating" />
                   <div class="rev">
-                    <a href="#">{{ company.voteQuantity }}</a>
+                    <a href="#">{{ cp.voteQuantity }}</a>
                   </div>
                 </div>
               </div>
               <div class="card-center">
-                <div class="card-spec">{{ company.typeOfWork }}</div>
+                <div class="card-spec">{{ cp.typeOfWork }}</div>
                 <div class="card-name">
-                  <nuxt-link :to="'/page/' + company.id">{{ company.title }}</nuxt-link>
+                  <nuxt-link :to="'/page/' + cp.id">{{ cp.title }}</nuxt-link>
                 </div>
-                <div class="card-year">{{ company.workExperience }}</div>
+                <div class="card-year">{{ cp.workExperience }}</div>
                 <ul class="card-subway">
                   <li class="subway-item">
-                    <span class="subway-color" :style="{ background: company.districtColor }"></span>
-                    {{ company.districtTitle }}
+                    <span class="subway-color" :style="{ background: cp.districtColor }"></span>
+                    {{ cp.districtTitle }}
                     <div class="subway-step">
                       <img src="/footstep.svg" />
-                      {{ company.districtDistance }}
+                      {{ cp.districtDistance }}
                     </div>
                   </li>
                   <li class="subway-item">
-                    <span class="subway-color" :style="{ background: company.secondDistrictColor }"></span>
-                    {{ company.secondDistrictTitle }}
+                    <span class="subway-color" :style="{ background: cp.secondDistrictColor }"></span>
+                    {{ cp.secondDistrictTitle }}
                     <div class="subway-step">
                       <img src="/footstep.svg" />
-                      {{ company.secondDistrictDistance }}
+                      {{ cp.secondDistrictDistance }}
                     </div>
                   </li>
                   <li class="subway-item">
-                    <span class="subway-color" :style="{ background: company.thirdDistrictColor }"></span>
-                    {{ company.thirdDistrictTitle }}
+                    <span class="subway-color" :style="{ background: cp.thirdDistrictColor }"></span>
+                    {{ cp.thirdDistrictTitle }}
                     <div class="subway-step">
                       <img src="/footstep.svg" />
-                      {{ company.thirdDistrictDistance }}
+                      {{ cp.thirdDistrictDistance }}
                     </div>
                   </li>
                 </ul>
-                <div class="card-adress">{{ company.address }}</div>
+                <div class="card-adress">{{ cp.address }}</div>
               </div>
             </div>
-            <div class="card-right">
-              <div class="slider-month">
-                <carousel
-                  :paginationEnabled="false"
-                  :navigationEnabled="true"
-                  :perPage="1"
-                  navigationNextLabel="<i class='material-icons'><img src='/Polygon.svg'></i>"
-                  navigationPrevLabel="<i class='material-icons'><img src='/PolygonL.svg'></i>"
-                >
-                  <slide>
-                    <div>Октябрь</div>
-                  </slide>
-                  <slide>
-                    <div>Ноябрь</div>
-                  </slide>
-                  <slide>
-                    <div>Декабрь</div>
-                  </slide>
-                </carousel>
-              </div>
-              <div class="slider-days">
-                <carousel
-                  :paginationEnabled="false"
-                  :navigationEnabled="true"
-                  :perPageCustom="[[400, 5], [500, 6], [590, 6.5], [780, 3.5], [1011, 4.5]]"
-                  navigationNextLabel="<i class='material-icons'><img src='/Polygon.svg'></i>"
-                  navigationPrevLabel="<i class='material-icons'><img src='/PolygonL.svg'></i>"
-                >
-                  <slide>
-                    <div class="slider-btn btn-day active">Вт, 24</div>
-                  </slide>
-                  <slide>
-                    <div class="slider-btn btn-day disabled">Вт, 24</div>
-                  </slide>
-                  <slide>
-                    <div class="slider-btn btn-day default">Вт, 24</div>
-                  </slide>
-                  <slide>
-                    <div class="slider-btn btn-day default">Вт, 24</div>
-                  </slide>
-                  <slide>
-                    <div class="slider-btn btn-day default">Вт, 24</div>
-                  </slide>
-                  <slide>
-                    <div class="slider-btn btn-day default">Вт, 24</div>
-                  </slide>
-                  <slide>
-                    <div class="slider-btn btn-day default">Вт, 24</div>
-                  </slide>
-                </carousel>
-              </div>
-              <div class="block-times error">
-                <img src="/busy.svg" alt />
-                <p>Сегодня занято, ближайшая запись на Чт, 26 сен</p>
-              </div>
-              <div class="change_date">
-                <button>Расписание на Чт, 26 сен</button>
-              </div>
-              <div class="block-times">
-                <ul>
-                  <li>
-                    <div class="slider-btn btn-time default" @click="showModal">15:30</div>
-                  </li>
-                  <li>
-                    <div class="slider-btn btn-time default">16:30</div>
-                  </li>
-                  <li>
-                    <div class="slider-btn btn-time default">17:30</div>
-                  </li>
-                  <li>
-                    <div class="slider-btn btn-time default">18:30</div>
-                  </li>
-                  <li>
-                    <div class="slider-btn btn-time default">19:30</div>
-                  </li>
-                  <li>
-                    <div class="slider-btn btn-time default">20:30</div>
-                  </li>
-                  <li>
-                    <div class="slider-btn btn-time default">21:30</div>
-                  </li>
-                </ul>
-              </div>
-            </div>
+            <dateTimePicker 
+              @click="(date, time) => showModal(cp.id, date, time)"
+              :week="cp && cp.workSettings && cp.workSettings.items ? cp.workSettings.items : []"
+              :forbiddenTimes="cp && cp.calendar ? ({...cp.calendar}) : {}"
+              />
           </div>
         </div>
         <div class="pagination">
@@ -256,26 +177,10 @@
                     <img class="notary-avatar" src="/ava.jpg" alt />
                   </a>
                   <div class="card-rev">
-                    <div class="notary-stars">
-                      <div class="notary-star">
-                        <img src="/starO.svg" alt />
-                      </div>
-                      <div class="notary-star">
-                        <img src="/starO.svg" alt />
-                      </div>
-                      <div class="notary-star">
-                        <img src="/starO.svg" alt />
-                      </div>
-                      <div class="notary-star">
-                        <img src="/starO.svg" alt />
-                      </div>
-                      <div class="notary-star">
-                        <img src="/starD.svg" alt />
-                      </div>
-                    </div>
+                    <star :rating="profile.rating" />
                     <div class="rev">
                       <a href="#">
-                        19
+                        {{ profile.voteQuantity }}
                         <span>отзывов</span>
                       </a>
                     </div>
@@ -283,42 +188,26 @@
                 </div>
                 <div class="card-center">
                   <div class="card-name">
-                    <a href="page">Ложкин Валерий Александрович</a>
+                    <a href="page">{{ company.title }}</a>
                   </div>
                   <div class="card-rev">
-                    <div class="notary-stars">
-                      <div class="notary-star">
-                        <img src="/starO.svg" alt />
-                      </div>
-                      <div class="notary-star">
-                        <img src="/starO.svg" alt />
-                      </div>
-                      <div class="notary-star">
-                        <img src="/starO.svg" alt />
-                      </div>
-                      <div class="notary-star">
-                        <img src="/starO.svg" alt />
-                      </div>
-                      <div class="notary-star">
-                        <img src="/starD.svg" alt />
-                      </div>
-                    </div>
+                    <star :rating="profile.rating" />
                     <div class="rev">
                       <a href="#">
-                        19
+                        {{ profile.voteQuantity }}
                         <span>отзывов</span>
                       </a>
                     </div>
                   </div>
                   <ul class="card-subway">
                     <li class="subway-item">
-                      <span class="subway-color"></span>Авиамоторная
+                      <span class="subway-color" :style="{ background: company.districtColor }"></span>{{ company.districtTitle }}
                       <div class="subway-step">
-                        <img src="/footstep.svg" /> 323 м
+                        <img src="/footstep.svg" /> {{ company.districtDistance }} м
                       </div>
                     </li>
                   </ul>
-                  <div class="card-adress">г. Москва, ул. 2-я Кабельная, д.2, стр. 14</div>
+                  <div class="card-adress">{{ profile.address }}</div>
                 </div>
               </div>
             </div>
@@ -342,9 +231,15 @@
                 </div>
               </div>
               <div class="form__box">
-                <label for="vnd">Нотариальное действие</label>
+                <label for="vnd">
+                  Нотариальное действие
+                  <span>*</span>
+                </label>
                 <div class="search-box">
-                  <select v-model="notarialActId">
+                  <select 
+                    v-model="notarialActId" 
+                    :disabled="!notarialActTypeId"
+                    >
                     <option value disabled="true">Вид действия</option>
                     <option
                       v-for="(item, index) in notarialActs"
@@ -359,8 +254,8 @@
                   Дата и время приёма
                   <span>*</span>
                 </label>
-                <div class="search-box showTime" @click="showTimeModal">
-                  <div class="time"></div>
+                <div class="search-box showTime" disabled>
+                  <div class="time">{{ date + time | dateTimeFormat }}</div>
                 </div>
               </div>
               <div class="form__box">
@@ -395,7 +290,11 @@
             </div>
           </div>
           <div class="modal-bottom">
-            <button class="modal-sign" @click="createOrder">Записаться</button>
+            <button 
+              class="modal-sign" 
+              @click="createOrder"
+              :disabled="loadingCreateOrder"
+            >Записаться</button>
           </div>
           <div class="modal-close" @click="$modal.hide('modalRecord')"></div>
         </modal>
@@ -440,23 +339,7 @@
                     <a href="page">Ложкин Валерий Александрович</a>
                   </div>
                   <div class="card-rev">
-                    <div class="notary-stars">
-                      <div class="notary-star">
-                        <img src="/starO.svg" alt />
-                      </div>
-                      <div class="notary-star">
-                        <img src="/starO.svg" alt />
-                      </div>
-                      <div class="notary-star">
-                        <img src="/starO.svg" alt />
-                      </div>
-                      <div class="notary-star">
-                        <img src="/starO.svg" alt />
-                      </div>
-                      <div class="notary-star">
-                        <img src="/starD.svg" alt />
-                      </div>
-                    </div>
+                    <star  />
                     <div class="rev">
                       <a href="#">
                         19
@@ -511,26 +394,10 @@
                     <img class="notary-avatar" src="/ava.jpg" alt />
                   </a>
                   <div class="card-rev">
-                    <div class="notary-stars">
-                      <div class="notary-star">
-                        <img src="/starO.svg" alt />
-                      </div>
-                      <div class="notary-star">
-                        <img src="/starO.svg" alt />
-                      </div>
-                      <div class="notary-star">
-                        <img src="/starO.svg" alt />
-                      </div>
-                      <div class="notary-star">
-                        <img src="/starO.svg" alt />
-                      </div>
-                      <div class="notary-star">
-                        <img src="/starD.svg" alt />
-                      </div>
-                    </div>
+                    <star :rating="profile.rating" />
                     <div class="rev">
                       <a href="#">
-                        19
+                        {{ profile.voteQuantity }}
                         <span>отзывов</span>
                       </a>
                     </div>
@@ -538,42 +405,26 @@
                 </div>
                 <div class="card-center">
                   <div class="card-name">
-                    <a href="page">Ложкин Валерий Александрович</a>
+                    <a href="page">{{ company.title }}</a>
                   </div>
                   <div class="card-rev">
-                    <div class="notary-stars">
-                      <div class="notary-star">
-                        <img src="/starO.svg" alt />
-                      </div>
-                      <div class="notary-star">
-                        <img src="/starO.svg" alt />
-                      </div>
-                      <div class="notary-star">
-                        <img src="/starO.svg" alt />
-                      </div>
-                      <div class="notary-star">
-                        <img src="/starO.svg" alt />
-                      </div>
-                      <div class="notary-star">
-                        <img src="/starD.svg" alt />
-                      </div>
-                    </div>
+                    <star :rating="profile.rating" />
                     <div class="rev">
                       <a href="#">
-                        19
+                        {{ profile.voteQuantity }}
                         <span>отзывов</span>
                       </a>
                     </div>
                   </div>
                   <ul class="card-subway">
                     <li class="subway-item">
-                      <span class="subway-color"></span>Авиамоторная
+                      <span class="subway-color" :style="{ background: company.districtColor }"></span>{{ company.districtTitle }}
                       <div class="subway-step">
-                        <img src="/footstep.svg" /> 323 м
+                        <img src="/footstep.svg" /> {{ company.districtDistance }} м
                       </div>
                     </li>
                   </ul>
-                  <div class="card-adress">г. Москва, ул. 2-я Кабельная, д.2, стр. 14</div>
+                  <div class="card-adress">{{ profile.address }}</div>
                 </div>
               </div>
             </div>
@@ -652,7 +503,7 @@
               <div class="block-times">
                 <ul>
                   <li>
-                    <div class="slider-btn btn-time default" @click="showModal">15:30</div>
+                    <div class="slider-btn btn-time default">15:30</div>
                   </li>
                   <li>
                     <div class="slider-btn btn-time default">16:30</div>
@@ -682,7 +533,7 @@
           name="modalDate"
           width="400px"
           height="auto"
-        >
+          >
           <div class="modal-header">
             <h1>Расписание</h1>
           </div>
@@ -720,7 +571,7 @@
           name="modalFilter"
           width="400px"
           height="auto"
-        >
+          >
           <div class="modal-header">
             <h1>Настройка поиска</h1>
             <div class="modal-close" @click="$modal.hide('modaFilter')"></div>
@@ -756,43 +607,53 @@
   </section>
 </template>
 <script>
-import AppLogo from "~/components/AppLogo.vue";
 import notaryCard from "~/components/notaryCard";
 import CustomSelect from "~/components/CustomSelect.vue";
 import star from "~/components/star";
+import dateTimePicker from "~/components/dateTimePicker"
 export default {
   components: {
     notaryCard,
     CustomSelect,
-    star
+    star,
+    dateTimePicker,
   },
   data: () => ({
     show: false,
     dynamicMask: "###.###.###/###",
+    
     notarialActTypeId: "",
     notarialActId: "",
     customerFirstName: "",
     customerPhoneNumber: "",
-    companyId: 1,
-    date: 1576454400,
+    companyId: null,
+    date: 1581530400,
     time: 57600,
-    coords: [55.778328, 37.674699]
+    loadingCreateOrder: false,
+
+    coords: [55.778328, 37.674699],
   }),
   computed: {
     notarialActTypes() {
-      return this.$store.getters["notarialActTypes/getList"];
+      return this.$store.getters["notarialActTypes/getList"]
     },
     notarialActs() {
-      return this.$store.getters["notarialActs/getList"];
+      return this.$store.getters["notarialActs/getList"]
     },
     companies() {
-      return this.$store.getters["companies/getList"];
+      return this.$store.getters["companies/getList"]
+    },
+    company() {
+      return this.$store.getters["companies/getItem"]
+    },
+    profile() {
+      return this.company && this.company.profile ? this.company.profile : {}
     },
     currentPage() {
-      return this.$store.getters["companies/getCurrentPage"];
+      return this.$store.getters["companies/getCurrentPage"]
     },
     quantityPages() {
-      return this.$store.getters["companies/getQuantityPages"];
+      return this.$store.getters["companies/getQuantityPages"]
     },
     paginationList() {
       let currentPage = this.currentPage,
@@ -808,9 +669,9 @@ export default {
         }, {});
       }
 
-      const pag = {};
+      const pag = {}
 
-      const offsets = [-10, -1, 0, 1, 10];
+      const offsets = [-10, -1, 0, 1, 10]
 
       /**
        * first
@@ -837,8 +698,8 @@ export default {
     balloonTemplate() {
       return `
         <h1 class="red">Hi, everyone!</h1>
-      `;
-    }
+      `
+    },
   },
   mounted() {
     this.loadNotarialActTypes();
@@ -859,8 +720,12 @@ export default {
     }
   },
   methods: {
-    showModal() {
-      this.$modal.show("modalRecord");
+    showModal(id, date, time) {
+      this.companyId = id
+      this.date = date
+      this.time = time
+      this.$store.dispatch('companies/loadItem', id)
+      this.$modal.show("modalRecord")
     },
     showSecondModal() {
       this.$modal.show("modalSms");
@@ -884,8 +749,14 @@ export default {
     loadNotarialActs(value) {
       this.$store.dispatch("notarialActs/loadList", value);
     },
-    createOrder() {
-      this.$store.dispatch("orders/create", {
+    async createOrder() {
+      if (this.loadingCreateOrder) {
+        return
+      }
+
+      this.loadingCreateOrder = true
+
+      let result = await this.$store.dispatch("orders/create", {
         notarialActTypeId: this.notarialActTypeId,
         notarialActId: this.notarialActId,
         customerFirstName: this.customerFirstName,
@@ -893,10 +764,26 @@ export default {
         companyId: this.companyId,
         date: this.date,
         time: this.time
-      });
+      })
+
+      this.loadingCreateOrder = false
+
+      if (!result) {
+        return
+      }
+
+      this.loadCompanies(this.currentPage)
+      this.$modal.hide('modalRecord')
+      this.notarialActTypeId = ''
+      this.notarialActId = ''
+      this.customerFirstName = ''
+      this.customerPhoneNumber = ''
+      this.companyId = null
+      this.date = null
+      this.time = null
     },
     loadCompanies(page) {
-      this.$store.dispatch("companies/loadList", page);
+      this.$store.dispatch("companies/loadList", {page});
     },
     handlePagination(page) {
       if (page == this.currentPage || page < 1 || page > this.quantityPages) {

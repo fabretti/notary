@@ -211,9 +211,9 @@
   border-radius: 4px;
   padding: 10px 16px;
   border: 1px solid #8e99a7;
-  -webkit-appearance: button;
-     -moz-appearance: button;
-          appearance: button;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
 }
 
 .modal .form__box .time {
@@ -394,6 +394,10 @@
   position: absolute;
   bottom: -10px;
   left: 220px;
+}
+
+.modal-time .modal-body.notary-list .card-avatar .card-rev {
+  display: none;
 }
 
 .modal-time .card-right {

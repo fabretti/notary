@@ -4,9 +4,9 @@
       <div class="wrap">
         <div class="header__left">
           <div class="header__logo">
-            <a href="main">
+            <nuxt-link to="/main">
               <img src="/logo.svg" alt />
-            </a>
+            </nuxt-link>
 
             <div class="header__logo-title">
               <p>НОТАРИУС.РФ</p>
@@ -51,11 +51,11 @@
               @mouseover="open = true"
               @mouseleave="open = false"
               >
-              <div class="lk__title">Личный кабинет</div>
-              <div class="custom__list" :class="{ selectHide: !open }">
+              <div class="lk__title" @click="modalEnter">Личный кабинет</div>
+              <div class="custom__list" v-if="isAuth" :class="{ selectHide: !open }">
+                <div class="item"><nuxt-link to="/profile">Мой профиль</nuxt-link></div>
                 <div class="item"><nuxt-link to="/notes">Мои записи</nuxt-link></div>
-                <div class="item" v-if="isAuth" @click="logout">Выход</div>
-                <div class="item" v-else @click="modalEnter">Вход</div>
+                <div class="item" @click="logout">Выход</div>
               </div>
             </div>
           </div>
@@ -217,7 +217,7 @@
           <div class="footer__info">©2019.Нотариус рф. все Права защищены.</div>
           <div class="footer__dev">
             Разработано в
-            <a href="https://sevenreasons.ru">sevenreasons.ru</a>
+            <a href="https://cornlab.ru">cornlab.ru</a>
           </div>
         </div>
         <div class="footer__navs">
@@ -261,7 +261,7 @@
           <div class="footer__info">©2019.Нотариус рф. все Права защищены.</div>
           <div class="footer__dev">
             Разработано в
-            <a href="https://sevenreasons.ru">sevenreasons.ru</a>
+            <a href="https://cornlab.ru">cornlab.ru</a>
           </div>
         </div>
       </div>
@@ -280,7 +280,6 @@ export default {
     open: false,
     phoneNumber: "",
     code: "",
-    selectedSubject: null,
   }),
   computed: {
     isAuth() {
@@ -292,6 +291,14 @@ export default {
         title: i.title,
       }))
     },
+    selectedSubject: {
+      get() {
+        return this.$store.getters['subject/getSelectedSubject']
+      },
+      set(value) {
+        this.$store.commit('subject/setSelectedSubject', value)
+      }
+    },
   },
   mounted() {
     this.$store.dispatch("auth/loadToken");
@@ -299,6 +306,9 @@ export default {
   },
   methods: {
     modalEnter() {
+      if (this.isAuth) {
+        return
+      }
       this.$modal.show("modalEnter");
     },
     modalEnterSms() {
