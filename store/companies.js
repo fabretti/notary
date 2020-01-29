@@ -25,7 +25,7 @@ export const mutations = {
 }
 
 export const actions = {
-  loadList({commit}, {page, districtId}) {
+  loadList({commit}, params) {
     const token = this.$cookies.get('token')
     axios({
         url: process.env.apiUrl + 'companies',
@@ -33,10 +33,7 @@ export const actions = {
         headers: {
           'X-Authorization': token,
         },
-        params: {
-          page,
-          districtId,
-        },
+        params,
       })
       .then(e => {
         const data = e.data.data,

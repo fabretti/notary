@@ -14,7 +14,11 @@
           </div>
           <form class="search-form">
             <div class="search-formDate">
-              <input id="srch" placeholder="Имя нотариуса, метро, город МО" />
+              <input 
+                @keyup.enter="reloadCompanies"
+                v-model="searchString"
+                id="srch" 
+                placeholder="Имя нотариуса, метро, город МО" />
               <!-- <div @click="show = !show" class="search-date">
                 <p>Вт, 24 сентября</p>
                 <i></i>
@@ -29,15 +33,22 @@
                 </transition>
               </div>-->
               <CustomSelect
-                :options="['Вт, 24 сентября', 'Сегодня', 'Завтра, 26 сен', 'Пятница, 27 сен']"
+                :options="dateList"
+                v-model="selectedDate"
               />
             </div>
-            <button class="search-btn">Найти</button>
+            <button 
+              class="search-btn"
+              @click.prevent="reloadCompanies"
+              >Найти</button>
           </form>
 
           <form class="search-form-mb">
             <div class="search-formDate">
-              <input id="srch" placeholder="Бульвар Адмирала Ушакова" />
+              <input 
+                v-model="searchString"
+                id="srch" 
+                placeholder="Бульвар Адмирала Ушакова" />
               <button class="search-btn">
                 <img src="/bx-search.svg" alt />
               </button>
@@ -66,11 +77,19 @@
       <div class="results__section notarys">
         <div class="notarys-filter">
           <div class="checkbox">
-            <input type="checkbox" class="checkbox__input" id="cb1" />
+            <input 
+              v-model="isWeekendWork" 
+              type="checkbox" 
+              class="checkbox__input" 
+              id="cb1" />
             <label for="cb1" class="label-style">Сб, вс.</label>
           </div>
           <div class="checkbox">
-            <input type="checkbox" class="checkbox__input" id="cb2" />
+            <input 
+              v-model="isFieldWork" 
+              type="checkbox" 
+              class="checkbox__input" 
+              id="cb2" />
             <label for="cb2" class="label-style">Выезд</label>
           </div>
         </div>
@@ -127,6 +146,7 @@
               @click="(date, time) => showModal(cp.id, date, time)"
               :week="cp && cp.workSettings && cp.workSettings.items ? cp.workSettings.items : []"
               :forbiddenTimes="cp && cp.calendar ? ({...cp.calendar}) : {}"
+              :selectedDate="selectedDate"
               />
           </div>
         </div>
@@ -611,6 +631,9 @@ import notaryCard from "~/components/notaryCard";
 import CustomSelect from "~/components/CustomSelect.vue";
 import star from "~/components/star";
 import dateTimePicker from "~/components/dateTimePicker"
+import moment from 'moment'
+moment.locale('RU')
+
 export default {
   components: {
     notaryCard,
@@ -663,7 +686,7 @@ export default {
       }
 
       if (quantityPages <= 5) {
-        return [...Array(5).keys()].reduce((r, i) => {
+        return [...Array(quantityPages).keys()].reduce((r, i) => {
           r[i] = i + 1;
           return r;
         }, {});
@@ -700,6 +723,54 @@ export default {
         <h1 class="red">Hi, everyone!</h1>
       `
     },
+    searchString: {
+      get() {
+        return this.$store.getters['staticFilters/getSearchString']
+      },
+      set(value) {
+        this.$store.commit('staticFilters/setSearchString', value)
+      },
+    },
+    isWeekendWork: {
+      get() {
+        return this.$store.getters['staticFilters/getIsWeekendWork']
+      },
+      set(value) {
+        this.$store.commit('staticFilters/setIsWeekendWork', value)
+      },
+    },
+    isFieldWork: {
+      get() {
+        return this.$store.getters['staticFilters/getIsFieldWork']
+      },
+      set(value) {
+        this.$store.commit('staticFilters/setIsFieldWork', value)
+      },
+    },
+    selectedDate: {
+      get() {
+        return this.$store.getters['staticFilters/getSelectedDate']
+      },
+      set(value) {
+        this.$store.commit('staticFilters/setSelectedDate', value)
+      },
+    },
+    staticFilters() {
+      return this.$store.getters['staticFilters/all']
+    },
+    dateList() {
+      let toUpperCaseFirst = i => i.length ? i[0].toUpperCase() + i.slice(1) : i
+      let now = moment(moment().format('YYYY-MM-DD')).unix(),
+        nextDay = now + 86400,
+        nextNextDay = nextDay + 86400,
+        nextDayTitle = moment.unix(nextDay).format('dddd, DD.MM'),
+        nextNextDayTitle = moment.unix(nextNextDay).format('dddd, DD.MM')
+      return [
+        {value: now, title: 'Сегодня'}, 
+        {value: nextDay, title: toUpperCaseFirst(nextDayTitle)}, 
+        {value: nextNextDay , title: toUpperCaseFirst(nextNextDayTitle)}
+      ]
+    }
   },
   mounted() {
     this.loadNotarialActTypes();
@@ -783,14 +854,16 @@ export default {
       this.time = null
     },
     loadCompanies(page) {
-      this.$store.dispatch("companies/loadList", {page});
+      this.$store.dispatch("companies/loadList", {page, ...this.staticFilters});
+    },
+    reloadCompanies() {
+      this.loadCompanies(this.currentPage)
     },
     handlePagination(page) {
       if (page == this.currentPage || page < 1 || page > this.quantityPages) {
         return;
       }
       // this.$store.dispatch("companies/loadList", page);
-      console.log(page);
       this.$router.push({ path: "/results/" + page });
     }
   }

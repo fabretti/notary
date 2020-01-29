@@ -25,7 +25,7 @@
                     <div class="card-left-mb">
                       <div class="card-avatar">
                         <img class="notary-avatar" src="/ava.jpg" alt />
-                        <star :rating="company.rating" />
+                        <star :rating="profile.rating" />
                         <div class="rev">
                           <a href="#">{{ profile.voteQuantity }} отзывов</a>
                         </div>
@@ -491,18 +491,18 @@
                           <img class="notary-avatar" src="/ava.jpg" alt />
                           <star :rating="company.rating" />
                           <div class="rev">
-                            <a href="#">{{ profile.voteQuantity }} отзывов</a>
+                            <a href="#">{{ company.voteQuantity }} отзывов</a>
                           </div>
                         </div>
                         <div class="card-center">
                           <div class="card-spec">Нотариус</div>
                           <div class="card-name">
-                            <a href="#">{{ company.title }}</a>
+                            <nuxt-link :to="'/page/' + company.id">{{ company.title }}</nuxt-link>
                           </div>
-                          <div class="card-year">Стаж 8 лет</div>
+                          <div class="card-year">{{ company.workExperience }}</div>
                           <ul class="card-subway">
                             <li class="subway-item">
-                              <span class="subway-color"></span>{{ profile.districtTitle }}
+                              <span class="subway-color"></span>{{ company.districtTitle }}
                               <div class="subway-step">
                                 <img src="/footstep.svg" /> {{ company.districtDistance }}
                               </div>

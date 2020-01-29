@@ -46,12 +46,14 @@ $lightGrey: #f2f2f2;
     border-radius: 4px;
     text-align: center;
     user-select: none;
+    border: solid 1px #8e99a7;
     cursor: pointer;
 
     &.active {
       background-color: $blueStatic;
       color: #fff;
       transition: 0.2s;
+      border: none;
 
       &:hover {
         background-color: $blueHover;
@@ -192,6 +194,7 @@ footer .wrap {
       display: flex;
       align-items: center;
       justify-content: center;
+      width: 100%;
 
       i {
         display: block;
@@ -206,10 +209,6 @@ footer .wrap {
           transform: rotate(180deg);
         }
       }
-    }
-
-    .custom__list {
-      top: 50px;
     }
 
     img {
@@ -827,6 +826,106 @@ header {
         }
       }
     }
+
+    .customSelect,
+    .lk {
+      position: relative;
+      user-select: none;
+
+      // .custom__selected {
+      //   display: flex;
+      //   align-items: center;
+      //   padding: 0 10px;
+      //   border-radius: 5px;
+      //   margin-right: 5px;
+      //   cursor: pointer;
+      //   outline: none;
+
+      //   &:hover {
+      //     background: #f2f2f2;
+      //   }
+
+      //   &:active {
+      //     background: #ececec;
+      //   }
+
+      //   .custom__title {
+      //     display: flex;
+      //     align-items: center;
+      //     font-size: 14px;
+      //     line-height: 24px;
+      //     color: $grey;
+
+      //     p {
+      //       white-space: nowrap;
+      //       overflow: hidden;
+      //       width: 62px;
+      //       text-align: left;
+      //       text-overflow: ellipsis;
+      //     }
+
+      //     i {
+      //       display: block;
+      //       width: 8px;
+      //       height: 7px;
+      //       margin-left: 10px;
+      //       background: url("/arrow-header.svg");
+      //       background-size: cover;
+      //       transition: all 0.2s linear;
+
+      //       &.rotate {
+      //         transform: rotate(180deg);
+      //       }
+      //     }
+      //   }
+      // }
+
+      .custom__list {
+        position: absolute;
+        top: 50px;
+        left: 0;
+        background: #fff;
+        font-weight: 500;
+        border-radius: 4px;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+        min-width: 190px;
+        z-index: 99;
+        padding: 15px 0;
+        text-align: left;
+
+        .item {
+          padding: 0 30px;
+          cursor: pointer;
+          font-size: 14px;
+          color: #2d333d;
+          line-height: 24px;
+
+          &:hover {
+            background: #dbebff;
+          }
+
+          &.selected {
+            position: relative;
+            font-weight: 600;
+
+            &:before {
+              content: "";
+              position: absolute;
+              top: 50%;
+              left: 14px;
+              transform: translate(0, -50%);
+              width: 6.5px;
+              height: 6.5px;
+              background: url("/check.svg") no-repeat;
+            }
+          }
+        }
+      }
+
+      .selectHide {
+        display: none;
+      }
+    }
   }
 
   .container {
@@ -1327,6 +1426,7 @@ header {
   }
 
   .error {
+    display: flex;
 
     img {
       margin-bottom: auto;
@@ -1370,8 +1470,9 @@ header {
       .card-right {
         .block-times {
           ul {
-            grid-template-columns: repeat(auto-fill, minmax(52px, 1fr));
-            grid-auto-rows: 48px;
+            grid-template-columns: repeat(auto-fill, minmax(41px, 1fr));
+            grid-column-gap: 13px;
+            grid-row-gap: 10px;
           }
         }
       }
@@ -1428,6 +1529,52 @@ header {
       .search-form-mb {
         display: none;
       }
+    }
+
+    .custom__list {
+      position: absolute;
+      top: 50px;
+      left: 0;
+      background: #fff;
+      font-weight: 500;
+      border-radius: 4px;
+      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+      min-width: 190px;
+      z-index: 99;
+      padding: 15px 0;
+      text-align: left;
+
+      .item {
+        padding: 0 30px;
+        cursor: pointer;
+        font-size: 14px;
+        color: #2d333d;
+        line-height: 24px;
+
+        &:hover {
+          background: #dbebff;
+        }
+
+        &.selected {
+          position: relative;
+          font-weight: 600;
+
+          &:before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 14px;
+            transform: translate(0, -50%);
+            width: 6.5px;
+            height: 6.5px;
+            background: url("/check.svg") no-repeat;
+          }
+        }
+      }
+    }
+
+    .selectHide {
+      display: none;
     }
   }
 
@@ -1605,7 +1752,7 @@ header {
   }
 
   .left-container {
-    max-width: 60%;
+    width: 100%;
     padding: 0 24px 0 18px;
 
     .notary-list {
@@ -1834,7 +1981,7 @@ header {
   }
 
   .right-container {
-    max-width: 40%;
+    max-width: 424px;
     padding: 20px 24px 0 0;
 
     .sticky-sign {
@@ -1883,8 +2030,8 @@ header {
 
         .fix__time {
           ul {
-            grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
-            grid-column-gap: 25px;
+            grid-template-columns: repeat(auto-fill, minmax(71px, 1fr));
+            grid-column-gap: 20px;
             grid-row-gap: 12px;
           }
         }

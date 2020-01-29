@@ -55,8 +55,25 @@ export default {
       }
     }
   },
+  methods: {
+    setSelect() {
+      if (this.value && this.options.length > 0) {
+        let option = this.options.filter( i => i.value === this.value )[0]
+        if (option) {
+          this.selected = option.title
+        } 
+      } else if (this.options.length > 0 && this.value === null) {
+        let o = this.options[0]
+        this.selected = o.title
+        this.$emit('input', o.value)
+      }
+    }
+  },
   mounted() {
-    this.$emit("input", this.selected);
-  }
+    this.setSelect()
+  },
+  // mounted() {
+  //   this.$emit("input", this.selected);
+  // },
 };
 </script>

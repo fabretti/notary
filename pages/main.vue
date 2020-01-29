@@ -9,7 +9,11 @@
       <div class="search">
         <form class="search-form">
           <div class="search-formDate">
-            <input id="srch" placeholder="Имя нотариуса, метро, город МО" />
+            <input 
+              @keydown.enter="toResults"
+              v-model="searchString"
+              id="srch" 
+              placeholder="Имя нотариуса, метро, город МО" />
             <!-- <div @click="show = !show" class="search-date">
               <p>
                 Вт, 24 сентября
@@ -30,7 +34,8 @@
             </div>-->
             <CustomSelect
               class="search-date"
-              :options="[{value: 1, title: 'Сегодня'}, {value: 2, title: 'Вт, 25 сентября'}, {value: 3, title: 'Ср, 26 сентября'}]"
+              :options="dateList"
+              v-model="selectedDate"
             />
             <img @click="modalDate" src="calendar.svg" alt />
           </div>
@@ -71,7 +76,7 @@
         name="modalCalendar"
         width="400px"
         height="auto"
-      >
+        >
         <div class="modal-body">
           <date-pick v-model="date" :hasInputElement="false" :months="months" :weekdays="weekdays"></date-pick>
           <p class="info">Онлайн запись доступна только на ближайшие две недели</p>
@@ -449,6 +454,8 @@
 <script>
 import CustomSelect from "~/components/CustomSelect.vue";
 import DatePick from "vue-date-pick";
+import moment from 'moment'
+moment.locale('RU')
 export default {
   components: {
     CustomSelect,
@@ -506,7 +513,7 @@ export default {
     marksMap() {
       return this.$store.getters['companies/getMap']
     },
-     balloonTemplate() {
+    balloonTemplate() {
         return `
           <h1>${this.currentCompanyTitle}</h1>
         `
@@ -514,6 +521,35 @@ export default {
     selectedSubject() {
       return this.$store.getters['subject/getSelectedSubject']
     },
+    searchString: {
+      get() {
+        return this.$store.getters['staticFilters/getSearchString']
+      },
+      set(value) {
+        this.$store.commit('staticFilters/setSearchString', value)
+      },
+    },
+    selectedDate: {
+      get() {
+        return this.$store.getters['staticFilters/getSelectedDate']
+      },
+      set(value) {
+        this.$store.commit('staticFilters/setSelectedDate', value)
+      },
+    },
+    dateList() {
+      let toUpperCaseFirst = i => i.length ? i[0].toUpperCase() + i.slice(1) : i
+      let now = moment(moment().format('YYYY-MM-DD')).unix(),
+        nextDay = now + 86400,
+        nextNextDay = nextDay + 86400,
+        nextDayTitle = moment.unix(nextDay).format('dddd, DD.MM'),
+        nextNextDayTitle = moment.unix(nextNextDay).format('dddd, DD.MM')
+      return [
+        {value: now, title: 'Сегодня'}, 
+        {value: nextDay, title: toUpperCaseFirst(nextDayTitle)}, 
+        {value: nextNextDay , title: toUpperCaseFirst(nextNextDayTitle)}
+      ]
+    }
   },
   watch: {
     selectedSubject() {
@@ -546,6 +582,10 @@ export default {
     },
     loadMarksMap() {
       this.$store.dispatch("companies/loadMap", {subjectId: this.selectedSubject});
+    },
+    toResults(e) {
+      e.preventDefault();
+      this.$router.push({path: '/results'})
     }
   },
 };

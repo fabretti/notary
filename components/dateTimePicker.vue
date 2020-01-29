@@ -74,7 +74,8 @@ import moment from 'moment'
 export default {
     props: {
         week: {type: Array},
-        forbiddenTimes: {type: Object}
+        forbiddenTimes: {type: Object},
+        selectedDate: {type: Number, default: null},
     },
     data: () => ({
         date: null,
@@ -139,8 +140,13 @@ export default {
             return times
         }
     },
+    watch: {
+        selectedDate() {
+            this.date = this.selectedDate || this.getNow()
+        }
+    },
     created() {
-        this.date = this.getNow()
+        this.date = this.selectedDate || this.getNow()
     },
     methods: {
         getNow() {

@@ -216,6 +216,16 @@
           appearance: none;
 }
 
+.modal .form__box select[disabled],
+.modal .form__box input[disabled],
+.modal .form__box .time[disabled] {
+  opacity: 0.4;
+}
+
+.modal .form__box .showTime[disabled] {
+  opacity: 0.4;
+}
+
 .modal .form__box .time {
   cursor: pointer;
   -webkit-appearance: none;

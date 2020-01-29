@@ -208,6 +208,14 @@
       padding: 10px 16px;
       border: 1px solid #8e99a7;
       appearance: none;
+
+      &[disabled] {
+        opacity: 0.4;
+      }
+    }
+
+    .showTime[disabled] {
+      opacity: 0.4;
     }
 
     .time {
